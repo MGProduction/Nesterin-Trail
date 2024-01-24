@@ -121,6 +121,11 @@ emit_headers:0
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
+string_checksimilarity:0
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
 include:stdlib.hjt
 1
 <end node> 5P9i0s8y19Z
@@ -402,6 +407,7 @@ wear
 needin:$this,$available
 set:jacketon
 msg:Done
+addscore:score_jacketwear
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -902,11 +908,13 @@ ifisroom:darkpath
 	msg: On the map you see a path leading from here to a mark, +
 	msg:going southeast.
 	set:knowdarkpathroad
+	addscore:score_knowdarkpathroad
 else
 	ifisroom:betweenpath
 		msg: On the map you see a path leading from here to a mark, +
 		msg:going northeast.
 		set:knowruinsroad
+		addscore:score_knowruinsroad
 	else
 		msg:This map doesn't seem useful here
 
@@ -950,6 +958,7 @@ withobj:jacket
 ifobjin:jacket,$inventory
 	if:!insigniaonjacket
 		set:insigniaonjacket
+		addscore:score_insigniaonjacket
 		msg:Done
 	else
 		msg:You already have it there
@@ -980,6 +989,13 @@ startat:$nowhere
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
+desc
+3
+Erik's eyes
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
 coin
 2
 <end node> 5P9i0s8y19Z
@@ -1002,7 +1018,7 @@ dt=Text
 <node>
 desc
 3
-A shiny ancient silver @coin, with a pentagon on it
+A shiny large silver @coin, with a pentagon on it
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -1060,6 +1076,7 @@ needin:$this,$available
 msg:It's a slab of silvery material. It's ductible, light and incredibly strong. It's Lyrin's special metal, and now you've found how to have it!
 msg:Once your Guild knows about it, they will send people here to study the process and make experiments. The Resistance might actually have \ya chance to fight back\w!
 set:materialwin
+addscore:score_materialwin
 if:summoningstopped
 	msg:You think it might be time to go back home
 
@@ -1188,6 +1205,7 @@ if:!fulllayout
 			ifobjin:pencil,$inventory
 				msg:You used the pencil to copy what was missing of notebook page, and now it's identical
 				set:fulllayout
+				addscore:score_fulllayout
 			else
 				msg:You could fix the notebook scheme, if you'd have something to write
 			endif
@@ -1197,6 +1215,7 @@ else
 	ifisroom:minetunnel
 		msg:The layout you copied from the statue has symbols similar to crossroads marking. It seems that from where you are you need to go southeast to reach the central point
 		set:solvedmaze
+		addscore:score_solvedmaze
 	else
 		msg:On one page there's a layout with dots and markings you copied from a statue
 if:knowdemonname
@@ -1590,7 +1609,7 @@ else
 	msg:As soon as he has emptied it, he seems to feel a little better.
 	set:oldmandrank
 	put:flask,$nowhere
-	msg:"Thanks", he says.
+	msg:"Thanks", he says.	
 endif
 
 <end node> 5P9i0s8y19Z
@@ -1644,7 +1663,6 @@ msg:So you were not surprised when you were sent to Nesterin, one of the settlem
 //msg:You have long since lost hope of a breakthrough that would give the small resistance a chance of victory, but not the will to fight back.
 waitkey
 
-setvar:score,0
 setvar:maxweight,5
 put:knife,$inventory
 put:pendant,$inventory
@@ -2044,6 +2062,7 @@ needin:pencil,$inventory
 if:!fulllayout
 	msg:You used the pencil to copy what was missing of notebook page, and now it's identical
 	set:fulllayout
+	addscore:score_fulllayout
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -2186,6 +2205,7 @@ else
 			msg:You reach into the water, and take a silver coin. When he shouts at you, you turn around showing your room key. "I was recovering this"
 			msg:He grunts. But then he leaves you alone
 			put:coin,$inventory
+			addscore:score_coinstaken
 		else
 			msg:Even in uniform, you don't dare to collect coins with him watching. You need an excuse to reach into the water
 	else
@@ -2235,6 +2255,7 @@ else
 		msg:It's risky, but wearing a uniform you might dare to go in and look around
 		waitkey
 		set:enteredprison
+		addscore:score_prisonentered
 	endif
 	goto:prison
 
@@ -2258,6 +2279,7 @@ withobj:flask
 needin:$this,$available
 withobj:fountain
 	unsetattr:$this,empty
+	addscore:score_flaskfilled
 	msg:Done
 
 <end node> 5P9i0s8y19Z
@@ -2390,6 +2412,7 @@ if:tmp=2
 	if:eryanname
 		msg:"Eryan", you say
 		msg:He looks at you then annoyedly points you in the direction of the cells, to the south, and invites you to hurry up
+		addscore:score_allowedtocell
 		set:allowedtoenter
 	else
 		msg:"Erik", you say
@@ -2516,6 +2539,7 @@ if:womansawpendant
 		set:alreadysaid
 	endif
 	msg:"I was able to hide his documents before being arrested. They are hidden in the school library. Behind a book in the @geometry section."
+	addscore:score_geometrysection
 else
 	msg:"Who are you?"
 
@@ -2671,7 +2695,7 @@ dt=Text
 <node>
 withobj:meat
 7
-msg:You ask why there's a meat shortage, and the vendor answers vaguely. "Problems with @suppliers", she says
+msg:You ask why there's a shortage of meat, and the saleswoman is vague. "Problems with @supplies," she says
 set:meatneeded
 if:rabbitsseen
 	msg:"I've seen rabbits in the forest", you say
@@ -2718,7 +2742,7 @@ msg:"Oh, I've heard about it, but I've never seen it, I'm sorry."
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-withobj:suppliers
+withobj:supplies
 7
 msg:"Lyrins took all our weapons, including hunting ones. And they took almost every young man away. And that without mentioning the forest @witch"
 
@@ -2764,6 +2788,7 @@ else
 		msg:"I'll pay you when I sell it," she said, "but I can give you a bit of @bread up front.
 		put:bread,$inventory
 		put:rabbit,$nowhere
+		addscore:score_breadtaken
 		set:rabbitgiven
 
 <end node> 5P9i0s8y19Z
@@ -2859,7 +2884,7 @@ if:wantjacket
 		msg:"For the uniform?", she asks, and when you nod he makes the ring disappear in her pocket. 
 		msg:"But I'm only giving you the @jacket for this little ring. Many of the local guards use their trousers anyway, so you can do the same"
 		put:ring,$nowhere
-		put:jacket,$inventory
+		put:jacket,$inventory		
 	else
 		msg:You don't have it
 	endif
@@ -2932,6 +2957,7 @@ withobj:market.foodseller
 		msg:"I'll pay you when I sell it," she said, "but I can give you a bit of @bread up front.
 		put:bread,$inventory
 		put:rabbit,$nowhere
+		addscore:score_breadtaken
 		set:rabbitgiven
 
 <end node> 5P9i0s8y19Z
@@ -2948,6 +2974,11 @@ uniform
 dt=Text
 <node>
 jacket
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+supplies
 4
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -2991,7 +3022,7 @@ dt=Text
 <node>
 desc
 3
-The room you're in is full of desks. There still are writing @material on them. The teacher's desk is partially broken, and there's blood all over it. Some @cabinets were piled up on the west side as if to block access to @stairs to the upper floor. To the south is the boarded entrance door and the windows facing the square. To the east the smaller door you entered from.
+The room you're in is full of desks. There still are writing @material on them. The teacher's desk is partially broken, and there's blood all over it. Some @cabinets were piled up on the west side as if to block access to @stairs to the upper floor. To the south is the boarded entrance door and the windows facing the square. To the west the smaller door you entered from.
 
 {cabinets: They're several and heavy.}
 
@@ -3009,7 +3040,7 @@ dt=Text
 <node>
 attr.exits
 3
-[east,south,up]
+[west,south,up]
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3019,7 +3050,7 @@ verb
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-e
+w
 4
 goto:schoolalley
 
@@ -3045,11 +3076,6 @@ dt=Text
 <node>
 leave|exit
 4
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-withobj:school
-5
 goto:schoolalley
 
 <end node> 5P9i0s8y19Z
@@ -3076,6 +3102,7 @@ if:!twineseen
 	msg:Inside one of them you find some @twine.
 	put:twine,$here
 	set:twineseen
+	addscore:score_twineseen
 else
 	msg:You open some more, but you don't find anything useful
 
@@ -3092,6 +3119,7 @@ else
 		msg:With his help, even trying to do less possible noise, you're able to free the stairs up in less than an hour.
 		msg:Once finished, he left without a word.
 		set:cabinetsbypassed
+		addscore:score_cabinetsbypassed
 	else
 		msg:They're heavy, and too many. You tried, but you quickly undertand that you can't move them and free the stairs without some serious help.
 
@@ -3182,6 +3210,7 @@ if:!mapfound
 	msg: A @map falls out of a book
 	set:mapfound
 	put:map,$here
+	addscore:score_mapfound
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3202,6 +3231,7 @@ msg:Of all of them, one book stands out above the others, because they seem to h
 if:!grimoireseen
 	put:grimoire,$here
 	set:grimoireseen
+	addscore:score_grimoireseen
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3258,6 +3288,7 @@ withobj:berries
 7
 msg:You are looking for a plant with berries. It takes you almost an hour, but at the end you recognise the plant you saw outside the witch's house in a drawing: it's called @baryl.
 set:knowberriesarebaryl
+addscore:score_berriesrecognized
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3277,6 +3308,7 @@ x|search
 ifobjin:documents,$nowhere
 	put:documents,$here
 	msg:You found some @documents hidden behind books.
+	addscore:score_documentstaken
 else
 	msg:There's nothing else interesting 
 
@@ -3317,7 +3349,9 @@ withobj:arkylzoth
 msg:It's more god than demon, but will submit to proper ritual, if performed in a @sacred place
 msg:Those who wish to force Arkylzoth to do their bidding must sacrifice their own eyes and blood
 msg:Blood sacrifice seems symbolic, but both eyes of a willing summoner must be carved out and offered
+addscore:score_spellseen
 if:!pagetaken
+	set:pageshown
 	msg:On a @page, there's spell needed to evoke it. There, there's also the banishing spell
 
 <end node> 5P9i0s8y19Z
@@ -3344,12 +3378,14 @@ dt=Text
 <node>
 withobj:page
 7
-if:pagetaken
-	msg:You already have it
-else
-	put:page,$inventory
-	set:pagetaken
-	msg:Taken
+if:pageshown
+	if:pagetaken
+		msg:You already have it
+	else
+		put:page,$inventory
+		set:pagetaken
+		msg:Taken
+		addscore:score_spelltaken
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3360,8 +3396,9 @@ if:pagetaken
 	msg:You already have it
 else
 	put:page,$inventory
-	set:pagetaken
+	set:pagetaken	
 	msg:Taken
+	addscore:score_spelltaken
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3389,6 +3426,25 @@ dt=Text
 d
 4
 goto:school
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:page
+5
+if:pageshown
+	if:pagetaken
+		msg:You already have it
+	else
+		put:page,$inventory
+		set:pagetaken
+		msg:Taken
+		addscore:score_spelltaken
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3449,7 +3505,7 @@ goto:market
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-w
+e
 4
 if:schoolpanelremoved
 	goto:school
@@ -3471,6 +3527,7 @@ ifobjin:knife,$inventory
 		ifnot:schoolpanelremoved
 			msg:Using your knife, and not without effort, you manage to rise and move a panel enough to create an opening.
 			set:schoolpanelremoved
+			addscore:score_schoolpanelremoved
 	endwith
 	withobj:schoolalley.window
 		msg:The window panels are fastened too well
@@ -3544,6 +3601,7 @@ ifobjin:knife,$inventory
 		ifnot:schoolpanelremoved
 			msg:Using your knife, and not without effort, you manage to rise and move a panel enough to create an opening.
 			set:schoolpanelremoved
+			addscore:score_schoolpanelremoved
 	endwith
 	withobj:schoolalley.window
 		msg:The window panels are fastened too well
@@ -3713,11 +3771,6 @@ dt=Text
 <node>
 leave|exit
 4
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-withobj:inn
-5
 goto:mainsquare
 
 <end node> 5P9i0s8y19Z
@@ -3827,6 +3880,7 @@ endif
 if:tmp=1
 	msg: The innkeeper hesitates for a moment, but then he drop a @key on the bar, and moves away, start cleaning a table
 	set:erikroom
+	addscore:score_roomkey
 	put:roomkey,$here
 
 <end node> 5P9i0s8y19Z
@@ -4167,6 +4221,7 @@ ifobjin:flask,$inventory
 else
 	msg:Inside, there's a small leather @flask
 	put:flask,$here
+	addscore:score_flask
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -4188,6 +4243,7 @@ ifobjin:eriknotebook,$inventory
 else
 	msg:Hidden in the staw, there's a torn @notebook. It's in bad condition but it seems to be from Erik.
 	put:eriknotebook,$here
+	addscore:score_eriknotebook
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -4246,11 +4302,6 @@ dt=Text
 <node>
 leave|exit
 4
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-withobj:kitchen
-5
 goto:innhall
 
 <end node> 5P9i0s8y19Z
@@ -4354,6 +4405,7 @@ else
 	msg:"He helped us, the few who could still try, to secretly organise against the Lyrin," he says. "He was a good man."
 	msg:"Was?", you ask. 
 	msg:"Someone denounced him. They came at night and took him away. I don't know where. Maybe in our prison, or somewhere else. But usually no one returns."
+	addscore:score_cookerik
 	set:cookerik
 
 <end node> 5P9i0s8y19Z
@@ -4387,6 +4439,7 @@ withobj:spices
 7
 msg:"Well, I need many, but the most important one for me is @irillis.", the cook says.
 msg:"I use it mostly for meat, but it has other uses as well. Can you collect some for me?"
+addscore:score_irilliswanted
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -4407,6 +4460,7 @@ else
 		msg:"You're Erik's friend... so, ok, I'm in"
 		msg:"Go there and start moving what you can. I'll reach you as soon as I finish here"
 		set:cookhelps
+		addscore:score_cookhelps
 	else
 		msg:"Help you move the school cabinets? You mean risk my life! School's entrance is forbidden now" he says
 		msg:"I don't know you, and it's very dangerous"
@@ -4420,10 +4474,11 @@ withobj:school
 if:cabinetsbypassed
 	msg:You don't need any more help from him
 else
-	if:cookerik
+	if:cooksawpendant
 		msg:"You're Erik's friend... so, ok, I'm in"
 		msg:"Go there and start moving what you can. I'll reach you as soon as I finish here"
 		set:cookhelps
+		addscore:score_cookhelps
 	else
 		msg:"Help you move the school cabinets? You mean risk my life! School's entrance is forbidden now" he says
 		msg:"I don't know you, and it's very dangerous"
@@ -4437,10 +4492,11 @@ withobj:school.cabinets
 if:cabinetsbypassed
 	msg:You don't need any more help from him
 else
-	if:cookerik
+	if:cooksawpendant
 		msg:"You're Erik's friend... so, ok, I'm in"
 		msg:"Go there and start moving what you can. I'll reach you as soon as I finish here"
 		set:cookhelps
+		addscore:score_cookhelps
 	else
 		msg:"Help you move the school cabinets? You mean risk my life! School's entrance is forbidden now" he says
 		msg:"I don't know you, and it's very dangerous"
@@ -4667,6 +4723,7 @@ else
 			msg:You think about it for a moment. Then you ask him if he wants you to do it instead of him.
 			msg:"I'd really love that. And I will return the favour somehow", he adds.
 			set:barreldutyknow
+			addscore:score_barreldutyknow
 		else
 			msg:"You cannot stand here, come in or go away", he says.
 
@@ -4701,6 +4758,7 @@ if:barreldutyknow
 			msg:"The punishment for giving away parts of my equipment would be court martial.", he replied.
 			msg:"But if I lose accidentaly one and you find it, well...", added, dropping something.
 			put:insignia,$here
+			addscore:score_insigniataken
 			msg:"We're even now"
 		endif
 	endif
@@ -4873,6 +4931,7 @@ else
 	ifobjin:bow,$inventory
 		msg:After a long wait you finally see one appear. You draw your bow and shoot the arrow. Got it!
 		putobj:rabbit,$here
+		addscore:score_rabbittaken
 	else
 		msg:You don't have a bow
 	endif
@@ -4915,6 +4974,7 @@ else
 		msg:It only takes a few minutes to spot some
 		putobj:$this,$inventory
 		msg:Then you pick up a bunch of them
+		addscore:score_irillistaken
 	else
 		msg:You have no idea about how they look like
 
@@ -4973,6 +5033,7 @@ else
 		msg:It only takes a few minutes to spot some
 		put:$this,$inventory
 		msg:Then you pick up a bunch of them
+		addscore:score_rodumtaken
 	else
 		msg:You have no idea about how they look like
 
@@ -5114,14 +5175,16 @@ dt=Text
 cut|take
 6
 if:bowneeded
-	ifobjin:bow,$inventory
+	if:bowmade
 		msg:You already made a bow.
 	else
 		ifobjin:knife,$inventory
 				ifobjin:twine,$inventory
 					msg:You cut some branches. You use one of them and the string to make a @bow, then you clean and carve some others to make arrows.
 					put:twine,$nowhere
-					put:bow,$inventory
+					put:bow,$here
+					set:bowmade
+					addscore:score_bowmade
 				else
 					msg:They could be used to make a bow, but you also need some kind of string for that
 				endif
@@ -5330,6 +5393,7 @@ else
 			msg:Then one of them put in front of you an empty @barrel
 			put:beerbarrel,$here
 			set:barreltaken
+			addscore:score_barreltaken
 	else
 		msg:No way.
 
@@ -5436,6 +5500,7 @@ else
 			msg:Then one of them put in front of you an empty @barrel
 			put:beerbarrel,$here
 			set:barreltaken
+			addscore:score_barreltaken
 	else
 		msg:"What are you doing?" shouts one of them
 
@@ -5535,6 +5600,7 @@ else
 					msg:You then drag their bodies off the road and hide them in the vegetation
 					put:mineroad.men,$nowhere
 					put:beerbarrel,$nowhere
+					addscore:score_menasleep
 					set:menasleep
 				else
 					msg:"What?" you ask, trying to figure out how to handle that.
@@ -5545,6 +5611,7 @@ else
 					msg:Then you jump back on your feet, hurry to get another empty one and leave before they can think better of it.
 					setattr:beerbarrel,empty
 					msg:Their leader looks at you suspiciously, but says nothing.
+					addscore:score_menasleeptried
 				endif
 			else
 				put:beerbarrel,$here
@@ -5738,6 +5805,7 @@ else
 	msg:"I... left my notes to @Eryan"
 	msg:This was Erik's last breath.
 	set:eryanname
+	addscore:score_eryanname
 	set:erikisdead
 
 <end node> 5P9i0s8y19Z
@@ -5767,6 +5835,7 @@ if:carvedeyes
 else
 	msg:You brace yourself and proceed. In an infinite time you pluck out his eyes and take them.
 	put:eyes,$inventory
+	addscore:score_carvedeyes
 	set:carvedeyes
 
 <end node> 5P9i0s8y19Z
@@ -5880,6 +5949,7 @@ msg:A small plant with berries grows occasionally among the grass.
 if:knowbaryl
 	msg:You recognize it as @baryl.
 	ifobjin:baryl,$nowhere
+		addscore:score_barylfound
 		put:baryl,$here
 
 <end node> 5P9i0s8y19Z
@@ -5955,6 +6025,13 @@ msg:The door leading that way is shut, and you can't open it
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
+leave|exit
+4
+goto:house
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
 scenery
 3
 <end node> 5P9i0s8y19Z
@@ -5988,6 +6065,7 @@ else
 	msg:You try to stand up and find that you can read the titles of books. Then your head spins and you pass out.
 	msg:When you get up, you are yourself again. But outside.	
 	set:tasted
+	addscore:score_tasted
 	waitkey
 	goto:house
 endif
@@ -6044,6 +6122,7 @@ if:tasted
 	ifobjin:eriknotebook,$inventory
 		ifobjin:pencil,$inventory
 			msg:You wrote it in Erik's notebook
+			addscore:score_knowdemonname
 			set:knowdemonname
 else
 	msg:You can't even read the titles. Everything is written in runes
@@ -6134,6 +6213,7 @@ ifobjin:coin,$inventory
 	withobj:slit
 		msg:You put the silver coin inside the slit, and the door opened.
 		set:ruindooropened
+		addscore:score_ruindooropened
 	endwith
 	withobj:$every
 		msg:What?
@@ -6283,6 +6363,7 @@ ifobjin:page,$inventory
 		msg:You run up the stairs and get out just before everything goes black behind you. Then silence. You turn around and everything seems to go back to normal 
 		msg:You know you did \ywhat Erik wanted\w, but you will have nightmares for a long time
 		set:summoningstopped
+		addscore:score_summoningstopped
 		if:materialwin
 			msg:You think it might be time to go back home
 		endif
@@ -6366,6 +6447,21 @@ if:!bloodonaltar
 	set:bloodonaltar
 else
 	msg:You already put some
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+carve
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:eyes
+5
+ifobjin:eyes,$inventory
+	msg:You already have Erik's ones
+else
+	msg:Before carving your own eyes you wonder if you can take some other willing summoner's ones first
 
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -6543,6 +6639,7 @@ else
 	ifobjin:bow,$inventory
 		msg:After a long wait you finally see one appear. You draw your bow and shoot the arrow. Got it!
 		putobj:fish,$here
+		addscore:score_fishtaken
 	else
 		msg:You don't have a bow
 	endif
@@ -6742,6 +6839,7 @@ ifobjin:fish,$inventory
 	msg:You throw the fish into the lake. Immediately something in the water reaches it and moves away with it, disappearing.
 	set:defeatedfish
 	put:fish,$nowhere
+	addscore:score_defeatedfish
 else
 	msg:You don't have it
 
@@ -7018,6 +7116,13 @@ withobj:instrument
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
+leave|exit
+4
+goto:minetunnel
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
 scenery
 3
 <end node> 5P9i0s8y19Z
@@ -7168,6 +7273,7 @@ withobj:triangle
 if:!gatesclosed
 	msg:You push the embossed triangle, and the mountain starts to tremble.
 	msg:You hope that means you've been able to lock part of Lyrin men in or out the mine
+	addscore:score_gatesclosed
 	set:gatesclosed
 else
 	msg:Nothing happens
