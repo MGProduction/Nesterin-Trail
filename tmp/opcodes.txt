@@ -1,0 +1,4161 @@
+onfirst[0]::$start[0] = $00/0
+	clear[130]
+	msg::[239]\cA C64 fantasy text adventure...
+	waitkey[174]
+	clear[130]
+	msg::[181]You are the youngest member of the Garrot Guild, or what is left...
+	msg::[72]But your master's research did not stop. And it is more importan...
+	msg::[213]You know little about it. But you know how to move and blend in,...
+	msg::[133]So you were not surprised when you were sent to Nesterin, one of...
+	waitkey[174]
+	setvar[169]
+	setvar[169]
+	put[159]
+	put[159]
+	setcount[164]
+	goto::[2]mainsquare
+onfirst[0]::endgame[1] = $01/1
+	clear[130]
+	msg::[170]With the summoning prevented, and the secret about Lyrin's mater...
+	msg::[63]A hint of a smile cuts the sharp line of your face. It is time t...
+	msg::[240]\yYou won!\w
+	msg::[73]Do you want to restart? (Y/N)
+	getkey[137]
+	ifkey[146]::89
+		start[171]
+	else[133]
+		quit[160]
+	endif[135]
+onfirst[0]::mainsquare[2] = $02/2
+	clear[130]
+	msg::[183]You arrive in this remote town at dawn.
+	msg::[237]Your goal now is to find Erik. It's not as easy as it sounds, co...
+onfirst[0]::mineroad[20] = $03/3
+	clear[130]
+	msg2::[190]"Ah, finally, we were dying of thirst."
+	msg2::[105]"Ah, finally, we were dying of thirst."
+onfirst[0]::redtent[22] = $04/4
+	clear[130]
+	msg2::[112]"Ah, finally, we were dying of thirst."
+	msg2::[164]"Ah, finally, we were dying of thirst."
+onfirst[0]::$everywhere[246] = $05/5
+	clear[130]
+	msgattr::[1]topscore
+	ifobjinattr[148]
+		msg::[220]You see: +
+		list[151]
+	endif[135]
+onenter[1]::$everywhere[246] = $06/6
+	clear[130]
+	ifundef::[3]"Do you need help?", you ask the old man
+		msg::[179]You are in +
+		msgattr::[0]score
+	else[133]
+		msg::[177]You are +
+		msgattr::[3]maxweight
+	endif[135]
+	msg::[61].
+	ifundef::[4]"Do you want it? I could sell it for 2 coins.", he concludes.
+		msg::[142]There are no evident exits.
+	else[133]
+		msg::[143]There are obvious exits to +
+		msgattr::[4]tmp
+		msg::[61].
+	endif[135]
+	ifobjinattr[148]
+		msg::[220]You see: +
+		list[151]
+	endif[135]
+u[5]::school[8] = $07/7
+	if::[36]cabinetsbypassed
+		goto::[9]schoollibrary
+	else[133]
+		msg::[195]You cannot reach the stairs. Cabinets block them
+	endif[135]
+u[5]::innhall[12] = $08/8
+	if::[48]erikroom
+		goto::[13]upcorridor
+	else[133]
+		msg2::[15]"Ah, finally, we were dying of thirst."
+		msg2::[43]"Ah, finally, we were dying of thirst."
+	endif[135]
+u[5]::ruinsinterior[26] = $09/9
+	goto::[25]ruins
+u[5]::minetunnel[31] = $0a/10
+	goto::[30]mineentrance
+u[5]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+d[6]::schoollibrary[9] = $0c/12
+	goto::[8]school
+d[6]::upcorridor[13] = $0d/13
+	goto::[12]innhall
+d[6]::ruins[25] = $0e/14
+	if::[67]ruindooropened
+		if::[8]summoningstopped
+			msg2::[209]"Ah, finally, we were dying of thirst."
+		else[133]
+			goto::[26]ruinsinterior
+		endif[135]
+	else[133]
+		msg2::[143]"Ah, finally, we were dying of thirst."
+	endif[135]
+d[6]::mineentrance[30] = $0f/15
+	goto::[31]minetunnel
+d[6]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+s[7]::mainsquare[2] = $10/16
+	goto::[16]southtownentrance
+s[7]::bankssquare[3] = $11/17
+	goto::[2]mainsquare
+s[7]::prison[5] = $12/18
+	if::[25]allowedtoenter
+		goto::[6]cell
+	else[133]
+		msg::[13]"Hey! Nobody enters without my consent!" he shouts
+	endif[135]
+s[7]::school[8] = $13/19
+	msg::[139]The main entrance is boarded up. You can't leave from it.
+s[7]::northtownentrance[11] = $14/20
+	goto::[4]governorsquare
+s[7]::upcorridor[13] = $15/21
+	msg2::[91]"Ah, finally, we were dying of thirst."
+s[7]::kitchen[15] = $0d/13
+	goto::[12]innhall
+s[7]::southtownentrance[16] = $16/22
+	if::[46]erikisdead
+		if::[7]materialwin
+			if::[8]summoningstopped
+				goto::[1]endgame
+			else[133]
+				msg2::[99]"Ah, finally, we were dying of thirst."
+			endif[135]
+		else[133]
+			if::[8]summoningstopped
+				msg2::[100]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[210]"Ah, finally, we were dying of thirst."
+				msg2::[92]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endif[135]
+	else[133]
+		msg2::[210]"Ah, finally, we were dying of thirst."
+	endif[135]
+s[7]::path[17] = $17/23
+	goto::[18]darkpath
+s[7]::darkpath[18] = $18/24
+	goto::[17]path
+s[7]::redtent[22] = $19/25
+	goto::[21]camp
+s[7]::house[23] = $1a/26
+	goto::[24]houseinterior
+s[7]::ruinsinterior[26] = $1b/27
+	msg2::[167]"Ah, finally, we were dying of thirst."
+s[7]::fall[29] = $1c/28
+	goto::[27]forestpond
+s[7]::minetunnel[31] = $0f/15
+	goto::[31]minetunnel
+s[7]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+n[8]::mainsquare[2] = $1d/29
+	goto::[3]bankssquare
+n[8]::governorsquare[4] = $1e/30
+	goto::[11]northtownentrance
+n[8]::cell[6] = $1f/31
+	goto::[5]prison
+n[8]::market[7] = $20/32
+	msg::[232]You walk a hundred meters north and reach an elegant two-storey ...
+	set::[34]schoolseenfromnearby
+n[8]::northtownentrance[11] = $21/33
+	ifnot::[46]erikisdead
+		msg2::[205]"Ah, finally, we were dying of thirst."
+	else[133]
+		goto::[19]betweenpath
+	endif[135]
+n[8]::innhall[12] = $22/34
+	if::[49]allowedinthekitchen
+		goto::[15]kitchen
+	else[133]
+		msg::[189]You can't go that way
+	endif[135]
+n[8]::southtownentrance[16] = $23/35
+	if::[46]erikisdead
+		ifnot::[21]midday
+			msg2::[218]"Ah, finally, we were dying of thirst."
+			msg2::[37]"Ah, finally, we were dying of thirst."
+			set::[21]midday
+			waitkey[174]
+		endif[135]
+	endif[135]
+	goto::[2]mainsquare
+n[8]::path[17] = $17/23
+	goto::[18]darkpath
+n[8]::darkpath[18] = $18/24
+	goto::[17]path
+n[8]::house[23] = $17/23
+	goto::[18]darkpath
+n[8]::houseinterior[24] = $24/36
+	goto::[23]house
+n[8]::ruinsinterior[26] = $1b/27
+	msg2::[167]"Ah, finally, we were dying of thirst."
+n[8]::forestpond[27] = $25/37
+	goto::[29]fall
+n[8]::minetunnel[31] = $0f/15
+	goto::[31]minetunnel
+n[8]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+w[9]::mainsquare[2] = $26/38
+	goto::[7]market
+w[9]::governorsquare[4] = $1d/29
+	goto::[3]bankssquare
+w[9]::prison[5] = $14/20
+	goto::[4]governorsquare
+w[9]::schoolalley[10] = $27/39
+	if::[45]schoolpanelremoved
+		goto::[8]school
+	else[133]
+		msg::[189]You can't go that way
+	endif[135]
+w[9]::innhall[12] = $11/17
+	goto::[2]mainsquare
+w[9]::upcorridor[13] = $15/21
+	msg2::[91]"Ah, finally, we were dying of thirst."
+w[9]::innroom[14] = $28/40
+	goto::[13]upcorridor
+w[9]::path[17] = $10/16
+	goto::[16]southtownentrance
+w[9]::darkpath[18] = $18/24
+	goto::[17]path
+w[9]::betweenpath[19] = $1c/28
+	goto::[27]forestpond
+w[9]::houseinterior[24] = $29/41
+	msg2::[144]"Ah, finally, we were dying of thirst."
+w[9]::ruinsinterior[26] = $1b/27
+	msg2::[167]"Ah, finally, we were dying of thirst."
+w[9]::minetunnel[31] = $0f/15
+	goto::[31]minetunnel
+w[9]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+e[10]::mainsquare[2] = $0d/13
+	goto::[12]innhall
+e[10]::bankssquare[3] = $2a/42
+	ifisin[144]
+		if::[21]midday
+			ifnot::[22]domidday
+				msg::[208]You esitate, but seeing that there's just a single Lyrin guard, ...
+				waitkey[174]
+				set::[22]domidday
+			endif[135]
+			goto::[4]governorsquare
+		else[133]
+			msg::[64]A little further on you see several Lyrin guards and you know th...
+		endif[135]
+	else[133]
+		goto::[4]governorsquare
+	endif[135]
+e[10]::governorsquare[4] = $2b/43
+	ifnot::[2]jacketon
+		msg::[171]Without a good excuse, entering a prison run by Lyrins seems foo...
+	else[133]
+		ifnot::[23]enteredprison
+			msg::[111]It's risky, but wearing a uniform you might dare to go in and lo...
+			waitkey[174]
+			set::[23]enteredprison
+		endif[135]
+		goto::[5]prison
+	endif[135]
+e[10]::market[7] = $11/17
+	goto::[2]mainsquare
+e[10]::school[8] = $2c/44
+	goto::[10]schoolalley
+e[10]::upcorridor[13] = $2d/45
+	ifnot::[51]unlockedinnroom
+		msg2::[246]"Ah, finally, we were dying of thirst."
+		set::[51]unlockedinnroom
+		waitkey[174]
+	endif[135]
+	goto::[14]innroom
+e[10]::southtownentrance[16] = $18/24
+	goto::[17]path
+e[10]::path[17] = $17/23
+	goto::[18]darkpath
+e[10]::darkpath[18] = $18/24
+	goto::[17]path
+e[10]::houseinterior[24] = $29/41
+	msg2::[144]"Ah, finally, we were dying of thirst."
+e[10]::ruinsinterior[26] = $1b/27
+	msg2::[167]"Ah, finally, we were dying of thirst."
+e[10]::forestpond[27] = $2e/46
+	goto::[19]betweenpath
+e[10]::minetunnel[31] = $0f/15
+	goto::[31]minetunnel
+e[10]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+se[11]::schoolalley[10] = $26/38
+	goto::[7]market
+se[11]::darkpath[18] = $2f/47
+	if::[5]knowdarkpathroad
+		goto::[23]house
+	else[133]
+		goto::[17]path
+	endif[135]
+se[11]::mineroad[20] = $10/16
+	goto::[16]southtownentrance
+se[11]::minetunnel[31] = $30/48
+	if::[11]solvedmaze
+		goto::[32]forgeroom
+	else[133]
+		goto::[31]minetunnel
+	endif[135]
+se[11]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+sw[12]::betweenpath[19] = $1e/30
+	goto::[11]northtownentrance
+sw[12]::camp[21] = $31/49
+	goto::[20]mineroad
+sw[12]::ruins[25] = $2e/46
+	goto::[19]betweenpath
+sw[12]::mountainpath[28] = $25/37
+	goto::[29]fall
+sw[12]::mineentrance[30] = $32/50
+	goto::[28]mountainpath
+sw[12]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+ne[13]::betweenpath[19] = $33/51
+	if::[6]knowruinsroad
+		goto::[25]ruins
+	else[133]
+		msg2::[93]"Ah, finally, we were dying of thirst."
+	endif[135]
+ne[13]::mountainpath[28] = $34/52
+	setcount[164]
+	ifvar[150]
+		msg2::[79]"Ah, finally, we were dying of thirst."
+	else[133]
+		goto::[30]mineentrance
+	endif[135]
+ne[13]::fall[29] = $35/53
+	ifnot::[70]defeatedfish
+		msg2::[86]"Ah, finally, we were dying of thirst."
+		msg2::[84]"Ah, finally, we were dying of thirst."
+	else[133]
+		goto::[28]mountainpath
+	endif[135]
+ne[13]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+nw[14]::market[7] = $36/54
+	if::[35]schoolalleyseen
+		goto::[10]schoolalley
+	else[133]
+		msg::[189]You can't go that way
+	endif[135]
+nw[14]::southtownentrance[16] = $31/49
+	goto::[20]mineroad
+nw[14]::mineroad[20] = $37/55
+	if::[62]menasleep
+		if::[16]knowaboutcamp
+			msg2::[81]"Ah, finally, we were dying of thirst."
+			msg2::[111]"Ah, finally, we were dying of thirst."
+			waitkey[174]
+			goto::[21]camp
+		else[133]
+			msg2::[78]"Ah, finally, we were dying of thirst."
+			msg2::[222]"Ah, finally, we were dying of thirst."
+		endif[135]
+	else[133]
+		msg2::[85]"Ah, finally, we were dying of thirst."
+		msg2::[178]"Ah, finally, we were dying of thirst."
+		set::[60]armedmenseen
+	endif[135]
+nw[14]::forgeroom[32] = $0f/15
+	goto::[31]minetunnel
+nw[14]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+go[15]::mainsquare[2] = $38/56
+	withobj::[39]mainsquare.inn
+		goto::[12]innhall
+	endwith[136]
+go[15]::prison[5] = $39/57
+	withobj::[52]prison.cell
+		if::[25]allowedtoenter
+			goto::[6]cell
+		else[133]
+			msg::[15]"Hey! Who are you?" he shouts
+		endif[135]
+	endwith[136]
+go[15]::innhall[12] = $3a/58
+	withobj::[88]innhall.kitchen
+		if::[49]allowedinthekitchen
+			goto::[15]kitchen
+		else[133]
+			msg2::[15]"Ah, finally, we were dying of thirst."
+		endif[135]
+go[15]::camp[21] = $3b/59
+	withobj::[132]camp.green
+		msg2::[124]"Ah, finally, we were dying of thirst."
+go[15]::camp[21] = $3c/60
+	withobj::[133]camp.red
+		goto::[22]redtent
+go[15]::house[23] = $3d/61
+	withobj::[135]house.house
+		goto::[24]houseinterior
+	endwith[136]
+go[15]::$everywhere[246] = $3e/62
+	withobj::[31]nesterin
+		ifisroom::[23]house
+			goto::[2]mainsquare
+		endif[135]
+		ifisroom::[17]path
+			goto::[2]mainsquare
+		endif[135]
+		ifisroom::[18]darkpath
+			goto::[2]mainsquare
+		endif[135]
+		ifisroom::[20]mineroad
+			goto::[16]southtownentrance
+		endif[135]
+		ifisroom::[21]camp
+			goto::[16]southtownentrance
+		endif[135]
+		ifisroom::[25]ruins
+			goto::[11]northtownentrance
+		endif[135]
+		ifisroom::[27]forestpond
+			goto::[11]northtownentrance
+		endif[135]
+		ifisroom::[19]betweenpath
+			goto::[11]northtownentrance
+		endif[135]
+		ifisroom::[28]mountainpath
+			goto::[11]northtownentrance
+		endif[135]
+		ifisroom::[29]fall
+			goto::[11]northtownentrance
+		endif[135]
+	endwith[136]
+go[15]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+enter[16]::mainsquare[2] = $38/56
+	withobj::[39]mainsquare.inn
+		goto::[12]innhall
+	endwith[136]
+enter[16]::prison[5] = $39/57
+	withobj::[52]prison.cell
+		if::[25]allowedtoenter
+			goto::[6]cell
+		else[133]
+			msg::[15]"Hey! Who are you?" he shouts
+		endif[135]
+	endwith[136]
+enter[16]::schoolalley[10] = $3f/63
+	withobj::[79]schoolalley.door
+		if::[45]schoolpanelremoved
+			goto::[8]school
+		else[133]
+			msg::[92]How?
+		endif[135]
+enter[16]::schoolalley[10] = $40/64
+	withobj::[81]schoolalley.school
+		if::[45]schoolpanelremoved
+			goto::[8]school
+		else[133]
+			msg::[92]How?
+		endif[135]
+enter[16]::innhall[12] = $3a/58
+	withobj::[88]innhall.kitchen
+		if::[49]allowedinthekitchen
+			goto::[15]kitchen
+		else[133]
+			msg2::[15]"Ah, finally, we were dying of thirst."
+		endif[135]
+enter[16]::upcorridor[13] = $41/65
+	withobj::[92]upcorridor.room
+		ifnot::[51]unlockedinnroom
+			msg2::[246]"Ah, finally, we were dying of thirst."
+			set::[51]unlockedinnroom
+			waitkey[174]
+		endif[135]
+		goto::[14]innroom
+	endwith[136]
+enter[16]::camp[21] = $3b/59
+	withobj::[132]camp.green
+		msg2::[124]"Ah, finally, we were dying of thirst."
+enter[16]::camp[21] = $3c/60
+	withobj::[133]camp.red
+		goto::[22]redtent
+enter[16]::house[23] = $3d/61
+	withobj::[135]house.house
+		goto::[24]houseinterior
+	endwith[136]
+enter[16]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+x[17]::mainsquare[2] = $42/66
+	withobj::[37]mainsquare.benches
+		msg::[136]The benches are wooden, and although old, in good condition.
+		if::[18]manunderthebench
+			msg::[215]You notice a pale and thin old \yman\w, resting under one of the...
+			put[159]
+			set::[19]discoveredman
+		endif[135]
+x[17]::bankssquare[3] = $43/67
+	withobj::[42]bankssquare.instrument
+		msg::[99]It is an elongated object. You don't know what it is and you've ...
+		msg::[79]From where you are you can see some embossed symbols, including ...
+		set::[20]seeninstrument
+x[17]::bankssquare[3] = $44/68
+	withobj::[44]bankssquare.layout
+		msg::[100]It seems to be a kind of labyrinth, with a series of dots and ma...
+		set::[10]layoutseen
+x[17]::governorsquare[4] = $45/69
+	withobj::[46]governorsquare.guards
+		if::[21]midday
+			msg::[146]There's just a young Lyrin guard now
+		else[133]
+			msg::[219]You see several Lyrin guards, scary, fully armed, and dangerous
+		endif[135]
+x[17]::governorsquare[4] = $46/70
+	withobj::[48]governorsquare.fountain
+		msg::[155]This is probably the largest and most beautiful fountain you've ...
+		msg::[216]You notice that there are several small \ycoins\w inside it
+x[17]::market[7] = $47/71
+	withobj::[61]market.school
+		msg::[147]There's no a way in through the front door.
+		if::[34]schoolseenfromnearby
+			msg::[124]On the left, to the northwest, you noticed a small alley. Wonder...
+			set::[35]schoolalleyseen
+		else[133]
+			msg::[233]You wonder if there's another way to enter that you can't see fr...
+		endif[135]
+x[17]::school[8] = $48/72
+	withobj::[65]school.stairs
+		if::[36]cabinetsbypassed
+			msg::[169]With some cabinets moved, they're now reachable.
+		else[133]
+			msg::[152]They're behind the cabinets, so unreachable.
+		endif[135]
+x[17]::school[8] = $49/73
+	withobj::[67]school.material
+		msg::[144]There are used notebooks, empty inkwells, crayons and more.
+		msg::[149]They are almost all broken
+		ifnot::[39]pencilfound
+			msg::[243]but at least one \ypencil\w seems still intact
+			put[159]
+			set::[39]pencilfound
+		endif[135]
+x[17]::schoollibrary[9] = $4a/74
+	withobj::[71]schoollibrary.geography
+		msg::[94]Information about the lands around Nesterin
+		msg::[129]Reading it you discover that there's a mining area also on the o...
+		ifnot::[40]mapfound
+			msg::[62]A \ymap\w falls out of a book
+			set::[40]mapfound
+			put[159]
+		endif[135]
+x[17]::schoollibrary[9] = $4b/75
+	withobj::[72]schoollibrary.ancient
+		msg::[119]Of all of them, one book stands out above the others, because th...
+		ifnot::[41]grimoireseen
+			put[159]
+			set::[41]grimoireseen
+		endif[135]
+x[17]::schoollibrary[9] = $4c/76
+	withobj::[73]schoollibrary.botany
+		msg::[70]Botany section is the largest one, and it has any information ev...
+x[17]::schoollibrary[9] = $4d/77
+	withobj::[75]schoollibrary.geometry
+		ifisin[144]
+			put[159]
+			msg::[209]You found some \ydocuments\w hidden behind books.
+		else[133]
+			msg::[148]There's nothing else interesting
+		endif[135]
+x[17]::schoollibrary[9] = $4e/78
+	withobj::[76]schoollibrary.grimoire
+		msg::[98]It is a partially burnt book of magic attributed to the Witch of...
+		set::[41]grimoireseen
+x[17]::schoolalley[10] = $4f/79
+	withobj::[79]schoolalley.door
+		msg2::[116]"Ah, finally, we were dying of thirst."
+		if::[45]schoolpanelremoved
+			msg2[154]::253
+		else[133]
+			msg2[154]::250
+		endif[135]
+x[17]::innhall[12] = $50/80
+	withobj::[84]innhall.sign
+		msg2::[152]"Ah, finally, we were dying of thirst."
+		set::[47]signseen
+x[17]::innhall[12] = $51/81
+	withobj::[89]innhall.tables
+		if::[21]midday
+			msg2::[136]"Ah, finally, we were dying of thirst."
+		else[133]
+			msg2::[94]"Ah, finally, we were dying of thirst."
+		endif[135]
+x[17]::innroom[14] = $52/82
+	withobj::[95]innroom.table
+		msg2::[162]"Ah, finally, we were dying of thirst."
+x[17]::innroom[14] = $53/83
+	withobj::[96]innroom.drawer
+		ifisin[144]
+			msg::[108]It's empty.
+		else[133]
+			msg2::[110]"Ah, finally, we were dying of thirst."
+			put[159]
+		endif[135]
+x[17]::innroom[14] = $54/84
+	withobj::[97]innroom.mattress
+		ifisin[144]
+			msg2::[212]"Ah, finally, we were dying of thirst."
+		else[133]
+			msg2::[106]"Ah, finally, we were dying of thirst."
+			put[159]
+		endif[135]
+x[17]::kitchen[15] = $55/85
+	withobj::[99]kitchen.windowdoor
+		msg2::[98]"Ah, finally, we were dying of thirst."
+		msg2::[226]"Ah, finally, we were dying of thirst."
+x[17]::kitchen[15] = $56/86
+	withobj::[106]kitchen.bench
+		msg2::[125]"Ah, finally, we were dying of thirst."
+		set::[18]manunderthebench
+x[17]::southtownentrance[16] = $57/87
+	withobj::[114]southtownentrance.entranceguard
+		msg2::[123]"Ah, finally, we were dying of thirst."
+		msg2::[138]"Ah, finally, we were dying of thirst."
+		msg2::[108]"Ah, finally, we were dying of thirst."
+x[17]::path[17] = $58/88
+	withobj::[120]path.rabbits
+		msg2::[172]"Ah, finally, we were dying of thirst."
+		set::[29]rabbitsseen
+x[17]::path[17] = $59/89
+	withobj::[121]path.plants
+		msg2::[160]"Ah, finally, we were dying of thirst."
+		if::[30]knowirillis
+			msg2::[233]"Ah, finally, we were dying of thirst."
+			if::[42]knowrodum
+				msg2::[235]"Ah, finally, we were dying of thirst."
+			endif[135]
+		else[133]
+			msg2::[247]"Ah, finally, we were dying of thirst."
+		endif[135]
+x[17]::mineroad[20] = $5a/90
+	withobj::[126]mineroad.men
+		if::[62]menasleep
+			msg2::[173]"Ah, finally, we were dying of thirst."
+			if::[64]mendead
+				msg2[154]::252
+			else[133]
+				msg2[154]::251
+			endif[135]
+		else[133]
+			msg2::[171]"Ah, finally, we were dying of thirst."
+			set::[60]armedmenseen
+		endif[135]
+x[17]::mineroad[20] = $5b/91
+	withobj::[128]mineroad.tarp
+		msg2::[130]"Ah, finally, we were dying of thirst."
+		setattr[163]
+		set::[59]barrelsseen
+x[17]::mineroad[20] = $5c/92
+	withobj::[131]mineroad.road
+		msg2::[151]"Ah, finally, we were dying of thirst."
+x[17]::camp[21] = $5d/93
+	withobj::[132]camp.green
+		msg2::[113]"Ah, finally, we were dying of thirst."
+x[17]::camp[21] = $5e/94
+	withobj::[133]camp.red
+		msg2::[97]"Ah, finally, we were dying of thirst."
+x[17]::redtent[22] = $5f/95
+	withobj::[32]erik
+		if::[46]erikisdead
+			msg2::[104]"Ah, finally, we were dying of thirst."
+			if::[65]carvedeyes
+				msg2::[107]"Ah, finally, we were dying of thirst."
+			endif[135]
+		else[133]
+			msg2::[153]"Ah, finally, we were dying of thirst."
+		endif[135]
+x[17]::house[23] = $60/96
+	withobj::[137]house.grass
+		msg2::[77]"Ah, finally, we were dying of thirst."
+		if::[43]knowbaryl
+			msg2::[232]"Ah, finally, we were dying of thirst."
+			ifisin[144]
+				put[159]
+			endif[135]
+		endif[135]
+x[17]::houseinterior[24] = $61/97
+	withobj::[143]houseinterior.books
+		msg2::[166]"Ah, finally, we were dying of thirst."
+x[17]::ruinsinterior[26] = $62/98
+	withobj::[148]ruinsinterior.altar
+		msg2::[139]"Ah, finally, we were dying of thirst."
+		if::[68]eyesonaltar
+			msg2::[129]"Ah, finally, we were dying of thirst."
+		endif[135]
+		if::[69]bloodonaltar
+			msg2::[165]"Ah, finally, we were dying of thirst."
+		endif[135]
+x[17]::mountainpath[28] = $63/99
+	withobj::[154]mountainpath.stones
+		msg2::[216]"Ah, finally, we were dying of thirst."
+x[17]::forgeroom[32] = $64/100
+	withobj::[163]forgeroom.forge
+		if::[71]forgeon
+			msg2::[146]"Ah, finally, we were dying of thirst."
+		else[133]
+			set::[73]forgeseen
+			msg2::[145]"Ah, finally, we were dying of thirst."
+		endif[135]
+x[17]::forgeroom[32] = $65/101
+	withobj::[166]forgeroom.instrument
+		msg2::[118]"Ah, finally, we were dying of thirst."
+x[17]::forgeroom[32] = $66/102
+	withobj::[168]forgeroom.inscriptions
+		msg2::[170]"Ah, finally, we were dying of thirst."
+		if::[73]forgeseen
+			msg2::[213]"Ah, finally, we were dying of thirst."
+			msg2::[73]"Ah, finally, we were dying of thirst."
+		endif[135]
+		if::[74]gatesseen
+			msg2::[214]"Ah, finally, we were dying of thirst."
+			msg2::[74]"Ah, finally, we were dying of thirst."
+		else[133]
+			if::[20]seeninstrument
+				msg2::[215]"Ah, finally, we were dying of thirst."
+				msg2::[74]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endif[135]
+x[17]::forgeroom[32] = $67/103
+	withobj::[169]forgeroom.drawings
+		msg2::[122]"Ah, finally, we were dying of thirst."
+		msg2::[161]"Ah, finally, we were dying of thirst."
+		set::[74]gatesseen
+x[17]::$everywhere[246] = $68/104
+	withobj::[1]beerbarrel
+		needin[158]
+		msg::[103]It's a medium sized barrel. +
+		ifis[142]
+			msg::[76]Empty.
+		else[133]
+			msg::[80]Full of beer +
+			if::[0]irillisinbarrel
+				msg::[246]spiked with irillis +
+				if::[1]roduminbarrel
+					msg::[242]and rodum
+				endif[135]
+			else[133]
+				if::[1]roduminbarrel
+					msg::[247]spiked with rodum
+				endif[135]
+			endif[135]
+		endif[135]
+x[17]::$everywhere[246] = $69/105
+	withobj::[5]flask
+		needin[158]
+		msg::[102]It's a handy leather flask. +
+		ifis[142]
+			msg::[76]Empty.
+		else[133]
+			msg::[81]Full of water.
+		endif[135]
+x[17]::$everywhere[246] = $6a/106
+	withobj::[6]jacket
+		needin[158]
+		msg::[65]A second-hand uniform \yjacket\w +
+		if::[3]insigniaonjacket
+			msg::[248]with an \yinsignia\w on its right shoulder
+		else[133]
+			msg::[249]with holes where insignias were
+		endif[135]
+		if::[2]jacketon
+			msg::[235]You're currently wearing it
+		endif[135]
+x[17]::$everywhere[246] = $6b/107
+	withobj::[11]yourself
+		msg::[234]You're a young guy, thin, but robust and quick. Your father was ...
+		if::[2]jacketon
+			msg::[236]You're wearing a uniform jacket
+		endif[135]
+x[17]::$everywhere[246] = $6c/108
+	withobj::[23]plate
+		needin[158]
+		msg::[104]It's a slab of silvery material. It's ductible, light and incred...
+		msg::[127]Once your Guild knows about it, they will send people here to st...
+		set::[7]materialwin
+		if::[8]summoningstopped
+			msg::[228]You think it might be time to go back home
+		endif[135]
+x[17]::$everywhere[246] = $6d/109
+	withobj::[24]documents
+		needin[158]
+		msg::[151]They seem to be Erik's notebook missing pages
+		msg::[90]He wrote that he wanted to obtain info about the production of t...
+		msg::[71]But that there's a bigger and imminent danger, a \ysummoning\w
+x[17]::$everywhere[246] = $6e/110
+	withobj::[29]eriknotebook
+		needin[158]
+		ifnot::[9]fulllayout
+			msg::[105]It's a torn notebook, with several missing pages. And what's lef...
+			msg::[122]On one page there's an incomplete layout
+			ifisroom::[3]bankssquare
+				if::[10]layoutseen
+					msg::[115]Mmh... there's a serious resemblance to what's on the statue
+					ifisin[144]
+						msg::[231]You used the pencil to copy what was missing of notebook page, a...
+						set::[9]fulllayout
+					else[133]
+						msg::[196]You could fix the notebook scheme, if you'd have something to wr...
+					endif[135]
+				endif[135]
+			endif[135]
+		else[133]
+			ifisroom::[31]minetunnel
+				msg::[138]The layout you copied from the statue has symbols similar to cro...
+				set::[11]solvedmaze
+			else[133]
+				msg::[121]On one page there's a layout with dots and markings you copied f...
+			endif[135]
+		endif[135]
+		if::[12]knowdemonname
+			ifnot::[13]pagetaken
+				msg::[123]On the bottom of a page you wrote "\yArkylzoth\w"
+			endif[135]
+		endif[135]
+x[17]::$everywhere[246] = $6f/111
+	withobj::[0]exits
+		ifundef::[4]"Do you want it? I could sell it for 2 coins.", he concludes.
+			msg::[142]There are no evident exits.
+		else[133]
+			msg::[143]There are obvious exits to +
+			msgattr::[4]tmp
+			msg::[61].
+		endif[135]
+	endwith[136]
+	withobj::[249]$none
+		msgattr::[1]topscore
+		ifobjinattr[148]
+			msg::[220]You see: +
+			list[151]
+		endif[135]
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[114]Looks absolutely normal
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			ifundef::[65]A second-hand uniform \yjacket\w +
+				msg::[114]Looks absolutely normal
+			else[133]
+				msgattr[155]::65
+			endif[135]
+		else[133]
+			msg::[204]You don't see that here
+		endif[135]
+	endwith[136]
+x[17]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+take[18]::bankssquare[3] = $71/113
+	withobj::[42]bankssquare.instrument
+		msg::[190]You can't take it, it's a piece of the statue
+take[18]::governorsquare[4] = $72/114
+	withobj::[47]governorsquare.coins
+		ifisin[144]
+			msg::[112]It's too risky to get another one this way
+		else[133]
+			setvar[169]
+			if::[2]jacketon
+				ifisin[144]
+					setvar[169]
+				endif[135]
+			endif[135]
+			ifvar[150]
+				msg::[128]One of the guards turns around and observes you. You salute him ...
+				ifisin[144]
+					msg::[218]You reach into the water, and take a silver coin. When he shouts...
+					msg::[82]He grunts. But then he leaves you alone
+					put[159]
+				else[133]
+					msg::[77]Even in uniform, you don't dare to collect coins with him watchi...
+				endif[135]
+			else[133]
+				msg::[51]"What do you think to do?", shouts a Lyrin guard, approaching wi...
+				msg::[226]You stop and kneel, saying you are just a foolish stranger, curi...
+				msg::[83]He lifts you by the weight and pokes you in the face. "Go away, ...
+			endif[135]
+		endif[135]
+take[18]::schoollibrary[9] = $73/115
+	withobj::[76]schoollibrary.grimoire
+		withobj::[30]page
+			if::[13]pagetaken
+				msg::[174]You already have it
+			else[133]
+				put[159]
+				set::[13]pagetaken
+				msg::[134]Taken
+			endif[135]
+		endwith[136]
+		withobj::[34]spell
+			if::[13]pagetaken
+				msg::[174]You already have it
+			else[133]
+				put[159]
+				set::[13]pagetaken
+				msg::[134]Taken
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			msg::[154]This book seems too ancient and ruined to move
+		endwith[136]
+take[18]::path[17] = $74/116
+	withobj::[15]irillis
+		ifisin[144]
+			msg2::[185]"Ah, finally, we were dying of thirst."
+		else[133]
+			if::[30]knowirillis
+				msg2::[114]"Ah, finally, we were dying of thirst."
+				put[159]
+				msg2::[159]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[217]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endif[135]
+take[18]::path[17] = $75/117
+	withobj::[16]rodum
+		ifisin[144]
+			msg2::[185]"Ah, finally, we were dying of thirst."
+		else[133]
+			if::[42]knowrodum
+				msg2::[114]"Ah, finally, we were dying of thirst."
+				put[159]
+				msg2::[159]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[217]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endif[135]
+take[18]::path[17] = $76/118
+	withobj::[120]path.rabbits
+		withobj::[2]bow
+			ifisin[144]
+				msg2::[184]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					msg2::[80]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg2::[199]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			msg2::[89]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[249]$none
+			msg2::[90]"Ah, finally, we were dying of thirst."
+			set::[61]bowneeded
+		endwith[136]
+take[18]::path[17] = $77/119
+	withobj::[121]path.plants
+		if::[30]knowirillis
+			msg2::[220]"Ah, finally, we were dying of thirst."
+		else[133]
+			msg2::[247]"Ah, finally, we were dying of thirst."
+		endif[135]
+take[18]::darkpath[18] = $78/120
+	withobj::[122]darkpath.branches
+		if::[61]bowneeded
+			ifisin[144]
+				msg2::[186]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					ifisin[144]
+						msg2::[198]"Ah, finally, we were dying of thirst."
+						put[159]
+						put[159]
+					else[133]
+						msg2::[169]"Ah, finally, we were dying of thirst."
+					endif[135]
+				else[133]
+					msg2::[224]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		else[133]
+			msg2::[200]"Ah, finally, we were dying of thirst."
+		endif[135]
+take[18]::mineroad[20] = $79/121
+	withobj::[127]mineroad.barrels
+		if::[62]menasleep
+			msg2::[203]"Ah, finally, we were dying of thirst."
+		else[133]
+			if::[57]barreldutyknow
+				if::[63]barreltaken
+					msg2::[16]"Ah, finally, we were dying of thirst."
+				else[133]
+					msg2::[26]"Ah, finally, we were dying of thirst."
+					msg2::[34]"Ah, finally, we were dying of thirst."
+					msg2::[157]"Ah, finally, we were dying of thirst."
+					put[159]
+					set::[63]barreltaken
+				endif[135]
+			else[133]
+				msg2::[60]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endif[135]
+take[18]::redtent[22] = $7a/122
+	withobj::[32]erik
+		withobj::[20]eyes
+			if::[65]carvedeyes
+				msg2::[188]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[191]"Ah, finally, we were dying of thirst."
+				put[159]
+				set::[65]carvedeyes
+			endif[135]
+		endwith[136]
+take[18]::houseinterior[24] = $7b/123
+	withobj::[138]houseinterior.bottle
+		msg2::[208]"Ah, finally, we were dying of thirst."
+take[18]::houseinterior[24] = $7c/124
+	withobj::[142]houseinterior.glass
+		msg2::[120]"Ah, finally, we were dying of thirst."
+take[18]::houseinterior[24] = $7d/125
+	withobj::[143]houseinterior.books
+		msg2::[174]"Ah, finally, we were dying of thirst."
+take[18]::forestpond[27] = $7e/126
+	withobj::[4]fish
+		withobj::[2]bow
+			ifisin[144]
+				msg2::[184]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					msg2::[80]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg2::[199]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			ifisin[144]
+				put[159]
+				msg::[134]Taken
+			else[133]
+				msg2::[87]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			msg2::[88]"Ah, finally, we were dying of thirst."
+		endwith[136]
+take[18]::mountainpath[28] = $7f/127
+	withobj::[154]mountainpath.stones
+		ifisin[144]
+			msg2::[184]"Ah, finally, we were dying of thirst."
+		else[133]
+			put[159]
+			msg2::[239]"Ah, finally, we were dying of thirst."
+		endif[135]
+take[18]::$everywhere[246] = $80/128
+	withobj::[245]$every
+		ifobjinattr[148]
+			ifis[142]
+				setcount[164]
+				ifis[142]
+					addvar[129]
+				endif[135]
+				ifvar[150]
+					put[159]
+					msg::[134]Taken
+				else[133]
+					msg::[173]You already carry too much to add also this size object
+				endif[135]
+			else[133]
+				msg::[207]You don't want to take it
+			endif[135]
+		else[133]
+			ifisin[144]
+				msg::[174]You already have it
+			else[133]
+				msg::[202]You don't see it here
+			endif[135]
+		endif[135]
+	endwith[136]
+take[18]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+drop[19]::$everywhere[246] = $81/129
+	withobj::[1]beerbarrel
+		needin[158]
+		msg::[110]It's not yours to leave around.
+drop[19]::$everywhere[246] = $82/130
+	withobj::[7]knife
+		ifisin[144]
+			ifisroom::[14]innroom
+				ifis[142]
+				else[133]
+					msg::[187]You can't drop it here. You need to find a safe place to hide it...
+				endif[135]
+			else[133]
+				msg::[187]You can't drop it here. You need to find a safe place to hide it...
+			endif[135]
+		else[133]
+			msg::[201]You don't have it
+		endif[135]
+drop[19]::$everywhere[246] = $83/131
+	withobj::[12]pendant
+		ifisin[144]
+			ifisroom::[14]innroom
+				ifis[142]
+				else[133]
+					msg::[187]You can't drop it here. You need to find a safe place to hide it...
+				endif[135]
+			else[133]
+				msg::[187]You can't drop it here. You need to find a safe place to hide it...
+			endif[135]
+		endif[135]
+drop[19]::$everywhere[246] = $84/132
+	withobj::[245]$every
+		ifisin[144]
+			ifis[142]
+				put[159]
+				msg::[75]Dropped
+				ifvar[150]
+					decvar[132]
+				endif[135]
+			else[133]
+				msg::[186]You can't drop it
+			endif[135]
+		else[133]
+			msg::[201]You don't have it
+		endif[135]
+	endwith[136]
+drop[19]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+use[20]::mainsquare[2] = $85/133
+	withobj::[5]flask
+		needin[158]
+		withobj::[36]mainsquare.fountain
+			msg::[68]As you start to fill your flask, you realise that the water comi...
+		endwith[136]
+	endwith[136]
+use[20]::governorsquare[4] = $86/134
+	withobj::[5]flask
+		needin[158]
+		withobj::[48]governorsquare.fountain
+			unsetattr[173]
+			msg::[74]Done
+		endwith[136]
+	endwith[136]
+use[20]::schoolalley[10] = $87/135
+	withobj::[7]knife
+		ifisin[144]
+			withobj::[79]schoolalley.door
+				ifnot::[45]schoolpanelremoved
+					msg::[162]Using your knife, and not without effort, you manage to rise and...
+					set::[45]schoolpanelremoved
+				endif[135]
+			endwith[136]
+			withobj::[80]schoolalley.window
+				msg::[140]The window panels are fastened too well
+			endwith[136]
+		endif[135]
+	endwith[136]
+use[20]::schoolalley[10] = $88/136
+	withobj::[80]schoolalley.window
+		msg::[229]You try to do this, without getting any useful results.
+use[20]::innroom[14] = $89/137
+	withobj::[93]innroom.bed
+		msg2::[127]"Ah, finally, we were dying of thirst."
+use[20]::path[17] = $8a/138
+	withobj::[2]bow
+		withobj::[120]path.rabbits
+			ifisin[144]
+				msg2::[184]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					msg2::[80]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg2::[199]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+	endwith[136]
+use[20]::ruinsinterior[26] = $8b/139
+	withobj::[7]knife
+		withobj::[148]ruinsinterior.altar
+			needin[158]
+			ifnot::[69]bloodonaltar
+				msg2::[183]"Ah, finally, we were dying of thirst."
+				set::[69]bloodonaltar
+			else[133]
+				msg2::[187]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+	endwith[136]
+use[20]::ruinsinterior[26] = $8c/140
+	withobj::[148]ruinsinterior.altar
+		withobj::[147]ruinsinterior.blood
+			needin[158]
+			ifnot::[69]bloodonaltar
+				msg2::[183]"Ah, finally, we were dying of thirst."
+				set::[69]bloodonaltar
+			else[133]
+				msg2::[187]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[7]knife
+			needin[158]
+			ifnot::[69]bloodonaltar
+				msg2::[183]"Ah, finally, we were dying of thirst."
+				set::[69]bloodonaltar
+			else[133]
+				msg2::[187]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[20]eyes
+			needin[158]
+			msg2::[230]"Ah, finally, we were dying of thirst."
+			put[159]
+			set::[68]eyesonaltar
+		endwith[136]
+		withobj::[249]$none
+			msg::[92]How?
+		endwith[136]
+		withobj::[245]$every
+			msg::[167]Why?
+		endwith[136]
+use[20]::forgeroom[32] = $8d/141
+	withobj::[9]stone
+		ifnot::[71]forgeon
+			msg2::[95]"Ah, finally, we were dying of thirst."
+		else[133]
+			withobj::[163]forgeroom.forge
+				ifisin[144]
+					put[159]
+					msg2::[83]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg::[201]You don't have it
+				endif[135]
+			endwith[136]
+			withobj::[245]$every
+				msg::[92]How?
+			endwith[136]
+		endif[135]
+	endwith[136]
+use[20]::forgeroom[32] = $8e/142
+	withobj::[163]forgeroom.forge
+		withobj::[9]stone
+			ifnot::[71]forgeon
+				msg2::[95]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					put[159]
+					msg2::[83]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg::[201]You don't have it
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			if::[71]forgeon
+				msg2::[197]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[236]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			if::[71]forgeon
+				msg::[205]You don't think it's a wise thing to do
+			else[133]
+				msg2::[236]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+use[20]::forgeroom[32] = $8f/143
+	withobj::[166]forgeroom.instrument
+		withobj::[165]forgeroom.cross
+			if::[71]forgeon
+				msg2::[96]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[228]"Ah, finally, we were dying of thirst."
+				set::[71]forgeon
+			endif[135]
+		endwith[136]
+		withobj::[167]forgeroom.triangle
+			ifnot::[72]gatesclosed
+				msg2::[229]"Ah, finally, we were dying of thirst."
+				msg2::[219]"Ah, finally, we were dying of thirst."
+				set::[72]gatesclosed
+			else[133]
+				msg2::[128]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			msg2::[163]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[245]$every
+			msg2::[128]"Ah, finally, we were dying of thirst."
+use[20]::$everywhere[246] = $90/144
+	withobj::[7]knife
+		withobj::[245]$every
+			needin[158]
+			ifis[142]
+				msg::[221]You should be careful about your actions.
+			else[133]
+				msg::[164]What for?
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			msg::[92]How?
+		endwith[136]
+use[20]::$everywhere[246] = $91/145
+	withobj::[18]map
+		needin[158]
+		ifisroom::[18]darkpath
+			msg::[125]On the map you see a path leading from here to a mark, +
+			msg::[245]going southeast.
+			set::[5]knowdarkpathroad
+		else[133]
+			ifisroom::[19]betweenpath
+				msg::[125]On the map you see a path leading from here to a mark, +
+				msg::[244]going northeast.
+				set::[6]knowruinsroad
+			else[133]
+				msg::[156]This map doesn't seem useful here
+			endif[135]
+		endif[135]
+use[20]::$everywhere[246] = $92/146
+	withobj::[19]insignia
+		withobj::[6]jacket
+			ifisin[144]
+				ifnot::[3]insigniaonjacket
+					set::[3]insigniaonjacket
+					msg::[74]Done
+				else[133]
+					msg::[175]You already have it there
+				endif[135]
+			endif[135]
+		endwith[136]
+use[20]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+push[21]::school[8] = $93/147
+	withobj::[64]school.cabinets
+		if::[36]cabinetsbypassed
+			msg::[176]You already moved them enough
+		else[133]
+			if::[38]cookhelps
+				msg::[225]You start trying to move them, when the cook arrives.
+				msg::[168]With his help, even trying to do less possible noise, you're abl...
+				msg::[126]Once finished, he left without a word.
+				set::[36]cabinetsbypassed
+			else[133]
+				msg::[153]They're heavy, and too many. You tried, but you quickly undertan...
+			endif[135]
+		endif[135]
+push[21]::schoolalley[10] = $94/148
+	withobj::[79]schoolalley.door
+		msg::[229]You try to do this, without getting any useful results.
+push[21]::schoolalley[10] = $88/136
+	withobj::[80]schoolalley.window
+		msg::[229]You try to do this, without getting any useful results.
+push[21]::forgeroom[32] = $95/149
+	withobj::[165]forgeroom.cross
+		withobj::[166]forgeroom.instrument
+			if::[71]forgeon
+				msg2::[96]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[228]"Ah, finally, we were dying of thirst."
+				set::[71]forgeon
+			endif[135]
+		endwith[136]
+	endwith[136]
+	withobj::[167]forgeroom.triangle
+		withobj::[166]forgeroom.instrument
+			ifnot::[72]gatesclosed
+				msg2::[229]"Ah, finally, we were dying of thirst."
+				msg2::[219]"Ah, finally, we were dying of thirst."
+				set::[72]gatesclosed
+			else[133]
+				msg2::[128]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+	endwith[136]
+push[21]::forgeroom[32] = $8f/143
+	withobj::[166]forgeroom.instrument
+		withobj::[165]forgeroom.cross
+			if::[71]forgeon
+				msg2::[96]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[228]"Ah, finally, we were dying of thirst."
+				set::[71]forgeon
+			endif[135]
+		endwith[136]
+		withobj::[167]forgeroom.triangle
+			ifnot::[72]gatesclosed
+				msg2::[229]"Ah, finally, we were dying of thirst."
+				msg2::[219]"Ah, finally, we were dying of thirst."
+				set::[72]gatesclosed
+			else[133]
+				msg2::[128]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			msg2::[163]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[245]$every
+			msg2::[128]"Ah, finally, we were dying of thirst."
+push[21]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+pull[22]::school[8] = $93/147
+	withobj::[64]school.cabinets
+		if::[36]cabinetsbypassed
+			msg::[176]You already moved them enough
+		else[133]
+			if::[38]cookhelps
+				msg::[225]You start trying to move them, when the cook arrives.
+				msg::[168]With his help, even trying to do less possible noise, you're abl...
+				msg::[126]Once finished, he left without a word.
+				set::[36]cabinetsbypassed
+			else[133]
+				msg::[153]They're heavy, and too many. You tried, but you quickly undertan...
+			endif[135]
+		endif[135]
+pull[22]::schoolalley[10] = $96/150
+	withobj::[79]schoolalley.door
+		if::[45]schoolpanelremoved
+			msg::[212]You have already managed to lift a panel.
+		else[133]
+			msg2::[134]"Ah, finally, we were dying of thirst."
+		endif[135]
+pull[22]::schoolalley[10] = $88/136
+	withobj::[80]schoolalley.window
+		msg::[229]You try to do this, without getting any useful results.
+pull[22]::forgeroom[32] = $8f/143
+	withobj::[166]forgeroom.instrument
+		withobj::[165]forgeroom.cross
+			if::[71]forgeon
+				msg2::[96]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[228]"Ah, finally, we were dying of thirst."
+				set::[71]forgeon
+			endif[135]
+		endwith[136]
+		withobj::[167]forgeroom.triangle
+			ifnot::[72]gatesclosed
+				msg2::[229]"Ah, finally, we were dying of thirst."
+				msg2::[219]"Ah, finally, we were dying of thirst."
+				set::[72]gatesclosed
+			else[133]
+				msg2::[128]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			msg2::[163]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[245]$every
+			msg2::[128]"Ah, finally, we were dying of thirst."
+pull[22]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+open[23]::prison[5] = $97/151
+	setvar[169]
+	if::[2]jacketon
+		addvar[129]
+	endif[135]
+	if::[3]insigniaonjacket
+		addvar[129]
+	endif[135]
+	ifvar[150]
+		goto::[6]cell
+	else[133]
+		msg::[14]"Hey! Who are you? Where are you going? Guards!" he shouts. You ...
+	endif[135]
+open[23]::school[8] = $98/152
+	withobj::[64]school.cabinets
+		ifnot::[37]twineseen
+			msg::[95]Inside one of them you find some \ytwine\w.
+			put[159]
+			set::[37]twineseen
+		else[133]
+			msg::[217]You open some more, but you don't find anything useful
+		endif[135]
+open[23]::schoolalley[10] = $99/153
+	withobj::[79]schoolalley.door
+		if::[45]schoolpanelremoved
+			msg2::[195]"Ah, finally, we were dying of thirst."
+			waitkey[174]
+			goto::[8]school
+		else[133]
+			msg2::[142]"Ah, finally, we were dying of thirst."
+		endif[135]
+		withobj::[7]knife
+			ifisin[144]
+				withobj::[79]schoolalley.door
+					ifnot::[45]schoolpanelremoved
+						msg::[162]Using your knife, and not without effort, you manage to rise and...
+						set::[45]schoolpanelremoved
+					endif[135]
+				endwith[136]
+				withobj::[80]schoolalley.window
+					msg::[140]The window panels are fastened too well
+				endwith[136]
+			endif[135]
+		endwith[136]
+open[23]::schoolalley[10] = $9a/154
+	withobj::[80]schoolalley.window
+		msg::[78]Every window is boarded up.
+open[23]::innroom[14] = $53/83
+	withobj::[96]innroom.drawer
+		ifisin[144]
+			msg::[108]It's empty.
+		else[133]
+			msg2::[110]"Ah, finally, we were dying of thirst."
+			put[159]
+		endif[135]
+open[23]::house[23] = $9b/155
+	withobj::[134]house.door
+		msg2::[227]"Ah, finally, we were dying of thirst."
+		waitkey[174]
+		goto::[24]houseinterior
+	endwith[136]
+open[23]::ruins[25] = $9c/156
+	withobj::[145]ruins.door
+		if::[67]ruindooropened
+			msg2::[117]"Ah, finally, we were dying of thirst."
+		else[133]
+			msg2::[238]"Ah, finally, we were dying of thirst."
+		endif[135]
+open[23]::forgeroom[32] = $9d/157
+	withobj::[164]forgeroom.panel
+		msg2::[192]"Ah, finally, we were dying of thirst."
+	endwith[136]
+open[23]::$everywhere[246] = $9e/158
+	ifisin[144]
+		ifis[142]
+			ifis[142]
+				msg::[107]It's already open
+			else[133]
+				setattr[163]
+				msg::[74]Done
+			endif[135]
+		else[133]
+			msg::[194]You cannot open it
+		endif[135]
+	endif[135]
+open[23]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+close[24]::$everywhere[246] = $9f/159
+	ifisin[144]
+		ifis[142]
+			ifis[142]
+				unsetattr[173]
+				msg::[74]Done
+			else[133]
+				msg::[106]It's already closed
+			endif[135]
+		else[133]
+			msg::[192]You cannot close it
+		endif[135]
+	endif[135]
+close[24]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+lock[25]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+unlock[26]::ruins[25] = $9c/156
+	withobj::[145]ruins.door
+		if::[67]ruindooropened
+			msg2::[117]"Ah, finally, we were dying of thirst."
+		else[133]
+			msg2::[238]"Ah, finally, we were dying of thirst."
+		endif[135]
+unlock[26]::forgeroom[32] = $9d/157
+	withobj::[164]forgeroom.panel
+		msg2::[192]"Ah, finally, we were dying of thirst."
+	endwith[136]
+unlock[26]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+show[27]::cell[6] = $a0/160
+	withobj::[12]pendant
+		ifisin[144]
+			msg::[39]"One of Erik's people, then."
+			set::[26]womansawpendant
+		else[133]
+			msg::[201]You don't have it
+		endif[135]
+	endwith[136]
+show[27]::cell[6] = $a1/161
+	withobj::[53]cell.woman
+		withobj::[12]pendant
+			ifisin[144]
+				msg::[40]"One of us, them."
+				set::[26]womansawpendant
+			else[133]
+				msg::[201]You don't have it
+			endif[135]
+		endwith[136]
+show[27]::market[7] = $a2/162
+	withobj::[22]ring
+		withobj::[56]market.clothessalesman
+			if::[32]wantjacket
+				ifisin[144]
+					msg::[9]"For the uniform?", she asks, and when you nod he makes the ring...
+					msg::[0]"But I'm only giving you the \yjacket\w for this little ring. Ma...
+					put[159]
+					put[159]
+				else[133]
+					msg::[201]You don't have it
+				endif[135]
+			else[133]
+				msg::[167]Why?
+			endif[135]
+		endwith[136]
+	endwith[136]
+	withobj::[8]rabbit
+		withobj::[58]market.foodseller
+			ifisin[144]
+				msg::[35]"Not the best rabbit I've ever seen, but a nice one," she says, ...
+				msg::[131]She takes your rabbit, and start to clean it.
+				msg::[50]"What about my money?"
+				msg::[23]"I'll pay you when I sell it," she said, "but I can give you a b...
+				put[159]
+				put[159]
+				set::[31]rabbitgiven
+			endif[135]
+		endwith[136]
+	endwith[136]
+show[27]::market[7] = $a3/163
+	withobj::[56]market.clothessalesman
+		withobj::[22]ring
+			if::[32]wantjacket
+				ifisin[144]
+					msg::[9]"For the uniform?", she asks, and when you nod he makes the ring...
+					msg::[0]"But I'm only giving you the \yjacket\w for this little ring. Ma...
+					put[159]
+					put[159]
+				else[133]
+					msg::[201]You don't have it
+				endif[135]
+			else[133]
+				msg::[167]Why?
+			endif[135]
+		endwith[136]
+show[27]::market[7] = $a4/164
+	withobj::[58]market.foodseller
+		withobj::[8]rabbit
+			if::[31]rabbitgiven
+				msg::[21]"I still have the other one", she says
+			else[133]
+				ifisin[144]
+					msg::[35]"Not the best rabbit I've ever seen, but a nice one," she says, ...
+					msg::[131]She takes your rabbit, and start to clean it.
+					msg::[50]"What about my money?"
+					msg::[23]"I'll pay you when I sell it," she said, "but I can give you a b...
+					put[159]
+					put[159]
+					set::[31]rabbitgiven
+				endif[135]
+			endif[135]
+		endwith[136]
+show[27]::innhall[12] = $a5/165
+	withobj::[1]beerbarrel
+		withobj::[83]innhall.owner
+			ifisin[144]
+				ifis[142]
+					msg2::[30]"Ah, finally, we were dying of thirst."
+					msg2::[148]"Ah, finally, we were dying of thirst."
+					set::[49]allowedinthekitchen
+				endif[135]
+			endif[135]
+		endwith[136]
+	endwith[136]
+	withobj::[12]pendant
+		withobj::[83]innhall.owner
+			msg2::[149]"Ah, finally, we were dying of thirst."
+			set::[50]ownersawpendant
+		endwith[136]
+	endwith[136]
+show[27]::innhall[12] = $a6/166
+	withobj::[83]innhall.owner
+		withobj::[1]beerbarrel
+			ifisin[144]
+				ifis[142]
+					msg2::[30]"Ah, finally, we were dying of thirst."
+					msg2::[148]"Ah, finally, we were dying of thirst."
+					set::[49]allowedinthekitchen
+				else[133]
+					msg2::[102]"Ah, finally, we were dying of thirst."
+				endif[135]
+			else[133]
+				msg2::[102]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+show[27]::kitchen[15] = $a7/167
+	withobj::[1]beerbarrel
+		ifisin[144]
+			ifis[142]
+				msg2::[1]"Ah, finally, we were dying of thirst."
+				msg2::[141]"Ah, finally, we were dying of thirst."
+				put[159]
+				msg2::[14]"Ah, finally, we were dying of thirst."
+				unsetattr[173]
+				set::[52]cookfillbarrel
+			else[133]
+				msg2::[28]"Ah, finally, we were dying of thirst."
+			endif[135]
+		else[133]
+			msg2::[140]"Ah, finally, we were dying of thirst."
+		endif[135]
+	endwith[136]
+	withobj::[15]irillis
+		ifisin[144]
+			msg2::[42]"Ah, finally, we were dying of thirst."
+			put[159]
+			set::[53]cookownsone
+		endif[135]
+	endwith[136]
+	withobj::[12]pendant
+		msg2::[72]"Ah, finally, we were dying of thirst."
+		set::[54]cooksawpendant
+	endwith[136]
+show[27]::mineroad[20] = $a8/168
+	if::[62]menasleep
+		msg2::[168]"Ah, finally, we were dying of thirst."
+	else[133]
+		ifisin[144]
+			ifis[142]
+				msg2::[2]"Ah, finally, we were dying of thirst."
+			else[133]
+				setvar[169]
+				if::[0]irillisinbarrel
+					addvar[129]
+				endif[135]
+				if::[1]roduminbarrel
+					addvar[129]
+				endif[135]
+				msg2::[0]"Ah, finally, we were dying of thirst."
+				ifvar[150]
+					msg2::[53]"Ah, finally, we were dying of thirst."
+					msg2::[39]"Ah, finally, we were dying of thirst."
+					if::[4]baryleaten
+						msg2::[45]"Ah, finally, we were dying of thirst."
+						msg2::[121]"Ah, finally, we were dying of thirst."
+						msg2::[240]"Ah, finally, we were dying of thirst."
+						put[159]
+						put[159]
+						set::[62]menasleep
+					else[133]
+						msg2::[64]"Ah, finally, we were dying of thirst."
+						msg2::[56]"Ah, finally, we were dying of thirst."
+						msg2::[244]"Ah, finally, we were dying of thirst."
+						msg2::[69]"Ah, finally, we were dying of thirst."
+						msg2::[27]"Ah, finally, we were dying of thirst."
+						msg2::[158]"Ah, finally, we were dying of thirst."
+						setattr[163]
+						msg2::[156]"Ah, finally, we were dying of thirst."
+					endif[135]
+				else[133]
+					put[159]
+					msg2::[46]"Ah, finally, we were dying of thirst."
+					setattr[163]
+					msg2::[150]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endif[135]
+	endif[135]
+show[27]::$everywhere[246] = $a9/169
+	withobj::[12]pendant
+		needin[158]
+		msg::[222]You should be careful who you show it to.
+show[27]::$everywhere[246] = $aa/170
+	withobj::[19]insignia
+		msg::[132]Showing someone a detached insignia isn't a wise idea
+show[27]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+give[28]::mainsquare[2] = $ab/171
+	withobj::[5]flask
+		needin[158]
+		withobj::[35]aki
+			ifisin[144]
+				ifis[142]
+					msg::[137]The flask is empty.
+				else[133]
+					msg::[211]You give the flask to the old man and he starts to drink it slow...
+					msg::[67]As soon as he has emptied it, he seems to feel a little better.
+					set::[14]oldmandrank
+					put[159]
+					msg::[45]"Thanks", he says.
+				endif[135]
+			endif[135]
+		endwith[136]
+	endwith[136]
+	withobj::[3]bread
+		needin[158]
+		withobj::[35]aki
+			ifisin[144]
+				if::[14]oldmandrank
+					msg::[210]You give him your bread. He starts to cry as he eats it.
+					set::[15]oldmaneat
+					put[159]
+					msg::[45]"Thanks", he says.
+				else[133]
+					msg::[87]He needs to drink first
+				endif[135]
+			endif[135]
+		endwith[136]
+	endwith[136]
+	withobj::[1]beerbarrel
+		needin[158]
+		withobj::[35]aki
+			ifisin[144]
+				msg::[188]You can't give him Lyrin's beer
+			endif[135]
+		endwith[136]
+	endwith[136]
+give[28]::market[7] = $a2/162
+	withobj::[22]ring
+		withobj::[56]market.clothessalesman
+			if::[32]wantjacket
+				ifisin[144]
+					msg::[9]"For the uniform?", she asks, and when you nod he makes the ring...
+					msg::[0]"But I'm only giving you the \yjacket\w for this little ring. Ma...
+					put[159]
+					put[159]
+				else[133]
+					msg::[201]You don't have it
+				endif[135]
+			else[133]
+				msg::[167]Why?
+			endif[135]
+		endwith[136]
+	endwith[136]
+	withobj::[8]rabbit
+		withobj::[58]market.foodseller
+			ifisin[144]
+				msg::[35]"Not the best rabbit I've ever seen, but a nice one," she says, ...
+				msg::[131]She takes your rabbit, and start to clean it.
+				msg::[50]"What about my money?"
+				msg::[23]"I'll pay you when I sell it," she said, "but I can give you a b...
+				put[159]
+				put[159]
+				set::[31]rabbitgiven
+			endif[135]
+		endwith[136]
+	endwith[136]
+give[28]::market[7] = $a3/163
+	withobj::[56]market.clothessalesman
+		withobj::[22]ring
+			if::[32]wantjacket
+				ifisin[144]
+					msg::[9]"For the uniform?", she asks, and when you nod he makes the ring...
+					msg::[0]"But I'm only giving you the \yjacket\w for this little ring. Ma...
+					put[159]
+					put[159]
+				else[133]
+					msg::[201]You don't have it
+				endif[135]
+			else[133]
+				msg::[167]Why?
+			endif[135]
+		endwith[136]
+give[28]::market[7] = $a4/164
+	withobj::[58]market.foodseller
+		withobj::[8]rabbit
+			if::[31]rabbitgiven
+				msg::[21]"I still have the other one", she says
+			else[133]
+				ifisin[144]
+					msg::[35]"Not the best rabbit I've ever seen, but a nice one," she says, ...
+					msg::[131]She takes your rabbit, and start to clean it.
+					msg::[50]"What about my money?"
+					msg::[23]"I'll pay you when I sell it," she said, "but I can give you a b...
+					put[159]
+					put[159]
+					set::[31]rabbitgiven
+				endif[135]
+			endif[135]
+		endwith[136]
+give[28]::innhall[12] = $a5/165
+	withobj::[1]beerbarrel
+		withobj::[83]innhall.owner
+			ifisin[144]
+				ifis[142]
+					msg2::[30]"Ah, finally, we were dying of thirst."
+					msg2::[148]"Ah, finally, we were dying of thirst."
+					set::[49]allowedinthekitchen
+				endif[135]
+			endif[135]
+		endwith[136]
+	endwith[136]
+	withobj::[12]pendant
+		withobj::[83]innhall.owner
+			msg2::[149]"Ah, finally, we were dying of thirst."
+			set::[50]ownersawpendant
+		endwith[136]
+	endwith[136]
+give[28]::innhall[12] = $a6/166
+	withobj::[83]innhall.owner
+		withobj::[1]beerbarrel
+			ifisin[144]
+				ifis[142]
+					msg2::[30]"Ah, finally, we were dying of thirst."
+					msg2::[148]"Ah, finally, we were dying of thirst."
+					set::[49]allowedinthekitchen
+				else[133]
+					msg2::[102]"Ah, finally, we were dying of thirst."
+				endif[135]
+			else[133]
+				msg2::[102]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+give[28]::kitchen[15] = $a7/167
+	withobj::[1]beerbarrel
+		ifisin[144]
+			ifis[142]
+				msg2::[1]"Ah, finally, we were dying of thirst."
+				msg2::[141]"Ah, finally, we were dying of thirst."
+				put[159]
+				msg2::[14]"Ah, finally, we were dying of thirst."
+				unsetattr[173]
+				set::[52]cookfillbarrel
+			else[133]
+				msg2::[28]"Ah, finally, we were dying of thirst."
+			endif[135]
+		else[133]
+			msg2::[140]"Ah, finally, we were dying of thirst."
+		endif[135]
+	endwith[136]
+	withobj::[15]irillis
+		ifisin[144]
+			msg2::[42]"Ah, finally, we were dying of thirst."
+			put[159]
+			set::[53]cookownsone
+		endif[135]
+	endwith[136]
+	withobj::[12]pendant
+		msg2::[72]"Ah, finally, we were dying of thirst."
+		set::[54]cooksawpendant
+	endwith[136]
+give[28]::mineroad[20] = $a8/168
+	if::[62]menasleep
+		msg2::[168]"Ah, finally, we were dying of thirst."
+	else[133]
+		ifisin[144]
+			ifis[142]
+				msg2::[2]"Ah, finally, we were dying of thirst."
+			else[133]
+				setvar[169]
+				if::[0]irillisinbarrel
+					addvar[129]
+				endif[135]
+				if::[1]roduminbarrel
+					addvar[129]
+				endif[135]
+				msg2::[0]"Ah, finally, we were dying of thirst."
+				ifvar[150]
+					msg2::[53]"Ah, finally, we were dying of thirst."
+					msg2::[39]"Ah, finally, we were dying of thirst."
+					if::[4]baryleaten
+						msg2::[45]"Ah, finally, we were dying of thirst."
+						msg2::[121]"Ah, finally, we were dying of thirst."
+						msg2::[240]"Ah, finally, we were dying of thirst."
+						put[159]
+						put[159]
+						set::[62]menasleep
+					else[133]
+						msg2::[64]"Ah, finally, we were dying of thirst."
+						msg2::[56]"Ah, finally, we were dying of thirst."
+						msg2::[244]"Ah, finally, we were dying of thirst."
+						msg2::[69]"Ah, finally, we were dying of thirst."
+						msg2::[27]"Ah, finally, we were dying of thirst."
+						msg2::[158]"Ah, finally, we were dying of thirst."
+						setattr[163]
+						msg2::[156]"Ah, finally, we were dying of thirst."
+					endif[135]
+				else[133]
+					put[159]
+					msg2::[46]"Ah, finally, we were dying of thirst."
+					setattr[163]
+					msg2::[150]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endif[135]
+	endif[135]
+give[28]::fall[29] = $ac/172
+	withobj::[4]fish
+		ifisin[144]
+			msg2::[243]"Ah, finally, we were dying of thirst."
+			set::[70]defeatedfish
+			put[159]
+		else[133]
+			msg::[201]You don't have it
+		endif[135]
+	endwith[136]
+give[28]::$everywhere[246] = $ad/173
+	withobj::[35]aki
+		withobj::[5]flask
+			needin[158]
+			needin[158]
+			ifis[142]
+				msg::[137]The flask is empty.
+			else[133]
+				msg::[211]You give the flask to the old man and he starts to drink it slow...
+				msg::[67]As soon as he has emptied it, he seems to feel a little better.
+				set::[14]oldmandrank
+				put[159]
+				msg::[45]"Thanks", he says.
+			endif[135]
+		endwith[136]
+		withobj::[3]bread
+			needin[158]
+			needin[158]
+			if::[14]oldmandrank
+				msg::[210]You give him your bread. He starts to cry as he eats it.
+				put[159]
+				set::[15]oldmaneat
+				msg::[45]"Thanks", he says.
+			else[133]
+				msg::[87]He needs to drink first
+			endif[135]
+		endwith[136]
+give[28]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+put[29]::ruins[25] = $ae/174
+	withobj::[21]coin
+		ifisin[144]
+			withobj::[144]ruins.slit
+				msg2::[231]"Ah, finally, we were dying of thirst."
+				set::[67]ruindooropened
+			endwith[136]
+			withobj::[245]$every
+				msg::[165]What?
+			endwith[136]
+		else[133]
+			msg::[201]You don't have it
+		endif[135]
+	endwith[136]
+put[29]::ruinsinterior[26] = $af/175
+	withobj::[147]ruinsinterior.blood
+		withobj::[148]ruinsinterior.altar
+			needin[158]
+			msg2::[183]"Ah, finally, we were dying of thirst."
+			set::[69]bloodonaltar
+		endwith[136]
+	endwith[136]
+	withobj::[20]eyes
+		withobj::[148]ruinsinterior.altar
+			needin[158]
+			msg2::[230]"Ah, finally, we were dying of thirst."
+			put[159]
+			set::[68]eyesonaltar
+		endwith[136]
+	endwith[136]
+put[29]::fall[29] = $ac/172
+	withobj::[4]fish
+		ifisin[144]
+			msg2::[243]"Ah, finally, we were dying of thirst."
+			set::[70]defeatedfish
+			put[159]
+		else[133]
+			msg::[201]You don't have it
+		endif[135]
+	endwith[136]
+put[29]::forgeroom[32] = $8d/141
+	withobj::[9]stone
+		ifnot::[71]forgeon
+			msg2::[95]"Ah, finally, we were dying of thirst."
+		else[133]
+			withobj::[163]forgeroom.forge
+				ifisin[144]
+					put[159]
+					msg2::[83]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg::[201]You don't have it
+				endif[135]
+			endwith[136]
+			withobj::[245]$every
+				msg::[92]How?
+			endwith[136]
+		endif[135]
+	endwith[136]
+put[29]::forgeroom[32] = $8e/142
+	withobj::[163]forgeroom.forge
+		withobj::[9]stone
+			ifnot::[71]forgeon
+				msg2::[95]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					put[159]
+					msg2::[83]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg::[201]You don't have it
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			if::[71]forgeon
+				msg2::[197]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[236]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			if::[71]forgeon
+				msg::[205]You don't think it's a wise thing to do
+			else[133]
+				msg2::[236]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+put[29]::$everywhere[246] = $b0/176
+	withobj::[15]irillis
+		withobj::[1]beerbarrel
+			ifisin[144]
+				ifisin[144]
+					ifis[142]
+						msg::[223]You should fill it with beer before that.
+					else[133]
+						put[159]
+						set::[0]irillisinbarrel
+						msg::[74]Done
+					endif[135]
+				else[133]
+					msg::[199]You don't have any barrel.
+				endif[135]
+			else[133]
+				msg::[200]You don't have any it.
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			needin[158]
+			msg::[167]Why?
+		endwith[136]
+put[29]::$everywhere[246] = $b1/177
+	withobj::[16]rodum
+		withobj::[1]beerbarrel
+			ifisin[144]
+				ifisin[144]
+					ifis[142]
+						msg::[223]You should fill it with beer before that.
+					else[133]
+						put[159]
+						set::[1]roduminbarrel
+						msg::[74]Done
+					endif[135]
+				else[133]
+					msg::[199]You don't have any barrel.
+				endif[135]
+			else[133]
+				msg::[200]You don't have any it.
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			needin[158]
+			msg::[167]Why?
+		endwith[136]
+put[29]::$everywhere[246] = $92/146
+	withobj::[19]insignia
+		withobj::[6]jacket
+			ifisin[144]
+				ifnot::[3]insigniaonjacket
+					set::[3]insigniaonjacket
+					msg::[74]Done
+				else[133]
+					msg::[175]You already have it there
+				endif[135]
+			endif[135]
+		endwith[136]
+put[29]::$everywhere[246] = $b2/178
+	msg::[165]What?
+put[29]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+help[30]::$everywhere[246] = $b3/179
+	msg::[158]To act write short commands in \yVERB+ELEMENT \w (i.e. \ytake pe...
+	msg::[116]Move using cardinal directions. Use \yinventory \wto see what yo...
+inventory[31]::$everywhere[246] = $b4/180
+	ifobjinattr[148]
+		msg::[178]You are carrying: +
+		list[151]
+	else[133]
+		msg::[182]You aren't carrying anything.
+	endif[135]
+quit[32]::$everywhere[246] = $b5/181
+	msg::[66]Are you sure? (Y/N)
+	getkey[137]
+	ifkey[146]::89
+		quit[160]
+	endif[135]
+restart[33]::$everywhere[246] = $b6/182
+	msg::[66]Are you sure? (Y/N)
+	getkey[137]
+	ifkey[146]::89
+		start[171]
+	endif[135]
+save[34]::$everywhere[246] = $b7/183
+	save[161]
+	msg::[74]Done
+load[35]::$everywhere[246] = $b8/184
+	msg::[66]Are you sure? (Y/N)
+	getkey[137]
+	ifkey[146]::89
+		load[152]
+	endif[135]
+mem[36]::$everywhere[246] = $b9/185
+	dbg[131]
+gfx[37]::$everywhere[246] = $ba/186
+	msg::[241]\yn\wormal, \yp\wrogressive or \ys\wtatic?
+	getkey[137]
+	ifkey[146]::78
+		gfxmode[138]::0
+		msg::[74]Done
+	else[133]
+		ifkey[146]::80
+			gfxmode[138]::1
+			msg::[74]Done
+		else[133]
+			ifkey[146]::83
+				gfxmode[138]::2
+				msg::[74]Done
+			endif[135]
+		endif[135]
+	endif[135]
+talk[38]::mainsquare[2] = $bb/187
+	withobj::[38]mainsquare.people
+		msg::[150]They seem afraid, and not willing to interact with you.
+talk[38]::governorsquare[4] = $bc/188
+	withobj::[46]governorsquare.guards
+		msg::[205]You don't think it's a wise thing to do
+talk[38]::prison[5] = $bd/189
+	withobj::[51]prison.prisonguard
+		setvar[169]
+		if::[2]jacketon
+			addvar[129]
+		endif[135]
+		if::[3]insigniaonjacket
+			addvar[129]
+		endif[135]
+		msg::[52]"What do you want?", he inquire.
+		msg::[24]"I'm here to see a prisoner", you answer.
+		ifvar[150]
+			msg::[54]"Which one?", he asks
+			if::[24]eryanname
+				msg::[8]"Eryan", you say
+				msg::[85]He looks at you then annoyedly points you in the direction of th...
+				set::[25]allowedtoenter
+			else[133]
+				msg::[7]"Erik", you say
+				msg::[47]"There is no one here by that name"
+			endif[135]
+		else[133]
+			msg::[84]He looks at you and points to your uniform.
+			msg::[41]"Only officers are allowed to approach prisoners, how many times...
+			waitkey[174]
+			goto::[4]governorsquare
+		endif[135]
+talk[38]::cell[6] = $be/190
+	withobj::[53]cell.woman
+		msg::[56]"Who are you?", she says. "A friend?", you reply.
+		msg::[17]"I do not recommend it. All my friends are probably dead"
+talk[38]::market[7] = $bf/191
+	withobj::[56]market.clothessalesman
+		msg::[12]"Hello, is there anything you like?", she asks, without too many...
+talk[38]::market[7] = $c0/192
+	withobj::[58]market.foodseller
+		msg::[11]"Hello young boy, do you want something?", she asks smiling, but...
+talk[38]::innhall[12] = $c1/193
+	withobj::[83]innhall.owner
+		withobj::[1]beerbarrel
+			ifisin[144]
+				ifis[142]
+					msg2::[30]"Ah, finally, we were dying of thirst."
+					msg2::[148]"Ah, finally, we were dying of thirst."
+					set::[49]allowedinthekitchen
+				else[133]
+					msg2::[102]"Ah, finally, we were dying of thirst."
+				endif[135]
+			else[133]
+				msg2::[65]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[32]erik
+			msg2::[40]"Ah, finally, we were dying of thirst."
+			setvar[169]
+			ifnot::[48]erikroom
+				if::[47]signseen
+					setvar[169]
+					msg2::[22]"Ah, finally, we were dying of thirst."
+				else[133]
+					if::[50]ownersawpendant
+						setvar[169]
+						msg2::[3]"Ah, finally, we were dying of thirst."
+					endif[135]
+				endif[135]
+			endif[135]
+			ifvar[150]
+				msg2::[147]"Ah, finally, we were dying of thirst."
+				set::[48]erikroom
+				put[159]
+			endif[135]
+		endwith[136]
+		withobj::[86]innhall.beer
+			msg2::[36]"Ah, finally, we were dying of thirst."
+			msg2::[189]"Ah, finally, we were dying of thirst."
+			msg2::[48]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[87]innhall.room
+			msg2::[35]"Ah, finally, we were dying of thirst."
+			msg2::[189]"Ah, finally, we were dying of thirst."
+			msg2::[48]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[84]innhall.sign
+			msg2::[59]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[27]witch
+			msg2::[33]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[249]$none
+			msg2::[21]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[245]$every
+			msg2::[21]"Ah, finally, we were dying of thirst."
+		endwith[136]
+talk[38]::kitchen[15] = $c2/194
+	withobj::[101]kitchen.cook
+		withobj::[1]beerbarrel
+			ifisin[144]
+				ifis[142]
+					msg2::[1]"Ah, finally, we were dying of thirst."
+					msg2::[141]"Ah, finally, we were dying of thirst."
+					msg2::[14]"Ah, finally, we were dying of thirst."
+					unsetattr[173]
+					set::[52]cookfillbarrel
+				else[133]
+					msg2::[29]"Ah, finally, we were dying of thirst."
+				endif[135]
+			else[133]
+				msg2::[140]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[32]erik
+			ifnot::[54]cooksawpendant
+				msg2::[19]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[12]"Ah, finally, we were dying of thirst."
+				msg2::[54]"Ah, finally, we were dying of thirst."
+				msg2::[44]"Ah, finally, we were dying of thirst."
+				set::[55]cookerik
+			endif[135]
+		endwith[136]
+		withobj::[33]eryan
+			msg2::[133]"Ah, finally, we were dying of thirst."
+			set::[56]eryaninprison
+		endwith[136]
+		withobj::[98]kitchen.jars
+			msg2::[67]"Ah, finally, we were dying of thirst."
+			msg2::[6]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[102]kitchen.supplies
+			msg2::[67]"Ah, finally, we were dying of thirst."
+			msg2::[6]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[103]kitchen.spices
+			msg2::[58]"Ah, finally, we were dying of thirst."
+			msg2::[24]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[15]irillis
+			msg2::[17]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[104]kitchen.help
+			if::[36]cabinetsbypassed
+				msg2::[202]"Ah, finally, we were dying of thirst."
+			else[133]
+				if::[54]cooksawpendant
+					msg2::[71]"Ah, finally, we were dying of thirst."
+					msg2::[11]"Ah, finally, we were dying of thirst."
+					set::[38]cookhelps
+				else[133]
+					msg2::[13]"Ah, finally, we were dying of thirst."
+					msg2::[18]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[105]kitchen.school
+			if::[36]cabinetsbypassed
+				msg2::[202]"Ah, finally, we were dying of thirst."
+			else[133]
+				if::[55]cookerik
+					msg2::[71]"Ah, finally, we were dying of thirst."
+					msg2::[11]"Ah, finally, we were dying of thirst."
+					set::[38]cookhelps
+				else[133]
+					msg2::[13]"Ah, finally, we were dying of thirst."
+					msg2::[18]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[64]school.cabinets
+			if::[36]cabinetsbypassed
+				msg2::[202]"Ah, finally, we were dying of thirst."
+			else[133]
+				if::[55]cookerik
+					msg2::[71]"Ah, finally, we were dying of thirst."
+					msg2::[11]"Ah, finally, we were dying of thirst."
+					set::[38]cookhelps
+				else[133]
+					msg2::[13]"Ah, finally, we were dying of thirst."
+					msg2::[18]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			msg2::[140]"Ah, finally, we were dying of thirst."
+		endwith[136]
+talk[38]::southtownentrance[16] = $c3/195
+	withobj::[114]southtownentrance.entranceguard
+		if::[57]barreldutyknow
+			msg2::[47]"Ah, finally, we were dying of thirst."
+		else[133]
+			msg2::[68]"Ah, finally, we were dying of thirst."
+		endif[135]
+talk[38]::mineroad[20] = $c4/196
+	withobj::[126]mineroad.men
+		withobj::[127]mineroad.barrels
+			if::[62]menasleep
+				msg2::[168]"Ah, finally, we were dying of thirst."
+			else[133]
+				if::[57]barreldutyknow
+					if::[63]barreltaken
+						msg2::[16]"Ah, finally, we were dying of thirst."
+					else[133]
+						msg2::[26]"Ah, finally, we were dying of thirst."
+						msg2::[34]"Ah, finally, we were dying of thirst."
+						msg2::[157]"Ah, finally, we were dying of thirst."
+						put[159]
+						set::[63]barreltaken
+					endif[135]
+				else[133]
+					msg::[118]No way.
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			if::[62]menasleep
+				msg2::[168]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[10]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+talk[38]::redtent[22] = $c5/197
+	withobj::[32]erik
+		msg2::[9]"Ah, finally, we were dying of thirst."
+		if::[46]erikisdead
+			msg2::[104]"Ah, finally, we were dying of thirst."
+		else[133]
+			msg2::[103]"Ah, finally, we were dying of thirst."
+			msg2::[38]"Ah, finally, we were dying of thirst."
+			msg2::[63]"Ah, finally, we were dying of thirst."
+			msg2::[7]"Ah, finally, we were dying of thirst."
+			msg2::[66]"Ah, finally, we were dying of thirst."
+			msg2::[55]"Ah, finally, we were dying of thirst."
+			msg2::[20]"Ah, finally, we were dying of thirst."
+			msg2::[31]"Ah, finally, we were dying of thirst."
+			msg2::[175]"Ah, finally, we were dying of thirst."
+			set::[24]eryanname
+			set::[46]erikisdead
+		endif[135]
+talk[38]::$everywhere[246] = $c6/198
+	withobj::[35]aki
+		withobj::[245]$every
+			ifisin[144]
+				if::[14]oldmandrank
+					msg::[42]"Sorry, I'm still to weak to talk"
+				else[133]
+					msg::[88]He seems too weak to talk. He needs food, but he may need water ...
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			ifisin[144]
+				msg::[3]"Do you need help?", you ask the old man
+				msg::[86]He looks at you, shaking his head. But it's evident he's in a ba...
+			endif[135]
+		endwith[136]
+talk[38]::$everywhere[246] = $c7/199
+	ifobjinattr[148]
+		ifis[142]
+			msg::[89]He simply ignores you
+		else[133]
+			msg::[160]To whom?
+		endif[135]
+	else[133]
+		msg::[166]Who?
+	endif[135]
+talk[38]::$everywhere[246] = $c8/200
+	withobj::[249]$none
+		msg::[159]To whom, about what?
+	endwith[136]
+	withobj::[245]$every
+		ifis[142]
+			msg::[97]It doesn't seem wise
+		else[133]
+			ifisin[144]
+				msg::[191]You can't talk with that
+			else[133]
+				msg::[204]You don't see that here
+			endif[135]
+		endif[135]
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[135]Talk to whom?
+	endwith[136]
+ask[39]::mainsquare[2] = $bb/187
+	withobj::[38]mainsquare.people
+		msg::[150]They seem afraid, and not willing to interact with you.
+ask[39]::governorsquare[4] = $bc/188
+	withobj::[46]governorsquare.guards
+		msg::[205]You don't think it's a wise thing to do
+ask[39]::cell[6] = $c9/201
+	withobj::[53]cell.woman
+		withobj::[33]eryan
+			msg::[172]Yes, that's my name
+		endwith[136]
+		withobj::[32]erik
+			if::[26]womansawpendant
+				ifnot::[27]alreadysaid
+					msg::[6]"Erik told me he left notes about his work to you", you start. "...
+					msg::[1]"Dead. I need to know what he wanted to do"
+					msg::[10]"He didn't give me details, but he said we were close to a major...
+					set::[27]alreadysaid
+				endif[135]
+				msg::[22]"I was able to hide his documents before being arrested. They ar...
+			else[133]
+				msg::[55]"Who are you?"
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			msg::[5]"Don't want to talk about that"
+		endwith[136]
+ask[39]::market[7] = $ca/202
+	withobj::[56]market.clothessalesman
+		withobj::[27]witch
+			msg::[32]"My mom sweared she saw her, when she was a kid. She was terrifi...
+		endwith[136]
+		withobj::[61]market.school
+			msg::[28]"It's our school," she said, "or I should say it was. It's been ...
+		endwith[136]
+		withobj::[32]erik
+			msg::[18]"I don't know anyone by that name"
+		endwith[136]
+		withobj::[55]market.clothes
+			msg::[60]"if you find something you like I will try to give you a good pr...
+		endwith[136]
+		withobj::[60]market.uniform
+			ifisin[144]
+				msg::[174]You already have it
+			else[133]
+				msg::[27]"It's old. I've got it because a guard gave it to me to exchange...
+				msg::[4]"Do you want it? I could sell it for 2 coins.", he concludes.
+				set::[32]wantjacket
+				ifnot::[33]havemoney
+					msg::[34]"No money with me, sorry.", you reply.
+				else[133]
+					ifisin[144]
+						msg::[224]You show him your coin
+						msg::[31]"Mmh... I haven't seen any like this in a long time. It's out-of...
+					endif[135]
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			msg::[44]"Sorry, it's a complicated time, I don't feel like talking, espe...
+		endwith[136]
+ask[39]::market[7] = $cb/203
+	withobj::[58]market.foodseller
+		withobj::[59]market.meat
+			msg::[185]You ask why there's a meat shortage, and the vendor answers vagu...
+			set::[28]meatneeded
+			if::[29]rabbitsseen
+				msg::[25]"I've seen rabbits in the forest", you say
+				msg::[49]"Well, if you catch some, I could buy them", she affirms
+			endif[135]
+		endwith[136]
+		withobj::[32]erik
+			msg::[18]"I don't know anyone by that name"
+		endwith[136]
+		withobj::[61]market.school
+			msg::[48]"They closed it some time ago. Not the worst thing they did." sh...
+		endwith[136]
+		withobj::[57]market.food
+			msg::[2]"Do you have any money?"
+		endwith[136]
+		withobj::[15]irillis
+			msg::[33]"Nice plants with a lot of properties. Great with roasted meat!"...
+			ifnot::[30]knowirillis
+				msg::[184]You ask her about how it looks and she gives you a good descript...
+				set::[30]knowirillis
+			endif[135]
+		endwith[136]
+		withobj::[16]rodum
+			msg::[36]"Oh, I've heard about it, but I've never seen it, I'm sorry."
+		endwith[136]
+		withobj::[62]market.suppliers
+			msg::[30]"Lyrins took all our weapons, including hunting ones. And they t...
+		endwith[136]
+		withobj::[27]witch
+			msg::[26]"It's just a legend... until it's not. Few people go happily in ...
+		endwith[136]
+		withobj::[63]market.rabbits
+			msg::[25]"I've seen rabbits in the forest", you say
+			msg::[49]"Well, if you catch some, I could buy them", she affirms
+		endwith[136]
+		withobj::[245]$every
+			msg::[44]"Sorry, it's a complicated time, I don't feel like talking, espe...
+		endwith[136]
+ask[39]::innhall[12] = $c1/193
+	withobj::[83]innhall.owner
+		withobj::[1]beerbarrel
+			ifisin[144]
+				ifis[142]
+					msg2::[30]"Ah, finally, we were dying of thirst."
+					msg2::[148]"Ah, finally, we were dying of thirst."
+					set::[49]allowedinthekitchen
+				else[133]
+					msg2::[102]"Ah, finally, we were dying of thirst."
+				endif[135]
+			else[133]
+				msg2::[65]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[32]erik
+			msg2::[40]"Ah, finally, we were dying of thirst."
+			setvar[169]
+			ifnot::[48]erikroom
+				if::[47]signseen
+					setvar[169]
+					msg2::[22]"Ah, finally, we were dying of thirst."
+				else[133]
+					if::[50]ownersawpendant
+						setvar[169]
+						msg2::[3]"Ah, finally, we were dying of thirst."
+					endif[135]
+				endif[135]
+			endif[135]
+			ifvar[150]
+				msg2::[147]"Ah, finally, we were dying of thirst."
+				set::[48]erikroom
+				put[159]
+			endif[135]
+		endwith[136]
+		withobj::[86]innhall.beer
+			msg2::[36]"Ah, finally, we were dying of thirst."
+			msg2::[189]"Ah, finally, we were dying of thirst."
+			msg2::[48]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[87]innhall.room
+			msg2::[35]"Ah, finally, we were dying of thirst."
+			msg2::[189]"Ah, finally, we were dying of thirst."
+			msg2::[48]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[84]innhall.sign
+			msg2::[59]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[27]witch
+			msg2::[33]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[249]$none
+			msg2::[21]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[245]$every
+			msg2::[21]"Ah, finally, we were dying of thirst."
+		endwith[136]
+ask[39]::kitchen[15] = $c2/194
+	withobj::[101]kitchen.cook
+		withobj::[1]beerbarrel
+			ifisin[144]
+				ifis[142]
+					msg2::[1]"Ah, finally, we were dying of thirst."
+					msg2::[141]"Ah, finally, we were dying of thirst."
+					msg2::[14]"Ah, finally, we were dying of thirst."
+					unsetattr[173]
+					set::[52]cookfillbarrel
+				else[133]
+					msg2::[29]"Ah, finally, we were dying of thirst."
+				endif[135]
+			else[133]
+				msg2::[140]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[32]erik
+			ifnot::[54]cooksawpendant
+				msg2::[19]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[12]"Ah, finally, we were dying of thirst."
+				msg2::[54]"Ah, finally, we were dying of thirst."
+				msg2::[44]"Ah, finally, we were dying of thirst."
+				set::[55]cookerik
+			endif[135]
+		endwith[136]
+		withobj::[33]eryan
+			msg2::[133]"Ah, finally, we were dying of thirst."
+			set::[56]eryaninprison
+		endwith[136]
+		withobj::[98]kitchen.jars
+			msg2::[67]"Ah, finally, we were dying of thirst."
+			msg2::[6]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[102]kitchen.supplies
+			msg2::[67]"Ah, finally, we were dying of thirst."
+			msg2::[6]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[103]kitchen.spices
+			msg2::[58]"Ah, finally, we were dying of thirst."
+			msg2::[24]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[15]irillis
+			msg2::[17]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[104]kitchen.help
+			if::[36]cabinetsbypassed
+				msg2::[202]"Ah, finally, we were dying of thirst."
+			else[133]
+				if::[54]cooksawpendant
+					msg2::[71]"Ah, finally, we were dying of thirst."
+					msg2::[11]"Ah, finally, we were dying of thirst."
+					set::[38]cookhelps
+				else[133]
+					msg2::[13]"Ah, finally, we were dying of thirst."
+					msg2::[18]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[105]kitchen.school
+			if::[36]cabinetsbypassed
+				msg2::[202]"Ah, finally, we were dying of thirst."
+			else[133]
+				if::[55]cookerik
+					msg2::[71]"Ah, finally, we were dying of thirst."
+					msg2::[11]"Ah, finally, we were dying of thirst."
+					set::[38]cookhelps
+				else[133]
+					msg2::[13]"Ah, finally, we were dying of thirst."
+					msg2::[18]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[64]school.cabinets
+			if::[36]cabinetsbypassed
+				msg2::[202]"Ah, finally, we were dying of thirst."
+			else[133]
+				if::[55]cookerik
+					msg2::[71]"Ah, finally, we were dying of thirst."
+					msg2::[11]"Ah, finally, we were dying of thirst."
+					set::[38]cookhelps
+				else[133]
+					msg2::[13]"Ah, finally, we were dying of thirst."
+					msg2::[18]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			msg2::[140]"Ah, finally, we were dying of thirst."
+		endwith[136]
+ask[39]::southtownentrance[16] = $cc/204
+	withobj::[114]southtownentrance.entranceguard
+		withobj::[111]southtownentrance.leg
+			msg2::[62]"Ah, finally, we were dying of thirst."
+			msg2::[41]"Ah, finally, we were dying of thirst."
+			set::[58]legseen
+		endwith[136]
+		withobj::[110]southtownentrance.road
+			if::[57]barreldutyknow
+				msg2::[204]"Ah, finally, we were dying of thirst."
+			else[133]
+				if::[58]legseen
+					msg2::[32]"Ah, finally, we were dying of thirst."
+					msg2::[50]"Ah, finally, we were dying of thirst."
+				else[133]
+					msg2::[68]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[113]southtownentrance.barrels
+			if::[57]barreldutyknow
+				msg2::[204]"Ah, finally, we were dying of thirst."
+			else[133]
+				if::[59]barrelsseen
+					msg2::[23]"Ah, finally, we were dying of thirst."
+					msg2::[5]"Ah, finally, we were dying of thirst."
+					msg2::[241]"Ah, finally, we were dying of thirst."
+					msg2::[25]"Ah, finally, we were dying of thirst."
+					set::[57]barreldutyknow
+				else[133]
+					msg2::[68]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[112]southtownentrance.men
+			if::[60]armedmenseen
+				msg2::[8]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[68]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[32]erik
+			msg2::[115]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[19]insignia
+			msg2::[61]"Ah, finally, we were dying of thirst."
+			msg2::[51]"Ah, finally, we were dying of thirst."
+			if::[57]barreldutyknow
+				ifisin[144]
+					ifisin[144]
+						msg2::[70]"Ah, finally, we were dying of thirst."
+						msg2::[49]"Ah, finally, we were dying of thirst."
+						msg2::[4]"Ah, finally, we were dying of thirst."
+						put[159]
+						msg2::[57]"Ah, finally, we were dying of thirst."
+					endif[135]
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			if::[57]barreldutyknow
+				msg2::[204]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[68]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			if::[57]barreldutyknow
+				msg2::[47]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[68]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+ask[39]::mineroad[20] = $c4/196
+	withobj::[126]mineroad.men
+		withobj::[127]mineroad.barrels
+			if::[62]menasleep
+				msg2::[168]"Ah, finally, we were dying of thirst."
+			else[133]
+				if::[57]barreldutyknow
+					if::[63]barreltaken
+						msg2::[16]"Ah, finally, we were dying of thirst."
+					else[133]
+						msg2::[26]"Ah, finally, we were dying of thirst."
+						msg2::[34]"Ah, finally, we were dying of thirst."
+						msg2::[157]"Ah, finally, we were dying of thirst."
+						put[159]
+						set::[63]barreltaken
+					endif[135]
+				else[133]
+					msg::[118]No way.
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			if::[62]menasleep
+				msg2::[168]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[10]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+ask[39]::redtent[22] = $c5/197
+	withobj::[32]erik
+		msg2::[9]"Ah, finally, we were dying of thirst."
+		if::[46]erikisdead
+			msg2::[104]"Ah, finally, we were dying of thirst."
+		else[133]
+			msg2::[103]"Ah, finally, we were dying of thirst."
+			msg2::[38]"Ah, finally, we were dying of thirst."
+			msg2::[63]"Ah, finally, we were dying of thirst."
+			msg2::[7]"Ah, finally, we were dying of thirst."
+			msg2::[66]"Ah, finally, we were dying of thirst."
+			msg2::[55]"Ah, finally, we were dying of thirst."
+			msg2::[20]"Ah, finally, we were dying of thirst."
+			msg2::[31]"Ah, finally, we were dying of thirst."
+			msg2::[175]"Ah, finally, we were dying of thirst."
+			set::[24]eryanname
+			set::[46]erikisdead
+		endif[135]
+ask[39]::$everywhere[246] = $cd/205
+	withobj::[35]aki
+		withobj::[33]eryan
+			ifisin[144]
+				if::[14]oldmandrank
+					msg::[117]My wife, Eryan, she was the school teacher... I'll see her again...
+				else[133]
+					msg::[88]He seems too weak to talk. He needs food, but he may need water ...
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[32]erik
+			ifisin[144]
+				if::[14]oldmandrank
+					msg::[58]"Yes, I know him," he says, "Erik sometimes worked with my wife ...
+					msg::[53]"Where is he?" you ask him.
+					if::[15]oldmaneat
+						msg::[38]"One day, Lyrins arrested me and accused me of murder. They tort...
+						msg::[57]"Why? Where is he now?" you ask him again
+						msg::[19]"I don't know what happened to him after what I said. But I was ...
+						set::[16]knowaboutcamp
+						msg::[59]"You're here now. What about your wife?"
+						msg::[37]"Once back I discovered they burned my house. I couldn't find he...
+						ifnot::[17]ringgiven
+							msg::[141]Then, after a pause, added: "This is the only thing I found in t...
+							msg::[230]You try to say no, but he insists, so you finally accept
+							put[159]
+							set::[17]ringgiven
+						endif[135]
+					else[133]
+						msg::[91]He's too weak to talk more
+					endif[135]
+				else[133]
+					msg::[88]He seems too weak to talk. He needs food, but he may need water ...
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			ifisin[144]
+				if::[14]oldmandrank
+					msg::[43]"Sorry, I'm too weak to chat"
+				else[133]
+					msg::[88]He seems too weak to talk. He needs food, but he may need water ...
+				endif[135]
+			endif[135]
+		endwith[136]
+ask[39]::$everywhere[246] = $c7/199
+	ifobjinattr[148]
+		ifis[142]
+			msg::[89]He simply ignores you
+		else[133]
+			msg::[160]To whom?
+		endif[135]
+	else[133]
+		msg::[166]Who?
+	endif[135]
+ask[39]::$everywhere[246] = $c8/200
+	withobj::[249]$none
+		msg::[159]To whom, about what?
+	endwith[136]
+	withobj::[245]$every
+		ifis[142]
+			msg::[97]It doesn't seem wise
+		else[133]
+			ifisin[144]
+				msg::[191]You can't talk with that
+			else[133]
+				msg::[204]You don't see that here
+			endif[135]
+		endif[135]
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[135]Talk to whom?
+	endwith[136]
+drink[40]::houseinterior[24] = $ce/206
+	withobj::[142]houseinterior.glass
+		if::[66]tasted
+			msg2::[211]"Ah, finally, we were dying of thirst."
+		else[133]
+			msg2::[154]"Ah, finally, we were dying of thirst."
+			msg2::[76]"Ah, finally, we were dying of thirst."
+			msg2::[101]"Ah, finally, we were dying of thirst."
+			msg2::[245]"Ah, finally, we were dying of thirst."
+			msg2::[179]"Ah, finally, we were dying of thirst."
+			set::[66]tasted
+			waitkey[174]
+			goto::[23]house
+		endif[135]
+drink[40]::$everywhere[246] = $cf/207
+	withobj::[1]beerbarrel
+		needin[158]
+		ifis[142]
+			msg::[108]It's empty.
+		else[133]
+			if::[0]irillisinbarrel
+				msg::[118]No way.
+			else[133]
+				if::[1]roduminbarrel
+					msg::[118]No way.
+				else[133]
+					msg::[227]You take a sip. Nice.
+				endif[135]
+			endif[135]
+		endif[135]
+drink[40]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+eat[41]::$everywhere[246] = $d0/208
+	withobj::[3]bread
+		needin[158]
+		msg::[206]You don't want to eat now
+eat[41]::$everywhere[246] = $d1/209
+	withobj::[17]baryl
+		ifisin[144]
+			put[159]
+			msg::[74]Done
+			set::[4]baryleaten
+		endif[135]
+eat[41]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+fill[42]::mainsquare[2] = $85/133
+	withobj::[5]flask
+		needin[158]
+		withobj::[36]mainsquare.fountain
+			msg::[68]As you start to fill your flask, you realise that the water comi...
+		endwith[136]
+	endwith[136]
+fill[42]::governorsquare[4] = $86/134
+	withobj::[5]flask
+		needin[158]
+		withobj::[48]governorsquare.fountain
+			unsetattr[173]
+			msg::[74]Done
+		endwith[136]
+	endwith[136]
+fill[42]::$everywhere[246] = $d2/210
+	withobj::[5]flask
+		withobj::[245]$every
+			msg::[214]You need a fountain to fill it
+		endwith[136]
+		withobj::[249]$none
+			msg::[214]You need a fountain to fill it
+		endwith[136]
+fill[42]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+wear[43]::$everywhere[246] = $d3/211
+	withobj::[6]jacket
+		needin[158]
+		set::[2]jacketon
+		msg::[74]Done
+wear[43]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+takeoff[44]::$everywhere[246] = $d4/212
+	withobj::[6]jacket
+		needin[158]
+		unset::[2]jacketon
+		msg::[74]Done
+read[45]::schoollibrary[9] = $4a/74
+	withobj::[71]schoollibrary.geography
+		msg::[94]Information about the lands around Nesterin
+		msg::[129]Reading it you discover that there's a mining area also on the o...
+		ifnot::[40]mapfound
+			msg::[62]A \ymap\w falls out of a book
+			set::[40]mapfound
+			put[159]
+		endif[135]
+read[45]::schoollibrary[9] = $d5/213
+	withobj::[73]schoollibrary.botany
+		withobj::[15]irillis
+			msg::[93]Illiris is said to be a delicious edible spice, but that it get ...
+			set::[30]knowirillis
+		endwith[136]
+		withobj::[16]rodum
+			msg::[96]It appears to be a type of mild hallucinogen, but can become dan...
+			msg::[145]There's a clear illustration of this plant.
+			set::[42]knowrodum
+		endwith[136]
+		withobj::[17]baryl
+			msg::[113]Its berries are detoxifying and seem to help in cases of intoxic...
+			msg::[145]There's a clear illustration of this plant.
+			set::[43]knowbaryl
+		endwith[136]
+		withobj::[74]schoollibrary.berries
+			msg::[180]You are looking for a plant with berries. It takes you almost an...
+			set::[44]knowberriesarebaryl
+		endwith[136]
+read[45]::schoollibrary[9] = $d6/214
+	withobj::[76]schoollibrary.grimoire
+		withobj::[77]schoollibrary.banishing
+			msg::[130]Rituals differ depending on who you want to act. You need to loo...
+		endwith[136]
+		withobj::[25]summoning
+			msg::[130]Rituals differ depending on who you want to act. You need to loo...
+		endwith[136]
+		withobj::[78]schoollibrary.arkylzoth
+			msg::[109]It's more god than demon, but will submit to proper ritual, if p...
+			msg::[157]Those who wish to force Arkylzoth to do their bidding must sacri...
+			msg::[69]Blood sacrifice seems symbolic, but both eyes of a willing summo...
+			ifnot::[13]pagetaken
+				msg::[120]On a \ypage\w, there's spell needed to evoke it. There, there's ...
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			msg::[101]It speaks of potions, summoning demons and human sacrifices
+		endwith[136]
+		withobj::[245]$every
+			msg::[198]You don't find anything interesting about it
+		endwith[136]
+read[45]::houseinterior[24] = $d7/215
+	withobj::[143]houseinterior.books
+		if::[66]tasted
+			msg2::[207]"Ah, finally, we were dying of thirst."
+			msg2::[131]"Ah, finally, we were dying of thirst."
+			ifisin[144]
+				ifisin[144]
+					msg2::[248]"Ah, finally, we were dying of thirst."
+					set::[12]knowdemonname
+				endif[135]
+			endif[135]
+		else[133]
+			msg2::[193]"Ah, finally, we were dying of thirst."
+			if::[41]grimoireseen
+				msg2::[132]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endif[135]
+read[45]::ruinsinterior[26] = $d8/216
+	withobj::[34]spell
+		ifisin[144]
+			setvar[169]
+			if::[68]eyesonaltar
+				addvar[129]
+			endif[135]
+			if::[69]bloodonaltar
+				addvar[129]
+			endif[135]
+			msg2::[182]"Ah, finally, we were dying of thirst."
+			ifvar[150]
+				msg2::[135]"Ah, finally, we were dying of thirst."
+				msg2::[52]"Ah, finally, we were dying of thirst."
+				msg2::[181]"Ah, finally, we were dying of thirst."
+				msg2::[75]"Ah, finally, we were dying of thirst."
+				msg2::[234]"Ah, finally, we were dying of thirst."
+				msg2::[221]"Ah, finally, we were dying of thirst."
+				set::[8]summoningstopped
+				if::[7]materialwin
+					msg::[228]You think it might be time to go back home
+				endif[135]
+				waitkey[174]
+				goto::[25]ruins
+			else[133]
+				msg2::[128]"Ah, finally, we were dying of thirst."
+				msg2::[223]"Ah, finally, we were dying of thirst."
+			endif[135]
+		else[133]
+			msg2::[225]"Ah, finally, we were dying of thirst."
+		endif[135]
+	endwith[136]
+read[45]::forgeroom[32] = $66/102
+	withobj::[168]forgeroom.inscriptions
+		msg2::[170]"Ah, finally, we were dying of thirst."
+		if::[73]forgeseen
+			msg2::[213]"Ah, finally, we were dying of thirst."
+			msg2::[73]"Ah, finally, we were dying of thirst."
+		endif[135]
+		if::[74]gatesseen
+			msg2::[214]"Ah, finally, we were dying of thirst."
+			msg2::[74]"Ah, finally, we were dying of thirst."
+		else[133]
+			if::[20]seeninstrument
+				msg2::[215]"Ah, finally, we were dying of thirst."
+				msg2::[74]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endif[135]
+read[45]::$everywhere[246] = $91/145
+	withobj::[18]map
+		needin[158]
+		ifisroom::[18]darkpath
+			msg::[125]On the map you see a path leading from here to a mark, +
+			msg::[245]going southeast.
+			set::[5]knowdarkpathroad
+		else[133]
+			ifisroom::[19]betweenpath
+				msg::[125]On the map you see a path leading from here to a mark, +
+				msg::[244]going northeast.
+				set::[6]knowruinsroad
+			else[133]
+				msg::[156]This map doesn't seem useful here
+			endif[135]
+		endif[135]
+read[45]::$everywhere[246] = $d9/217
+	withobj::[24]documents
+		withobj::[25]summoning
+			needin[158]
+			msg::[46]"The Lyrins want to destroy us by summoning an Elder God here. I...
+		endwith[136]
+		withobj::[26]lyrin
+			needin[158]
+			msg::[29]"Lyrin are not Lyrin. Our enemies are creatures pretending to be...
+		endwith[136]
+		withobj::[27]witch
+			needin[158]
+			msg::[20]"I still didn't find out who the Witch is, but she's responsible...
+		endwith[136]
+		withobj::[28]sacred
+			needin[158]
+			msg::[16]"I can't use their new site in the mines. But I've found there's...
+		endwith[136]
+		withobj::[249]$none
+			needin[158]
+			msg::[151]They seem to be Erik's notebook missing pages
+			msg::[90]He wrote that he wanted to obtain info about the production of t...
+			msg::[71]But that there's a bigger and imminent danger, a \ysummoning\w
+		endwith[136]
+		withobj::[245]$every
+			needin[158]
+			msg::[193]You cannot find anything about that
+		endwith[136]
+read[45]::$everywhere[246] = $6e/110
+	withobj::[29]eriknotebook
+		needin[158]
+		ifnot::[9]fulllayout
+			msg::[105]It's a torn notebook, with several missing pages. And what's lef...
+			msg::[122]On one page there's an incomplete layout
+			ifisroom::[3]bankssquare
+				if::[10]layoutseen
+					msg::[115]Mmh... there's a serious resemblance to what's on the statue
+					ifisin[144]
+						msg::[231]You used the pencil to copy what was missing of notebook page, a...
+						set::[9]fulllayout
+					else[133]
+						msg::[196]You could fix the notebook scheme, if you'd have something to wr...
+					endif[135]
+				endif[135]
+			endif[135]
+		else[133]
+			ifisroom::[31]minetunnel
+				msg::[138]The layout you copied from the statue has symbols similar to cro...
+				set::[11]solvedmaze
+			else[133]
+				msg::[121]On one page there's a layout with dots and markings you copied f...
+			endif[135]
+		endif[135]
+		if::[12]knowdemonname
+			ifnot::[13]pagetaken
+				msg::[123]On the bottom of a page you wrote "\yArkylzoth\w"
+			endif[135]
+		endif[135]
+read[45]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+attack[46]::$everywhere[246] = $da/218
+	withobj::[249]$none
+		msg::[163]Violence isn't wise, with so many enemies nearby
+	endwith[136]
+	withobj::[245]$every
+		ifis[142]
+			msg::[161]Too risky.
+		else[133]
+			ifisin[144]
+				msg::[165]What?
+			else[133]
+				msg::[204]You don't see that here
+			endif[135]
+		endif[135]
+	endwith[136]
+attack[46]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+capture[47]::path[17] = $76/118
+	withobj::[120]path.rabbits
+		withobj::[2]bow
+			ifisin[144]
+				msg2::[184]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					msg2::[80]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg2::[199]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			msg2::[89]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[249]$none
+			msg2::[90]"Ah, finally, we were dying of thirst."
+			set::[61]bowneeded
+		endwith[136]
+capture[47]::forestpond[27] = $7e/126
+	withobj::[4]fish
+		withobj::[2]bow
+			ifisin[144]
+				msg2::[184]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					msg2::[80]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg2::[199]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			ifisin[144]
+				put[159]
+				msg::[134]Taken
+			else[133]
+				msg2::[87]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			msg2::[88]"Ah, finally, we were dying of thirst."
+		endwith[136]
+capture[47]::fall[29] = $db/219
+	withobj::[155]fall.creature
+		if::[70]defeatedfish
+			msg2::[196]"Ah, finally, we were dying of thirst."
+		else[133]
+			ifisin[144]
+				msg2::[249]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg::[92]How?
+			endif[135]
+		endif[135]
+	endwith[136]
+capture[47]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+carve[48]::redtent[22] = $7a/122
+	withobj::[32]erik
+		withobj::[20]eyes
+			if::[65]carvedeyes
+				msg2::[188]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[191]"Ah, finally, we were dying of thirst."
+				put[159]
+				set::[65]carvedeyes
+			endif[135]
+		endwith[136]
+carve[48]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+cast[49]::ruinsinterior[26] = $d8/216
+	withobj::[34]spell
+		ifisin[144]
+			setvar[169]
+			if::[68]eyesonaltar
+				addvar[129]
+			endif[135]
+			if::[69]bloodonaltar
+				addvar[129]
+			endif[135]
+			msg2::[182]"Ah, finally, we were dying of thirst."
+			ifvar[150]
+				msg2::[135]"Ah, finally, we were dying of thirst."
+				msg2::[52]"Ah, finally, we were dying of thirst."
+				msg2::[181]"Ah, finally, we were dying of thirst."
+				msg2::[75]"Ah, finally, we were dying of thirst."
+				msg2::[234]"Ah, finally, we were dying of thirst."
+				msg2::[221]"Ah, finally, we were dying of thirst."
+				set::[8]summoningstopped
+				if::[7]materialwin
+					msg::[228]You think it might be time to go back home
+				endif[135]
+				waitkey[174]
+				goto::[25]ruins
+			else[133]
+				msg2::[128]"Ah, finally, we were dying of thirst."
+				msg2::[223]"Ah, finally, we were dying of thirst."
+			endif[135]
+		else[133]
+			msg2::[225]"Ah, finally, we were dying of thirst."
+		endif[135]
+	endwith[136]
+cast[49]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+copy[50]::bankssquare[3] = $dc/220
+	withobj::[44]bankssquare.layout
+		needin[158]
+		needin[158]
+		ifnot::[9]fulllayout
+			msg::[231]You used the pencil to copy what was missing of notebook page, a...
+			set::[9]fulllayout
+		endif[135]
+copy[50]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+cut[51]::darkpath[18] = $78/120
+	withobj::[122]darkpath.branches
+		if::[61]bowneeded
+			ifisin[144]
+				msg2::[186]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					ifisin[144]
+						msg2::[198]"Ah, finally, we were dying of thirst."
+						put[159]
+						put[159]
+					else[133]
+						msg2::[169]"Ah, finally, we were dying of thirst."
+					endif[135]
+				else[133]
+					msg2::[224]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		else[133]
+			msg2::[200]"Ah, finally, we were dying of thirst."
+		endif[135]
+cut[51]::redtent[22] = $7a/122
+	withobj::[32]erik
+		withobj::[20]eyes
+			if::[65]carvedeyes
+				msg2::[188]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg2::[191]"Ah, finally, we were dying of thirst."
+				put[159]
+				set::[65]carvedeyes
+			endif[135]
+		endwith[136]
+cut[51]::ruinsinterior[26] = $dd/221
+	withobj::[11]yourself
+		needin[158]
+		ifnot::[69]bloodonaltar
+			msg2::[183]"Ah, finally, we were dying of thirst."
+			set::[69]bloodonaltar
+		else[133]
+			msg2::[187]"Ah, finally, we were dying of thirst."
+		endif[135]
+	endwith[136]
+cut[51]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+exit[52]::school[8] = $de/222
+	withobj::[66]school.school
+		goto::[10]schoolalley
+	endwith[136]
+exit[52]::innhall[12] = $df/223
+	withobj::[85]innhall.inn
+		goto::[2]mainsquare
+	endwith[136]
+exit[52]::innroom[14] = $28/40
+	goto::[13]upcorridor
+exit[52]::kitchen[15] = $e0/224
+	withobj::[100]kitchen.kitchen
+		goto::[12]innhall
+	endwith[136]
+exit[52]::redtent[22] = $19/25
+	goto::[21]camp
+exit[52]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+hide[53]::$everywhere[246] = $82/130
+	withobj::[7]knife
+		ifisin[144]
+			ifisroom::[14]innroom
+				ifis[142]
+				else[133]
+					msg::[187]You can't drop it here. You need to find a safe place to hide it...
+				endif[135]
+			else[133]
+				msg::[187]You can't drop it here. You need to find a safe place to hide it...
+			endif[135]
+		else[133]
+			msg::[201]You don't have it
+		endif[135]
+hide[53]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+hunt[54]::path[17] = $76/118
+	withobj::[120]path.rabbits
+		withobj::[2]bow
+			ifisin[144]
+				msg2::[184]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					msg2::[80]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg2::[199]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			msg2::[89]"Ah, finally, we were dying of thirst."
+		endwith[136]
+		withobj::[249]$none
+			msg2::[90]"Ah, finally, we were dying of thirst."
+			set::[61]bowneeded
+		endwith[136]
+hunt[54]::forestpond[27] = $7e/126
+	withobj::[4]fish
+		withobj::[2]bow
+			ifisin[144]
+				msg2::[184]"Ah, finally, we were dying of thirst."
+			else[133]
+				ifisin[144]
+					msg2::[80]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg2::[199]"Ah, finally, we were dying of thirst."
+				endif[135]
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			ifisin[144]
+				put[159]
+				msg::[134]Taken
+			else[133]
+				msg2::[87]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endwith[136]
+		withobj::[245]$every
+			msg2::[88]"Ah, finally, we were dying of thirst."
+		endwith[136]
+hunt[54]::fall[29] = $db/219
+	withobj::[155]fall.creature
+		if::[70]defeatedfish
+			msg2::[196]"Ah, finally, we were dying of thirst."
+		else[133]
+			ifisin[144]
+				msg2::[249]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg::[92]How?
+			endif[135]
+		endif[135]
+	endwith[136]
+hunt[54]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+insert[55]::ruins[25] = $ae/174
+	withobj::[21]coin
+		ifisin[144]
+			withobj::[144]ruins.slit
+				msg2::[231]"Ah, finally, we were dying of thirst."
+				set::[67]ruindooropened
+			endwith[136]
+			withobj::[245]$every
+				msg::[165]What?
+			endwith[136]
+		else[133]
+			msg::[201]You don't have it
+		endif[135]
+	endwith[136]
+insert[55]::forgeroom[32] = $8d/141
+	withobj::[9]stone
+		ifnot::[71]forgeon
+			msg2::[95]"Ah, finally, we were dying of thirst."
+		else[133]
+			withobj::[163]forgeroom.forge
+				ifisin[144]
+					put[159]
+					msg2::[83]"Ah, finally, we were dying of thirst."
+					put[159]
+				else[133]
+					msg::[201]You don't have it
+				endif[135]
+			endwith[136]
+			withobj::[245]$every
+				msg::[92]How?
+			endwith[136]
+		endif[135]
+	endwith[136]
+insert[55]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+kill[56]::mineroad[20] = $e1/225
+	withobj::[126]mineroad.men
+		if::[62]menasleep
+			ifisin[144]
+				msg2::[237]"Ah, finally, we were dying of thirst."
+				set::[64]mendead
+			else[133]
+				msg::[92]How?
+			endif[135]
+		else[133]
+			if::[64]mendead
+				msg2::[82]"Ah, finally, we were dying of thirst."
+			endif[135]
+		endif[135]
+kill[56]::fall[29] = $db/219
+	withobj::[155]fall.creature
+		if::[70]defeatedfish
+			msg2::[196]"Ah, finally, we were dying of thirst."
+		else[133]
+			ifisin[144]
+				msg2::[249]"Ah, finally, we were dying of thirst."
+			else[133]
+				msg::[92]How?
+			endif[135]
+		endif[135]
+	endwith[136]
+kill[56]::$everywhere[246] = $da/218
+	withobj::[249]$none
+		msg::[163]Violence isn't wise, with so many enemies nearby
+	endwith[136]
+	withobj::[245]$every
+		ifis[142]
+			msg::[161]Too risky.
+		else[133]
+			ifisin[144]
+				msg::[165]What?
+			else[133]
+				msg::[204]You don't see that here
+			endif[135]
+		endif[135]
+	endwith[136]
+kill[56]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+leave[57]::school[8] = $de/222
+	withobj::[66]school.school
+		goto::[10]schoolalley
+	endwith[136]
+leave[57]::innhall[12] = $df/223
+	withobj::[85]innhall.inn
+		goto::[2]mainsquare
+	endwith[136]
+leave[57]::innroom[14] = $28/40
+	goto::[13]upcorridor
+leave[57]::kitchen[15] = $e0/224
+	withobj::[100]kitchen.kitchen
+		goto::[12]innhall
+	endwith[136]
+leave[57]::redtent[22] = $19/25
+	goto::[21]camp
+leave[57]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+move[58]::school[8] = $93/147
+	withobj::[64]school.cabinets
+		if::[36]cabinetsbypassed
+			msg::[176]You already moved them enough
+		else[133]
+			if::[38]cookhelps
+				msg::[225]You start trying to move them, when the cook arrives.
+				msg::[168]With his help, even trying to do less possible noise, you're abl...
+				msg::[126]Once finished, he left without a word.
+				set::[36]cabinetsbypassed
+			else[133]
+				msg::[153]They're heavy, and too many. You tried, but you quickly undertan...
+			endif[135]
+		endif[135]
+move[58]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+search[59]::school[8] = $98/152
+	withobj::[64]school.cabinets
+		ifnot::[37]twineseen
+			msg::[95]Inside one of them you find some \ytwine\w.
+			put[159]
+			set::[37]twineseen
+		else[133]
+			msg::[217]You open some more, but you don't find anything useful
+		endif[135]
+search[59]::schoollibrary[9] = $4a/74
+	withobj::[71]schoollibrary.geography
+		msg::[94]Information about the lands around Nesterin
+		msg::[129]Reading it you discover that there's a mining area also on the o...
+		ifnot::[40]mapfound
+			msg::[62]A \ymap\w falls out of a book
+			set::[40]mapfound
+			put[159]
+		endif[135]
+search[59]::schoollibrary[9] = $d5/213
+	withobj::[73]schoollibrary.botany
+		withobj::[15]irillis
+			msg::[93]Illiris is said to be a delicious edible spice, but that it get ...
+			set::[30]knowirillis
+		endwith[136]
+		withobj::[16]rodum
+			msg::[96]It appears to be a type of mild hallucinogen, but can become dan...
+			msg::[145]There's a clear illustration of this plant.
+			set::[42]knowrodum
+		endwith[136]
+		withobj::[17]baryl
+			msg::[113]Its berries are detoxifying and seem to help in cases of intoxic...
+			msg::[145]There's a clear illustration of this plant.
+			set::[43]knowbaryl
+		endwith[136]
+		withobj::[74]schoollibrary.berries
+			msg::[180]You are looking for a plant with berries. It takes you almost an...
+			set::[44]knowberriesarebaryl
+		endwith[136]
+search[59]::schoollibrary[9] = $4d/77
+	withobj::[75]schoollibrary.geometry
+		ifisin[144]
+			put[159]
+			msg::[209]You found some \ydocuments\w hidden behind books.
+		else[133]
+			msg::[148]There's nothing else interesting
+		endif[135]
+search[59]::schoollibrary[9] = $d6/214
+	withobj::[76]schoollibrary.grimoire
+		withobj::[77]schoollibrary.banishing
+			msg::[130]Rituals differ depending on who you want to act. You need to loo...
+		endwith[136]
+		withobj::[25]summoning
+			msg::[130]Rituals differ depending on who you want to act. You need to loo...
+		endwith[136]
+		withobj::[78]schoollibrary.arkylzoth
+			msg::[109]It's more god than demon, but will submit to proper ritual, if p...
+			msg::[157]Those who wish to force Arkylzoth to do their bidding must sacri...
+			msg::[69]Blood sacrifice seems symbolic, but both eyes of a willing summo...
+			ifnot::[13]pagetaken
+				msg::[120]On a \ypage\w, there's spell needed to evoke it. There, there's ...
+			endif[135]
+		endwith[136]
+		withobj::[249]$none
+			msg::[101]It speaks of potions, summoning demons and human sacrifices
+		endwith[136]
+		withobj::[245]$every
+			msg::[198]You don't find anything interesting about it
+		endwith[136]
+search[59]::innroom[14] = $54/84
+	withobj::[97]innroom.mattress
+		ifisin[144]
+			msg2::[212]"Ah, finally, we were dying of thirst."
+		else[133]
+			msg2::[106]"Ah, finally, we were dying of thirst."
+			put[159]
+		endif[135]
+search[59]::$everywhere[246] = $d9/217
+	withobj::[24]documents
+		withobj::[25]summoning
+			needin[158]
+			msg::[46]"The Lyrins want to destroy us by summoning an Elder God here. I...
+		endwith[136]
+		withobj::[26]lyrin
+			needin[158]
+			msg::[29]"Lyrin are not Lyrin. Our enemies are creatures pretending to be...
+		endwith[136]
+		withobj::[27]witch
+			needin[158]
+			msg::[20]"I still didn't find out who the Witch is, but she's responsible...
+		endwith[136]
+		withobj::[28]sacred
+			needin[158]
+			msg::[16]"I can't use their new site in the mines. But I've found there's...
+		endwith[136]
+		withobj::[249]$none
+			needin[158]
+			msg::[151]They seem to be Erik's notebook missing pages
+			msg::[90]He wrote that he wanted to obtain info about the production of t...
+			msg::[71]But that there's a bigger and imminent danger, a \ysummoning\w
+		endwith[136]
+		withobj::[245]$every
+			needin[158]
+			msg::[193]You cannot find anything about that
+		endwith[136]
+search[59]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+throw[60]::fall[29] = $ac/172
+	withobj::[4]fish
+		ifisin[144]
+			msg2::[243]"Ah, finally, we were dying of thirst."
+			set::[70]defeatedfish
+			put[159]
+		else[133]
+			msg::[201]You don't have it
+		endif[135]
+	endwith[136]
+throw[60]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+onfirst[240]::$everywhere[246] = $70/112
+	withobj::[249]$none
+		msg::[238]\V what?
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[203]You don't see that
+	endwith[136]
+	withobj::[245]$every
+		ifisin[144]
+			msg::[197]You don't find a reason to do that
+		else[133]
+			msg::[202]You don't see it here
+		endif[135]
+	endwith[136]
+onfirst[241]::$everywhere[246] = $0b/11
+	msg::[189]You can't go that way
+onfirst[242]::$everywhere[246] = $c8/200
+	withobj::[249]$none
+		msg::[159]To whom, about what?
+	endwith[136]
+	withobj::[245]$every
+		ifis[142]
+			msg::[97]It doesn't seem wise
+		else[133]
+			ifisin[144]
+				msg::[191]You can't talk with that
+			else[133]
+				msg::[204]You don't see that here
+			endif[135]
+		endif[135]
+	endwith[136]
+	withobj::[255]$unknown
+		msg::[135]Talk to whom?
+	endwith[136]
+$unknown[255]::$everywhere[246] = $b2/178
+	msg::[165]What?

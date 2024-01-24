@@ -1,0 +1,26 @@
+irillis
+	cook ask for them
+		food vendor says how they look like
+			Forest path: you can take them
+
+rabbits
+	food vendor ask for them
+		you need twine (school) and knife - and cut branches in Dark Forest Path
+		you hunt for them in Forest path
+
+beer barrel
+	you see them on Mine Road 
+	you ask about them in Northern Gate
+	you take them and carry one of them in the kitchen
+
+kitchen
+	you see square bench with old man - who needs to drink (so you need to fill flask from fountain and give him)
+
+knife
+	you can drop it only in Erik's room
+	you need to check fireplace / sign and ask innkeeper - to get Erik's key
+
+erik's notebook
+flask
+
+school library - you find the path for witch house? you find a poison recipe?

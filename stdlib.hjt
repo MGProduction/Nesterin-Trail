@@ -1,0 +1,777 @@
+<Treepad version 3.0>
+dt=Text
+<node>
+main
+0
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+objclass
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+actor
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+note:normal actors - listable and visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:actor+visible+listable
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+globalscenery
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+note:special scenery objects present everywhere (i.e. main character features) - not takable not listable but visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startin:$everywhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+localscenery
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+note:special scenery objects (i.e. shared elements between more rooms) - not takable not listable but visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startin:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+normalobj
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+note:normal objects - takable listable and visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:visible+takeable+listable+large
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+smallobj
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+note:normal objects - takable listable and visible - but small
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:visible+takeable+listable
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+note:scenery objects - not takable not listable but visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sceneryactor
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery actors - not takable not listable but visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:visible+actor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sceneryobj
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+note:scenery objects - not takable but listable and visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:visible+listable
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+topics
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+note:objects - used just for the name
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:$none
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verbclass
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+genericverb
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+3
+msg:\V what?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$unknown
+3
+msg:You don't see that
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+3
+ifobjin:$this,$available
+	msg:You don't find a reason to do that		
+else
+	msg:You don't see it here	
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+movementverb
+2
+msg:You can't go that way
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+talkverb
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+3
+msg:To whom, about what?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+3
+ifobj:$this,actor+visible
+	msg:It doesn't seem wise
+else
+	ifobjin:$this,$available
+		msg:You can't talk with that
+	else
+		msg:You don't see that here	
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$unknown
+3
+msg:Talk to whom?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+movementverb
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+u
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:u,up
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+d
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:d,down
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:s,south
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:n,north
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:w,west
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:e,east
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+se
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:se,southeast,south-east
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sw
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:sw,southwest,south-west
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ne
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:ne,northeast,north-east
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+nw
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:nw,northwest,north-west
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+go
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:go
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+enter
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:enter
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+genericverb
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:x,examine,look,l,look at
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:exits
+3
+ifundef:$room.exits
+	msg:There are no evident exits.
+else
+	msg:There are obvious exits to +
+	msg:$room.exits
+	msg:.
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+3
+msg:$roomdesc
+ifobjinattr:$any,$here,visible+listable
+	msg:You see: +
+	listobjin:$here,visible+listable
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$unknown
+3
+msg:Looks absolutely normal
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+3
+ifobjin:$this,$available
+	ifundef:$objdesc
+		msg:Looks absolutely normal
+	else
+		msg:$objdesc
+else
+	msg:You don't see that here
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:take,get,pick
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+3
+ifobjinattr:$this,$here,visible
+	ifobj:$this,takeable		
+		setcount:weight,$inventory,takeable+large
+		ifobj:$this,large
+			addvar:weight,1
+		endif
+		if:weight<maxweight
+			putobj:$this,$inventory			
+			msg:Taken
+		else
+			msg:You already carry too much to add also this size object
+		endif
+	else
+		msg:You don't want to take it		
+else
+	ifobjin:$this,$inventory
+		msg:You already have it
+	else
+		msg:You don't see it here
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+drop
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:drop,put down
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+3
+ifobjin:$this,$inventory
+	ifobj:$this,takeable+visible
+		putobj:$this,$here
+		msg:Dropped		
+		if:weight>0
+			decvar:weight,1
+	else
+		msg:You can't drop it
+else
+	msg:You don't have it	
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:use
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+push
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:push
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+pull
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:pull
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+open
+2
+ifobjin:$this,$available
+	ifobj:$this,openable+visible
+		ifobj:$this,open
+			msg:It's already open
+		else
+			setobj:$this,open
+			msg:Done
+		endif
+	else
+		msg:You cannot open it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:open
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+close
+2
+ifobjin:$this,$available
+	ifobj:$this,openable+visible
+		ifobj:$this,open
+			unsetobj:$this,open
+			msg:Done
+		else
+			msg:It's already closed
+		endif
+	else
+		msg:You cannot close it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:close
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+lock
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:lock
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+unlock
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:unlock
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+show
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:show
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+give
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:give
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+put
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+$unknown
+2
+msg:What?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+onfirst
+2
+clear
+msg:$roomdesc
+ifobjinattr:$any,$here,visible+listable
+	msg:You see: +
+	listobjin:$here,visible+listable
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+onenter
+2
+clear
+ifundef:$room.shortdesc
+	msg:You are in +
+	msg:$roomname
+else
+	msg:You are +
+	msg:$room.shortdesc
+endif
+msg:.
+ifundef:$room.exits
+	msg:There are no evident exits.
+else
+	msg:There are obvious exits to +
+	msg:$room.exits
+	msg:.
+endif
+ifobjinattr:$any,$here,visible+listable
+	msg:You see: +
+	listobjin:$here,visible+listable
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+help
+2
+msg:To act write short commands in \yVERB+ELEMENT \w (i.e. \ytake pencil\w) or \yVERB+ELEMENT1+ELEMENT2 \w (i.e. \yask man food\w or \ygive food man\w) forms.
+msg:Move using cardinal directions. Use \yinventory \wto see what you're carrying with you.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:help,h
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+inventory
+2
+ifobjinattr:$any,$inventory,takeable
+	msg:You are carrying: +
+	listobjin:$inventory,takeable
+else
+	msg:You aren't carrying anything.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:inventory,i
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+quit
+2
+msg:Are you sure? (Y/N)
+getkey
+ifkey:Y
+	quit
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:quit,q
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+restart
+2
+msg:Are you sure? (Y/N)
+getkey
+ifkey:Y
+	start
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+save
+2
+save
+msg:Done
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+load
+2
+msg:Are you sure? (Y/N)
+getkey
+ifkey:Y
+	load
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+mem
+2
+dbg
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+gfx
+2
+msg:\yn\wormal, \yp\wrogressive or \ys\wtatic?
+getkey
+ifkey:N
+	gfxmode:0
+	msg:Done
+else
+	ifkey:P
+		gfxmode:1
+		msg:Done
+	else
+		ifkey:S
+			gfxmode:2
+			msg:Done
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+talkverb
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+talk
+2
+ifobjinattr:$this,$here,visible
+	ifobj:$this,actor		
+		msg:He simply ignores you
+	else
+		msg:To whom?
+else
+	msg:Who?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:talk
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ask
+2
+ifobjinattr:$this,$here,visible
+	ifobj:$this,actor		
+		msg:He simply ignores you
+	else
+		msg:To whom?
+else
+	msg:Who?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:ask
+3
+<end node> 5P9i0s8y19Z

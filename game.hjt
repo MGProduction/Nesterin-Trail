@@ -1,0 +1,7190 @@
+<Treepad version 3.0>
+dt=Text
+<node>
+main
+0
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+config
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Nesterin
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+title:Nesterin Trail
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+subtitle:A C64 fantasy text adventure
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+author:Marco Giorgini
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+version:1.0.0
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+binary:yes
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+_splash:png\splash2.png
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+_font:png\font.png
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+morecontrast:1
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+unsharpen:2
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sharpen:2
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+dither:3
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+rborder:1
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+hborder:8
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+splity:96
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+fileformat:16
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+imgborder:png/border2.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+crt:0
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+build
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+emit_texts:0
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+emit_headers:0
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+include:stdlib.hjt
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+normalobj
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+beerbarrel
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a @barrel
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:barrel,beer barrel
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:visible+takeable+listable+empty
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:10
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+4
+needin:$this,$available
+	msg:It's a medium sized barrel. +
+	ifobj:$this,empty
+		msg:Empty.
+	else
+		msg:Full of beer +
+		if:irillisinbarrel
+			msg:spiked with irillis +
+			if:roduminbarrel
+				msg:and rodum
+			endif
+		else
+			if:roduminbarrel
+				msg:spiked with rodum
+			endif
+		endif
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+drop
+4
+needin:$this,$available
+msg:It's not yours to leave around.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+drink
+4
+needin:$this,$available
+ifobj:$this,empty
+	msg:It's empty.
+else
+	if:irillisinbarrel
+		msg:No way.
+	else
+		if:roduminbarrel
+			msg:No way.
+		else
+			msg:You take a sip. Nice.
+		endif		
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+bow
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a @bow
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:5
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A barely functional bow, with some arrows
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+bread
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:some @bread
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:1
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A loaf of stale black @bread
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+eat
+4
+needin:$this,$available
+msg:You don't want to eat now
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+fish
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a dead @fish
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A golden @fish
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+flask
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a @flask
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:visible+takeable+listable+empty
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:2
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+4
+needin:$this,$available
+msg:It's a handy leather flask. +
+ifobj:$this,empty
+	msg:Empty.
+else
+	msg:Full of water.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+fill
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+5
+msg:You need a fountain to fill it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+5
+msg:You need a fountain to fill it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+jacket
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a @jacket
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:4
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+a second-hand uniform @jacket
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+wear
+4
+needin:$this,$available
+set:jacketon
+msg:Done
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+takeoff
+4
+needin:$this,$available
+unset:jacketon
+msg:Done
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+4
+needin:$this,$available
+msg:A second-hand uniform @jacket +
+if:insigniaonjacket
+	msg:with an @insignia on its right shoulder
+else
+	msg:with holes where insignias were
+endif
+if:jacketon
+	msg:You're currently wearing it
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+knife
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:your @knife
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:2
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+It's a sharp hunter's knife. No longer legal to carry in Lyrin-controlled areas.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+drop|hide
+4
+ifobjin:$this,$inventory
+	ifisroom:innroom
+		ifobj:$this,takeable+visible
+		else
+			msg:You can't drop it here. You need to find a safe place to hide it.
+	else
+		msg:You can't drop it here. You need to find a safe place to hide it.
+else
+	msg:You don't have it	
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+5
+needin:$this,$inventory
+ifobj:$that,actor
+	msg:You should be careful about your actions.
+else
+	msg:What for?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+5
+msg:How?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+rabbit
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name: a dead @rabbit
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:5
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A skinny rabbit
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+stone
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a white @stone
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:2
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A kind of rock, lighter than you might expect.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+twine
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name: some @twine
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:2
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+Two arm's length of twine.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+yourself
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:visible
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+4
+msg:You're a young guy, thin, but robust and quick. Your father was a Romir farmer, and your mother a Lyrin gypsy, and, after the invasion, that put you in a peculiar position.
+if:jacketon
+	msg:You're wearing a uniform jacket
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startin:$everywhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+smallobj
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+pendant
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a @pendant
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+It's a metallic moon-shaped @pendant. Your guild secret recognition object.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+drop
+4
+ifobjin:$this,$inventory
+	ifisroom:innroom
+		ifobj:$this,takeable+visible
+		else
+			msg:You can't drop it here. You need to find a safe place to hide it.
+	else
+		msg:You can't drop it here. You need to find a safe place to hide it.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+show
+4
+needin:$this,$available
+msg:You should be careful who you show it to.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+roomkey
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a @key
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:key,room key
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A room key with the number seven carved into it.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+pencil
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name: a @pencil
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+Some carbon inside a hollow stick.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+irillis
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:some @irillis
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A small red plant with with flowers.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+put
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:beerbarrel
+5
+ifobjin:$this,$inventory
+	ifobjin:beerbarrel,$inventory
+		ifobj:beerbarrel,empty
+			msg:You should fill it with beer before that.
+		else
+			put:irillis,$nowhere
+			set:irillisinbarrel
+			msg:Done
+		endif
+	else
+		msg:You don't have any barrel.
+else
+	msg:You don't have any it.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+5
+needin:$this,$available
+msg:Why?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+rodum
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:some @rodum
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A thin brown plant, with small leaves.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+put
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:beerbarrel
+5
+ifobjin:$this,$inventory
+	ifobjin:beerbarrel,$inventory
+		ifobj:beerbarrel,empty
+			msg:You should fill it with beer before that.
+		else
+			put:rodum,$nowhere
+			set:roduminbarrel
+			msg:Done
+		endif
+	else
+		msg:You don't have any barrel.
+else
+	msg:You don't have any it.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+5
+needin:$this,$available
+msg:Why?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+baryl
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:some @baryl
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A reddish plant with berries.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+eat
+4
+ifobjin:$this,$inventory
+	put:baryl,$nowhere
+	msg:Done
+	set:baryleaten
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+map
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a @map
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+It's a map of the forests around Nesterin with red marks and some traced path.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use|read
+4
+needin:$this,$available
+ifisroom:darkpath
+	msg: On the map you see a path leading from here to a mark, +
+	msg:going southeast.
+	set:knowdarkpathroad
+else
+	ifisroom:betweenpath
+		msg: On the map you see a path leading from here to a mark, +
+		msg:going northeast.
+		set:knowruinsroad
+	else
+		msg:This map doesn't seem useful here
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+insignia
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:an @insignia
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A small @insignia with a golden symbol
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use|put
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:jacket
+5
+ifobjin:jacket,$inventory
+	if:!insigniaonjacket
+		set:insigniaonjacket
+		msg:Done
+	else
+		msg:You already have it there
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+show
+4
+msg:Showing someone a detached insignia isn't a wise idea
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+eyes
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name: Erik's @eyes
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+coin
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a @coin
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:0
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A shiny ancient silver @coin, with a pentagon on it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ring
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a @ring
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A beautiful old gold ring
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+plate
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a silverish @plate
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.weight:2
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+4
+needin:$this,$available
+msg:It's a slab of silvery material. It's ductible, light and incredibly strong. It's Lyrin's special metal, and now you've found how to have it!
+msg:Once your Guild knows about it, they will send people here to study the process and make experiments. The Resistance might actually have \ya chance to fight back\w!
+set:materialwin
+if:summoningstopped
+	msg:You think it might be time to go back home
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+documents
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Erik's @documents
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+read|search
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:summoning
+5
+needin:$this,$available
+msg:"The Lyrins want to destroy us by summoning an Elder God here. I've discovered that he can only be summoned once every seven years. If we summon him before them and then banish him, they will not be able to try again before then. But I still need to find out the exact ritual, and I need his name."
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:lyrin
+5
+needin:$this,$available
+msg:"Lyrin are not Lyrin. Our enemies are creatures pretending to be them. Extracting the silver, our people allowed them to enter."
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:witch
+5
+needin:$this,$available
+msg:"I still didn't find out who the Witch is, but she's responsible for all the current situation"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:sacred
+5
+needin:$this,$available
+msg:"I can't use their new site in the mines. But I've found there's a forgotten Lyrin temple north of town"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+5
+needin:$this,$available
+msg:They seem to be Erik's notebook missing pages
+msg:He wrote that he wanted to obtain info about the production of the metal Lyrins use for weapon and armour, and to try to block their resources
+msg:But that there's a bigger and imminent danger, a @summoning
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+5
+needin:$this,$available
+msg:You cannot find anything about that
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+4
+needin:$this,$available
+msg:They seem to be Erik's notebook missing pages
+msg:He wrote that he wanted to obtain info about the production of the metal Lyrins use for weapon and armour, and to try to block their resources
+msg:But that there's a bigger and imminent danger, a @summoning
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+eriknotebook
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a @notebook
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:notebook,erik notebook
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x|read
+4
+needin:$this,$available
+if:!fulllayout
+	msg:It's a torn notebook, with several missing pages. And what's left is written in a sort of code that you read
+	msg:On one page there's an incomplete layout
+	ifisroom:bankssquare
+		if:layoutseen
+			msg:Mmh... there's a serious resemblance to what's on the statue
+			ifobjin:pencil,$inventory
+				msg:You used the pencil to copy what was missing of notebook page, and now it's identical
+				set:fulllayout
+			else
+				msg:You could fix the notebook scheme, if you'd have something to write
+			endif
+		endif
+	endif
+else
+	ifisroom:minetunnel
+		msg:The layout you copied from the statue has symbols similar to crossroads marking. It seems that from where you are you need to go southeast to reach the central point
+		set:solvedmaze
+	else
+		msg:On one page there's a layout with dots and markings you copied from a statue
+if:knowdemonname
+	if:!pagetaken
+		msg:On the bottom of a page you wrote "@Arkylzoth"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+page
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a torn @page
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+A torn page with spells for summoning and banishing Arkylzoth
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+go
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:nesterin
+3
+ifisroom:house
+	goto:mainsquare
+endif
+ifisroom:path
+	goto:mainsquare
+endif
+ifisroom:darkpath
+	goto:mainsquare
+endif
+ifisroom:mineroad
+	goto:southtownentrance
+endif
+ifisroom:camp
+	goto:southtownentrance
+endif
+ifisroom:ruins
+	goto:northtownentrance
+endif
+ifisroom:forestpond
+	goto:northtownentrance
+endif
+ifisroom:betweenpath
+	goto:northtownentrance
+endif
+ifisroom:mountainpath
+	goto:northtownentrance
+endif
+ifisroom:fall
+	goto:northtownentrance
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+genericverb
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attack
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+3
+msg:Violence isn't wise, with so many enemies nearby
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+3
+ifobj:$this,actor+visible
+	msg:Too risky.
+else
+	ifobjin:$this,$available
+		msg:What?
+	else
+		msg:You don't see that here	
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+capture
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:capture,hunt
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+carve
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+cast
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+copy
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+cut
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+drink
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+eat
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+exit
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+fill
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+hide
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+hunt
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+insert
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+kill
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+3
+msg:Violence isn't wise, with so many enemies nearby
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+3
+ifobj:$this,actor+visible
+	msg:Too risky.
+else
+	ifobjin:$this,$available
+		msg:What?
+	else
+		msg:You don't see that here	
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+leave
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+move
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+read
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+search
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+throw
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+wear
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+topics
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+erik
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+eryan
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+nesterin
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+spell
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+summoning
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+witch
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+actor
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+aki
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+He's a pale old man, wearing dirty clothes
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:old|man
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+startat:$nowhere
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+talk
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+5
+ifobjin:$this,mainsquare
+	if:oldmandrank
+		msg:"Sorry, I'm still to weak to talk"
+	else
+		msg:He seems too weak to talk. He needs food, but he may need water with more urgence
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+5
+ifobjin:$this,mainsquare
+	msg:"Do you need help?", you ask the old man
+	msg:He looks at you, shaking his head. But it's evident he's in a bad shape.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ask
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:eryan|wife
+5
+ifobjin:$this,mainsquare
+	if:oldmandrank
+		msg:My wife, Eryan, she was the school teacher... I'll see her again soon
+	else
+		msg:He seems too weak to talk. He needs food, but he may need water with more urgence
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:erik
+5
+ifobjin:$this,mainsquare
+	if:oldmandrank
+		msg:"Yes, I know him," he says, "Erik sometimes worked with my wife at local school"
+		msg:"Where is he?" you ask him.
+		if:oldmaneat
+			msg:"One day, Lyrins arrested me and accused me of murder. They tortured me, and then they said they'd kill my wife too if I didn't give them the names of other rebels. I don't know anything about rebels! so ...I gave them his name"
+			msg:"Why? Where is he now?" you ask him again
+			msg:"I don't know what happened to him after what I said. But I was tortured in a camp just outside the town, so he might be there"
+			set:knowaboutcamp
+			msg:"You're here now. What about your wife?"
+			msg:"Once back I discovered they burned my house. I couldn't find her body. Probably they took her too. Now I'm here waiting to die"
+			if:!ringgiven
+				msg:Then, after a pause, added: "This is the only thing I found in the rubble. My mother's gold @ring. Take it. You're the only one who helped me, and I want to repay you"
+				msg:You try to say no, but he insists, so you finally accept
+				put:ring,$inventory
+				set:ringgiven
+			endif
+		else
+			msg:He's too weak to talk more
+		endif
+	else
+		msg:He seems too weak to talk. He needs food, but he may need water with more urgence
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+5
+ifobjin:$this,mainsquare
+	if:oldmandrank
+		msg:"Sorry, I'm too weak to chat"
+	else
+		msg:He seems too weak to talk. He needs food, but he may need water with more urgence
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+give
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:flask
+5
+needin:$this,mainsquare
+needin:flask,$available
+ifis:flask,empty
+	msg:The flask is empty.
+else
+	msg:You give the flask to the old man and he starts to drink it slowly.
+	msg:As soon as he has emptied it, he seems to feel a little better.
+	set:oldmandrank
+	put:flask,$nowhere
+	msg:"Thanks", he says.
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:bread
+5
+needin:$this,mainsquare
+needin:flask,$available
+
+if:oldmandrank
+	msg:You give him your bread. He starts to cry as he eats it.
+	put:bread,$nowhere
+	set:oldmaneat
+	msg:"Thanks", he says.
+else
+	msg:He needs to drink first
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+room
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+$start
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\idleimage.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+onfirst
+3
+clear
+msg:\c##SUBTITLE##
+	\c
+	\cCode+Story: \y##AUTHOR##
+	\c
+	\c\gVersion: ##VERSION##
+waitkey
+clear
+msg:You are the youngest member of the Garrot Guild, or what is left of it. Most of those loyal to the Duke were killed after the Lyrin invasion.
+msg:But your master's research did not stop. And it is more important than ever.
+msg:You know little about it. But you know how to move and blend in, thanks in part to your mixed race.
+msg:So you were not surprised when you were sent to Nesterin, one of the settlements close to the old border, to get hold of Erik's report, whatever it might contain.
+//msg:You have long since lost hope of a breakthrough that would give the small resistance a chance of victory, but not the will to fight back.
+waitkey
+
+setvar:score,0
+setvar:maxweight,5
+put:knife,$inventory
+put:pendant,$inventory
+setcount:weight,$inventory,takeable+large
+
+goto:mainsquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+endgame
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\endgame.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+onfirst
+3
+clear
+msg:With the summoning prevented, and the secret about Lyrin's material discovered, your people finally have a chance to change the fate of the war. It won't be easy, or short, but it will be possible.
+msg:A hint of a smile cuts the sharp line of your face. It is time to return.
+msg:\yYou won!\w
+
+msg:Do you want to restart? (Y/N)
+getkey
+ifkey:Y
+	start
+else
+	quit
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+town
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+mainsquare
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Main Square
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\new_mainsquare.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+_image:png\nvillage3.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+imagedesc
+3
+Fantasy Medieval main square with a fountain on the center, benches all around, rich and elegant buildings and shops, an Inn visible on the left
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+onfirst
+3
+clear
+msg: You arrive in this remote town at dawn. 
+//msg:There aren't many people here, and every face you see bears the scars of oppression.
+msg: Your goal now is to find Erik. It's not as easy as it sounds, considering you've never met him. All you know about him is that he's a northern man with black hair and green eyes, who arrived here six months ago.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+Even if Nesterin is no longer an important silver mining town, its main square is still impressive. Many of the shops seem to have gone out of business, but the buildings still look rich and elegant, and around the @fountain some @people are chatting quietly on the @benches. The southern gate can be seen from here. There's a inn to the east, and large roads to the west and north seem to lead further into the town.
+
+{fountain: The fountain is small but elegant, although you can see that it is not in perfect condition.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+in Nesterin Main square
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[east,south,west,north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+benches
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:bench|benches
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:The benches are wooden, and although old, in good condition.
+if:manunderthebench
+	msg:You notice a pale and thin old @man, resting under one of them. He seems starving.
+	put:aki,$here
+	set:discoveredman
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sceneryactor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+people
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+Most of the people around are women or elderly men
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+talk|ask
+6
+msg:They seem afraid, and not willing to interact with you.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+goto:innhall
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+goto:southtownentrance
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+goto:bankssquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+goto:market
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+go|enter
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:inn
+5
+goto:innhall
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+give
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:flask
+5
+needin:$this,$available
+withobj:aki
+	ifobjin:aki,mainsquare
+		ifis:flask,empty
+			msg:The flask is empty.
+		else
+			msg:You give the flask to the old man and he starts to drink it slowly.
+			msg:As soon as he has emptied it, he seems to feel a little better.
+			set:oldmandrank
+			put:flask,$nowhere
+			msg:"Thanks", he says.
+		endif
+	endif
+endwith
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:bread
+5
+needin:$this,$available
+withobj:aki
+	ifobjin:aki,mainsquare
+		if:oldmandrank
+			msg:You give him your bread. He starts to cry as he eats it.
+			set:oldmaneat
+			put:bread,$nowhere
+			msg:"Thanks", he says.
+		else
+			msg:He needs to drink first
+		endif
+	endif
+endwith
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:beerbarrel
+5
+needin:$this,$available
+withobj:aki
+	ifobjin:aki,mainsquare
+		msg:You can't give him Lyrin's beer
+	endif
+endwith
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+fill|use
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:flask
+5
+needin:$this,$available
+withobj:fountain
+	msg:As you start to fill your flask, you realise that the water coming out of the fountain is not perfectly clear and smells rotten.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+bankssquare
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Banks Square
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\new_bs.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+_image:png\statuesquare.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+imagedesc
+3
+an amazing Fantasy Medieval main square with a white statue of a man holding a strange instrument, all around rich and elegant stone buildings
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+Although not as large as the main square, it is even more amazing. Every @building around it is made of stone, and there's a huge white @statue in the centre, representing a man holding a strange @instrument.
+If you go south from here, you can head towards the entrance to the city, while if you go east, you'll reach the governor's quarters.
+{buildings:Most of the buildings in this place are banks, or loan offices.}
+{statue:The statue is very tall and rests on a massive square base covered with @inscriptions. The man depicted is supposed to be one of the founders of the city.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[east,south]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+buildings
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:building,buildings
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+instrument
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+msg:You can't take it, it's a piece of the statue
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:It is an elongated object. You don't know what it is and you've never seen one similar before.
+msg:From where you are you can see some embossed symbols, including a large triangle
+set:seeninstrument
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+inscriptions
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+The inscriptions tell the heroic story of the first settlers, who fought nature and adversity. Above those writings there is a huge, convoluted @layout whose meaning is beyond your comprehension.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+layout
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:It seems to be a kind of labyrinth, with a series of dots and markings leading to the central part. It's quite complex. Impossible to remember.
+set:layoutseen
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+copy
+6
+needin:eriknotebook,$inventory
+needin:pencil,$inventory
+if:!fulllayout
+	msg:You used the pencil to copy what was missing of notebook page, and now it's identical
+	set:fulllayout
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+goto:mainsquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+ifobjin:knife,$inventory
+	if:midday
+		if:!domidday
+			msg:You esitate, but seeing that there's just a single Lyrin guard, now, resting near the prison, you decide to proceed even if armed.
+			waitkey
+			set:domidday
+		endif
+		goto:governorsquare
+	else
+		msg:A little further on you see several Lyrin guards and you know that if they find you with the hunting knife you will be in trouble. Better hide it somewhere safe if you want to move around.
+else
+	goto:governorsquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+governorsquare
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Governor's Square
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\new_governorsquare.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+This beautiful square with a huge @fountain leads to the Governor's Palace. Even if his role after the invasion is just to follow orders and collect taxes, the invaders didn't remove him, but they did add @guards from their ranks. 
+To the east is the @prison, while to the west is the square with the statue. From here you can also see in the distance the Northern gate.
+
+{prison: An uninviting stone building with small windows and a metal front door}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[west,north,east
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sceneryactor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+guards
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:guard,guards
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+if:midday
+	msg:There's just a young Lyrin guard now
+else
+	msg:You see several Lyrin guards, scary, fully armed, and dangerous
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+talk|ask
+6
+msg:You don't think it's a wise thing to do
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+coins
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+Most are bronze coins, but there are also some silver ones
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+ifobjin:coin,$inventory
+	msg:It's too risky to get another one this way
+else
+	setvar:tmp,0
+	if:jacketon
+		ifobjin:jacket,$inventory
+			setvar:tmp,1
+		endif
+	endif
+	if:tmp=1
+		msg:One of the guards turns around and observes you. You salute him by bowing your head
+		ifobjin:roomkey,$inventory
+			msg:You reach into the water, and take a silver coin. When he shouts at you, you turn around showing your room key. "I was recovering this"
+			msg:He grunts. But then he leaves you alone
+			put:coin,$inventory
+		else
+			msg:Even in uniform, you don't dare to collect coins with him watching. You need an excuse to reach into the water
+	else
+		msg:"What do you think to do?", shouts a Lyrin guard, approaching with sword in hand
+		msg:You stop and kneel, saying you are just a foolish stranger, curious about the shining objects inside the fountain
+		msg:He lifts you by the weight and pokes you in the face. "Go away, beggar."
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+fountain
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:This is probably the largest and most beautiful fountain you've ever seen
+msg:You notice that there are several small @coins inside it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+goto:bankssquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+if:!jacketon		
+	msg:Without a good excuse, entering a prison run by Lyrins seems foolish
+else
+	if:!enteredprison
+		msg:It's risky, but wearing a uniform you might dare to go in and look around
+		waitkey
+		set:enteredprison
+	endif
+	goto:prison
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+goto:northtownentrance
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+fill|use
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:flask
+5
+needin:$this,$available
+withobj:fountain
+	unsetattr:$this,empty
+	msg:Done
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+prison
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Prison
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\new_prison.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+imagedesc
+3
+main large room of a fantasy medieval prison, with a reception desk, a barred window, the entrance gate and the door to the underground cells. It's dark and dirty. 
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+The sense of oppression here is palpable. A cold, grey, large room, made all the more unsettling by the screams and the smell.
+The exit door is to the west, while to the east there's a reception desk with a large guard behind it. A larger door lies to the south.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+inside the prison
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[south,west]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+room
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+door
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+open
+6
+setvar:tmp,0
+if:jacketon
+	addvar:tmp,1
+endif
+if:insigniaonjacket
+	addvar:tmp,1
+endif
+if:tmp=2
+	goto:cell
+else
+	msg:"Hey! Who are you? Where are you going? Guards!" he shouts. You run out, faster than the light.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desk
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+actor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+prisonguard
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a prison @guard
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:guard
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+talk
+6
+setvar:tmp,0
+if:jacketon
+	addvar:tmp,1
+endif
+if:insigniaonjacket
+	addvar:tmp,1
+endif
+msg:"What do you want?", he inquire.
+msg:"I'm here to see a prisoner", you answer.
+if:tmp=2
+	msg:"Which one?", he asks
+	if:eryanname
+		msg:"Eryan", you say
+		msg:He looks at you then annoyedly points you in the direction of the cells, to the south, and invites you to hurry up
+		set:allowedtoenter
+	else
+		msg:"Erik", you say
+		msg:"There is no one here by that name"
+	endif
+else
+	msg:He looks at you and points to your uniform. 
+	msg:"Only officers are allowed to approach prisoners, how many times do I have to tell you people? Get out before I put you behind bars too."	
+	waitkey
+	goto:governorsquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+He's ugly and menacing
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+goto:governorsquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+enter|go
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:cell
+5
+if:allowedtoenter
+	goto:cell
+else
+	msg:"Hey! Who are you?" he shouts
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+if:allowedtoenter
+	goto:cell
+else
+	msg:"Hey! Nobody enters without my consent!" he shouts
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+cell
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Prison cell
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\cell.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+In front of you is a small cell where an elderly @woman stares at you with fear
+{woman:She looks frightened but not defeated}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+actor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+woman
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+talk
+6
+msg:"Who are you?", she says. "A friend?", you reply.
+msg:"I do not recommend it. All my friends are probably dead"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ask
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:eryan
+7
+msg:Yes, that's my name
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:erik
+7
+if:womansawpendant
+	if:!alreadysaid
+		msg:"Erik told me he left notes about his work to you", you start. "Erik? Where..."
+		msg:"Dead. I need to know what he wanted to do"
+		msg:"He didn't give me details, but he said we were close to a major breakthrough." 
+		set:alreadysaid
+	endif
+	msg:"I was able to hide his documents before being arrested. They are hidden in the school library. Behind a book in the @geometry section."
+else
+	msg:"Who are you?"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+msg:"Don't want to talk about that"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+show
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:pendant
+7
+ifobjin:pendant,$inventory
+	msg:"One of us, them."
+	set:womansawpendant
+else
+	msg:You don't have it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+goto:prison
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+show
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:pendant
+5
+ifobjin:pendant,$inventory
+	msg:"One of Erik's people, then."
+	set:womansawpendant
+else
+	msg:You don't have it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+market
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Market
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+_image:png\nmarket.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\new_marketsquare.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+The market square is relatively small, with stalls selling a variety of @food and @clothes, but few customers seem to be able to buy anything. From here it's possible to walk to the entrance of the town, which lies to the east. To the north, there's a @building that catches your eye because of its boarded-up door.
+
+{building: It's a big building, with boarded-up doors.}
+
+{food: The food on display is expensive and looks mediocre. There are lots of vegetables, some cheese and herbs, but very little @meat}
+
+{clothes: The clothes are well made, although they look second-hand. There are also a few elegant garments and a @uniform too}
+
+{uniform: Uniform is different from the one you've seen around on local guards. But it's close.}
+
+{meat: It's mainly pork, but there's also some small wild animal.}
+
+{foodseller: The food seller is a blond woman, middle-aged. She seems nice.}
+
+{foodseller.talk: "Hello young boy, do you want something?", she asks smiling, but the smile vanishes as soon as you admit you've no money.}
+
+{clothessalesman: The clothes saleswoman is an old lady, with a sad face.}
+
+{clothessalesman.talk: "Hello, is there anything you like?", she asks, without too many expectations.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+at the market
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[east,north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+actor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+foodseller
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a food @seller
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:seller
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ask
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:meat
+7
+msg:You ask why there's a meat shortage, and the vendor answers vaguely. "Problems with @suppliers", she says
+set:meatneeded
+if:rabbitsseen
+	msg:"I've seen rabbits in the forest", you say
+	msg:"Well, if you catch some, I could buy them", she affirms
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:erik
+7
+msg:"I don't know anyone by that name"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:school
+7
+msg:"They closed it some time ago. Not the worst thing they did." she said.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:food|cheese|herbs
+7
+msg:"Do you have any money?"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:irillis
+7
+msg:"Nice plants with a lot of properties. Great with roasted meat!", she says, "but I don't have any"
+if:!knowirillis
+	msg:You ask her about how it looks and she gives you a good description.
+	set:knowirillis
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:rodum
+7
+msg:"Oh, I've heard about it, but I've never seen it, I'm sorry."
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:suppliers
+7
+msg:"Lyrins took all our weapons, including hunting ones. And they took almost every young man away. And that without mentioning the forest @witch"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:witch
+7
+msg:"It's just a legend... until it's not. Few people go happily in the Southern forest in the last years", she said.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:rabbits
+7
+msg:"I've seen rabbits in the forest", you say
+msg:"Well, if you catch some, I could buy them", she affirms
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+msg:"Sorry, it's a complicated time, I don't feel like talking, especially if you're not here to buy".
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+give|show
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:rabbit
+7
+if:rabbitgiven
+	msg:"I still have the other one", she says
+else
+	ifobjin:rabbit,$inventory
+		msg:"Not the best rabbit I've ever seen, but a nice one," she says, "I'll buy it."
+		msg:She takes your rabbit, and start to clean it.
+		msg:"What about my money?" 
+		msg:"I'll pay you when I sell it," she said, "but I can give you a bit of @bread up front.
+		put:bread,$inventory
+		put:rabbit,$nowhere
+		set:rabbitgiven
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+clothessalesman
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a clothes @saleswoman
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:saleswoman
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ask
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:witch
+7
+msg:"My mom sweared she saw her, when she was a kid. She was terrified."
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:school
+7
+msg:"It's our school," she said, "or I should say it was. It's been closed by them one month ago."
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:erik
+7
+msg:"I don't know anyone by that name"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:clothes
+7
+msg:"if you find something you like I will try to give you a good price"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:uniform
+7
+ifobjin:jacket,$inventory
+	msg:You already have it
+else
+	msg:"It's old. I've got it because a guard gave it to me to exchange it with newer shoes."
+	msg:"Do you want it? I could sell it for 2 coins.", he concludes.
+	set:wantjacket
+	if:!havemoney
+		msg:"No money with me, sorry.", you reply.
+	else
+		ifobjin:coin,$inventory
+			msg:You show him your coin
+			msg:"Mmh... I haven't seen any like this in a long time. It's out-of-course money now. And, anyway, it's just ONE"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+msg:"Sorry, it's a complicated time, I don't feel like talking, especially if you're not here to buy".
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+give|show
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:ring
+7
+if:wantjacket
+	ifobjin:ring,$inventory
+		msg:"For the uniform?", she asks, and when you nod he makes the ring disappear in her pocket. 
+		msg:"But I'm only giving you the @jacket for this little ring. Many of the local guards use their trousers anyway, so you can do the same"
+		put:ring,$nowhere
+		put:jacket,$inventory
+	else
+		msg:You don't have it
+	endif
+else
+	msg:Why?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+goto:mainsquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+msg:You walk a hundred meters north and reach an elegant two-storey building. It's a @school, but the main door has been boarded up and wooden panels cover some of the windows. It's impossible to enter, so after a moment, you go back.
+set:schoolseenfromnearby
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+nw
+4
+if:schoolalleyseen
+	goto:schoolalley
+else
+	msg:You can't go that way
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+give|show
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:ring
+5
+withobj:market.clothessalesman
+	if:wantjacket
+		ifobjin:ring,$inventory
+			msg:"For the uniform?", she asks, and when you nod he makes the ring disappear in her pocket. 
+			msg:"But I'm only giving you the @jacket for this little ring. Many of the local guards use their trousers anyway, so you can do the same"
+			put:ring,$nowhere
+			put:jacket,$inventory
+		else
+			msg:You don't have it
+		endif
+	else
+		msg:Why?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:rabbit
+5
+withobj:market.foodseller
+	ifobjin:rabbit,$inventory
+		msg:"Not the best rabbit I've ever seen, but a nice one," she says, "I'll buy it."
+		msg:She takes your rabbit, and start to clean it.
+		msg:"What about my money?" 
+		msg:"I'll pay you when I sell it," she said, "but I can give you a bit of @bread up front.
+		put:bread,$inventory
+		put:rabbit,$nowhere
+		set:rabbitgiven
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+uniform
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+jacket
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+school
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:There's no a way in through the front door.
+if:schoolseenfromnearby  
+	msg:On the left, to the northwest, you noticed a small alley. Wonder if there's a second, less blocked door there. 
+	set:schoolalleyseen
+else
+	msg:You wonder if there's another way to enter that you can't see from here.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+school
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:School room
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\schoolroom2.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+The room you're in is full of desks. There still are writing @material on them. The teacher's desk is partially broken, and there's blood all over it. Some @cabinets were piled up on the west side as if to block access to @stairs to the upper floor. To the south is the boarded entrance door and the windows facing the square. To the east the smaller door you entered from.
+
+{cabinets: They're several and heavy.}
+
+{stairs: ?cabinetsbypassed * With some cabinets moved, they're now reachable. * ?> *They're behind the cabinets, so unreachable.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+inside a school room
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[east,south,up]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+goto:schoolalley
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+u
+4
+if:cabinetsbypassed
+	goto:schoollibrary
+else
+	msg:You cannot reach the stairs. Cabinets block them
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+msg:The main entrance is boarded up. You can't leave from it.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+leave|exit
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:school
+5
+goto:schoolalley
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+cabinets
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+open|search
+6
+if:!twineseen
+	msg:Inside one of them you find some @twine.
+	put:twine,$here
+	set:twineseen
+else
+	msg:You open some more, but you don't find anything useful
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+push|pull|move
+6
+if:cabinetsbypassed
+	msg:You already moved them enough
+else
+	if:cookhelps
+		msg:You start trying to move them, when the cook arrives. 
+		msg:With his help, even trying to do less possible noise, you're able to free the stairs up in less than an hour.
+		msg:Once finished, he left without a word.
+		set:cabinetsbypassed
+	else
+		msg:They're heavy, and too many. You tried, but you quickly undertand that you can't move them and free the stairs without some serious help.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+material
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:There are used notebooks, empty inkwells, crayons and more.
+msg:They are almost all broken
+if:!pencilfound
+	msg: but at least one @pencil seems still intact
+	put:pencil,$here
+	set:pencilfound
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+schoollibrary
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:School Library
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\schoollibrary2.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+This is one of the largest libraries you've ever seen. Some of the @books have been thrown on the @floor and torn up, but most of them are still in their place. And some look @ancient.
+{floor: It's full of dry blood. Someone must be killed or seriously hurt here}
+{books: They are too many to check them all. However, in the different library sections there are indications of the subjects covered: @botany, @geography, @history and more}
+{history:You find a book with the story of this city. It talks about the massacre of the indigenous people by the founding fathers of Nesterin. There are bloody hands behind the riches of this region}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+inside the School Library
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[down]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+geography
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x|read|search
+6
+msg:Information about the lands around Nesterin
+msg:Reading it you discover that there's a mining area also on the other side of Lyrin's border
+if:!mapfound
+	msg: A @map falls out of a book
+	set:mapfound
+	put:map,$here
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ancient
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:Of all of them, one book stands out above the others, because they seem to have tried to burn it, without much success. It looks like a @grimoire.
+if:!grimoireseen
+	put:grimoire,$here
+	set:grimoireseen
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+botany
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:Botany section is the largest one, and it has any information even about local plants. You could search something, if you need it.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+search|read
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:irillis
+7
+msg:Illiris is said to be a delicious edible spice, but that it get dangerous when infused with @rodum, as its sedative properties can lead to a deep sleep from which it is impossible to wake.
+set:knowirillis
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:rodum
+7
+msg:It appears to be a type of mild hallucinogen, but can become dangerous when combined with irillis or alcohol.
+msg:There's a clear illustration of this plant.
+set:knowrodum
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:baryl
+7
+msg:Its berries are detoxifying and seem to help in cases of intoxication or poisons
+msg:There's a clear illustration of this plant.
+set:knowbaryl
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:berries
+7
+msg:You are looking for a plant with berries. It takes you almost an hour, but at the end you recognise the plant you saw outside the witch's house in a drawing: it's called @baryl.
+set:knowberriesarebaryl
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+geometry 
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x|search
+6
+ifobjin:documents,$nowhere
+	put:documents,$here
+	msg:You found some @documents hidden behind books.
+else
+	msg:There's nothing else interesting 
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+grimoire
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+search|read
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:banishing
+7
+msg:Rituals differ depending on who you want to act. You need to look for a specific name
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:summoning
+7
+msg:Rituals differ depending on who you want to act. You need to look for a specific name
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:arkylzoth
+7
+msg:It's more god than demon, but will submit to proper ritual, if performed in a @sacred place
+msg:Those who wish to force Arkylzoth to do their bidding must sacrifice their own eyes and blood
+msg:Blood sacrifice seems symbolic, but both eyes of a willing summoner must be carved out and offered
+if:!pagetaken
+	msg:On a @page, there's spell needed to evoke it. There, there's also the banishing spell
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+7
+msg:It speaks of potions, summoning demons and human sacrifices
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+msg:You don't find anything interesting about it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:page
+7
+if:pagetaken
+	msg:You already have it
+else
+	put:page,$inventory
+	set:pagetaken
+	msg:Taken
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:spell
+7
+if:pagetaken
+	msg:You already have it
+else
+	put:page,$inventory
+	set:pagetaken
+	msg:Taken
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+7
+msg:This book seems too ancient and ruined to move
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:It is a partially burnt book of magic attributed to the Witch of the Woods
+set:grimoireseen
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+d
+4
+goto:school
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+schoolalley
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:School alley
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\schoolalley.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+You're in a small alley near the school. Every @window along this wall is also blocked. There's a service @door, still boarded up, but it seems less solid than the main entrance.
+
+{window: Every window is blocked by boards.}
+
+{window.pull|push|use: You try to do this, without getting any useful results.}
+
+{door.push: You try to do this, without getting any useful results.}
+
+{window.open: Every window is boarded up.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+in an alley beside the school
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[southeast]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+se
+4
+goto:market
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+if:schoolpanelremoved
+	goto:school
+else
+	msg: You can't go that way
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:knife
+5
+ifobjin:knife,$inventory
+	withobj:schoolalley.door
+		ifnot:schoolpanelremoved
+			msg:Using your knife, and not without effort, you manage to rise and move a panel enough to create an opening.
+			set:schoolpanelremoved
+	endwith
+	withobj:schoolalley.window
+		msg:The window panels are fastened too well
+	endwith
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+door
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+pull
+6
+if:schoolpanelremoved
+	msg:You have already managed to lift a panel.
+else
+	msg:Some panels seem unstable, but you can't remove with with bare hands.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+enter
+6
+if:schoolpanelremoved
+	goto:school
+else
+	msg:How?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:It's a service door +
+if:schoolpanelremoved
+	msg:with now some panel removed.
+else
+	msg:boarded up.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+open
+6
+if:schoolpanelremoved
+	msg: You can't really open it, but you manage to enter through the moved panes.
+	waitkey
+	goto:school
+else
+	msg:The door is boarded up.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:knife
+7
+ifobjin:knife,$inventory
+	withobj:schoolalley.door
+		ifnot:schoolpanelremoved
+			msg:Using your knife, and not without effort, you manage to rise and move a panel enough to create an opening.
+			set:schoolpanelremoved
+	endwith
+	withobj:schoolalley.window
+		msg:The window panels are fastened too well
+	endwith
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+school
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+enter
+6
+if:schoolpanelremoved
+	goto:school
+else
+	msg:How?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+northtownentrance
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Nesterin North gate
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\northentrance2.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[south,north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+at the North entrance
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+In front of you, there's the walled northern exit to Nesterin. From this side, you notice that the forest is nearer and wilder, and the road is less traveled. Here there's no one patrolling.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+if:!erikisdead
+	msg:You don't think Erik left town this way, willingly or not. So you won't go towards Lyrin's border now
+else
+	goto:betweenpath
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+goto:governorsquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+inn
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+innhall
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Inn dining room
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\ntavern.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+It is a tidy and spacious inn, quiet and almost empty. Behind the counter, the @innkeeper, an old frail man, seems to be staring at the wall, with an expression of pain. In front of you, behind the @tables, is a @fireplace. Stairs lead up. This place must have been glorious in the old days.
+
+{fireplace: The fireplace has a few logs burning and the warmth is nice. While you're enjoying it, you notice a small @sign drawn just below the mantelpiece.}
+
+{sign: The sign is too similar to your pendant shape to be a coincidence. Erik was here. * $+signseen}
+
+{owner: He is an old man, and there is probably something wrong with him. He seems to be struggling to move an arm.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+inside the inn
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[west,south,up]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+goto:mainsquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+u
+4
+if:erikroom
+	goto:upcorridor
+else
+	msg:"Hey! Where are you going?", shouts the innkeeper
+	msg:"Rooms are for paying hosts only!"
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+if:allowedinthekitchen
+	goto:kitchen
+else
+	msg:You can't go that way
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+leave|exit
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:inn
+5
+goto:mainsquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+show|give
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:beerbarrel
+5
+withobj:innhall.owner
+	ifobjin:beerbarrel,$inventory
+		ifobj:beerbarrel,empty
+			msg:"I've got a Lyrin barrel to fill"	
+			msg:The innkeeper looks at you in a odd way, then he says to go in the kitchen
+			set:allowedinthekitchen
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:pendant
+5
+withobj:innhall.owner
+	msg:The innkeeper wides his eyes when he sees your pendant. But he says nothing.
+	set:ownersawpendant
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+topics
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+beer
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+"room"
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+actor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+owner
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:innkeeper
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:the @innkeeper
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ask|talk
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:beerbarrel
+7
+ifobjin:beerbarrel,$inventory
+	ifobj:beerbarrel,empty
+		msg:"I've got a Lyrin barrel to fill"	
+		msg:The innkeeper looks at you in a odd way, then he says to go in the kitchen
+		set:allowedinthekitchen
+	else
+		msg:He just look at you without any answer
+else
+	msg:"What?", he asks.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:erik
+7
+msg: "Never heard that name," he said, looking around
+setvar:tmp,0
+if:!erikroom 
+	if:signseen 
+		setvar:tmp,1
+		msg:"I know he was here", you reply staring him in his eyes, "I've seen his sign over there"
+	else
+		if:ownersawpendant
+			setvar:tmp,1
+			msg:"Are you sure?", you insist
+		endif
+	endif
+endif
+if:tmp=1
+	msg: The innkeeper hesitates for a moment, but then he drop a @key on the bar, and moves away, start cleaning a table
+	set:erikroom
+	put:roomkey,$here
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:beer
+7
+msg:"It's a tenth", he said
+msg:You answer by shaking your head
+msg:"That's what I thought", he concluded
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:room
+7
+msg:"It's 5 coins per night", he said
+msg:You answer by shaking your head
+msg:"That's what I thought", he concluded
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:sign
+7
+msg:"What about that scratch?", he replied, daring you to ask more
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:witch
+7
+msg:"It was a local legend, nothing more. Or so I thought when I was younger. Now I'm not so sure about it."
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+7
+msg:"I don't want to sound rude, but I don't want to talk to you", he said, "So, please order or leave"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+msg:"I don't want to sound rude, but I don't want to talk to you", he said, "So, please order or leave"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+show|give
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:beerbarrel
+7
+ifobjin:beerbarrel,$inventory
+	ifobj:beerbarrel,empty
+		msg:"I've got a Lyrin barrel to fill"	
+		msg:The innkeeper looks at you in a odd way, then he says to go in the kitchen
+		set:allowedinthekitchen
+	else
+		msg:He just look at you without any answer
+else
+	msg:He just look at you without any answer
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+kitchen
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+go|enter
+6
+if:allowedinthekitchen
+	goto:kitchen
+else
+	msg:"Hey! Where are you going?", shouts the innkeeper
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+tables
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+if:midday
+	msg:Tables are occupied by loudy Lyrin guards, eating and drinking beer
+else
+	msg:Few customers are drinking beer, and speaking in a low voice
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+upcorridor
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Corridor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\new_upcorridor.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+imagedesc
+3
+a low lit long corridor on the first floor of a fantasy medieval inn, viewed from side view. Clean and tidy, and there are several rooms most of them with solid doors
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+The corridor on the first floor is clean and tidy, and there are several @rooms most of them with solid @doors.The place's mining past when rich merchants slept here during their business travels, is clearly over, but the owner still tries to keep everything as nice as it was.
+
+{rooms: You count eight rooms, the first ones less posh but bigger, the last ones, located on the east side, a bit smaller.}
+
+{doors: On the solid doors there are numbers. The first numbers are on the west side, last ones are on the east side. All the others are in front of you, south.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+on the first floor of the inn
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[down]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+if:!unlockedinnroom
+	msg:You use the key and unlock room seven. Then you enter the room that was Erik's with some trepidation.
+	set:unlockedinnroom
+	waitkey
+endif
+goto:innroom
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+d
+4
+goto:innhall
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+msg:Doors are locked.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+msg:Doors are locked.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+enter
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:room
+5
+if:!unlockedinnroom
+	msg:You use the key and unlock room seven. Then you enter the room that was Erik's with some trepidation.
+	set:unlockedinnroom
+	waitkey
+endif
+goto:innroom
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+rooms
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:room,rooms
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+innroom
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Room
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\new_innroom.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+imagedesc
+3
+a fantasy medieval posh inn room, with a stray bed, a window, a table and some furniture.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+This is a far cry from an ordinary inn room, and now it's probably just a shadow of what it should have been in better days. 
+There are several signs of time on the @furniture, but even the @bed is much better than your master's.
+
+{bed: The bed has a simple straw @mattress but the sheets and pillows are clean and comfortable.}
+{bed.use: Not now.}
+
+{furniture: This room has a @table and a chair. In a corner, there's also a @drawer.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+inside a room
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[west]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+goto:upcorridor
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+leave|exit
+4
+goto:upcorridor
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+table
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:There are papers with numbers, supplies and dates. Probably something about Erik's day-to-day work here.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+drawer
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x|open
+6
+ifobjin:flask,$inventory
+	msg:It's empty.
+else
+	msg:Inside, there's a small leather @flask
+	put:flask,$here
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+mattress
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x|search
+6
+ifobjin:eriknotebook,$inventory
+	msg:You found nothing.
+else
+	msg:Hidden in the staw, there's a torn @notebook. It's in bad condition but it seems to be from Erik.
+	put:eriknotebook,$here
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+kitchen
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Kitchen
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\nkitchen.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+Like everything else, the kitchen is beautiful and well-equipped. It takes a little effort to notice that most of the spice @jars are almost empty. A large @window door lets in daylight.
+
+{jars: Spices seem to be running out. This kitchen needs @supplies.}
+
+{windowdoor.x: From there you can see the main square from a northern angle. * You notice that there's something odd under a @bench. }
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+in the Inn's kitchen
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[south]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+goto:innhall
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+leave|exit
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:kitchen
+5
+goto:innhall
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+show|give
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:beerbarrel
+5
+ifobjin:beerbarrel,$inventory
+	ifobj:beerbarrel,empty
+		msg:"Ah. They finished another one. I'll take care of it."
+		msg:The cook takes the barrel, and fills it. 
+		put:beerbarrel,$here
+		msg:"Here you are." he says once finished.
+		unsetattr:beerbarrel,empty
+		set:cookfillbarrel
+	else
+		msg:"I've already filled it"
+else
+	msg:The cook smiles but doesn't say anything.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:irillis
+5
+ifobjin:irillis,$inventory
+	msg:"Oh, thank you!" says the cook, "I really appreciate that!"
+	put:irillis,$nowhere
+	set:cookownsone
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:pendant
+5
+msg:"You're one of Erik's folks then.", the cook says, "Good to know"
+set:cooksawpendant
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+actor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+cook
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:the @cook
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+A fat old man, with a patch on one eye, but with a smiling face. He seems strong.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ask|talk
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:beerbarrel
+7
+ifobjin:beerbarrel,$inventory
+	ifobj:beerbarrel,empty
+		msg:"Ah. They finished another one. I'll take care of it."
+		msg:The cook takes the barrel, and fills it. 
+		msg:"Here you are." he says once finished.
+		unsetattr:beerbarrel,empty
+		set:cookfillbarrel
+	else
+		msg:"I've filled it. You can take it to those bastards now."
+else
+	msg:The cook smiles but doesn't say anything.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:erik
+7
+if:!cooksawpendant
+	msg:"I don't know you, and these are dangerous times to talk too much."
+else
+	msg:"He helped us, the few who could still try, to secretly organise against the Lyrin," he says. "He was a good man."
+	msg:"Was?", you ask. 
+	msg:"Someone denounced him. They came at night and took him away. I don't know where. Maybe in our prison, or somewhere else. But usually no one returns."
+	set:cookerik
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:eryan
+7
+msg:She's our school teacher, and one of us. A friend told me that was arrested soon after Erik
+set:eryaninprison
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:jars
+7
+msg:"Yes, I know. I need supplies.", he says. 
+msg:"But the guy that sold me these @spices was taken away and I'm not able to collect them by myself."
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:supplies
+7
+msg:"Yes, I know. I need supplies.", he says. 
+msg:"But the guy that sold me these @spices was taken away and I'm not able to collect them by myself."
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:spices
+7
+msg:"Well, I need many, but the most important one for me is @irillis.", the cook says.
+msg:"I use it mostly for meat, but it has other uses as well. Can you collect some for me?"
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:irillis
+7
+msg:"How does it look? Uh! It's red and... I'm sorry, I'm not very good in describing plants."
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:help
+7
+if:cabinetsbypassed
+	msg:You don't need any more help from him
+else
+	if:cooksawpendant
+		msg:"You're Erik's friend... so, ok, I'm in"
+		msg:"Go there and start moving what you can. I'll reach you as soon as I finish here"
+		set:cookhelps
+	else
+		msg:"Help you move the school cabinets? You mean risk my life! School's entrance is forbidden now" he says
+		msg:"I don't know you, and it's very dangerous"
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:school
+7
+if:cabinetsbypassed
+	msg:You don't need any more help from him
+else
+	if:cookerik
+		msg:"You're Erik's friend... so, ok, I'm in"
+		msg:"Go there and start moving what you can. I'll reach you as soon as I finish here"
+		set:cookhelps
+	else
+		msg:"Help you move the school cabinets? You mean risk my life! School's entrance is forbidden now" he says
+		msg:"I don't know you, and it's very dangerous"
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:school.cabinets
+7
+if:cabinetsbypassed
+	msg:You don't need any more help from him
+else
+	if:cookerik
+		msg:"You're Erik's friend... so, ok, I'm in"
+		msg:"Go there and start moving what you can. I'll reach you as soon as I finish here"
+		set:cookhelps
+	else
+		msg:"Help you move the school cabinets? You mean risk my life! School's entrance is forbidden now" he says
+		msg:"I don't know you, and it's very dangerous"
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+msg:The cook smiles but doesn't say anything.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+windowdoor
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:door,window,window door
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+jars
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:jar,jars
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+kitchen
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+bench
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:Looking carefully, you notice someone's lying under a bench. He's half-hidden on the ground, covered by a dirty sack.
+set:manunderthebench
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+spices
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+supplies
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+forest
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+southtownentrance
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Nesterin South entrance
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\ntownentrance.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+You're just outside the walled @entrance to Nesterin.
+From here you can see the southern @road that brought you here, and a similarly large one heading north-west.
+All around is a deep @forest, with several small @paths, the most beaten to the east.
+{entrance:The entrance is open. It does not appear to have been closed for some time. There's a @sign on its left.}
+{road:The road is large, but there are no signs of a constant passage of people or wagons.}
+{forest:The forest in front of you is dense and full of wide and tall trees.}
+{paths:Among the trees you glimpse a few narrow paths here and there, but you see no one around.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+at the South entrance
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[east,south,northwest,north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+leg
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+His leg seems somehow broken. He probably hardly walks.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+topics
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+men
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+barrels
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+actor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+entranceguard
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:a local @guard
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:guard
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+talk
+6
+if:barreldutyknow
+	msg:"Thanks for your help", he says.
+else
+	msg:"You cannot stand here, come in or go away", he says.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ask
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:leg
+7
+msg:"What's wrong with your leg", you ask.
+msg:"None of your business," he replies. But he looks anxious to the northern @road.
+set:legseen
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:road
+7
+if:barreldutyknow
+	msg:You don't need to ask that. You know what to do.
+else
+	if:legseen
+		msg:"Is there something that worries you?", you ask.
+		msg:"They asked me to... it's complicated. Go away", he replies.
+	else
+		msg:"You cannot stand here, come in or go away", he says.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:barrels|barrel
+7
+if:barreldutyknow
+	msg:You don't need to ask that. You know what to do.
+else
+		if:barrelsseen
+			msg:"I need to take their empty barrels to the Inn to fill the again with beer", he says.
+			msg:"But it's hard for me to walk, and those men scare me"
+			msg:You think about it for a moment. Then you ask him if he wants you to do it instead of him.
+			msg:"I'd really love that. And I will return the favour somehow", he adds.
+			set:barreldutyknow
+		else
+			msg:"You cannot stand here, come in or go away", he says.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:men
+7
+if:armedmenseen
+	msg:"Do you mean those armed men over there? They're blocking the road to the silver mines."
+else
+	msg:"You cannot stand here, come in or go away", he says.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:erik
+7
+msg:It seems risky to ask him about Erik
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:insignia
+7
+msg:"What those are for?", you ask.
+msg:"They say I am in charge of my squadron," he replies "this if I still had a squadron"
+if:barreldutyknow
+	ifobjin:insignia,$nowhere
+		ifobjin:jacket,$inventory
+			msg:"You said you own me a favor. Can you lend me one of them?"
+			msg:"The punishment for giving away parts of my equipment would be court martial.", he replied.
+			msg:"But if I lose accidentaly one and you find it, well...", added, dropping something.
+			put:insignia,$here
+			msg:"We're even now"
+		endif
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+if:barreldutyknow
+	msg:You don't need to ask that. You know what to do.
+else
+	msg:"You cannot stand here, come in or go away", he says.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+7
+if:barreldutyknow
+	msg:"Thanks for your help", he says.
+else
+	msg:"You cannot stand here, come in or go away", he says.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:It's the first young local person you've seen in a while. 
+msg:Tall and thin, with a short sword, he seems tired, and he has something wrong in one @leg.
+msg:His uniform, which is too big for him, is shabby in several places, but he has several @insignia on his chest.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sceneryobj
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sign
+4
+desc
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+A large wooden sign says: "Inside the city walls, no weapons allowed, no staying out after curfew".
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+if:erikisdead
+	if:!midday
+		msg:You hear some bells, and stop
+		msg:"It's midday", explains you the guard
+		set:midday
+		waitkey
+	endif
+endif
+goto:mainsquare
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+if:erikisdead
+	if:materialwin
+		if:summoningstopped
+			goto:endgame
+		else
+			msg:Going back with the secret about Lyrin's metal could be good, but if Erik was right about the summoning, not good enough
+	else
+		if:summoningstopped
+			msg:Going back with the summoning prevented could be good, but without something to help defeat the Lyrin army, not good enough
+		else
+			msg:You don't want to go back without having gathered Erik's information
+			msg:Even if he's dead you need to recover as much as possible of his work.
+		endif
+else
+	msg:You don't want to go back without having gathered Erik's information
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+nw
+4
+goto:mineroad
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+goto:path
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+path
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\nforestpath1.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Forest path
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+This forest of tall @trees and a few small @animals seems to be full of well-trodden @paths, surrounded by rich @vegetation, but after a while, most of them just stop, and the feeling of not knowing where to go grows. You get the impression that if you're not lost yet, you will be soon.
+{trees: There are several different types of trees, all tall and wide}
+{animals: From time to time you see a few @rabbits}
+{vegetation: This forest is full of very diverse @plants, some of which are also very colorful}
+{paths: The paths begin and end without leading anywhere. Probably traces of trails erased by time.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+rabbits
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:They're cautious and they move quickly through the vegetation. You barely see them. 
+set:rabbitsseen
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+capture|take|hunt
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:bow
+7
+ifobjin:rabbit,$inventory
+	msg:You already have one
+else
+	ifobjin:bow,$inventory
+		msg:After a long wait you finally see one appear. You draw your bow and shoot the arrow. Got it!
+		putobj:rabbit,$here
+	else
+		msg:You don't have a bow
+	endif
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+msg:Can't catch them with that
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+7
+msg:Can't catch them with your bare hands
+set:bowneeded
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+irillis
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+ifobjin:irillis,$inventory
+	msg:You already have some
+else
+	if:knowirillis
+		msg:It only takes a few minutes to spot some
+		putobj:$this,$inventory
+		msg:Then you pick up a bunch of them
+	else
+		msg:You have no idea about how they look like
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+plants
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:There a lot of different plants.
+if:knowirillis
+	msg:You recognize some @irillis among them.
+	if:knowrodum
+		msg:You see also some @rodum plants.
+else
+	msg:You would need help to recognize the possibly edible ones
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+if:knowirillis
+	msg:You know some of them. You should decide what to take
+else
+	msg:You would need help to recognize the possibly edible ones
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+rodum
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+ifobjin:rodum,$inventory
+	msg:You already have some
+else
+	if:knowrodum
+		msg:It only takes a few minutes to spot some
+		put:$this,$inventory
+		msg:Then you pick up a bunch of them
+	else
+		msg:You have no idea about how they look like
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+goto:southtownentrance
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+goto:darkpath
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:bow
+5
+withobj:path.rabbits
+	ifobjin:rabbit,$inventory
+		msg:You already have one
+	else
+		ifobjin:bow,$inventory
+			msg:After a long wait you finally see one appear. You draw your bow and shoot the arrow. Got it!
+			putobj:rabbit,$here
+		else
+			msg:You don't have a bow
+		endif
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[east,south,west,north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+on a forest path
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+darkpath
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Forest path
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\nforestpath2.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+This part of the forest, with also smaller @trees, looks a little different from the one just outside the town, but it is just as difficult to find your way around because of all the absurdly well-trodden @paths. You just keep on walking, feeling like you are going in circles. You will certainly need some hints on how to deal with this.
+
+{paths: The paths begin and end without leading anywhere. Probably traces of trails erased by time.}
+
+{trees: Some trees around you seem to have long @branches.}
+
+{branches: Some of them are long and also flexible.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[east,south,west,north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+on a forest path
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+paths
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:path,paths
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+branches
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+cut|take
+6
+if:bowneeded
+	ifobjin:bow,$inventory
+		msg:You already made a bow.
+	else
+		ifobjin:knife,$inventory
+				ifobjin:twine,$inventory
+					msg:You cut some branches. You use one of them and the string to make a @bow, then you clean and carve some others to make arrows.
+					put:twine,$nowhere
+					put:bow,$inventory
+				else
+					msg:They could be used to make a bow, but you also need some kind of string for that
+				endif
+		else
+			msg:You need something to cut them.
+		endif 
+	endif
+else
+	msg: You don't have a reason to get them now.
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+goto:path
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+se
+4
+if:knowdarkpathroad
+	goto:house
+else
+	goto:path
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+betweenpath
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Forest path
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\nforestpath3.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+This part of the forest seems to have more defined @paths, although the sometimes very dense vegetation still hides the direction in which they are going.
+{paths:You see a few path that you could follow, including a leading one.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+on a forest path
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[west,southwest,northeast]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sw
+4
+goto:northtownentrance
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ne
+4
+if:knowruinsroad
+	goto:ruins
+else
+	msg:Even if it seems like a beaten path, it's too dirty to follow without knowing where it might lead
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+goto:forestpond
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+mineroad
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Northern road
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\new_mineroad.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+imagedesc
+3
+a fantasy straight country road with a large patrolling area. All around a deep forest. Mountain in the distance. 
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+You are just outside the town, on the @road to the mines, to the northwest
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+along the northern road
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[southeast,northwest]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+onfirst
+3
+clear
+msg:You are just outside the town, on the @road to the mines, to the northwest
+msg:Here there's a small group of Lyrin armed @men whose intention seems to block the passage, more than check travellers
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+actor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+men
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:armed @men
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ask|talk
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:barrels|barrel
+7
+if:menasleep
+	msg:They can't answer
+else
+	if:barreldutyknow
+		if:barreltaken
+			msg:"Hey, you still have to bring us the other one, filled," they say
+		else
+			msg:"I'm here to take the empty barrels, to fill them up", you say
+			msg:"It was about time! Hurry up! We're thirsty.", they say
+			msg:Then one of them put in front of you an empty @barrel
+			put:beerbarrel,$here
+			set:barreltaken
+	else
+		msg:No way.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+if:menasleep
+	msg:They can't answer
+else
+	msg:"Get out of here before we slit your throat.", says one of them.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+if:menasleep
+	msg:They're on the ground, +
+	if:mendead
+		msg:dead
+	else
+		msg:comatose
+	endif
+else
+	msg:They're a small group of heavily armed Lyrin men. Their indestructible light armor and their razor-like swords don't make them as scary as their cruel faces.
+	set:armedmenseen
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+kill
+6
+if:menasleep
+	ifobjin:knife,$inventory
+		msg:You slit the throats of all men. Their faces seem to melt after that.
+		set:mendead
+	else
+		msg:How?
+else
+	if:mendead
+		msg:Again?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+tarp
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+synonym:tarp,tarps
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:On the tarps there are small @barrels, food, and blankets. These men won't move anytime soon.
+setattr:barrels,visible
+set:barrelsseen
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+barrels
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr:$none
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+if:menasleep
+	msg:You don't need them anymore
+else
+	if:barreldutyknow
+		if:barreltaken
+			msg:"Hey, you still have to bring us the other one, filled," they say
+		else
+			msg:"I'm here to take the empty barrels, to fill them up", you say
+			msg:"It was about time! Hurry up! We're thirsty.", they say
+			msg:Then one of them put in front of you an empty @barrel
+			put:beerbarrel,$here
+			set:barreltaken
+	else
+		msg:"What are you doing?" shouts one of them
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+They're just small beer barrels. Some are surely empty.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+food
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+blankets
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+road
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:The road narrows here and you can start to see the mountains. On either side are @tarps with items on them
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+nw
+4
+if:menasleep
+	if:knowaboutcamp
+		msg:After a mile, you see that there's a secondary path, departing from the main road, and you think to see a camp in that direction
+		msg:It could be where the old man was taken
+		waitkey
+		goto:camp
+	else
+		msg:After a couple of mile you see in the distant another road block with a larger group of armed men
+		msg:You know you won't be able to play tricks on them too, so you turn back
+	endif
+else
+	msg:As soon as you start walking towards them, one of the armed men shouts at you to stop. "Who are you? Where are you going?" he asks menacingly
+	msg:When he sees that you are a half-breed he relaxes a little, but nevertheless orders you to turn back immediately
+	set:armedmenseen
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+se
+4
+goto:southtownentrance
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+give|show
+4
+if:menasleep
+	msg:They can't answer
+else
+	ifobjin:beerbarrel,$inventory
+		ifobj:beerbarrel,empty
+			msg:"Are you stupid? We gave it to you to fill it with beer! Go and do that!", they say.
+		else
+			setvar:tmp,0
+			if:irillisinbarrel
+				addvar:tmp,1
+			endif
+			if:roduminbarrel
+				addvar:tmp,1
+			endif
+			msg:"Ah, finally, we were dying of thirst."
+			if:tmp=2
+				msg:"Wait. I don't like his grin," one of them says as you approach.
+				msg:"Make him drink it," he orders. "It wouldn't be the first time someone played a trick on us."
+				if:baryleaten
+					msg:"Sure, thanks!", you reply, once you reach them. After you drink some, they stop you, and they quickly share its content between them.
+					msg:It's only a matter of minutes before they start to feel dizzy and wander off before falling to the ground.
+					msg:You then drag their bodies off the road and hide them in the vegetation
+					put:mineroad.men,$nowhere
+					put:beerbarrel,$nowhere
+					set:menasleep
+				else
+					msg:"What?" you ask, trying to figure out how to handle that.
+					msg:"We want you..." he started.
+					msg:You trip over one of their bags, trying to look convincing, and shatter the barrel as you fall.
+					msg:"You damn fool!" says their leader, kicking you in the head as the others laugh.
+					msg:"I'm sorry! I'll be right back with another one," you say, pleadingly.
+					msg:Then you jump back on your feet, hurry to get another empty one and leave before they can think better of it.
+					setattr:beerbarrel,empty
+					msg:Their leader looks at you suspiciously, but says nothing.
+				endif
+			else
+				put:beerbarrel,$here
+				msg:"Take another empty one over there and fill it up.", they say, before starting to drink.
+				setattr:beerbarrel,empty
+				msg:The men pass the barrel quickly and finish it in a flash.
+			endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+camp
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Lyrin camp
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+You managed to approach the small camp unnoticed. You can see just a few soldiers and all in the central clearing, from where they should not see you. There are several tents in front of you, but only two can probably be reached without risks, one @green and one @red.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[southwest]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\camp2.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sw
+4
+goto:mineroad
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+green
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+enter|go
+6
+msg:It's too risky to try to take something.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:It looks like a service tent, full of large equipment. 
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+red
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+enter|go
+6
+goto:redtent
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:From the outside it looks empty. But you hear a moan. 
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+redtent
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Red tent
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\redtent.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[south]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+It is a small red tent where a nauseating smell haunts the air. There's a man on the floor
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+onfirst
+3
+clear
+msg:It is a small red tent where a nauseating smell haunts the air. 
+msg:There's a tortured, dying man lying on the floor. His hairs are black and he's got green eyes. @Erik!
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+goto:camp
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+leave|exit
+4
+goto:camp
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+actor
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+erik
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+talk|ask
+6
+msg:"Erik?", you ask.
+if:erikisdead
+	msg:He's dead.
+else
+	msg:He takes time to react.
+	msg:"It's our fault. They're not... human" he says.
+	msg:"What?"
+	msg:"But we can still defeat them, at least for now. But they're... I'm ready to do whatever it takes to stop them... I'm ready and willing..."
+	msg:"What?", you ask again.
+	msg:"We need to hurry! They're summoning a God... I've slowed them down killing their cleric... but they'll retry soon"
+	msg:"I don't understand"
+	msg:"I... left my notes to @Eryan"
+	msg:This was Erik's last breath.
+	set:eryanname
+	set:erikisdead
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+if:erikisdead
+	msg:He's dead.
+	if:carvedeyes
+		msg:His eyes are missing
+else
+	msg:The signs of torture are innumerable. He is dying
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+cut|take|carve
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:eyes
+7
+if:carvedeyes
+	msg:You alredy took them
+else
+	msg:You brace yourself and proceed. In an infinite time you pluck out his eyes and take them.
+	put:eyes,$inventory
+	set:carvedeyes
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+house
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Forest house
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+In front of you stands a small, solid stone @house, almost completely hidden by trees. It looks inhabited and @grass grows even between the cracks in the @walls. The front @door only looks as if it has been approached.
+
+{door: The door has been left somehow opened as if someone just left the house, to be back in a minute.}
+
+{house: The house is certainly ancient, but nature doesn't seem to have taken any serious hold of it.}
+
+{walls: Solid stone walls. The grass on it seems to follow patterns, instead of simply covering the most exposed parts.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\foresthouse.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+in front of a house
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[south,north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+goto:darkpath
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+goto:houseinterior
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+open
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:door
+5
+msg:You open the door, and enter
+waitkey
+goto:houseinterior
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+go|enter
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:house
+5
+goto:houseinterior
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+grass
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:A small plant with berries grows occasionally among the grass.
+if:knowbaryl
+	msg:You recognize it as @baryl.
+	ifobjin:baryl,$nowhere
+		put:baryl,$here
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+houseinterior
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Forest house interior
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\tforesthouseinterior.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+The first room you encounter, despite the large @windows, seems lit by a winter sky. There is a @fireplace, in front of a table with a @bottle and a @glass half-filled, a bookcase filled with @books, and above it, a @painting of an elderly woman with no eyes. Everything looks as if it has just been abandoned.
+
+{windows: It probably depends on dirty glasses, but what you see from here doesn't look like the landscape outside. It's scary, and you stop looking through it almost immediately.}
+
+{fireplace: It's unlit, but there are half-burnt logs and ashes.}
+
+{painting: It's not hard to believe that she was called a witch if the woman in the painting is the owner of this place. Her eyes are carved and she's an unsettling smile.} 
+
+{bottle: The bottle is almost empty. Just a few drops are left, but considering the smell, it contained what's now in the glass.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+inside a house
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[east,north,west]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+goto:house
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+msg:The door leading that way is shut, and you can't open it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+msg:The door leading that way is shut, and you can't open it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+glass
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+The glass is half filled with an amber liquid with a strong smell. Inside it there are tiny things, crumbs or insects, that seem to move circularly as if the glass were being slowly swirled.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+drink
+6
+if:tasted
+	msg:You don't want to try that again
+else
+	msg:The smell is awful, but you bring the glass to your lips and taste the contents.
+	msg:A painful twinge makes you fall to the ground and as you try to breathe you realise that your body has changed. You look at your hands, then at your chest and legs. You touch your face. 
+	msg:Have you become an adult Lyrin? You are even wearing one of their armour!
+	msg:You try to stand up and find that you can read the titles of books. Then your head spins and you pass out.
+	msg:When you get up, you are yourself again. But outside.	
+	set:tasted
+	waitkey
+	goto:house
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+msg:It's not easy to walk with a glass full of liquid
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+bottle
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+msg:You don't want an empty bottle
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+books
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:There's some dust, but the books in this bookcase are in perfect condition. 
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+read
+6
+if:tasted
+	msg:You don't understand why, but you can now read some elements here and there
+	msg:One of the biggest books has the title "\yArkylzoth\w the wrath-bearer"
+	ifobjin:eriknotebook,$inventory
+		ifobjin:pencil,$inventory
+			msg:You wrote it in Erik's notebook
+			set:knowdemonname
+else
+	msg:You can't even read the titles. Everything is written in runes
+	if:grimoireseen
+		msg:One of these books resembles the library's Grimoire
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+msg:They're too big to carry 
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ruins
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Ruins
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\ruins.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+In a clearing among the trees is the remains of a stone building, almost completely collapsed. Inside the walls, there is only vegetation and rubble, except for a small part where a metal @door hides a section that is still covered.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[southwest,down]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+inside a collapsed building
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+sw
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+d
+4
+if:ruindooropened
+	if:summoningstopped
+		msg:You don't want to go back there
+	else
+		goto:ruinsinterior
+else
+	msg:The door is locked
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sw
+4
+goto:betweenpath
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+put|insert
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:coin
+5
+ifobjin:coin,$inventory
+	withobj:slit
+		msg:You put the silver coin inside the slit, and the door opened.
+		set:ruindooropened
+	endwith
+	withobj:$every
+		msg:What?
+	endwith
+else
+	msg:You don't have it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+door
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+A solid metal door, with a lot of symbols on it. There is a small @slit at the side, with a drawing of a pentagon on it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+open|unlock
+6
+if:ruindooropened
+	msg:It's already opened
+else
+	msg:You struggle to open it, without success
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+slit
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+5
+A very thin gap. Considering its position you suppose it may be related to the door
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ruinsinterior
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Ruins interior
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+Down a narrow staircase, you enter a large hall, dimly lit by cracks in the stone ceiling. Again, the floor is littered with debris, and the only thing that seems intact is what looks like an @altar in the center. All around you can see @openings, dark, leading to no one knows where.
+{openings: You can hear horrible, deep sounds in the distance, and nothing in the world will convince you to enter them.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\xruinsinterior.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[up,east,south,west,north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+in a underground hall
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+u
+4
+goto:ruins
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+msg:There's too dark to go that way
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+cast|read
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:spell
+5
+ifobjin:page,$inventory
+	setvar:tmp,0
+	if:eyesonaltar
+		addvar:tmp,1
+	endif
+	if:bloodonaltar
+		addvar:tmp,1
+	endif
+	msg:With a trembling voice, you cast the spell
+	if:tmp=2
+		msg:Suddenly, Erik's eyes catch fire and you feel a cold, malevolent presence near you 
+		msg:"UNWORTHY" screms something all around
+		msg:With a strength you didn't know you had, you face it and read the banishing spell aloud
+		msg:A great roar then shakes the room you are in and stones begin to fall from the ceiling 
+		msg:You run up the stairs and get out just before everything goes black behind you. Then silence. You turn around and everything seems to go back to normal 
+		msg:You know you did \ywhat Erik wanted\w, but you will have nightmares for a long time
+		set:summoningstopped
+		if:materialwin
+			msg:You think it might be time to go back home
+		endif
+		waitkey
+		goto:ruins
+	else
+		msg:Nothing happens
+		msg:You must be missing some ritual part
+else
+	msg:You need to read the correct spell
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+put
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:blood
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:altar
+6
+needin:knife,$available
+msg:With some hesitation you make a big cut on your right hand and let the blood cover the altar
+set:bloodonaltar
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:eyes
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:altar
+6
+needin:eyes,$available
+msg:You put Erik's eyes on the altar.
+put:eyes,$nowhere
+set:eyesonaltar
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+cut
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:yourself
+5
+needin:knife,$available
+if:!bloodonaltar
+	msg:With some hesitation you make a big cut on your right hand and let the blood cover the altar
+	set:bloodonaltar
+else
+	msg:You already put some
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:knife
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:altar
+6
+needin:knife,$available
+if:!bloodonaltar
+	msg:With some hesitation you make a big cut on your right hand and let the blood cover the altar
+	set:bloodonaltar
+else
+	msg:You already put some
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+altar
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:The altar is covered in dried blood, centuries old
+//msg:On one side the image of a terrible black-eyed creature. You recognize it, it was on the cover of a book in witch's house
+if:eyesonaltar
+	msg:On the center there are Erik's eyes
+endif
+if:bloodonaltar
+	msg:There's also some fresh blood, yours
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:blood
+7
+needin:knife,$available
+if:!bloodonaltar
+	msg:With some hesitation you make a big cut on your right hand and let the blood cover the altar
+	set:bloodonaltar
+else
+	msg:You already put some
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:knife
+7
+needin:knife,$available
+if:!bloodonaltar
+	msg:With some hesitation you make a big cut on your right hand and let the blood cover the altar
+	set:bloodonaltar
+else
+	msg:You already put some
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:eyes
+7
+needin:eyes,$available
+msg:You put Erik's eyes on the altar.
+put:eyes,$nowhere
+set:eyesonaltar
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+7
+msg:How?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+msg:Why?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+forestpond
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Forest pond
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\tforestpond.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+It takes a lot of attention to notice that the small @puddles all around are somehow becoming a @watercourse because of the many floating @plants that cover part of it. But once you have noticed this, you can see that this @stream widens further north.
+
+{watercourse: The shallow water seems almost motionless, but here and there you can see some @fish.}
+
+{puddles: The shallow water seems almost motionless, but here and there you can see some @fish.}
+
+{plants: You don't know their names, but these plants smell bad.}
+
+{stream: Half a mile from here, the watercourse starts to steal place to the forest, and it also changes color.} 
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+near a pond
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[east,north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+goto:fall
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+goto:betweenpath
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+fish
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+capture|take|hunt
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:bow
+7
+ifobjin:fish,$inventory
+	msg:You already have one
+else
+	ifobjin:bow,$inventory
+		msg:After a long wait you finally see one appear. You draw your bow and shoot the arrow. Got it!
+		putobj:fish,$here
+	else
+		msg:You don't have a bow
+	endif
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+7
+ifobjin:fish,$here
+	put:fish,$inventory
+	msg:Taken
+else
+	msg:Can't catch fish with bare hands
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+msg:Can't catch fish with that
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+mine
+1
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+mountainpath
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Mountain path
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\mountainpath.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+The path continues up the @mountain, narrow but well marked, with clear, polished @stones. However, a cold, strong wind is blowing, making the ascent tiring, and sometimes fallen rocks block the passage, forcing you to climb them, with the risk of falling.
+{mountains:Although the peaks are close and not too high, they are covered by dense, dark clouds.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+on a mountain path
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[southwest,northeast]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ne
+4
+setcount:weight,$inventory,takeable+large
+if:weight>3
+	msg:After a few dangerous moments, you realise that you are not agile enough to go this way because you have too many things with you.
+else
+	goto:mineentrance
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sw
+4
+goto:fall
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+stones
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:You have never seen such rocks, but you see that in addition to those used to indicate the path, there are similar formations everywhere.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+take
+6
+ifobjin:stone,$inventory
+	msg:You already have one
+else
+	put:stone,$inventory
+	msg:You take one of them
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+fall
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Nesterin Falls
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\nesterinfalls.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+The sight of these two spectacular @waterfalls coming together is magical. The @lake in front of you has a strangely shimmering bottom and the @path around it seems to go up into the @mountains.
+{mountains:Although the peaks are close and not too high, they are covered by dense, dark clouds.}
+{waterfalls:These waterfalls are fascinating, but the noise they make is intense and hypnotic.}
+{lake:Something is swimming in the lake. Long, dark, fast moving @creature that you can barely make out.}
+{creature:You can't see it well, but it seems huge and ugly.}
+{path:At one point the path becomes narrow due to a rock formation, and is partially submerged by the waters of the lake.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+in front of two waterfalls
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[south,northeast]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+goto:forestpond
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+ne
+4
+if:!defeatedfish
+	msg:At one point the path becomes narrow due to a rock formation, and is partially submerged by the waters of the lake. 
+	msg:As soon as you reach that point you realise that the creature in the lake is approaching to attack you. You cannot pass.
+else
+	goto:mountainpath
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+throw|put|give
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:fish
+5
+ifobjin:fish,$inventory
+	msg:You throw the fish into the lake. Immediately something in the water reaches it and moves away with it, disappearing.
+	set:defeatedfish
+	put:fish,$nowhere
+else
+	msg:You don't have it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+capture|kill|hunt
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:creature
+5
+if:defeatedfish
+	msg:You cannot see it anymore
+else
+	ifobjin:bow,$inventory
+		msg:Your home-made arrows are not good for it
+	else
+		msg:How?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+mineentrance
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Mine entrance
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\tmineentrance.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+The entrance to this tunnel is huge, ancient and frightening. You are not able to recognize the symbols on the columns, so you won't be able to understand if they are welcoming or threatening.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+at the entrance of a tunnel
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[down,southwest]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+sw
+4
+goto:mountainpath
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+d
+4
+goto:minetunnel
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+minetunnel
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Mine tunnel
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\tminetunnel.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+The @tunnels seem to go on forever, descending gently down the mountain. From time to time you'll see @crossroads with @markings you can't understand, so you're not sure which way to go. 
+{markings:You cannot understand them, but they have common elements. Maybe they're names, or indications.}
+{crossroads:There's a crossroad each few hundred steps. This place is a labyrinth.}
+{tunnels:You've never seen tunnels so large and dug out so regularly.}
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+u
+4
+goto:mineentrance
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+se
+4
+if:solvedmaze
+	goto:forgeroom
+else
+	goto:minetunnel
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+e
+4
+goto:minetunnel
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+w
+4
+goto:minetunnel
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+n
+4
+goto:minetunnel
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+s
+4
+goto:minetunnel
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[up,east,south,west,north]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+forgeroom
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+name:Forge
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+image:png\laboratory.jpg
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+desc
+3
+This large room seems to be the heart of the entire tunnel system. There are @inscriptions and complex @drawings on the walls, a kind of @forge in the centre and, on one side, atop a stand, a strange elongated @instrument.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.shortdesc
+3
+in a forge
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+attr.exits
+3
+[northwest]
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+nw
+4
+goto:minetunnel
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use|put|insert
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:stone
+5
+if:!forgeon
+	msg:Forge panel is closed
+else
+	withobj:forge
+		ifobjin:stone,$inventory
+			put:stone,$nowhere
+			msg:As soon as you put the stone in the furnace, a yellowish light comes on. And after an indefinite time, there is a silver-coloured @plate in place of the stone.
+			put:plate,$here
+		else
+			msg:You don't have it
+	endwith
+	withobj:$every
+		msg:How?
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+open|unlock
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:panel
+5
+msg:You can't
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+push
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:cross
+5
+withobj:instrument
+	if:forgeon
+		msg:Forge's already on
+	else
+		msg:You push the embossed cross, as seen in, and two things happen at the same time: the forge turns on, and its front panel opens.
+		set:forgeon
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:triangle
+5
+withobj:instrument
+	if:!gatesclosed
+		msg:You push the embossed triangle, and the mountain starts to tremble.
+		msg:You hope that means you've been able to lock part of Lyrin men in or out the mine
+		set:gatesclosed
+	else
+		msg:Nothing happens
+	endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+scenery
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+inscriptions
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x|read
+6
+msg:They seem ancient, and written in runes. Oddly you can understand some part of it.
+if:forgeseen
+	msg:You found the word "Forge".
+	msg:"@Cross to activate it", you read next to it.
+if:gatesseen
+	msg:You found the word "Gates".
+	msg:"@Triangle to close the southern section", you read.
+else
+	if:seeninstrument
+		msg:You found the word "Triangle".
+		msg:"@Triangle to close the southern section", you read.
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+drawings
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:It's some kind of map. It shows that there are two entrances to the mines, the one you took and another one on Nesterin side, leading to separated sections
+msg:There are gates, and they're somehow related to the istrument nearby
+set:gatesseen
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+forge
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+if:forgeon
+	msg:The forge is on, and the panel through which you can probably insert the material to be melted is opened
+else
+	set:forgeseen
+	msg:The forge is off, and its front panel closed
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use|put
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:stone
+7
+if:!forgeon
+	msg:Forge panel is closed
+else
+	ifobjin:stone,$inventory
+		put:stone,$nowhere
+		msg:As soon as you put the stone in the furnace, a yellowish light comes on. And after an indefinite time, there is a silver-coloured @plate in place of the stone.
+		put:plate,$here
+	else
+		msg:You don't have it
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+7
+if:forgeon
+	msg:You could now insert something inside
+else
+	msg:You should find a way to turn it on before that
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+if:forgeon
+	msg:You don't think it's a wise thing to do
+else
+	msg:You should find a way to turn it on before that
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+instrument
+4
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+verb
+5
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+x
+6
+msg:It's an elengated instrument, with some movable and embossed parts. It's similar to the one you've seen in Governor's square
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+use|push|pull
+6
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:cross
+7
+if:forgeon
+	msg:Forge's already on
+else
+	msg:You push the embossed cross, as seen in, and two things happen at the same time: the forge turns on, and its front panel opens.
+	set:forgeon
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:triangle
+7
+if:!gatesclosed
+	msg:You push the embossed triangle, and the mountain starts to tremble.
+	msg:You hope that means you've been able to lock part of Lyrin men in or out the mine
+	set:gatesclosed
+else
+	msg:Nothing happens
+endif
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$none
+7
+msg:There are several parts. You must choose which try to move or push
+
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
+withobj:$every
+7
+msg:Nothing happens
+
+<end node> 5P9i0s8y19Z

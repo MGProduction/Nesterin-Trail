@@ -1,0 +1,269 @@
+objclass:actor
+	note:normal actors - listable and visible
+	attr:actor+visible+listable
+objclass:globalscenery
+	note:special scenery objects present everywhere (i.e. main character features) - not takable not listable but visible
+	attr:visible
+	startin:$everywhere
+objclass:localscenery
+	note:special scenery objects (i.e. shared elements between more rooms) - not takable not listable but visible
+	attr:visible
+	startin:$nowhere
+objclass:normalobj
+	note:normal objects - takable listable and visible
+	attr:visible+takeable+listable+large
+objclass:smallobj
+	note:normal objects - takable listable and visible - but small
+	attr:visible+takeable+listable
+objclass:scenery
+	note:scenery objects - not takable not listable but visible
+	attr:visible
+objclass:sceneryactor
+	scenery actors - not takable not listable but visible
+	attr:visible+actor
+objclass:sceneryobj
+	note:scenery objects - not takable but listable and visible
+	attr:visible+listable
+objclass:topics
+	note:objects - used just for the name
+	attr:$none
+verbclass:genericverb
+	withobj:$none
+		msg:\V what?
+	withobj:$unknown
+		msg:You don't see that
+	withobj:$every
+		ifobjin:$this,$available
+			msg:You don't find a reason to do that		
+		else
+			msg:You don't see it here	
+verbclass:movementverb
+	msg:You can't go that way
+verbclass:talkverb
+	withobj:$none
+		msg:To whom, about what?
+	withobj:$every
+		ifobj:$this,actor+visible
+			msg:It doesn't seem wise
+		else
+			ifobjin:$this,$available
+				msg:You can't talk with that
+			else
+				msg:You don't see that here	
+	withobj:$unknown
+		msg:Talk to whom?
+movementverb:u
+	synonym:u,up
+movementverb:d
+	synonym:d,down
+movementverb:s
+	synonym:s,south
+movementverb:n
+	synonym:n,north
+movementverb:w
+	synonym:w,west
+movementverb:e
+	synonym:e,east
+movementverb:se
+	synonym:se,southeast,south-east
+movementverb:sw
+	synonym:sw,southwest,south-west
+movementverb:ne
+	synonym:ne,northeast,north-east
+movementverb:nw
+	synonym:nw,northwest,north-west
+movementverb:go
+	synonym:go
+movementverb:enter
+	synonym:enter
+genericverb:x
+	synonym:x,examine,look,l,look at
+	withobj:exits
+		ifundef:$room.exits
+			msg:There are no evident exits.
+		else
+			msg:There are obvious exits to +
+			msg:$room.exits
+			msg:.
+		endif
+	withobj:$none
+		msg:$roomdesc
+		ifobjinattr:$any,$here,visible+listable
+			msg:You see: +
+			listobjin:$here,visible+listable
+	withobj:$unknown
+		msg:Looks absolutely normal
+	withobj:$every
+		ifobjin:$this,$available
+			ifundef:$objdesc
+				msg:Looks absolutely normal
+			else
+				msg:$objdesc
+		else
+			msg:You don't see that here
+genericverb:take
+	synonym:take,get,pick
+	withobj:$every
+		ifobjinattr:$this,$here,visible
+			ifobj:$this,takeable		
+				setcount:weight,$inventory,takeable+large
+				ifobj:$this,large
+					addvar:weight,1
+				endif
+				if:weight<maxweight
+					putobj:$this,$inventory			
+					msg:Taken
+				else
+					msg:You already carry too much to add also this size object
+				endif
+			else
+				msg:You don't want to take it		
+		else
+			ifobjin:$this,$inventory
+				msg:You already have it
+			else
+				msg:You don't see it here
+genericverb:drop
+	synonym:drop,put down
+	withobj:$every
+		ifobjin:$this,$inventory
+			ifobj:$this,takeable+visible
+				putobj:$this,$here
+				msg:Dropped		
+				if:weight>0
+					decvar:weight,1
+			else
+				msg:You can't drop it
+		else
+			msg:You don't have it	
+genericverb:use
+	synonym:use
+genericverb:push
+	synonym:push
+genericverb:pull
+	synonym:pull
+genericverb:open
+	ifobjin:$this,$available
+		ifobj:$this,openable+visible
+			ifobj:$this,open
+				msg:It's already open
+			else
+				setobj:$this,open
+				msg:Done
+			endif
+		else
+			msg:You cannot open it
+	synonym:open
+genericverb:close
+	ifobjin:$this,$available
+		ifobj:$this,openable+visible
+			ifobj:$this,open
+				unsetobj:$this,open
+				msg:Done
+			else
+				msg:It's already closed
+			endif
+		else
+			msg:You cannot close it
+	synonym:close
+genericverb:lock
+	synonym:lock
+genericverb:unlock
+	synonym:unlock
+genericverb:show
+	synonym:show
+genericverb:give
+	synonym:give
+genericverb:put
+verb:$unknown
+	msg:What?
+verb:onfirst
+	clear
+	msg:$roomdesc
+	ifobjinattr:$any,$here,visible+listable
+		msg:You see: +
+		listobjin:$here,visible+listable
+verb:onenter
+	clear
+	ifundef:$room.shortdesc
+		msg:You are in +
+		msg:$roomname
+	else
+		msg:You are +
+		msg:$room.shortdesc
+	endif
+	msg:.
+	ifundef:$room.exits
+		msg:There are no evident exits.
+	else
+		msg:There are obvious exits to +
+		msg:$room.exits
+		msg:.
+	endif
+	ifobjinattr:$any,$here,visible+listable
+		msg:You see: +
+		listobjin:$here,visible+listable
+verb:help
+	msg:To act write short commands in \yVERB+ELEMENT \w (i.e. \ytake pencil\w) or \yVERB+ELEMENT1+ELEMENT2 \w (i.e. \yask man food\w or \ygive food man\w) forms.
+	msg:Move using cardinal directions. Use \yinventory \wto see what you're carrying with you.
+	synonym:help,h
+verb:inventory
+	ifobjinattr:$any,$inventory,takeable
+		msg:You are carrying: +
+		listobjin:$inventory,takeable
+	else
+		msg:You aren't carrying anything.
+	synonym:inventory,i
+verb:quit
+	msg:Are you sure? (Y/N)
+	getkey
+	ifkey:Y
+		quit
+	synonym:quit,q
+verb:restart
+	msg:Are you sure? (Y/N)
+	getkey
+	ifkey:Y
+		start
+verb:save
+	save
+	msg:Done
+verb:load
+	msg:Are you sure? (Y/N)
+	getkey
+	ifkey:Y
+		load
+verb:mem
+	dbg
+verb:gfx
+	msg:\yn\wormal, \yp\wrogressive or \ys\wtatic?
+	getkey
+	ifkey:N
+		gfxmode:0
+		msg:Done
+	else
+		ifkey:P
+			gfxmode:1
+			msg:Done
+		else
+			ifkey:S
+				gfxmode:2
+				msg:Done
+talkverb:talk
+	ifobjinattr:$this,$here,visible
+		ifobj:$this,actor		
+			msg:He simply ignores you
+		else
+			msg:To whom?
+	else
+		msg:Who?
+	synonym:talk
+talkverb:ask
+	ifobjinattr:$this,$here,visible
+		ifobj:$this,actor		
+			msg:He simply ignores you
+		else
+			msg:To whom?
+	else
+		msg:Who?
+	synonym:ask

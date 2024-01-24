@@ -1,0 +1,2437 @@
+config
+	name:Nesterin
+	title:Nesterin Trail
+	subtitle:A C64 fantasy text adventure
+	author:Marco Giorgini
+	version:1.0.0
+	binary:yes
+	_splash:png\splash2.png
+	_font:png\font.png
+	image
+		morecontrast:1
+		unsharpen:2
+		sharpen:2
+		dither:3
+		rborder:1
+		hborder:8
+		splity:96
+		fileformat:16
+		imgborder:png/border2.png
+		crt:0
+	build
+		emit_texts:0
+		emit_headers:0
+include:stdlib.hjt
+normalobj:beerbarrel
+	name:a @barrel
+	synonym:barrel,beer barrel
+	attr:visible+takeable+listable+empty
+	attr.weight:10
+	verb:x
+		needin:$this,$available
+			msg:It's a medium sized barrel. +
+			ifobj:$this,empty
+				msg:Empty.
+			else
+				msg:Full of beer +
+				if:irillisinbarrel
+					msg:spiked with irillis +
+					if:roduminbarrel
+						msg:and rodum
+					endif
+				else
+					if:roduminbarrel
+						msg:spiked with rodum
+					endif
+				endif
+			endif
+	verb:drop
+		needin:$this,$available
+		msg:It's not yours to leave around.
+	verb:drink
+		needin:$this,$available
+		ifobj:$this,empty
+			msg:It's empty.
+		else
+			if:irillisinbarrel
+				msg:No way.
+			else
+				if:roduminbarrel
+					msg:No way.
+				else
+					msg:You take a sip. Nice.
+				endif		
+	startat:$nowhere
+normalobj:bow
+	name:a @bow
+	attr.weight:5
+	desc:A barely functional bow, with some arrows
+	startat:$nowhere
+normalobj:bread
+	name:some @bread
+	attr.weight:1
+	desc:A loaf of stale black @bread
+	startat:$nowhere
+	verb:eat
+		needin:$this,$available
+		msg:You don't want to eat now
+normalobj:fish
+	name:a dead @fish
+	desc:A golden @fish
+	startat:$nowhere
+normalobj:flask
+	name:a @flask
+	attr:visible+takeable+listable+empty
+	attr.weight:2
+	verb:x
+		needin:$this,$available
+		msg:It's a handy leather flask. +
+		ifobj:$this,empty
+			msg:Empty.
+		else
+			msg:Full of water.
+	verb:fill
+		withobj:$every
+			msg:You need a fountain to fill it
+		withobj:$none
+			msg:You need a fountain to fill it
+	startat:$nowhere
+normalobj:jacket
+	name:a @jacket
+	attr.weight:4
+	desc:a second-hand uniform @jacket
+	startat:$nowhere
+	verb:wear
+		needin:$this,$available
+		set:jacketon
+		msg:Done
+	verb:takeoff
+		needin:$this,$available
+		unset:jacketon
+		msg:Done
+	verb:x
+		needin:$this,$available
+		msg:A second-hand uniform @jacket +
+		if:insigniaonjacket
+			msg:with an @insignia on its right shoulder
+		else
+			msg:with holes where insignias were
+		endif
+		if:jacketon
+			msg:You're currently wearing it
+		endif
+normalobj:knife
+	name:your @knife
+	attr.weight:2
+	desc:It's a sharp hunter's knife. No longer legal to carry in Lyrin-controlled areas.
+	verb:drop|hide
+		ifobjin:$this,$inventory
+			ifisroom:innroom
+				ifobj:$this,takeable+visible
+				else
+					msg:You can't drop it here. You need to find a safe place to hide it.
+			else
+				msg:You can't drop it here. You need to find a safe place to hide it.
+		else
+			msg:You don't have it	
+	verb:use
+		withobj:$every
+			needin:$this,$inventory
+			ifobj:$that,actor
+				msg:You should be careful about your actions.
+			else
+				msg:What for?
+		withobj:$none
+			msg:How?
+	startat:$nowhere
+normalobj:rabbit
+	name: a dead @rabbit
+	attr.weight:5
+	desc:A skinny rabbit
+	startat:$nowhere
+normalobj:stone
+	name:a white @stone
+	attr.weight:2
+	startat:$nowhere
+	desc:A kind of rock, lighter than you might expect.
+normalobj:twine
+	name: some @twine
+	attr.weight:2
+	desc:Two arm's length of twine.
+	startat:$nowhere
+normalobj:yourself
+	attr:visible
+	verb:x
+		msg:You're a young guy, thin, but robust and quick. Your father was a Romir farmer, and your mother a Lyrin gypsy, and, after the invasion, that put you in a peculiar position.
+		if:jacketon
+			msg:You're wearing a uniform jacket
+	startin:$everywhere
+smallobj:pendant
+	name:a @pendant
+	desc:It's a metallic moon-shaped @pendant. Your guild secret recognition object.
+	verb:drop
+		ifobjin:$this,$inventory
+			ifisroom:innroom
+				ifobj:$this,takeable+visible
+				else
+					msg:You can't drop it here. You need to find a safe place to hide it.
+			else
+				msg:You can't drop it here. You need to find a safe place to hide it.
+	verb:show
+		needin:$this,$available
+		msg:You should be careful who you show it to.
+	startat:$nowhere
+smallobj:roomkey
+	name:a @key
+	synonym:key,room key
+	desc:A room key with the number seven carved into it.
+	startat:$nowhere
+smallobj:pencil
+	name: a @pencil
+	desc:Some carbon inside a hollow stick.
+	startat:$nowhere
+smallobj:irillis
+	name:some @irillis
+	desc:A small red plant with with flowers.
+	startat:$nowhere
+	verb:put
+		withobj:beerbarrel
+			ifobjin:$this,$inventory
+				ifobjin:beerbarrel,$inventory
+					ifobj:beerbarrel,empty
+						msg:You should fill it with beer before that.
+					else
+						put:irillis,$nowhere
+						set:irillisinbarrel
+						msg:Done
+					endif
+				else
+					msg:You don't have any barrel.
+			else
+				msg:You don't have any it.
+		withobj:$every
+			needin:$this,$available
+			msg:Why?
+smallobj:rodum
+	name:some @rodum
+	desc:A thin brown plant, with small leaves.
+	startat:$nowhere
+	verb:put
+		withobj:beerbarrel
+			ifobjin:$this,$inventory
+				ifobjin:beerbarrel,$inventory
+					ifobj:beerbarrel,empty
+						msg:You should fill it with beer before that.
+					else
+						put:rodum,$nowhere
+						set:roduminbarrel
+						msg:Done
+					endif
+				else
+					msg:You don't have any barrel.
+			else
+				msg:You don't have any it.
+		withobj:$every
+			needin:$this,$available
+			msg:Why?
+smallobj:baryl
+	name:some @baryl
+	desc:A reddish plant with berries.
+	startat:$nowhere
+	verb:eat
+		ifobjin:$this,$inventory
+			put:baryl,$nowhere
+			msg:Done
+			set:baryleaten
+smallobj:map
+	name:a @map
+	desc:It's a map of the forests around Nesterin with red marks and some traced path.
+	startat:$nowhere
+	verb:use|read
+		needin:$this,$available
+		ifisroom:darkpath
+			msg: On the map you see a path leading from here to a mark, +
+			msg:going southeast.
+			set:knowdarkpathroad
+		else
+			ifisroom:betweenpath
+				msg: On the map you see a path leading from here to a mark, +
+				msg:going northeast.
+				set:knowruinsroad
+			else
+				msg:This map doesn't seem useful here
+smallobj:insignia
+	name:an @insignia
+	startat:$nowhere
+	desc:A small @insignia with a golden symbol
+	verb:use|put
+		withobj:jacket
+			ifobjin:jacket,$inventory
+				if:!insigniaonjacket
+					set:insigniaonjacket
+					msg:Done
+				else
+					msg:You already have it there
+				endif
+	verb:show
+		msg:Showing someone a detached insignia isn't a wise idea
+smallobj:eyes
+	name: Erik's @eyes
+	startat:$nowhere
+smallobj:coin
+	name:a @coin
+	attr.weight:0
+	startat:$nowhere
+	desc:A shiny ancient silver @coin, with a pentagon on it
+smallobj:ring
+	name:a @ring
+	startat:$nowhere
+	desc:A beautiful old gold ring
+smallobj:plate
+	name:a silverish @plate
+	attr.weight:2
+	startat:$nowhere
+	verb:x
+		needin:$this,$available
+		msg:It's a slab of silvery material. It's ductible, light and incredibly strong. It's Lyrin's special metal, and now you've found how to have it!
+		msg:Once your Guild knows about it, they will send people here to study the process and make experiments. The Resistance might actually have \ya chance to fight back\w!
+		set:materialwin
+		if:summoningstopped
+			msg:You think it might be time to go back home
+smallobj:documents
+	name:Erik's @documents
+	startat:$nowhere
+	verb:read|search
+		withobj:summoning
+			needin:$this,$available
+			msg:"The Lyrins want to destroy us by summoning an Elder God here. I've discovered that he can only be summoned once every seven years. If we summon him before them and then banish him, they will not be able to try again before then. But I still need to find out the exact ritual, and I need his name."
+		withobj:lyrin
+			needin:$this,$available
+			msg:"Lyrin are not Lyrin. Our enemies are creatures pretending to be them. Extracting the silver, our people allowed them to enter."
+		withobj:witch
+			needin:$this,$available
+			msg:"I still didn't find out who the Witch is, but she's responsible for all the current situation"
+		withobj:sacred
+			needin:$this,$available
+			msg:"I can't use their new site in the mines. But I've found there's a forgotten Lyrin temple north of town"
+		withobj:$none
+			needin:$this,$available
+			msg:They seem to be Erik's notebook missing pages
+			msg:He wrote that he wanted to obtain info about the production of the metal Lyrins use for weapon and armour, and to try to block their resources
+			msg:But that there's a bigger and imminent danger, a @summoning
+		withobj:$every
+			needin:$this,$available
+			msg:You cannot find anything about that
+	verb:x
+		needin:$this,$available
+		msg:They seem to be Erik's notebook missing pages
+		msg:He wrote that he wanted to obtain info about the production of the metal Lyrins use for weapon and armour, and to try to block their resources
+		msg:But that there's a bigger and imminent danger, a @summoning
+smallobj:eriknotebook
+	name:a @notebook
+	synonym:notebook,erik notebook
+	startat:$nowhere
+	verb:x|read
+		needin:$this,$available
+		if:!fulllayout
+			msg:It's a torn notebook, with several missing pages. And what's left is written in a sort of code that you read
+			msg:On one page there's an incomplete layout
+			ifisroom:bankssquare
+				if:layoutseen
+					msg:Mmh... there's a serious resemblance to what's on the statue
+					ifobjin:pencil,$inventory
+						msg:You used the pencil to copy what was missing of notebook page, and now it's identical
+						set:fulllayout
+					else
+						msg:You could fix the notebook scheme, if you'd have something to write
+					endif
+				endif
+			endif
+		else
+			ifisroom:minetunnel
+				msg:The layout you copied from the statue has symbols similar to crossroads marking. It seems that from where you are you need to go southeast to reach the central point
+				set:solvedmaze
+			else
+				msg:On one page there's a layout with dots and markings you copied from a statue
+		if:knowdemonname
+			if:!pagetaken
+				msg:On the bottom of a page you wrote "@Arkylzoth"
+smallobj:page
+	name:a torn @page
+	desc:A torn page with spells for summoning and banishing Arkylzoth
+	startat:$nowhere
+verb:go
+	withobj:nesterin
+		ifisroom:house
+			goto:mainsquare
+		endif
+		ifisroom:path
+			goto:mainsquare
+		endif
+		ifisroom:darkpath
+			goto:mainsquare
+		endif
+		ifisroom:mineroad
+			goto:southtownentrance
+		endif
+		ifisroom:camp
+			goto:southtownentrance
+		endif
+		ifisroom:ruins
+			goto:northtownentrance
+		endif
+		ifisroom:forestpond
+			goto:northtownentrance
+		endif
+		ifisroom:betweenpath
+			goto:northtownentrance
+		endif
+		ifisroom:mountainpath
+			goto:northtownentrance
+		endif
+		ifisroom:fall
+			goto:northtownentrance
+		endif
+genericverb:attack
+	withobj:$none
+		msg:Violence isn't wise, with so many enemies nearby
+	withobj:$every
+		ifobj:$this,actor+visible
+			msg:Too risky.
+		else
+			ifobjin:$this,$available
+				msg:What?
+			else
+				msg:You don't see that here	
+genericverb:capture
+	synonym:capture,hunt
+genericverb:carve
+genericverb:cast
+genericverb:copy
+genericverb:cut
+genericverb:drink
+genericverb:eat
+genericverb:exit
+genericverb:fill
+genericverb:hide
+genericverb:hunt
+genericverb:insert
+genericverb:kill
+	withobj:$none
+		msg:Violence isn't wise, with so many enemies nearby
+	withobj:$every
+		ifobj:$this,actor+visible
+			msg:Too risky.
+		else
+			ifobjin:$this,$available
+				msg:What?
+			else
+				msg:You don't see that here	
+genericverb:leave
+genericverb:move
+genericverb:read
+genericverb:search
+genericverb:throw
+genericverb:wear
+topics:erik
+topics:eryan
+topics:nesterin
+topics:spell
+topics:summoning
+topics:witch
+actor:aki
+	desc:He's a pale old man, wearing dirty clothes
+	synonym:old|man
+	startat:$nowhere
+	verb:talk
+		withobj:$every
+			ifobjin:$this,mainsquare
+				if:oldmandrank
+					msg:"Sorry, I'm still to weak to talk"
+				else
+					msg:He seems too weak to talk. He needs food, but he may need water with more urgence
+				endif
+		withobj:$none
+			ifobjin:$this,mainsquare
+				msg:"Do you need help?", you ask the old man
+				msg:He looks at you, shaking his head. But it's evident he's in a bad shape.
+	verb:ask
+		withobj:eryan|wife
+			ifobjin:$this,mainsquare
+				if:oldmandrank
+					msg:My wife, Eryan, she was the school teacher... I'll see her again soon
+				else
+					msg:He seems too weak to talk. He needs food, but he may need water with more urgence
+		withobj:erik
+			ifobjin:$this,mainsquare
+				if:oldmandrank
+					msg:"Yes, I know him," he says, "Erik sometimes worked with my wife at local school"
+					msg:"Where is he?" you ask him.
+					if:oldmaneat
+						msg:"One day, Lyrins arrested me and accused me of murder. They tortured me, and then they said they'd kill my wife too if I didn't give them the names of other rebels. I don't know anything about rebels! so ...I gave them his name"
+						msg:"Why? Where is he now?" you ask him again
+						msg:"I don't know what happened to him after what I said. But I was tortured in a camp just outside the town, so he might be there"
+						set:knowaboutcamp
+						msg:"You're here now. What about your wife?"
+						msg:"Once back I discovered they burned my house. I couldn't find her body. Probably they took her too. Now I'm here waiting to die"
+						if:!ringgiven
+							msg:Then, after a pause, added: "This is the only thing I found in the rubble. My mother's gold @ring. Take it. You're the only one who helped me, and I want to repay you"
+							msg:You try to say no, but he insists, so you finally accept
+							put:ring,$inventory
+							set:ringgiven
+						endif
+					else
+						msg:He's too weak to talk more
+					endif
+				else
+					msg:He seems too weak to talk. He needs food, but he may need water with more urgence
+				endif
+		withobj:$every
+			ifobjin:$this,mainsquare
+				if:oldmandrank
+					msg:"Sorry, I'm too weak to chat"
+				else
+					msg:He seems too weak to talk. He needs food, but he may need water with more urgence
+				endif
+	verb:give
+		withobj:flask
+			needin:$this,mainsquare
+			needin:flask,$available
+			ifis:flask,empty
+				msg:The flask is empty.
+			else
+				msg:You give the flask to the old man and he starts to drink it slowly.
+				msg:As soon as he has emptied it, he seems to feel a little better.
+				set:oldmandrank
+				put:flask,$nowhere
+				msg:"Thanks", he says.
+			endif
+		withobj:bread
+			needin:$this,mainsquare
+			needin:flask,$available
+			if:oldmandrank
+				msg:You give him your bread. He starts to cry as he eats it.
+				put:bread,$nowhere
+				set:oldmaneat
+				msg:"Thanks", he says.
+			else
+				msg:He needs to drink first
+room:$start
+	image:png\idleimage.png
+	onfirst
+		clear
+		msg:\c##SUBTITLE##
+			\c
+			\cCode+Story: \y##AUTHOR##
+			\c
+			\c\gVersion: ##VERSION##
+		waitkey
+		clear
+		msg:You are the youngest member of the Garrot Guild, or what is left of it. Most of those loyal to the Duke were killed after the Lyrin invasion.
+		msg:But your master's research did not stop. And it is more important than ever.
+		msg:You know little about it. But you know how to move and blend in, thanks in part to your mixed race.
+		msg:So you were not surprised when you were sent to Nesterin, one of the settlements close to the old border, to get hold of Erik's report, whatever it might contain.
+		waitkey
+		setvar:score,0
+		setvar:maxweight,5
+		put:knife,$inventory
+		put:pendant,$inventory
+		setcount:weight,$inventory,takeable+large
+		goto:mainsquare
+room:endgame
+	image:png\endgame.png
+	onfirst
+		clear
+		msg:With the summoning prevented, and the secret about Lyrin's material discovered, your people finally have a chance to change the fate of the war. It won't be easy, or short, but it will be possible.
+		msg:A hint of a smile cuts the sharp line of your face. It is time to return.
+		msg:\yYou won!\w
+		msg:Do you want to restart? (Y/N)
+		getkey
+		ifkey:Y
+			start
+		else
+			quit
+town
+room:mainsquare
+	name:Main Square
+	image:png\new_mainsquare.png
+	_image:png\nvillage3.png
+	imagedesc:Fantasy Medieval main square with a fountain on the center, benches all around, rich and elegant buildings and shops, an Inn visible on the left
+	onfirst
+		clear
+		msg: You arrive in this remote town at dawn. 
+		msg: Your goal now is to find Erik. It's not as easy as it sounds, considering you've never met him. All you know about him is that he's a northern man with black hair and green eyes, who arrived here six months ago.
+	desc:Even if Nesterin is no longer an important silver mining town, its main square is still impressive. Many of the shops seem to have gone out of business, but the buildings still look rich and elegant, and around the @fountain some @people are chatting quietly on the @benches. The southern gate can be seen from here. There's a inn to the east, and large roads to the west and north seem to lead further into the town.
+		{fountain: The fountain is small but elegant, although you can see that it is not in perfect condition.}
+	attr.shortdesc:in Nesterin Main square
+	attr.exits:[east,south,west,north]
+	scenery:benches
+		synonym:bench|benches
+		verb:x
+			msg:The benches are wooden, and although old, in good condition.
+			if:manunderthebench
+				msg:You notice a pale and thin old @man, resting under one of them. He seems starving.
+				put:aki,$here
+				set:discoveredman
+	sceneryactor:people
+		desc:Most of the people around are women or elderly men
+		verb:talk|ask
+			msg:They seem afraid, and not willing to interact with you.
+	verb:e
+		goto:innhall
+	verb:s
+		goto:southtownentrance
+	verb:n
+		goto:bankssquare
+	verb:w
+		goto:market
+	verb:go|enter
+		withobj:inn
+			goto:innhall
+	verb:give
+		withobj:flask
+			needin:$this,$available
+			withobj:aki
+				ifobjin:aki,mainsquare
+					ifis:flask,empty
+						msg:The flask is empty.
+					else
+						msg:You give the flask to the old man and he starts to drink it slowly.
+						msg:As soon as he has emptied it, he seems to feel a little better.
+						set:oldmandrank
+						put:flask,$nowhere
+						msg:"Thanks", he says.
+					endif
+				endif
+			endwith
+		withobj:bread
+			needin:$this,$available
+			withobj:aki
+				ifobjin:aki,mainsquare
+					if:oldmandrank
+						msg:You give him your bread. He starts to cry as he eats it.
+						set:oldmaneat
+						put:bread,$nowhere
+						msg:"Thanks", he says.
+					else
+						msg:He needs to drink first
+					endif
+				endif
+			endwith
+		withobj:beerbarrel
+			needin:$this,$available
+			withobj:aki
+				ifobjin:aki,mainsquare
+					msg:You can't give him Lyrin's beer
+				endif
+			endwith
+	verb:fill|use
+		withobj:flask
+			needin:$this,$available
+			withobj:fountain
+				msg:As you start to fill your flask, you realise that the water coming out of the fountain is not perfectly clear and smells rotten.
+room:bankssquare
+	name:Banks Square
+	image:png\new_bs.png
+	_image:png\statuesquare.png
+	imagedesc:an amazing Fantasy Medieval main square with a white statue of a man holding a strange instrument, all around rich and elegant stone buildings
+	desc:Although not as large as the main square, it is even more amazing. Every @building around it is made of stone, and there's a huge white @statue in the centre, representing a man holding a strange @instrument.
+		If you go south from here, you can head towards the entrance to the city, while if you go east, you'll reach the governor's quarters.
+		{buildings:Most of the buildings in this place are banks, or loan offices.}
+		{statue:The statue is very tall and rests on a massive square base covered with @inscriptions. The man depicted is supposed to be one of the founders of the city.}
+	attr.exits:[east,south]
+	scenery:buildings
+		synonym:building,buildings
+	scenery:instrument
+		verb:take
+			msg:You can't take it, it's a piece of the statue
+		verb:x
+			msg:It is an elongated object. You don't know what it is and you've never seen one similar before.
+			msg:From where you are you can see some embossed symbols, including a large triangle
+			set:seeninstrument
+	scenery:inscriptions
+		desc:The inscriptions tell the heroic story of the first settlers, who fought nature and adversity. Above those writings there is a huge, convoluted @layout whose meaning is beyond your comprehension.
+	scenery:layout
+		verb:x
+			msg:It seems to be a kind of labyrinth, with a series of dots and markings leading to the central part. It's quite complex. Impossible to remember.
+			set:layoutseen
+		verb:copy
+			needin:eriknotebook,$inventory
+			needin:pencil,$inventory
+			if:!fulllayout
+				msg:You used the pencil to copy what was missing of notebook page, and now it's identical
+				set:fulllayout
+	verb:s
+		goto:mainsquare
+	verb:e
+		ifobjin:knife,$inventory
+			if:midday
+				if:!domidday
+					msg:You esitate, but seeing that there's just a single Lyrin guard, now, resting near the prison, you decide to proceed even if armed.
+					waitkey
+					set:domidday
+				endif
+				goto:governorsquare
+			else
+				msg:A little further on you see several Lyrin guards and you know that if they find you with the hunting knife you will be in trouble. Better hide it somewhere safe if you want to move around.
+		else
+			goto:governorsquare
+room:governorsquare
+	name:Governor's Square
+	image:png\new_governorsquare.png
+	desc:This beautiful square with a huge @fountain leads to the Governor's Palace. Even if his role after the invasion is just to follow orders and collect taxes, the invaders didn't remove him, but they did add @guards from their ranks. 
+		To the east is the @prison, while to the west is the square with the statue. From here you can also see in the distance the Northern gate.
+		{prison: An uninviting stone building with small windows and a metal front door}
+	attr.exits:[west,north,east
+	sceneryactor:guards
+		synonym:guard,guards
+		verb:x
+			if:midday
+				msg:There's just a young Lyrin guard now
+			else
+				msg:You see several Lyrin guards, scary, fully armed, and dangerous
+		verb:talk|ask
+			msg:You don't think it's a wise thing to do
+	scenery:coins
+		desc:Most are bronze coins, but there are also some silver ones
+		verb:take
+			ifobjin:coin,$inventory
+				msg:It's too risky to get another one this way
+			else
+				setvar:tmp,0
+				if:jacketon
+					ifobjin:jacket,$inventory
+						setvar:tmp,1
+					endif
+				endif
+				if:tmp=1
+					msg:One of the guards turns around and observes you. You salute him by bowing your head
+					ifobjin:roomkey,$inventory
+						msg:You reach into the water, and take a silver coin. When he shouts at you, you turn around showing your room key. "I was recovering this"
+						msg:He grunts. But then he leaves you alone
+						put:coin,$inventory
+					else
+						msg:Even in uniform, you don't dare to collect coins with him watching. You need an excuse to reach into the water
+				else
+					msg:"What do you think to do?", shouts a Lyrin guard, approaching with sword in hand
+					msg:You stop and kneel, saying you are just a foolish stranger, curious about the shining objects inside the fountain
+					msg:He lifts you by the weight and pokes you in the face. "Go away, beggar."
+	scenery:fountain
+		verb:x
+			msg:This is probably the largest and most beautiful fountain you've ever seen
+			msg:You notice that there are several small @coins inside it
+	verb:w
+		goto:bankssquare
+	verb:e
+		if:!jacketon		
+			msg:Without a good excuse, entering a prison run by Lyrins seems foolish
+		else
+			if:!enteredprison
+				msg:It's risky, but wearing a uniform you might dare to go in and look around
+				waitkey
+				set:enteredprison
+			endif
+			goto:prison
+	verb:n
+		goto:northtownentrance
+	verb:fill|use
+		withobj:flask
+			needin:$this,$available
+			withobj:fountain
+				unsetattr:$this,empty
+				msg:Done
+room:prison
+	name:Prison
+	image:png\new_prison.png
+	imagedesc:main large room of a fantasy medieval prison, with a reception desk, a barred window, the entrance gate and the door to the underground cells. It's dark and dirty. 
+	desc:The sense of oppression here is palpable. A cold, grey, large room, made all the more unsettling by the screams and the smell.
+		The exit door is to the west, while to the east there's a reception desk with a large guard behind it. A larger door lies to the south.
+	attr.shortdesc:inside the prison
+	attr.exits:[south,west]
+	scenery:door
+	verb:open
+		setvar:tmp,0
+		if:jacketon
+			addvar:tmp,1
+		endif
+		if:insigniaonjacket
+			addvar:tmp,1
+		endif
+		if:tmp=2
+			goto:cell
+		else
+			msg:"Hey! Who are you? Where are you going? Guards!" he shouts. You run out, faster than the light.
+	scenery:desk
+	actor:prisonguard
+		name:a prison @guard
+		synonym:guard
+		verb:talk
+			setvar:tmp,0
+			if:jacketon
+				addvar:tmp,1
+			endif
+			if:insigniaonjacket
+				addvar:tmp,1
+			endif
+			msg:"What do you want?", he inquire.
+			msg:"I'm here to see a prisoner", you answer.
+			if:tmp=2
+				msg:"Which one?", he asks
+				if:eryanname
+					msg:"Eryan", you say
+					msg:He looks at you then annoyedly points you in the direction of the cells, to the south, and invites you to hurry up
+					set:allowedtoenter
+				else
+					msg:"Erik", you say
+					msg:"There is no one here by that name"
+				endif
+			else
+				msg:He looks at you and points to your uniform. 
+				msg:"Only officers are allowed to approach prisoners, how many times do I have to tell you people? Get out before I put you behind bars too."	
+				waitkey
+				goto:governorsquare
+		desc:He's ugly and menacing
+	verb:w
+		goto:governorsquare
+	verb:enter|go
+		withobj:cell
+			if:allowedtoenter
+				goto:cell
+			else
+				msg:"Hey! Who are you?" he shouts
+	verb:s
+		if:allowedtoenter
+			goto:cell
+		else
+			msg:"Hey! Nobody enters without my consent!" he shouts
+room:cell
+	name:Prison cell
+	image:png\cell.png
+	desc:In front of you is a small cell where an elderly @woman stares at you with fear
+		{woman:She looks frightened but not defeated}
+	actor:woman
+		verb:talk
+			msg:"Who are you?", she says. "A friend?", you reply.
+			msg:"I do not recommend it. All my friends are probably dead"
+		verb:ask
+			withobj:eryan
+				msg:Yes, that's my name
+			withobj:erik
+				if:womansawpendant
+					if:!alreadysaid
+						msg:"Erik told me he left notes about his work to you", you start. "Erik? Where..."
+						msg:"Dead. I need to know what he wanted to do"
+						msg:"He didn't give me details, but he said we were close to a major breakthrough." 
+						set:alreadysaid
+					endif
+					msg:"I was able to hide his documents before being arrested. They are hidden in the school library. Behind a book in the @geometry section."
+				else
+					msg:"Who are you?"
+			withobj:$every
+				msg:"Don't want to talk about that"
+		verb:show
+			withobj:pendant
+				ifobjin:pendant,$inventory
+					msg:"One of us, them."
+					set:womansawpendant
+				else
+					msg:You don't have it
+	verb:n
+		goto:prison
+	verb:show
+		withobj:pendant
+			ifobjin:pendant,$inventory
+				msg:"One of Erik's people, then."
+				set:womansawpendant
+			else
+				msg:You don't have it
+	attr.exits:[north]
+room:market
+	name:Market
+	_image:png\nmarket.png
+	image:png\new_marketsquare.png
+	desc:The market square is relatively small, with stalls selling a variety of @food and @clothes, but few customers seem to be able to buy anything. From here it's possible to walk to the entrance of the town, which lies to the east. To the north, there's a @building that catches your eye because of its boarded-up door.
+		{building: It's a big building, with boarded-up doors.}
+		{food: The food on display is expensive and looks mediocre. There are lots of vegetables, some cheese and herbs, but very little @meat}
+		{clothes: The clothes are well made, although they look second-hand. There are also a few elegant garments and a @uniform too}
+		{uniform: Uniform is different from the one you've seen around on local guards. But it's close.}
+		{meat: It's mainly pork, but there's also some small wild animal.}
+		{foodseller: The food seller is a blond woman, middle-aged. She seems nice.}
+		{foodseller.talk: "Hello young boy, do you want something?", she asks smiling, but the smile vanishes as soon as you admit you've no money.}
+		{clothessalesman: The clothes saleswoman is an old lady, with a sad face.}
+		{clothessalesman.talk: "Hello, is there anything you like?", she asks, without too many expectations.}
+	attr.shortdesc:at the market
+	attr.exits:[east,north]
+	actor:foodseller
+		name:a food @seller
+		synonym:seller
+		verb:ask
+			withobj:meat
+				msg:You ask why there's a meat shortage, and the vendor answers vaguely. "Problems with @suppliers", she says
+				set:meatneeded
+				if:rabbitsseen
+					msg:"I've seen rabbits in the forest", you say
+					msg:"Well, if you catch some, I could buy them", she affirms
+			withobj:erik
+				msg:"I don't know anyone by that name"
+			withobj:school
+				msg:"They closed it some time ago. Not the worst thing they did." she said.
+			withobj:food|cheese|herbs
+				msg:"Do you have any money?"
+			withobj:irillis
+				msg:"Nice plants with a lot of properties. Great with roasted meat!", she says, "but I don't have any"
+				if:!knowirillis
+					msg:You ask her about how it looks and she gives you a good description.
+					set:knowirillis
+			withobj:rodum
+				msg:"Oh, I've heard about it, but I've never seen it, I'm sorry."
+			withobj:suppliers
+				msg:"Lyrins took all our weapons, including hunting ones. And they took almost every young man away. And that without mentioning the forest @witch"
+			withobj:witch
+				msg:"It's just a legend... until it's not. Few people go happily in the Southern forest in the last years", she said.
+			withobj:rabbits
+				msg:"I've seen rabbits in the forest", you say
+				msg:"Well, if you catch some, I could buy them", she affirms
+			withobj:$every
+				msg:"Sorry, it's a complicated time, I don't feel like talking, especially if you're not here to buy".
+		verb:give|show
+			withobj:rabbit
+				if:rabbitgiven
+					msg:"I still have the other one", she says
+				else
+					ifobjin:rabbit,$inventory
+						msg:"Not the best rabbit I've ever seen, but a nice one," she says, "I'll buy it."
+						msg:She takes your rabbit, and start to clean it.
+						msg:"What about my money?" 
+						msg:"I'll pay you when I sell it," she said, "but I can give you a bit of @bread up front.
+						put:bread,$inventory
+						put:rabbit,$nowhere
+						set:rabbitgiven
+	actor:clothessalesman
+		name:a clothes @saleswoman
+		synonym:saleswoman
+		verb:ask
+			withobj:witch
+				msg:"My mom sweared she saw her, when she was a kid. She was terrified."
+			withobj:school
+				msg:"It's our school," she said, "or I should say it was. It's been closed by them one month ago."
+			withobj:erik
+				msg:"I don't know anyone by that name"
+			withobj:clothes
+				msg:"if you find something you like I will try to give you a good price"
+			withobj:uniform
+				ifobjin:jacket,$inventory
+					msg:You already have it
+				else
+					msg:"It's old. I've got it because a guard gave it to me to exchange it with newer shoes."
+					msg:"Do you want it? I could sell it for 2 coins.", he concludes.
+					set:wantjacket
+					if:!havemoney
+						msg:"No money with me, sorry.", you reply.
+					else
+						ifobjin:coin,$inventory
+							msg:You show him your coin
+							msg:"Mmh... I haven't seen any like this in a long time. It's out-of-course money now. And, anyway, it's just ONE"
+			withobj:$every
+				msg:"Sorry, it's a complicated time, I don't feel like talking, especially if you're not here to buy".
+		verb:give|show
+			withobj:ring
+				if:wantjacket
+					ifobjin:ring,$inventory
+						msg:"For the uniform?", she asks, and when you nod he makes the ring disappear in her pocket. 
+						msg:"But I'm only giving you the @jacket for this little ring. Many of the local guards use their trousers anyway, so you can do the same"
+						put:ring,$nowhere
+						put:jacket,$inventory
+					else
+						msg:You don't have it
+					endif
+				else
+					msg:Why?
+	verb:e
+		goto:mainsquare
+	verb:n
+		msg:You walk a hundred meters north and reach an elegant two-storey building. It's a @school, but the main door has been boarded up and wooden panels cover some of the windows. It's impossible to enter, so after a moment, you go back.
+		set:schoolseenfromnearby
+	verb:nw
+		if:schoolalleyseen
+			goto:schoolalley
+		else
+			msg:You can't go that way
+	verb:give|show
+		withobj:ring
+			withobj:market.clothessalesman
+				if:wantjacket
+					ifobjin:ring,$inventory
+						msg:"For the uniform?", she asks, and when you nod he makes the ring disappear in her pocket. 
+						msg:"But I'm only giving you the @jacket for this little ring. Many of the local guards use their trousers anyway, so you can do the same"
+						put:ring,$nowhere
+						put:jacket,$inventory
+					else
+						msg:You don't have it
+					endif
+				else
+					msg:Why?
+		withobj:rabbit
+			withobj:market.foodseller
+				ifobjin:rabbit,$inventory
+					msg:"Not the best rabbit I've ever seen, but a nice one," she says, "I'll buy it."
+					msg:She takes your rabbit, and start to clean it.
+					msg:"What about my money?" 
+					msg:"I'll pay you when I sell it," she said, "but I can give you a bit of @bread up front.
+					put:bread,$inventory
+					put:rabbit,$nowhere
+					set:rabbitgiven
+	scenery:uniform
+	scenery:jacket
+	scenery:school
+		verb:x
+			msg:There's no a way in through the front door.
+			if:schoolseenfromnearby  
+				msg:On the left, to the northwest, you noticed a small alley. Wonder if there's a second, less blocked door there. 
+				set:schoolalleyseen
+			else
+				msg:You wonder if there's another way to enter that you can't see from here.
+room:school
+	name:School room
+	image:png\schoolroom2.jpg
+	desc:The room you're in is full of desks. There still are writing @material on them. The teacher's desk is partially broken, and there's blood all over it. Some @cabinets were piled up on the west side as if to block access to @stairs to the upper floor. To the south is the boarded entrance door and the windows facing the square. To the east the smaller door you entered from.
+		{cabinets: They're several and heavy.}
+		{stairs: ?cabinetsbypassed * With some cabinets moved, they're now reachable. * ?> *They're behind the cabinets, so unreachable.}
+	attr.shortdesc:inside a school room
+	attr.exits:[east,south,up]
+	verb:e
+		goto:schoolalley
+	verb:u
+		if:cabinetsbypassed
+			goto:schoollibrary
+		else
+			msg:You cannot reach the stairs. Cabinets block them
+	verb:s
+		msg:The main entrance is boarded up. You can't leave from it.
+	verb:leave|exit
+		withobj:school
+			goto:schoolalley
+	scenery:cabinets
+		verb:open|search
+			if:!twineseen
+				msg:Inside one of them you find some @twine.
+				put:twine,$here
+				set:twineseen
+			else
+				msg:You open some more, but you don't find anything useful
+		verb:push|pull|move
+			if:cabinetsbypassed
+				msg:You already moved them enough
+			else
+				if:cookhelps
+					msg:You start trying to move them, when the cook arrives. 
+					msg:With his help, even trying to do less possible noise, you're able to free the stairs up in less than an hour.
+					msg:Once finished, he left without a word.
+					set:cabinetsbypassed
+				else
+					msg:They're heavy, and too many. You tried, but you quickly undertand that you can't move them and free the stairs without some serious help.
+	scenery:material
+		verb:x
+			msg:There are used notebooks, empty inkwells, crayons and more.
+			msg:They are almost all broken
+			if:!pencilfound
+				msg: but at least one @pencil seems still intact
+				put:pencil,$here
+				set:pencilfound
+room:schoollibrary
+	name:School Library
+	image:png\schoollibrary2.jpg
+	desc:This is one of the largest libraries you've ever seen. Some of the @books have been thrown on the @floor and torn up, but most of them are still in their place. And some look @ancient.
+		{floor: It's full of dry blood. Someone must be killed or seriously hurt here}
+		{books: They are too many to check them all. However, in the different library sections there are indications of the subjects covered: @botany, @geography, @history and more}
+		{history:You find a book with the story of this city. It talks about the massacre of the indigenous people by the founding fathers of Nesterin. There are bloody hands behind the riches of this region}
+	attr.shortdesc:inside the School Library
+	attr.exits:[down]
+	scenery:geography
+		verb:x|read|search
+			msg:Information about the lands around Nesterin
+			msg:Reading it you discover that there's a mining area also on the other side of Lyrin's border
+			if:!mapfound
+				msg: A @map falls out of a book
+				set:mapfound
+				put:map,$here
+	scenery:ancient
+		verb:x
+			msg:Of all of them, one book stands out above the others, because they seem to have tried to burn it, without much success. It looks like a @grimoire.
+			if:!grimoireseen
+				put:grimoire,$here
+				set:grimoireseen
+	scenery:botany
+		verb:x
+			msg:Botany section is the largest one, and it has any information even about local plants. You could search something, if you need it.
+		verb:search|read
+			withobj:irillis
+				msg:Illiris is said to be a delicious edible spice, but that it get dangerous when infused with @rodum, as its sedative properties can lead to a deep sleep from which it is impossible to wake.
+				set:knowirillis
+			withobj:rodum
+				msg:It appears to be a type of mild hallucinogen, but can become dangerous when combined with irillis or alcohol.
+				msg:There's a clear illustration of this plant.
+				set:knowrodum
+			withobj:baryl
+				msg:Its berries are detoxifying and seem to help in cases of intoxication or poisons
+				msg:There's a clear illustration of this plant.
+				set:knowbaryl
+			withobj:berries
+				msg:You are looking for a plant with berries. It takes you almost an hour, but at the end you recognise the plant you saw outside the witch's house in a drawing: it's called @baryl.
+				set:knowberriesarebaryl
+	scenery:geometry 
+		verb:x|search
+			ifobjin:documents,$nowhere
+				put:documents,$here
+				msg:You found some @documents hidden behind books.
+			else
+				msg:There's nothing else interesting 
+	scenery:grimoire
+		verb:search|read
+			withobj:banishing
+				msg:Rituals differ depending on who you want to act. You need to look for a specific name
+			withobj:summoning
+				msg:Rituals differ depending on who you want to act. You need to look for a specific name
+			withobj:arkylzoth
+				msg:It's more god than demon, but will submit to proper ritual, if performed in a @sacred place
+				msg:Those who wish to force Arkylzoth to do their bidding must sacrifice their own eyes and blood
+				msg:Blood sacrifice seems symbolic, but both eyes of a willing summoner must be carved out and offered
+				if:!pagetaken
+					msg:On a @page, there's spell needed to evoke it. There, there's also the banishing spell
+			withobj:$none
+				msg:It speaks of potions, summoning demons and human sacrifices
+			withobj:$every
+				msg:You don't find anything interesting about it
+		verb:take
+			withobj:page
+				if:pagetaken
+					msg:You already have it
+				else
+					put:page,$inventory
+					set:pagetaken
+					msg:Taken
+			withobj:spell
+				if:pagetaken
+					msg:You already have it
+				else
+					put:page,$inventory
+					set:pagetaken
+					msg:Taken
+			withobj:$none
+				msg:This book seems too ancient and ruined to move
+		verb:x
+			msg:It is a partially burnt book of magic attributed to the Witch of the Woods
+			set:grimoireseen
+	verb:d
+		goto:school
+room:schoolalley
+	name:School alley
+	image:png\schoolalley.jpg
+	desc:You're in a small alley near the school. Every @window along this wall is also blocked. There's a service @door, still boarded up, but it seems less solid than the main entrance.
+		{window: Every window is blocked by boards.}
+		{window.pull|push|use: You try to do this, without getting any useful results.}
+		{door.push: You try to do this, without getting any useful results.}
+		{window.open: Every window is boarded up.}
+	attr.shortdesc:in an alley beside the school
+	attr.exits:[southeast]
+	verb:se
+		goto:market
+	verb:w
+		if:schoolpanelremoved
+			goto:school
+		else
+			msg: You can't go that way
+	verb:use
+		withobj:knife
+			ifobjin:knife,$inventory
+				withobj:schoolalley.door
+					ifnot:schoolpanelremoved
+						msg:Using your knife, and not without effort, you manage to rise and move a panel enough to create an opening.
+						set:schoolpanelremoved
+				endwith
+				withobj:schoolalley.window
+					msg:The window panels are fastened too well
+				endwith
+	scenery:door
+		verb:pull
+			if:schoolpanelremoved
+				msg:You have already managed to lift a panel.
+			else
+				msg:Some panels seem unstable, but you can't remove with with bare hands.
+		verb:enter
+			if:schoolpanelremoved
+				goto:school
+			else
+				msg:How?
+		verb:x
+			msg:It's a service door +
+			if:schoolpanelremoved
+				msg:with now some panel removed.
+			else
+				msg:boarded up.
+		verb:open
+			if:schoolpanelremoved
+				msg: You can't really open it, but you manage to enter through the moved panes.
+				waitkey
+				goto:school
+			else
+				msg:The door is boarded up.
+			withobj:knife
+				ifobjin:knife,$inventory
+					withobj:schoolalley.door
+						ifnot:schoolpanelremoved
+							msg:Using your knife, and not without effort, you manage to rise and move a panel enough to create an opening.
+							set:schoolpanelremoved
+					endwith
+					withobj:schoolalley.window
+						msg:The window panels are fastened too well
+					endwith
+	scenery:school
+		verb:enter
+			if:schoolpanelremoved
+				goto:school
+			else
+				msg:How?
+room:northtownentrance
+	name:Nesterin North gate
+	image:png\northentrance2.jpg
+	attr.exits:[south,north]
+	attr.shortdesc:at the North entrance
+	desc:In front of you, there's the walled northern exit to Nesterin. From this side, you notice that the forest is nearer and wilder, and the road is less traveled. Here there's no one patrolling.
+	verb:n
+		if:!erikisdead
+			msg:You don't think Erik left town this way, willingly or not. So you won't go towards Lyrin's border now
+		else
+			goto:betweenpath
+	verb:s
+		goto:governorsquare
+inn
+room:innhall
+	name:Inn dining room
+	image:png\ntavern.png
+	desc:It is a tidy and spacious inn, quiet and almost empty. Behind the counter, the @innkeeper, an old frail man, seems to be staring at the wall, with an expression of pain. In front of you, behind the @tables, is a @fireplace. Stairs lead up. This place must have been glorious in the old days.
+		{fireplace: The fireplace has a few logs burning and the warmth is nice. While you're enjoying it, you notice a small @sign drawn just below the mantelpiece.}
+		{sign: The sign is too similar to your pendant shape to be a coincidence. Erik was here. * $+signseen}
+		{owner: He is an old man, and there is probably something wrong with him. He seems to be struggling to move an arm.}
+	attr.shortdesc:inside the inn
+	attr.exits:[west,south,up]
+	verb:w
+		goto:mainsquare
+	verb:u
+		if:erikroom
+			goto:upcorridor
+		else
+			msg:"Hey! Where are you going?", shouts the innkeeper
+			msg:"Rooms are for paying hosts only!"
+		endif
+	verb:n
+		if:allowedinthekitchen
+			goto:kitchen
+		else
+			msg:You can't go that way
+	verb:leave|exit
+		withobj:inn
+			goto:mainsquare
+	verb:show|give
+		withobj:beerbarrel
+			withobj:innhall.owner
+				ifobjin:beerbarrel,$inventory
+					ifobj:beerbarrel,empty
+						msg:"I've got a Lyrin barrel to fill"	
+						msg:The innkeeper looks at you in a odd way, then he says to go in the kitchen
+						set:allowedinthekitchen
+		withobj:pendant
+			withobj:innhall.owner
+				msg:The innkeeper wides his eyes when he sees your pendant. But he says nothing.
+				set:ownersawpendant
+	topics:beer
+	topics:"room"
+	actor:owner
+		synonym:innkeeper
+		name:the @innkeeper
+		verb:ask|talk
+			withobj:beerbarrel
+				ifobjin:beerbarrel,$inventory
+					ifobj:beerbarrel,empty
+						msg:"I've got a Lyrin barrel to fill"	
+						msg:The innkeeper looks at you in a odd way, then he says to go in the kitchen
+						set:allowedinthekitchen
+					else
+						msg:He just look at you without any answer
+				else
+					msg:"What?", he asks.
+			withobj:erik
+				msg: "Never heard that name," he said, looking around
+				setvar:tmp,0
+				if:!erikroom 
+					if:signseen 
+						setvar:tmp,1
+						msg:"I know he was here", you reply staring him in his eyes, "I've seen his sign over there"
+					else
+						if:ownersawpendant
+							setvar:tmp,1
+							msg:"Are you sure?", you insist
+						endif
+					endif
+				endif
+				if:tmp=1
+					msg: The innkeeper hesitates for a moment, but then he drop a @key on the bar, and moves away, start cleaning a table
+					set:erikroom
+					put:roomkey,$here
+			withobj:beer
+				msg:"It's a tenth", he said
+				msg:You answer by shaking your head
+				msg:"That's what I thought", he concluded
+			withobj:room
+				msg:"It's 5 coins per night", he said
+				msg:You answer by shaking your head
+				msg:"That's what I thought", he concluded
+			withobj:sign
+				msg:"What about that scratch?", he replied, daring you to ask more
+			withobj:witch
+				msg:"It was a local legend, nothing more. Or so I thought when I was younger. Now I'm not so sure about it."
+			withobj:$none
+				msg:"I don't want to sound rude, but I don't want to talk to you", he said, "So, please order or leave"
+			withobj:$every
+				msg:"I don't want to sound rude, but I don't want to talk to you", he said, "So, please order or leave"
+		verb:show|give
+			withobj:beerbarrel
+				ifobjin:beerbarrel,$inventory
+					ifobj:beerbarrel,empty
+						msg:"I've got a Lyrin barrel to fill"	
+						msg:The innkeeper looks at you in a odd way, then he says to go in the kitchen
+						set:allowedinthekitchen
+					else
+						msg:He just look at you without any answer
+				else
+					msg:He just look at you without any answer
+	scenery:kitchen
+		verb:go|enter
+			if:allowedinthekitchen
+				goto:kitchen
+			else
+				msg:"Hey! Where are you going?", shouts the innkeeper
+	scenery:tables
+		verb:x
+			if:midday
+				msg:Tables are occupied by loudy Lyrin guards, eating and drinking beer
+			else
+				msg:Few customers are drinking beer, and speaking in a low voice
+room:upcorridor
+	name:Corridor
+	image:png\new_upcorridor.png
+	imagedesc:a low lit long corridor on the first floor of a fantasy medieval inn, viewed from side view. Clean and tidy, and there are several rooms most of them with solid doors
+	desc:The corridor on the first floor is clean and tidy, and there are several @rooms most of them with solid @doors.The place's mining past when rich merchants slept here during their business travels, is clearly over, but the owner still tries to keep everything as nice as it was.
+		{rooms: You count eight rooms, the first ones less posh but bigger, the last ones, located on the east side, a bit smaller.}
+		{doors: On the solid doors there are numbers. The first numbers are on the west side, last ones are on the east side. All the others are in front of you, south.}
+	attr.shortdesc:on the first floor of the inn
+	attr.exits:[down]
+	verb:e
+		if:!unlockedinnroom
+			msg:You use the key and unlock room seven. Then you enter the room that was Erik's with some trepidation.
+			set:unlockedinnroom
+			waitkey
+		endif
+		goto:innroom
+	verb:d
+		goto:innhall
+	verb:w
+		msg:Doors are locked.
+	verb:s
+		msg:Doors are locked.
+	verb:enter
+		withobj:room
+			if:!unlockedinnroom
+				msg:You use the key and unlock room seven. Then you enter the room that was Erik's with some trepidation.
+				set:unlockedinnroom
+				waitkey
+			endif
+			goto:innroom
+	scenery:rooms
+		synonym:room,rooms
+room:innroom
+	name:Room
+	image:png\new_innroom.png
+	imagedesc:a fantasy medieval posh inn room, with a stray bed, a window, a table and some furniture.
+	desc:This is a far cry from an ordinary inn room, and now it's probably just a shadow of what it should have been in better days. 
+		There are several signs of time on the @furniture, but even the @bed is much better than your master's.
+		{bed: The bed has a simple straw @mattress but the sheets and pillows are clean and comfortable.}
+		{bed.use: Not now.}
+		{furniture: This room has a @table and a chair. In a corner, there's also a @drawer.}
+	attr.shortdesc:inside a room
+	attr.exits:[west]
+	verb:w
+		goto:upcorridor
+	verb:leave|exit
+		goto:upcorridor
+	scenery:table
+		verb:x
+			msg:There are papers with numbers, supplies and dates. Probably something about Erik's day-to-day work here.
+	scenery:drawer
+		verb:x|open
+			ifobjin:flask,$inventory
+				msg:It's empty.
+			else
+				msg:Inside, there's a small leather @flask
+				put:flask,$here
+	scenery:mattress
+		verb:x|search
+			ifobjin:eriknotebook,$inventory
+				msg:You found nothing.
+			else
+				msg:Hidden in the staw, there's a torn @notebook. It's in bad condition but it seems to be from Erik.
+				put:eriknotebook,$here
+room:kitchen
+	name:Kitchen
+	image:png\nkitchen.png
+	desc:Like everything else, the kitchen is beautiful and well-equipped. It takes a little effort to notice that most of the spice @jars are almost empty. A large @window door lets in daylight.
+		{jars: Spices seem to be running out. This kitchen needs @supplies.}
+		{windowdoor.x: From there you can see the main square from a northern angle. * You notice that there's something odd under a @bench. }
+	attr.shortdesc:in the Inn's kitchen
+	attr.exits:[south]
+	verb:s
+		goto:innhall
+	verb:leave|exit
+		withobj:kitchen
+			goto:innhall
+	verb:show|give
+		withobj:beerbarrel
+			ifobjin:beerbarrel,$inventory
+				ifobj:beerbarrel,empty
+					msg:"Ah. They finished another one. I'll take care of it."
+					msg:The cook takes the barrel, and fills it. 
+					put:beerbarrel,$here
+					msg:"Here you are." he says once finished.
+					unsetattr:beerbarrel,empty
+					set:cookfillbarrel
+				else
+					msg:"I've already filled it"
+			else
+				msg:The cook smiles but doesn't say anything.
+		withobj:irillis
+			ifobjin:irillis,$inventory
+				msg:"Oh, thank you!" says the cook, "I really appreciate that!"
+				put:irillis,$nowhere
+				set:cookownsone
+		withobj:pendant
+			msg:"You're one of Erik's folks then.", the cook says, "Good to know"
+			set:cooksawpendant
+	actor:cook
+		name:the @cook
+		desc:A fat old man, with a patch on one eye, but with a smiling face. He seems strong.
+		verb:ask|talk
+			withobj:beerbarrel
+				ifobjin:beerbarrel,$inventory
+					ifobj:beerbarrel,empty
+						msg:"Ah. They finished another one. I'll take care of it."
+						msg:The cook takes the barrel, and fills it. 
+						msg:"Here you are." he says once finished.
+						unsetattr:beerbarrel,empty
+						set:cookfillbarrel
+					else
+						msg:"I've filled it. You can take it to those bastards now."
+				else
+					msg:The cook smiles but doesn't say anything.
+			withobj:erik
+				if:!cooksawpendant
+					msg:"I don't know you, and these are dangerous times to talk too much."
+				else
+					msg:"He helped us, the few who could still try, to secretly organise against the Lyrin," he says. "He was a good man."
+					msg:"Was?", you ask. 
+					msg:"Someone denounced him. They came at night and took him away. I don't know where. Maybe in our prison, or somewhere else. But usually no one returns."
+					set:cookerik
+			withobj:eryan
+				msg:She's our school teacher, and one of us. A friend told me that was arrested soon after Erik
+				set:eryaninprison
+			withobj:jars
+				msg:"Yes, I know. I need supplies.", he says. 
+				msg:"But the guy that sold me these @spices was taken away and I'm not able to collect them by myself."
+			withobj:supplies
+				msg:"Yes, I know. I need supplies.", he says. 
+				msg:"But the guy that sold me these @spices was taken away and I'm not able to collect them by myself."
+			withobj:spices
+				msg:"Well, I need many, but the most important one for me is @irillis.", the cook says.
+				msg:"I use it mostly for meat, but it has other uses as well. Can you collect some for me?"
+			withobj:irillis
+				msg:"How does it look? Uh! It's red and... I'm sorry, I'm not very good in describing plants."
+			withobj:help
+				if:cabinetsbypassed
+					msg:You don't need any more help from him
+				else
+					if:cooksawpendant
+						msg:"You're Erik's friend... so, ok, I'm in"
+						msg:"Go there and start moving what you can. I'll reach you as soon as I finish here"
+						set:cookhelps
+					else
+						msg:"Help you move the school cabinets? You mean risk my life! School's entrance is forbidden now" he says
+						msg:"I don't know you, and it's very dangerous"
+					endif
+			withobj:school
+				if:cabinetsbypassed
+					msg:You don't need any more help from him
+				else
+					if:cookerik
+						msg:"You're Erik's friend... so, ok, I'm in"
+						msg:"Go there and start moving what you can. I'll reach you as soon as I finish here"
+						set:cookhelps
+					else
+						msg:"Help you move the school cabinets? You mean risk my life! School's entrance is forbidden now" he says
+						msg:"I don't know you, and it's very dangerous"
+					endif
+			withobj:school.cabinets
+				if:cabinetsbypassed
+					msg:You don't need any more help from him
+				else
+					if:cookerik
+						msg:"You're Erik's friend... so, ok, I'm in"
+						msg:"Go there and start moving what you can. I'll reach you as soon as I finish here"
+						set:cookhelps
+					else
+						msg:"Help you move the school cabinets? You mean risk my life! School's entrance is forbidden now" he says
+						msg:"I don't know you, and it's very dangerous"
+					endif
+			withobj:$every
+				msg:The cook smiles but doesn't say anything.
+	scenery:windowdoor
+		synonym:door,window,window door
+	scenery:jars
+		synonym:jar,jars
+	scenery:kitchen
+	scenery:bench
+		verb:x
+			msg:Looking carefully, you notice someone's lying under a bench. He's half-hidden on the ground, covered by a dirty sack.
+			set:manunderthebench
+	scenery:spices
+	scenery:supplies
+forest
+room:southtownentrance
+	name:Nesterin South entrance
+	image:png\ntownentrance.png
+	desc:You're just outside the walled @entrance to Nesterin.
+		From here you can see the southern @road that brought you here, and a similarly large one heading north-west.
+		All around is a deep @forest, with several small @paths, the most beaten to the east.
+		{entrance:The entrance is open. It does not appear to have been closed for some time. There's a @sign on its left.}
+		{road:The road is large, but there are no signs of a constant passage of people or wagons.}
+		{forest:The forest in front of you is dense and full of wide and tall trees.}
+		{paths:Among the trees you glimpse a few narrow paths here and there, but you see no one around.}
+	attr.shortdesc:at the South entrance
+	attr.exits:[east,south,northwest,north]
+	scenery:leg
+		desc:His leg seems somehow broken. He probably hardly walks.
+	topics:men
+	topics:barrels
+	actor:entranceguard
+		name:a local @guard
+		synonym:guard
+		verb:talk
+			if:barreldutyknow
+				msg:"Thanks for your help", he says.
+			else
+				msg:"You cannot stand here, come in or go away", he says.
+		verb:ask
+			withobj:leg
+				msg:"What's wrong with your leg", you ask.
+				msg:"None of your business," he replies. But he looks anxious to the northern @road.
+				set:legseen
+			withobj:road
+				if:barreldutyknow
+					msg:You don't need to ask that. You know what to do.
+				else
+					if:legseen
+						msg:"Is there something that worries you?", you ask.
+						msg:"They asked me to... it's complicated. Go away", he replies.
+					else
+						msg:"You cannot stand here, come in or go away", he says.
+			withobj:barrels|barrel
+				if:barreldutyknow
+					msg:You don't need to ask that. You know what to do.
+				else
+						if:barrelsseen
+							msg:"I need to take their empty barrels to the Inn to fill the again with beer", he says.
+							msg:"But it's hard for me to walk, and those men scare me"
+							msg:You think about it for a moment. Then you ask him if he wants you to do it instead of him.
+							msg:"I'd really love that. And I will return the favour somehow", he adds.
+							set:barreldutyknow
+						else
+							msg:"You cannot stand here, come in or go away", he says.
+			withobj:men
+				if:armedmenseen
+					msg:"Do you mean those armed men over there? They're blocking the road to the silver mines."
+				else
+					msg:"You cannot stand here, come in or go away", he says.
+			withobj:erik
+				msg:It seems risky to ask him about Erik
+			withobj:insignia
+				msg:"What those are for?", you ask.
+				msg:"They say I am in charge of my squadron," he replies "this if I still had a squadron"
+				if:barreldutyknow
+					ifobjin:insignia,$nowhere
+						ifobjin:jacket,$inventory
+							msg:"You said you own me a favor. Can you lend me one of them?"
+							msg:"The punishment for giving away parts of my equipment would be court martial.", he replied.
+							msg:"But if I lose accidentaly one and you find it, well...", added, dropping something.
+							put:insignia,$here
+							msg:"We're even now"
+						endif
+					endif
+			withobj:$every
+				if:barreldutyknow
+					msg:You don't need to ask that. You know what to do.
+				else
+					msg:"You cannot stand here, come in or go away", he says.
+			withobj:$none
+				if:barreldutyknow
+					msg:"Thanks for your help", he says.
+				else
+					msg:"You cannot stand here, come in or go away", he says.
+		verb:x
+			msg:It's the first young local person you've seen in a while. 
+			msg:Tall and thin, with a short sword, he seems tired, and he has something wrong in one @leg.
+			msg:His uniform, which is too big for him, is shabby in several places, but he has several @insignia on his chest.
+	sceneryobj:sign
+		desc
+		desc:A large wooden sign says: "Inside the city walls, no weapons allowed, no staying out after curfew".
+	verb:n
+		if:erikisdead
+			if:!midday
+				msg:You hear some bells, and stop
+				msg:"It's midday", explains you the guard
+				set:midday
+				waitkey
+			endif
+		endif
+		goto:mainsquare
+	verb:s
+		if:erikisdead
+			if:materialwin
+				if:summoningstopped
+					goto:endgame
+				else
+					msg:Going back with the secret about Lyrin's metal could be good, but if Erik was right about the summoning, not good enough
+			else
+				if:summoningstopped
+					msg:Going back with the summoning prevented could be good, but without something to help defeat the Lyrin army, not good enough
+				else
+					msg:You don't want to go back without having gathered Erik's information
+					msg:Even if he's dead you need to recover as much as possible of his work.
+				endif
+		else
+			msg:You don't want to go back without having gathered Erik's information
+	verb:nw
+		goto:mineroad
+	verb:e
+		goto:path
+room:path
+	image:png\nforestpath1.png
+	name:Forest path
+	desc:This forest of tall @trees and a few small @animals seems to be full of well-trodden @paths, surrounded by rich @vegetation, but after a while, most of them just stop, and the feeling of not knowing where to go grows. You get the impression that if you're not lost yet, you will be soon.
+		{trees: There are several different types of trees, all tall and wide}
+		{animals: From time to time you see a few @rabbits}
+		{vegetation: This forest is full of very diverse @plants, some of which are also very colorful}
+		{paths: The paths begin and end without leading anywhere. Probably traces of trails erased by time.}
+	scenery:rabbits
+		verb:x
+			msg:They're cautious and they move quickly through the vegetation. You barely see them. 
+			set:rabbitsseen
+		verb:capture|take|hunt
+			withobj:bow
+				ifobjin:rabbit,$inventory
+					msg:You already have one
+				else
+					ifobjin:bow,$inventory
+						msg:After a long wait you finally see one appear. You draw your bow and shoot the arrow. Got it!
+						putobj:rabbit,$here
+					else
+						msg:You don't have a bow
+					endif
+				endif
+			withobj:$every
+				msg:Can't catch them with that
+			withobj:$none
+				msg:Can't catch them with your bare hands
+				set:bowneeded
+	scenery:irillis
+		verb:take
+			ifobjin:irillis,$inventory
+				msg:You already have some
+			else
+				if:knowirillis
+					msg:It only takes a few minutes to spot some
+					putobj:$this,$inventory
+					msg:Then you pick up a bunch of them
+				else
+					msg:You have no idea about how they look like
+	scenery:plants
+		verb:x
+			msg:There a lot of different plants.
+			if:knowirillis
+				msg:You recognize some @irillis among them.
+				if:knowrodum
+					msg:You see also some @rodum plants.
+			else
+				msg:You would need help to recognize the possibly edible ones
+		verb:take
+			if:knowirillis
+				msg:You know some of them. You should decide what to take
+			else
+				msg:You would need help to recognize the possibly edible ones
+	scenery:rodum
+		verb:take
+			ifobjin:rodum,$inventory
+				msg:You already have some
+			else
+				if:knowrodum
+					msg:It only takes a few minutes to spot some
+					put:$this,$inventory
+					msg:Then you pick up a bunch of them
+				else
+					msg:You have no idea about how they look like
+	verb:w
+		goto:southtownentrance
+	verb:e
+	verb:s
+	verb:n
+		goto:darkpath
+	verb:use
+		withobj:bow
+			withobj:path.rabbits
+				ifobjin:rabbit,$inventory
+					msg:You already have one
+				else
+					ifobjin:bow,$inventory
+						msg:After a long wait you finally see one appear. You draw your bow and shoot the arrow. Got it!
+						putobj:rabbit,$here
+					else
+						msg:You don't have a bow
+					endif
+				endif
+	attr.exits:[east,south,west,north]
+	attr.shortdesc:on a forest path
+room:darkpath
+	name:Forest path
+	image:png\nforestpath2.png
+	desc:This part of the forest, with also smaller @trees, looks a little different from the one just outside the town, but it is just as difficult to find your way around because of all the absurdly well-trodden @paths. You just keep on walking, feeling like you are going in circles. You will certainly need some hints on how to deal with this.
+		{paths: The paths begin and end without leading anywhere. Probably traces of trails erased by time.}
+		{trees: Some trees around you seem to have long @branches.}
+		{branches: Some of them are long and also flexible.}
+	attr.exits:[east,south,west,north]
+	attr.shortdesc:on a forest path
+	scenery:paths
+		synonym:path,paths
+	scenery:branches
+		verb:cut|take
+			if:bowneeded
+				ifobjin:bow,$inventory
+					msg:You already made a bow.
+				else
+					ifobjin:knife,$inventory
+							ifobjin:twine,$inventory
+								msg:You cut some branches. You use one of them and the string to make a @bow, then you clean and carve some others to make arrows.
+								put:twine,$nowhere
+								put:bow,$inventory
+							else
+								msg:They could be used to make a bow, but you also need some kind of string for that
+							endif
+					else
+						msg:You need something to cut them.
+					endif 
+				endif
+			else
+				msg: You don't have a reason to get them now.
+			endif
+	verb:s
+	verb:e
+	verb:w
+	verb:n
+		goto:path
+	verb:se
+		if:knowdarkpathroad
+			goto:house
+		else
+			goto:path
+room:betweenpath
+	name:Forest path
+	image:png\nforestpath3.png
+	desc:This part of the forest seems to have more defined @paths, although the sometimes very dense vegetation still hides the direction in which they are going.
+		{paths:You see a few path that you could follow, including a leading one.}
+	attr.shortdesc:on a forest path
+	attr.exits:[west,southwest,northeast]
+	verb:sw
+		goto:northtownentrance
+	verb:ne
+		if:knowruinsroad
+			goto:ruins
+		else
+			msg:Even if it seems like a beaten path, it's too dirty to follow without knowing where it might lead
+	verb:w
+		goto:forestpond
+room:mineroad
+	name:Northern road
+	image:png\new_mineroad.png
+	imagedesc:a fantasy straight country road with a large patrolling area. All around a deep forest. Mountain in the distance. 
+	desc:You are just outside the town, on the @road to the mines, to the northwest
+	attr.shortdesc:along the northern road
+	attr.exits:[southeast,northwest]
+	onfirst
+		clear
+		msg:You are just outside the town, on the @road to the mines, to the northwest
+		msg:Here there's a small group of Lyrin armed @men whose intention seems to block the passage, more than check travellers
+	actor:men
+		name:armed @men
+		verb:ask|talk
+			withobj:barrels|barrel
+				if:menasleep
+					msg:They can't answer
+				else
+					if:barreldutyknow
+						if:barreltaken
+							msg:"Hey, you still have to bring us the other one, filled," they say
+						else
+							msg:"I'm here to take the empty barrels, to fill them up", you say
+							msg:"It was about time! Hurry up! We're thirsty.", they say
+							msg:Then one of them put in front of you an empty @barrel
+							put:beerbarrel,$here
+							set:barreltaken
+					else
+						msg:No way.
+			withobj:$every
+				if:menasleep
+					msg:They can't answer
+				else
+					msg:"Get out of here before we slit your throat.", says one of them.
+		verb:x
+			if:menasleep
+				msg:They're on the ground, +
+				if:mendead
+					msg:dead
+				else
+					msg:comatose
+				endif
+			else
+				msg:They're a small group of heavily armed Lyrin men. Their indestructible light armor and their razor-like swords don't make them as scary as their cruel faces.
+				set:armedmenseen
+			endif
+		verb:kill
+			if:menasleep
+				ifobjin:knife,$inventory
+					msg:You slit the throats of all men. Their faces seem to melt after that.
+					set:mendead
+				else
+					msg:How?
+			else
+				if:mendead
+					msg:Again?
+	scenery:tarp
+		synonym:tarp,tarps
+		verb:x
+			msg:On the tarps there are small @barrels, food, and blankets. These men won't move anytime soon.
+			setattr:barrels,visible
+			set:barrelsseen
+	scenery:barrels
+		attr:$none
+		verb:take
+			if:menasleep
+				msg:You don't need them anymore
+			else
+				if:barreldutyknow
+					if:barreltaken
+						msg:"Hey, you still have to bring us the other one, filled," they say
+					else
+						msg:"I'm here to take the empty barrels, to fill them up", you say
+						msg:"It was about time! Hurry up! We're thirsty.", they say
+						msg:Then one of them put in front of you an empty @barrel
+						put:beerbarrel,$here
+						set:barreltaken
+				else
+					msg:"What are you doing?" shouts one of them
+		desc:They're just small beer barrels. Some are surely empty.
+	scenery:food
+	scenery:blankets
+	scenery:road
+		verb:x
+			msg:The road narrows here and you can start to see the mountains. On either side are @tarps with items on them
+	verb:nw
+		if:menasleep
+			if:knowaboutcamp
+				msg:After a mile, you see that there's a secondary path, departing from the main road, and you think to see a camp in that direction
+				msg:It could be where the old man was taken
+				waitkey
+				goto:camp
+			else
+				msg:After a couple of mile you see in the distant another road block with a larger group of armed men
+				msg:You know you won't be able to play tricks on them too, so you turn back
+			endif
+		else
+			msg:As soon as you start walking towards them, one of the armed men shouts at you to stop. "Who are you? Where are you going?" he asks menacingly
+			msg:When he sees that you are a half-breed he relaxes a little, but nevertheless orders you to turn back immediately
+			set:armedmenseen
+		endif
+	verb:se
+		goto:southtownentrance
+	verb:give|show
+		if:menasleep
+			msg:They can't answer
+		else
+			ifobjin:beerbarrel,$inventory
+				ifobj:beerbarrel,empty
+					msg:"Are you stupid? We gave it to you to fill it with beer! Go and do that!", they say.
+				else
+					setvar:tmp,0
+					if:irillisinbarrel
+						addvar:tmp,1
+					endif
+					if:roduminbarrel
+						addvar:tmp,1
+					endif
+					msg:"Ah, finally, we were dying of thirst."
+					if:tmp=2
+						msg:"Wait. I don't like his grin," one of them says as you approach.
+						msg:"Make him drink it," he orders. "It wouldn't be the first time someone played a trick on us."
+						if:baryleaten
+							msg:"Sure, thanks!", you reply, once you reach them. After you drink some, they stop you, and they quickly share its content between them.
+							msg:It's only a matter of minutes before they start to feel dizzy and wander off before falling to the ground.
+							msg:You then drag their bodies off the road and hide them in the vegetation
+							put:mineroad.men,$nowhere
+							put:beerbarrel,$nowhere
+							set:menasleep
+						else
+							msg:"What?" you ask, trying to figure out how to handle that.
+							msg:"We want you..." he started.
+							msg:You trip over one of their bags, trying to look convincing, and shatter the barrel as you fall.
+							msg:"You damn fool!" says their leader, kicking you in the head as the others laugh.
+							msg:"I'm sorry! I'll be right back with another one," you say, pleadingly.
+							msg:Then you jump back on your feet, hurry to get another empty one and leave before they can think better of it.
+							setattr:beerbarrel,empty
+							msg:Their leader looks at you suspiciously, but says nothing.
+						endif
+					else
+						put:beerbarrel,$here
+						msg:"Take another empty one over there and fill it up.", they say, before starting to drink.
+						setattr:beerbarrel,empty
+						msg:The men pass the barrel quickly and finish it in a flash.
+					endif
+room:camp
+	name:Lyrin camp
+	desc:You managed to approach the small camp unnoticed. You can see just a few soldiers and all in the central clearing, from where they should not see you. There are several tents in front of you, but only two can probably be reached without risks, one @green and one @red.
+	attr.exits:[southwest]
+	image:png\camp2.jpg
+	verb:sw
+		goto:mineroad
+	scenery:green
+		verb:enter|go
+			msg:It's too risky to try to take something.
+		verb:x
+			msg:It looks like a service tent, full of large equipment. 
+	scenery:red
+		verb:enter|go
+			goto:redtent
+		verb:x
+			msg:From the outside it looks empty. But you hear a moan. 
+room:redtent
+	name:Red tent
+	image:png\redtent.png
+	attr.exits:[south]
+	desc:It is a small red tent where a nauseating smell haunts the air. There's a man on the floor
+	onfirst
+		clear
+		msg:It is a small red tent where a nauseating smell haunts the air. 
+		msg:There's a tortured, dying man lying on the floor. His hairs are black and he's got green eyes. @Erik!
+	verb:s
+		goto:camp
+	verb:leave|exit
+		goto:camp
+	actor:erik
+		verb:talk|ask
+			msg:"Erik?", you ask.
+			if:erikisdead
+				msg:He's dead.
+			else
+				msg:He takes time to react.
+				msg:"It's our fault. They're not... human" he says.
+				msg:"What?"
+				msg:"But we can still defeat them, at least for now. But they're... I'm ready to do whatever it takes to stop them... I'm ready and willing..."
+				msg:"What?", you ask again.
+				msg:"We need to hurry! They're summoning a God... I've slowed them down killing their cleric... but they'll retry soon"
+				msg:"I don't understand"
+				msg:"I... left my notes to @Eryan"
+				msg:This was Erik's last breath.
+				set:eryanname
+				set:erikisdead
+		verb:x
+			if:erikisdead
+				msg:He's dead.
+				if:carvedeyes
+					msg:His eyes are missing
+			else
+				msg:The signs of torture are innumerable. He is dying
+		verb:cut|take|carve
+			withobj:eyes
+				if:carvedeyes
+					msg:You alredy took them
+				else
+					msg:You brace yourself and proceed. In an infinite time you pluck out his eyes and take them.
+					put:eyes,$inventory
+					set:carvedeyes
+room:house
+	name:Forest house
+	desc:In front of you stands a small, solid stone @house, almost completely hidden by trees. It looks inhabited and @grass grows even between the cracks in the @walls. The front @door only looks as if it has been approached.
+		{door: The door has been left somehow opened as if someone just left the house, to be back in a minute.}
+		{house: The house is certainly ancient, but nature doesn't seem to have taken any serious hold of it.}
+		{walls: Solid stone walls. The grass on it seems to follow patterns, instead of simply covering the most exposed parts.}
+	image:png\foresthouse.jpg
+	attr.shortdesc:in front of a house
+	attr.exits:[south,north]
+	verb:n
+		goto:darkpath
+	verb:s
+		goto:houseinterior
+	verb:open
+		withobj:door
+			msg:You open the door, and enter
+			waitkey
+			goto:houseinterior
+	verb:go|enter
+		withobj:house
+			goto:houseinterior
+	scenery:grass
+		verb:x
+			msg:A small plant with berries grows occasionally among the grass.
+			if:knowbaryl
+				msg:You recognize it as @baryl.
+				ifobjin:baryl,$nowhere
+					put:baryl,$here
+room:houseinterior
+	name:Forest house interior
+	image:png\tforesthouseinterior.jpg
+	desc:The first room you encounter, despite the large @windows, seems lit by a winter sky. There is a @fireplace, in front of a table with a @bottle and a @glass half-filled, a bookcase filled with @books, and above it, a @painting of an elderly woman with no eyes. Everything looks as if it has just been abandoned.
+		{windows: It probably depends on dirty glasses, but what you see from here doesn't look like the landscape outside. It's scary, and you stop looking through it almost immediately.}
+		{fireplace: It's unlit, but there are half-burnt logs and ashes.}
+		{painting: It's not hard to believe that she was called a witch if the woman in the painting is the owner of this place. Her eyes are carved and she's an unsettling smile.} 
+		{bottle: The bottle is almost empty. Just a few drops are left, but considering the smell, it contained what's now in the glass.}
+	attr.shortdesc:inside a house
+	attr.exits:[east,north,west]
+	verb:n
+		goto:house
+	verb:e
+		msg:The door leading that way is shut, and you can't open it
+	verb:w
+		msg:The door leading that way is shut, and you can't open it
+	scenery:glass
+		desc:The glass is half filled with an amber liquid with a strong smell. Inside it there are tiny things, crumbs or insects, that seem to move circularly as if the glass were being slowly swirled.
+		verb:drink
+			if:tasted
+				msg:You don't want to try that again
+			else
+				msg:The smell is awful, but you bring the glass to your lips and taste the contents.
+				msg:A painful twinge makes you fall to the ground and as you try to breathe you realise that your body has changed. You look at your hands, then at your chest and legs. You touch your face. 
+				msg:Have you become an adult Lyrin? You are even wearing one of their armour!
+				msg:You try to stand up and find that you can read the titles of books. Then your head spins and you pass out.
+				msg:When you get up, you are yourself again. But outside.	
+				set:tasted
+				waitkey
+				goto:house
+			endif
+		verb:take
+			msg:It's not easy to walk with a glass full of liquid
+	scenery:bottle
+		verb:take
+			msg:You don't want an empty bottle
+	scenery:books
+		verb:x
+			msg:There's some dust, but the books in this bookcase are in perfect condition. 
+		verb:read
+			if:tasted
+				msg:You don't understand why, but you can now read some elements here and there
+				msg:One of the biggest books has the title "\yArkylzoth\w the wrath-bearer"
+				ifobjin:eriknotebook,$inventory
+					ifobjin:pencil,$inventory
+						msg:You wrote it in Erik's notebook
+						set:knowdemonname
+			else
+				msg:You can't even read the titles. Everything is written in runes
+				if:grimoireseen
+					msg:One of these books resembles the library's Grimoire
+		verb:take
+			msg:They're too big to carry 
+room:ruins
+	name:Ruins
+	image:png\ruins.jpg
+	desc:In a clearing among the trees is the remains of a stone building, almost completely collapsed. Inside the walls, there is only vegetation and rubble, except for a small part where a metal @door hides a section that is still covered.
+	attr.exits:[southwest,down]
+	attr.shortdesc:inside a collapsed building
+	verb:d
+		if:ruindooropened
+			if:summoningstopped
+				msg:You don't want to go back there
+			else
+				goto:ruinsinterior
+		else
+			msg:The door is locked
+	verb:sw
+		goto:betweenpath
+	verb:put|insert
+		withobj:coin
+			ifobjin:coin,$inventory
+				withobj:slit
+					msg:You put the silver coin inside the slit, and the door opened.
+					set:ruindooropened
+				endwith
+				withobj:$every
+					msg:What?
+				endwith
+			else
+				msg:You don't have it
+	scenery:door
+		desc:A solid metal door, with a lot of symbols on it. There is a small @slit at the side, with a drawing of a pentagon on it
+		verb:open|unlock
+			if:ruindooropened
+				msg:It's already opened
+			else
+				msg:You struggle to open it, without success
+	scenery:slit
+		desc:A very thin gap. Considering its position you suppose it may be related to the door
+room:ruinsinterior
+	name:Ruins interior
+	desc:Down a narrow staircase, you enter a large hall, dimly lit by cracks in the stone ceiling. Again, the floor is littered with debris, and the only thing that seems intact is what looks like an @altar in the center. All around you can see @openings, dark, leading to no one knows where.
+		{openings: You can hear horrible, deep sounds in the distance, and nothing in the world will convince you to enter them.}
+	image:png\xruinsinterior.jpg
+	attr.exits:[up,east,south,west,north]
+	attr.shortdesc:in a underground hall
+	verb:u
+		goto:ruins
+	verb:n
+	verb:s
+	verb:w
+	verb:e
+		msg:There's too dark to go that way
+	verb:cast|read
+		withobj:spell
+			ifobjin:page,$inventory
+				setvar:tmp,0
+				if:eyesonaltar
+					addvar:tmp,1
+				endif
+				if:bloodonaltar
+					addvar:tmp,1
+				endif
+				msg:With a trembling voice, you cast the spell
+				if:tmp=2
+					msg:Suddenly, Erik's eyes catch fire and you feel a cold, malevolent presence near you 
+					msg:"UNWORTHY" screms something all around
+					msg:With a strength you didn't know you had, you face it and read the banishing spell aloud
+					msg:A great roar then shakes the room you are in and stones begin to fall from the ceiling 
+					msg:You run up the stairs and get out just before everything goes black behind you. Then silence. You turn around and everything seems to go back to normal 
+					msg:You know you did \ywhat Erik wanted\w, but you will have nightmares for a long time
+					set:summoningstopped
+					if:materialwin
+						msg:You think it might be time to go back home
+					endif
+					waitkey
+					goto:ruins
+				else
+					msg:Nothing happens
+					msg:You must be missing some ritual part
+			else
+				msg:You need to read the correct spell
+	verb:put
+		withobj:blood
+			withobj:altar
+				needin:knife,$available
+				msg:With some hesitation you make a big cut on your right hand and let the blood cover the altar
+				set:bloodonaltar
+		withobj:eyes
+			withobj:altar
+				needin:eyes,$available
+				msg:You put Erik's eyes on the altar.
+				put:eyes,$nowhere
+				set:eyesonaltar
+	verb:cut
+		withobj:yourself
+			needin:knife,$available
+			if:!bloodonaltar
+				msg:With some hesitation you make a big cut on your right hand and let the blood cover the altar
+				set:bloodonaltar
+			else
+				msg:You already put some
+	verb:use
+		withobj:knife
+			withobj:altar
+				needin:knife,$available
+				if:!bloodonaltar
+					msg:With some hesitation you make a big cut on your right hand and let the blood cover the altar
+					set:bloodonaltar
+				else
+					msg:You already put some
+	scenery:altar
+		verb:x
+			msg:The altar is covered in dried blood, centuries old
+			if:eyesonaltar
+				msg:On the center there are Erik's eyes
+			endif
+			if:bloodonaltar
+				msg:There's also some fresh blood, yours
+			endif
+		verb:use
+			withobj:blood
+				needin:knife,$available
+				if:!bloodonaltar
+					msg:With some hesitation you make a big cut on your right hand and let the blood cover the altar
+					set:bloodonaltar
+				else
+					msg:You already put some
+			withobj:knife
+				needin:knife,$available
+				if:!bloodonaltar
+					msg:With some hesitation you make a big cut on your right hand and let the blood cover the altar
+					set:bloodonaltar
+				else
+					msg:You already put some
+			withobj:eyes
+				needin:eyes,$available
+				msg:You put Erik's eyes on the altar.
+				put:eyes,$nowhere
+				set:eyesonaltar
+			withobj:$none
+				msg:How?
+			withobj:$every
+				msg:Why?
+room:forestpond
+	name:Forest pond
+	image:png\tforestpond.png
+	desc:It takes a lot of attention to notice that the small @puddles all around are somehow becoming a @watercourse because of the many floating @plants that cover part of it. But once you have noticed this, you can see that this @stream widens further north.
+		{watercourse: The shallow water seems almost motionless, but here and there you can see some @fish.}
+		{puddles: The shallow water seems almost motionless, but here and there you can see some @fish.}
+		{plants: You don't know their names, but these plants smell bad.}
+		{stream: Half a mile from here, the watercourse starts to steal place to the forest, and it also changes color.} 
+	attr.shortdesc:near a pond
+	attr.exits:[east,north]
+	verb:n
+		goto:fall
+	verb:e
+		goto:betweenpath
+	scenery:fish
+		verb:capture|take|hunt
+			withobj:bow
+				ifobjin:fish,$inventory
+					msg:You already have one
+				else
+					ifobjin:bow,$inventory
+						msg:After a long wait you finally see one appear. You draw your bow and shoot the arrow. Got it!
+						putobj:fish,$here
+					else
+						msg:You don't have a bow
+					endif
+				endif
+			withobj:$none
+				ifobjin:fish,$here
+					put:fish,$inventory
+					msg:Taken
+				else
+					msg:Can't catch fish with bare hands
+			withobj:$every
+				msg:Can't catch fish with that
+mine
+room:mountainpath
+	name:Mountain path
+	image:png\mountainpath.jpg
+	desc:The path continues up the @mountain, narrow but well marked, with clear, polished @stones. However, a cold, strong wind is blowing, making the ascent tiring, and sometimes fallen rocks block the passage, forcing you to climb them, with the risk of falling.
+		{mountains:Although the peaks are close and not too high, they are covered by dense, dark clouds.}
+	attr.shortdesc:on a mountain path
+	attr.exits:[southwest,northeast]
+	verb:ne
+		setcount:weight,$inventory,takeable+large
+		if:weight>3
+			msg:After a few dangerous moments, you realise that you are not agile enough to go this way because you have too many things with you.
+		else
+			goto:mineentrance
+	verb:sw
+		goto:fall
+	scenery:stones
+		verb:x
+			msg:You have never seen such rocks, but you see that in addition to those used to indicate the path, there are similar formations everywhere.
+		verb:take
+			ifobjin:stone,$inventory
+				msg:You already have one
+			else
+				put:stone,$inventory
+				msg:You take one of them
+room:fall
+	name:Nesterin Falls
+	image:png\nesterinfalls.jpg
+	desc:The sight of these two spectacular @waterfalls coming together is magical. The @lake in front of you has a strangely shimmering bottom and the @path around it seems to go up into the @mountains.
+		{mountains:Although the peaks are close and not too high, they are covered by dense, dark clouds.}
+		{waterfalls:These waterfalls are fascinating, but the noise they make is intense and hypnotic.}
+		{lake:Something is swimming in the lake. Long, dark, fast moving @creature that you can barely make out.}
+		{creature:You can't see it well, but it seems huge and ugly.}
+		{path:At one point the path becomes narrow due to a rock formation, and is partially submerged by the waters of the lake.}
+	attr.shortdesc:in front of two waterfalls
+	attr.exits:[south,northeast]
+	verb:s
+		goto:forestpond
+	verb:ne
+		if:!defeatedfish
+			msg:At one point the path becomes narrow due to a rock formation, and is partially submerged by the waters of the lake. 
+			msg:As soon as you reach that point you realise that the creature in the lake is approaching to attack you. You cannot pass.
+		else
+			goto:mountainpath
+	verb:throw|put|give
+		withobj:fish
+			ifobjin:fish,$inventory
+				msg:You throw the fish into the lake. Immediately something in the water reaches it and moves away with it, disappearing.
+				set:defeatedfish
+				put:fish,$nowhere
+			else
+				msg:You don't have it
+	verb:capture|kill|hunt
+		withobj:creature
+			if:defeatedfish
+				msg:You cannot see it anymore
+			else
+				ifobjin:bow,$inventory
+					msg:Your home-made arrows are not good for it
+				else
+					msg:How?
+room:mineentrance
+	name:Mine entrance
+	image:png\tmineentrance.jpg
+	desc:The entrance to this tunnel is huge, ancient and frightening. You are not able to recognize the symbols on the columns, so you won't be able to understand if they are welcoming or threatening.
+	attr.shortdesc:at the entrance of a tunnel
+	attr.exits:[down,southwest]
+	verb:sw
+		goto:mountainpath
+	verb:d
+		goto:minetunnel
+room:minetunnel
+	name:Mine tunnel
+	image:png\tminetunnel.jpg
+	desc:The @tunnels seem to go on forever, descending gently down the mountain. From time to time you'll see @crossroads with @markings you can't understand, so you're not sure which way to go. 
+		{markings:You cannot understand them, but they have common elements. Maybe they're names, or indications.}
+		{crossroads:There's a crossroad each few hundred steps. This place is a labyrinth.}
+		{tunnels:You've never seen tunnels so large and dug out so regularly.}
+	verb:u
+		goto:mineentrance
+	verb:se
+		if:solvedmaze
+			goto:forgeroom
+		else
+			goto:minetunnel
+	verb:e
+		goto:minetunnel
+	verb:w
+		goto:minetunnel
+	verb:n
+		goto:minetunnel
+	verb:s
+		goto:minetunnel
+	attr.exits:[up,east,south,west,north]
+room:forgeroom
+	name:Forge
+	image:png\laboratory.jpg
+	desc:This large room seems to be the heart of the entire tunnel system. There are @inscriptions and complex @drawings on the walls, a kind of @forge in the centre and, on one side, atop a stand, a strange elongated @instrument.
+	attr.shortdesc:in a forge
+	attr.exits:[northwest]
+	verb:nw
+		goto:minetunnel
+	verb:use|put|insert
+		withobj:stone
+			if:!forgeon
+				msg:Forge panel is closed
+			else
+				withobj:forge
+					ifobjin:stone,$inventory
+						put:stone,$nowhere
+						msg:As soon as you put the stone in the furnace, a yellowish light comes on. And after an indefinite time, there is a silver-coloured @plate in place of the stone.
+						put:plate,$here
+					else
+						msg:You don't have it
+				endwith
+				withobj:$every
+					msg:How?
+	verb:open|unlock
+		withobj:panel
+			msg:You can't
+	verb:push
+		withobj:cross
+			withobj:instrument
+				if:forgeon
+					msg:Forge's already on
+				else
+					msg:You push the embossed cross, as seen in, and two things happen at the same time: the forge turns on, and its front panel opens.
+					set:forgeon
+		withobj:triangle
+			withobj:instrument
+				if:!gatesclosed
+					msg:You push the embossed triangle, and the mountain starts to tremble.
+					msg:You hope that means you've been able to lock part of Lyrin men in or out the mine
+					set:gatesclosed
+				else
+					msg:Nothing happens
+				endif
+	scenery:inscriptions
+		verb:x|read
+			msg:They seem ancient, and written in runes. Oddly you can understand some part of it.
+			if:forgeseen
+				msg:You found the word "Forge".
+				msg:"@Cross to activate it", you read next to it.
+			if:gatesseen
+				msg:You found the word "Gates".
+				msg:"@Triangle to close the southern section", you read.
+			else
+				if:seeninstrument
+					msg:You found the word "Triangle".
+					msg:"@Triangle to close the southern section", you read.
+	scenery:drawings
+		verb:x
+			msg:It's some kind of map. It shows that there are two entrances to the mines, the one you took and another one on Nesterin side, leading to separated sections
+			msg:There are gates, and they're somehow related to the istrument nearby
+			set:gatesseen
+	scenery:forge
+		verb:x
+			if:forgeon
+				msg:The forge is on, and the panel through which you can probably insert the material to be melted is opened
+			else
+				set:forgeseen
+				msg:The forge is off, and its front panel closed
+		verb:use|put
+			withobj:stone
+				if:!forgeon
+					msg:Forge panel is closed
+				else
+					ifobjin:stone,$inventory
+						put:stone,$nowhere
+						msg:As soon as you put the stone in the furnace, a yellowish light comes on. And after an indefinite time, there is a silver-coloured @plate in place of the stone.
+						put:plate,$here
+					else
+						msg:You don't have it
+			withobj:$none
+				if:forgeon
+					msg:You could now insert something inside
+				else
+					msg:You should find a way to turn it on before that
+			withobj:$every
+				if:forgeon
+					msg:You don't think it's a wise thing to do
+				else
+					msg:You should find a way to turn it on before that
+	scenery:instrument
+		verb:x
+			msg:It's an elengated instrument, with some movable and embossed parts. It's similar to the one you've seen in Governor's square
+		verb:use|push|pull
+			withobj:cross
+				if:forgeon
+					msg:Forge's already on
+				else
+					msg:You push the embossed cross, as seen in, and two things happen at the same time: the forge turns on, and its front panel opens.
+					set:forgeon
+			withobj:triangle
+				if:!gatesclosed
+					msg:You push the embossed triangle, and the mountain starts to tremble.
+					msg:You hope that means you've been able to lock part of Lyrin men in or out the mine
+					set:gatesclosed
+				else
+					msg:Nothing happens
+				endif
+			withobj:$none
+				msg:There are several parts. You must choose which try to move or push
+			withobj:$every
+				msg:Nothing happens
