@@ -1,19 +1,28 @@
 *** START ***
 [Main Square]
-e
+x fountain
+x benches
+x people
+talk to people
+enter inn
 [Inn dining room]
+x innkeeper
+talk to innkeeper
 x fireplace
 x sign
 ask innkeeper about erik
 take key
+x key
 u
 [Corridor]
+x rooms
 e
 [Room]
 x bed
 x mattress
 take notebook
 x furniture
+x table
 x drawer
 w
 [Corridor]
@@ -24,61 +33,91 @@ w
 w
 [Market]
 x food
+x meat
+ask seller about meat
+ask seller about suppliers
+ask seller about witch
 x clothes
 x uniform
-ask seller about meat
-ask seller about supplies
-ask seller about witch
+ask saleswoman about uniform
 n
 x school
 nw
 [School alley]
-use knife on door
-open door
+x door
+use knife with door
+x door
+enter school
 [School room]
 x material
+x stairs
 take pencil
-x cabinets
 push cabinets
 open cabinets
 take twine
-w
+e
 [School alley]
 se
 [Market]
 e
 [Main Square]
+n
+[Banks Square]
+x building
+x statue
+x inscriptions
+x layout
+x notebook
+x instrument
+e
+s
+[Main Square]
 s
 [Nesterin South entrance]
+x entrance
+x sign
 x guard
+talk to guard
+ask guard about leg
+ask guard about insignia
 e
 [Forest path]
 x animals
 x rabbits
-hunt rabbits
+capture rabbits
 x plants
 e
 [Forest path]
 x trees
+x branches
 cut branches
 take bow
 w
 [Forest path]
 hunt rabbits with bow
 take rabbit
+return to nesterin
+go back to nesterin
+[Main Square]
 w
+[Market]
+give rabbit to seller
+e
+[Main Square]
+s
 [Nesterin South entrance]
 nw
 [Northern road]
 x road
 x tarps
+x barrels
 take barrels
 se
 [Nesterin South entrance]
 ask guard about barrels
 nw
 [Northern road]
-ask men barrels
+ask men to take the barrels
 take barrel
 se
 [Nesterin South entrance]
@@ -90,16 +129,41 @@ show barrel to innkeeper
 enter kitchen
 [Kitchen]
 give barrel to cook
+x cook
+x window
+x bench
 x jars
 ask cook about supplies
 ask cook about spices
 ask cook about irillis
-x window
-x bench
-x cook
+s
+[Inn dining room]
+w
+[Main Square]
+w
+[Market]
+ask seller about irillis
+e
+[Main Square]
+s
+[Nesterin South entrance]
+e
+[Forest path]
+x plants
+take irillis
+w
+[Nesterin South entrance]
+n
+[Main Square]
+e
+[Inn dining room]
+n
+[Kitchen]
+give irillis to cook
 ask cook about erik
 show pendant to cook
-ask cook for help with cabinets
+ask cook about erik
+ask cook for help
 s
 [Inn dining room]
 w
@@ -108,22 +172,25 @@ w
 [Market]
 nw
 [School alley]
-e
+w
 [School room]
 push cabinets
 u
 [School Library]
 x books
-x geography
-take map
-search botany section for irillis
-search botany for rodum
-x ancient book
+x ancient
 x grimoire
 read grimoire
+x geography section
+take map
+x history section
+x botany section
+seach botany section about irillis
+search botany for irillis
+search botany for rodum
 d
 [School room]
-w
+e
 [School alley]
 se
 [Market]
@@ -134,41 +201,106 @@ s
 e
 [Forest path]
 x plants
-take irillis
 take rodum
-w
-[Nesterin South entrance]
-e
-[Forest path]
+take irillis
 e
 [Forest path]
 use map
 se
 [Forest house]
+x house
 x grass
-x door
 open door
 [Forest house interior]
 x books
 read books
 x painting
-x glass
 drink glass
 [Forest house]
 enter house
 [Forest house interior]
+x books
 read books
-exit
+n
 [Forest house]
+n
+[Forest path]
 go back to nesterin
 [Main Square]
 w
 [Market]
-give rabbit to seller
-ask saleswoman about uniform
+nw
+[School alley]
+w
+[School room]
+u
+[School Library]
+search botany for berries
+search botany for baryl
+d
+[School room]
+e
+[School alley]
+se
+[Market]
 e
 [Main Square]
-x bench
+e
+[Inn dining room]
+n
+[Kitchen]
+take barrel
+put irillis into barrel
+put rodum in barrel
+x barrel
+s
+[Inn dining room]
+w
+[Main Square]
+s
+[Nesterin South entrance]
+nw
+[Northern road]
+give barrel to men
+se
+[Nesterin South entrance]
+e
+[Forest path]
+x plants
+take irillis
+take rodum
+e
+[Forest path]
+se
+[Forest house]
+x grass
+take baryl
+go back to nesterin
+[Main Square]
+e
+[Inn dining room]
+n
+[Kitchen]
+give barrel to cook
+take barrel
+put irillis in barrel
+put rodum in barrel
+s
+[Inn dining room]
+w
+[Main Square]
+s
+[Nesterin South entrance]
+nw
+[Northern road]
+eat baryl
+give barrel to men
+nw
+se
+[Nesterin South entrance]
+n
+[Main Square]
+x benches
 x man
 talk to man
 ask man about erik
@@ -180,6 +312,24 @@ u
 e
 [Room]
 take flask
+w
+[Corridor]
+d
+[Inn dining room]
+w
+[Main Square]
+fill flask with fountain
+n
+[Banks Square]
+e
+s
+[Main Square]
+e
+[Inn dining room]
+u
+[Corridor]
+e
+[Room]
 drop knife
 w
 [Corridor]
@@ -189,17 +339,12 @@ w
 [Main Square]
 n
 [Banks Square]
-x instrument
-x statue
-x inscriptions
-x layout
-x notebook
 e
 [Governor's Square]
 x fountain
+x coins
 take coins
 fill flask with fountain
-e
 w
 [Banks Square]
 s
@@ -210,9 +355,8 @@ give bread to man
 ask man about erik
 w
 [Market]
+ask saleswoman about uniform
 give ring to saleswoman
-i
-wear jacket
 e
 [Main Square]
 n
@@ -220,13 +364,35 @@ n
 e
 [Governor's Square]
 e
+wear jacket
+e
 [Prison]
 s
 talk to guard
 [Governor's Square]
+n
+[Nesterin North gate]
+n
+s
+[Governor's Square]
 w
 [Banks Square]
 s
+[Main Square]
+s
+[Nesterin South entrance]
+nw
+[Northern road]
+nw
+[Lyrin camp]
+x green
+x red
+enter red
+[Red tent]
+talk to erik
+s
+[Lyrin camp]
+go back to nesterin
 [Main Square]
 s
 [Nesterin South entrance]
@@ -239,114 +405,13 @@ n
 [Banks Square]
 e
 [Governor's Square]
-e
-[Prison]
-talk to guad
-talk to guard
-w
-[Governor's Square]
-w
-[Banks Square]
-s
-[Main Square]
-e
-[Inn dining room]
-go to kitchen
-[Kitchen]
-take barrel
-put irillis on barrel
-put rodum on barrel
-s
-[Inn dining room]
-exit
-[Main Square]
-s
-[Nesterin South entrance]
-nw
-[Northern road]
-give barrel to men
-se
-[Nesterin South entrance]
-e
-[Forest path]
-take irillis
-take rodum
-w
-[Nesterin South entrance]
-n
-[Main Square]
-w
-[Market]
-nw
-[School alley]
-e
-[School room]
-u
-[School Library]
-search botany for berries
-search botany for baryl
-d
-[School room]
-w
-[School alley]
-se
-[Market]
-e
-[Main Square]
-e
-[Inn dining room]
-n
-[Kitchen]
-give barrel to cook
-take barrel
-put irillis on barrel
-put rodum on barrel
-s
-[Inn dining room]
-w
-[Main Square]
-s
-[Nesterin South entrance]
-nw
-[Forest path]
-e
-[Forest path]
-se
-[Forest house]
-x grass
-take baryl
-eat baryl
-n
-[Forest path]
-w
-[Forest path]
-w
-[Nesterin South entrance]
-nw
-[Northern road]
-give barrel to men
-nw
-[Lyrin camp]
-x red
-enter red tent
-[Red tent]
-x erik
-talk to erik
-exit
-[Lyrin camp]
-go to nesterin
-[Nesterin South entrance]
-n
-[Main Square]
-n
-[Banks Square]
-e
-[Governor's Square]
+x guards
 e
 [Prison]
 talk to guard
 s
 [Prison cell]
+talk to woman
 ask woman about erik
 show pendant to woman
 ask woman about erik
@@ -362,22 +427,22 @@ w
 [Market]
 nw
 [School alley]
-e
+w
 [School room]
 u
 [School Library]
 x geometry section
 take documents
-x documents
+read documents
 search documents about summoning
 x notebook
-search grimoire for arkylzoth
-take grimoire page
+search grimoire about arkylzoth
 x page
-search documents about sacred places
+take grimoire page
+search documents for sacred place
 d
 [School room]
-w
+e
 [School alley]
 se
 [Market]
@@ -405,33 +470,48 @@ nw
 enter red tent
 [Red tent]
 carve erik eyes
-exit
+s
 [Lyrin camp]
-go to nesterin
-[Nesterin South entrance]
-n
+go back to nesterin
 [Main Square]
 n
 [Banks Square]
 e
+[Governor's Square]
+n
+[Nesterin North gate]
+n
+[Forest path]
+us map
+use map
+ne
+[Ruins]
+x door
+open door
+x slit
+sw
+[Forest path]
+sw
+[Nesterin North gate]
+s
 [Governor's Square]
 take coins
 n
 [Nesterin North gate]
 n
 [Forest path]
-use map
 ne
 [Ruins]
-x door
-insert coin into slit
+put coin in slit
 d
 [Ruins interior]
 x altar
 put eyes on altar
-cut yourself
+x altar
+use knife on altar
 cast spell
 [Ruins]
+d
 sw
 [Forest path]
 w
@@ -441,40 +521,50 @@ hunt fish with bow
 take fish
 n
 [Nesterin Falls]
+x waterfalls
 x lake
 x creature
 hunt creature with bow
+ne
 throw fish into lake
 ne
 [Mountain path]
+x stones
 take stones
+x exits
 ne
 drop jacket
 ne
 [Mine entrance]
 d
 [Mine tunnel]
+x tunnels
+x crossroads
 x markings
 x notebook
 se
 [Forge]
+x insciptions
 x inscriptions
-x forge
 x instrument
-push triangle on instrument
+push instrument triangle
+x forge
+x drawings
 x inscriptions
-push cross on instrument
+push instrument cross
+x forge
 put stone into forge
 take plate
 x plate
-exit
+x exits
+nw
 [Mine tunnel]
 u
 [Mine entrance]
 sw
 [Mountain path]
 take jacket
-go to nesterin
+go back to nesterin
 [Nesterin North gate]
 s
 [Governor's Square]
@@ -484,23 +574,4 @@ s
 [Main Square]
 s
 [Nesterin South entrance]
-e
-[Forest path]
-take irillis
-w
-[Nesterin South entrance]
-n
-[Main Square]
-e
-[Inn dining room]
-n
-[Kitchen]
-give irillis to cook
 s
-[Inn dining room]
-w
-[Main Square]
-s
-[Nesterin South entrance]
-s
-*** END ***
