@@ -1,5 +1,5 @@
 # Nesterin-Trail
-A storytllr-based C64 fantasy text adventure - [official itch.io page](https://marcogiorgini.itch.io/nesterin-trail)
+A storytllr-based C64 fantasy text adventure by **Marco Giorgini** (@marcogiorgini) - [official itch.io page](https://marcogiorgini.itch.io/nesterin-trail)
 
 ![alt text](extra/home.png)
 
