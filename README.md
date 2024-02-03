@@ -95,7 +95,9 @@ to see evident exits from a place
 **go back to nesterin** (or even just go nesterin)
 
 when outside town, and in a open field, will take you back to the nearest city entrance without having to type all the needed direction steps
-Walkthrough
+
+# Walkthrough
+
 Even though there is only one possible ending (you can't die), there is of course no single sequence of actions to get there. But if you're stuck somewhere and/or would like a little help (I think it's more than possible, maybe just for a too strict command to do something), I've also provided a full walkthrough, suggesting that you search for places or objects inside it, instead of following it directly.
 
 
