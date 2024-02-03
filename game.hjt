@@ -31,22 +31,17 @@ author:Marco Giorgini
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
+licence:MIT
+2
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
 version:1.0.0
 2
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
 binary:yes
-2
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-_splash:png\splash2.png
-2
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-_font:png\font.png
 2
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -1641,7 +1636,7 @@ $start
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\idleimage.png
+image:png\idleimage_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -1678,7 +1673,7 @@ endgame
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\endgame.png
+image:png\endgame_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -1715,20 +1710,8 @@ name:Main Square
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\new_mainsquare.png
+image:png\new_mainsquare_C64.png
 3
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-_image:png\nvillage3.png
-3
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-imagedesc
-3
-Fantasy Medieval main square with a fountain on the center, benches all around, rich and elegant buildings and shops, an Inn visible on the left
-
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
@@ -1950,20 +1933,8 @@ name:Banks Square
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\new_bs.png
+image:png\new_bs_C64.png
 3
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-_image:png\statuesquare.png
-3
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-imagedesc
-3
-an amazing Fantasy Medieval main square with a white statue of a man holding a strange instrument, all around rich and elegant stone buildings
-
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
@@ -2107,7 +2078,7 @@ name:Governor's Square
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\new_governorsquare.png
+image:png\new_governorsquare_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -2295,15 +2266,8 @@ name:Prison
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\new_prison.png
+image:png\new_prison_C64.png
 3
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-imagedesc
-3
-main large room of a fantasy medieval prison, with a reception desk, a barred window, the entrance gate and the door to the underground cells. It's dark and dirty. 
-
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
@@ -2481,7 +2445,7 @@ name:Prison cell
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\cell.png
+image:png\cell_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -2614,12 +2578,7 @@ name:Market
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-_image:png\nmarket.png
-3
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-image:png\new_marketsquare.png
+image:png\new_marketsquare_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3015,7 +2974,7 @@ name:School room
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\schoolroom2.jpg
+image:png\schoolroom2_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3158,7 +3117,7 @@ name:School Library
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\schoollibrary2.jpg
+image:png\schoollibrary2_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3459,7 +3418,7 @@ name:School alley
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\schoolalley.jpg
+image:png\schoolalley_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3640,7 +3599,7 @@ name:Nesterin North gate
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\northentrance2.jpg
+image:png\northentrance2_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -3703,7 +3662,7 @@ name:Inn dining room
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\ntavern.png
+image:png\ntavern_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -4007,15 +3966,8 @@ name:Corridor
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\new_upcorridor.png
+image:png\new_upcorridor_C64.png
 3
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-imagedesc
-3
-a low lit long corridor on the first floor of a fantasy medieval inn, viewed from side view. Clean and tidy, and there are several rooms most of them with solid doors
-
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
@@ -4124,15 +4076,8 @@ name:Room
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\new_innroom.png
+image:png\new_innroom_C64.png
 3
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-imagedesc
-3
-a fantasy medieval posh inn room, with a stray bed, a window, a table and some furniture.
-
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
@@ -4258,7 +4203,7 @@ name:Kitchen
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\nkitchen.png
+image:png\nkitchen_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -4585,7 +4530,7 @@ name:Nesterin South entrance
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\ntownentrance.png
+image:png\ntownentrance_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -4874,7 +4819,7 @@ path
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\nforestpath1.png
+image:png\nforestpath1_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -5115,7 +5060,7 @@ name:Forest path
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\nforestpath2.png
+image:png\nforestpath2_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -5246,7 +5191,7 @@ name:Forest path
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\nforestpath3.png
+image:png\nforestpath3_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -5312,15 +5257,8 @@ name:Northern road
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\new_mineroad.png
+image:png\new_mineroad_C64.png
 3
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-imagedesc
-3
-a fantasy straight country road with a large patrolling area. All around a deep forest. Mountain in the distance. 
-
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
@@ -5633,6 +5571,11 @@ name:Lyrin camp
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
+image:png\camp2_C64.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
 desc
 3
 You managed to approach the small camp unnoticed. You can see just a few soldiers and all in the central clearing, from where they should not see you. There are several tents in front of you, but only two can probably be reached without risks, one @green and one @red.
@@ -5644,11 +5587,6 @@ attr.exits
 3
 [southwest]
 
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-image:png\camp2.jpg
-3
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
@@ -5727,7 +5665,7 @@ name:Red tent
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\redtent.png
+image:png\redtent_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -5851,6 +5789,11 @@ name:Forest house
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
+image:png\foresthouse_C64.png
+3
+<end node> 5P9i0s8y19Z
+dt=Text
+<node>
 desc
 3
 In front of you stands a small, solid stone @house, almost completely hidden by trees. It looks inhabited and @grass grows even between the cracks in the @walls. The front @door only looks as if it has been approached.
@@ -5861,11 +5804,6 @@ In front of you stands a small, solid stone @house, almost completely hidden by 
 
 {walls: Solid stone walls. The grass on it seems to follow patterns, instead of simply covering the most exposed parts.}
 
-<end node> 5P9i0s8y19Z
-dt=Text
-<node>
-image:png\foresthouse.jpg
-3
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
@@ -5965,7 +5903,7 @@ name:Forest house interior
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\tforesthouseinterior.jpg
+image:png\tforesthouseinterior_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -6149,7 +6087,7 @@ name:Ruins
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\ruins.jpg
+image:png\ruins_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -6286,7 +6224,7 @@ Down a narrow staircase, you enter a large hall, dimly lit by cracks in the ston
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\xruinsinterior.jpg
+image:png\xruinsinterior_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -6558,7 +6496,7 @@ name:Forest pond
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\tforestpond.png
+image:png\tforestpond_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -6681,7 +6619,7 @@ name:Mountain path
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\mountainpath.jpg
+image:png\mountainpath_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -6774,7 +6712,7 @@ name:Nesterin Falls
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\nesterinfalls.jpg
+image:png\nesterinfalls_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -6874,7 +6812,7 @@ name:Mine entrance
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\tmineentrance.jpg
+image:png\tmineentrance_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -6929,7 +6867,7 @@ name:Mine tunnel
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\tminetunnel.jpg
+image:png\tminetunnel_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -7011,7 +6949,7 @@ name:Forge
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-image:png\laboratory.jpg
+image:png\laboratory_C64.png
 3
 <end node> 5P9i0s8y19Z
 dt=Text

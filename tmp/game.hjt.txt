@@ -3,10 +3,9 @@ config
 	title:Nesterin Trail
 	subtitle:A C64 fantasy text adventure
 	author:Marco Giorgini
+	licence:MIT
 	version:1.0.0
 	binary:yes
-	_splash:png\splash2.png
-	_font:png\font.png
 	image
 		morecontrast:1
 		unsharpen:2
@@ -526,7 +525,7 @@ actor:aki
 			else
 				msg:He needs to drink first
 room:$start
-	image:png\idleimage.png
+	image:png\idleimage_C64.png
 	onfirst
 		clear
 		msg:\c##SUBTITLE##
@@ -547,7 +546,7 @@ room:$start
 		setcount:weight,$inventory,takeable+large
 		goto:mainsquare
 room:endgame
-	image:png\endgame.png
+	image:png\endgame_C64.png
 	onfirst
 		clear
 		msg:With the summoning prevented, and the secret about Lyrin's material discovered, your people finally have a chance to change the fate of the war. It won't be easy, or short, but it will be possible.
@@ -562,9 +561,7 @@ room:endgame
 town
 room:mainsquare
 	name:Main Square
-	image:png\new_mainsquare.png
-	_image:png\nvillage3.png
-	imagedesc:Fantasy Medieval main square with a fountain on the center, benches all around, rich and elegant buildings and shops, an Inn visible on the left
+	image:png\new_mainsquare_C64.png
 	onfirst
 		clear
 		msg: You arrive in this remote town at dawn. 
@@ -640,9 +637,7 @@ room:mainsquare
 				msg:As you start to fill your flask, you realise that the water coming out of the fountain is not perfectly clear and smells rotten.
 room:bankssquare
 	name:Banks Square
-	image:png\new_bs.png
-	_image:png\statuesquare.png
-	imagedesc:an amazing Fantasy Medieval main square with a white statue of a man holding a strange instrument, all around rich and elegant stone buildings
+	image:png\new_bs_C64.png
 	desc:Although not as large as the main square, it is even more amazing. Every @building around it is made of stone, and there's a huge white @statue in the centre, representing a man holding a strange @instrument.
 		If you go south from here, you can head towards the entrance to the city, while if you go east, you'll reach the governor's quarters.
 		{buildings:Most of the buildings in this place are banks, or loan offices.}
@@ -687,7 +682,7 @@ room:bankssquare
 			goto:governorsquare
 room:governorsquare
 	name:Governor's Square
-	image:png\new_governorsquare.png
+	image:png\new_governorsquare_C64.png
 	desc:This beautiful square with a huge @fountain leads to the Governor's Palace. Even if his role after the invasion is just to follow orders and collect taxes, the invaders didn't remove him, but they did add @guards from their ranks. 
 		To the east is the @prison, while to the west is the square with the statue. From here you can also see in the distance the Northern gate.
 		{prison: An uninviting stone building with small windows and a metal front door}
@@ -754,8 +749,7 @@ room:governorsquare
 				msg:Done
 room:prison
 	name:Prison
-	image:png\new_prison.png
-	imagedesc:main large room of a fantasy medieval prison, with a reception desk, a barred window, the entrance gate and the door to the underground cells. It's dark and dirty. 
+	image:png\new_prison_C64.png
 	desc:The sense of oppression here is palpable. A cold, grey, large room, made all the more unsettling by the screams and the smell.
 		The exit door is to the west, while to the east there's a reception desk with a large guard behind it. A larger door lies to the south.
 	attr.shortdesc:inside the prison
@@ -819,7 +813,7 @@ room:prison
 			msg:"Hey! Nobody enters without my consent!" he shouts
 room:cell
 	name:Prison cell
-	image:png\cell.png
+	image:png\cell_C64.png
 	desc:In front of you is a small cell where an elderly @woman stares at you with fear
 		{woman:She looks frightened but not defeated}
 	actor:woman
@@ -862,8 +856,7 @@ room:cell
 	attr.exits:[north]
 room:market
 	name:Market
-	_image:png\nmarket.png
-	image:png\new_marketsquare.png
+	image:png\new_marketsquare_C64.png
 	desc:The market square is relatively small, with stalls selling a variety of @food and @clothes, but few customers seem to be able to buy anything. From here it's possible to walk to the entrance of the town, which lies to the east. To the north, there's a @building that catches your eye because of its boarded-up door.
 		{building: It's a big building, with boarded-up doors.}
 		{food: The food on display is expensive and looks mediocre. There are lots of vegetables, some cheese and herbs, but very little @meat}
@@ -1010,7 +1003,7 @@ room:market
 				msg:You wonder if there's another way to enter that you can't see from here.
 room:school
 	name:School room
-	image:png\schoolroom2.jpg
+	image:png\schoolroom2_C64.png
 	desc:The room you're in is full of desks. There still are writing @material on them. The teacher's desk is partially broken, and there's blood all over it. Some @cabinets were piled up on the west side as if to block access to @stairs to the upper floor. To the south is the boarded entrance door and the windows facing the square. To the west the smaller door you entered from.
 		{cabinets: They're several and heavy.}
 		{stairs: ?cabinetsbypassed * With some cabinets moved, they're now reachable. * ?> *They're behind the cabinets, so unreachable.}
@@ -1058,7 +1051,7 @@ room:school
 				set:pencilfound
 room:schoollibrary
 	name:School Library
-	image:png\schoollibrary2.jpg
+	image:png\schoollibrary2_C64.png
 	desc:This is one of the largest libraries you've ever seen. Some of the @books have been thrown on the @floor and torn up, but most of them are still in their place. And some look @ancient.
 		{floor: It's full of dry blood. Someone must be killed or seriously hurt here}
 		{books: They are too many to check them all. However, in the different library sections there are indications of the subjects covered: @botany, @geography, @history and more}
@@ -1163,7 +1156,7 @@ room:schoollibrary
 					addscore:score_spelltaken
 room:schoolalley
 	name:School alley
-	image:png\schoolalley.jpg
+	image:png\schoolalley_C64.png
 	desc:You're in a small alley near the school. Every @window along this wall is also blocked. There's a service @door, still boarded up, but it seems less solid than the main entrance.
 		{window: Every window is blocked by boards.}
 		{window.pull|push|use: You try to do this, without getting any useful results.}
@@ -1233,7 +1226,7 @@ room:schoolalley
 				msg:How?
 room:northtownentrance
 	name:Nesterin North gate
-	image:png\northentrance2.jpg
+	image:png\northentrance2_C64.png
 	attr.exits:[south,north]
 	attr.shortdesc:at the North entrance
 	desc:In front of you, there's the walled northern exit to Nesterin. From this side, you notice that the forest is nearer and wilder, and the road is less traveled. Here there's no one patrolling.
@@ -1247,7 +1240,7 @@ room:northtownentrance
 inn
 room:innhall
 	name:Inn dining room
-	image:png\ntavern.png
+	image:png\ntavern_C64.png
 	desc:It is a tidy and spacious inn, quiet and almost empty. Behind the counter, the @innkeeper, an old frail man, seems to be staring at the wall, with an expression of pain. In front of you, behind the @tables, is a @fireplace. Stairs lead up. This place must have been glorious in the old days.
 		{fireplace: The fireplace has a few logs burning and the warmth is nice. While you're enjoying it, you notice a small @sign drawn just below the mantelpiece.}
 		{sign: The sign is too similar to your pendant shape to be a coincidence. Erik was here. * $+signseen}
@@ -1358,8 +1351,7 @@ room:innhall
 				msg:Few customers are drinking beer, and speaking in a low voice
 room:upcorridor
 	name:Corridor
-	image:png\new_upcorridor.png
-	imagedesc:a low lit long corridor on the first floor of a fantasy medieval inn, viewed from side view. Clean and tidy, and there are several rooms most of them with solid doors
+	image:png\new_upcorridor_C64.png
 	desc:The corridor on the first floor is clean and tidy, and there are several @rooms most of them with solid @doors.The place's mining past when rich merchants slept here during their business travels, is clearly over, but the owner still tries to keep everything as nice as it was.
 		{rooms: You count eight rooms, the first ones less posh but bigger, the last ones, located on the east side, a bit smaller.}
 		{doors: On the solid doors there are numbers. The first numbers are on the west side, last ones are on the east side. All the others are in front of you, south.}
@@ -1390,8 +1382,7 @@ room:upcorridor
 		synonym:room,rooms
 room:innroom
 	name:Room
-	image:png\new_innroom.png
-	imagedesc:a fantasy medieval posh inn room, with a stray bed, a window, a table and some furniture.
+	image:png\new_innroom_C64.png
 	desc:This is a far cry from an ordinary inn room, and now it's probably just a shadow of what it should have been in better days. 
 		There are several signs of time on the @furniture, but even the @bed is much better than your master's.
 		{bed: The bed has a simple straw @mattress but the sheets and pillows are clean and comfortable.}
@@ -1424,7 +1415,7 @@ room:innroom
 				addscore:score_eriknotebook
 room:kitchen
 	name:Kitchen
-	image:png\nkitchen.png
+	image:png\nkitchen_C64.png
 	desc:Like everything else, the kitchen is beautiful and well-equipped. It takes a little effort to notice that most of the spice @jars are almost empty. A large @window door lets in daylight.
 		{jars: Spices seem to be running out. This kitchen needs @supplies.}
 		{windowdoor.x: From there you can see the main square from a northern angle. * You notice that there's something odd under a @bench. }
@@ -1551,7 +1542,7 @@ room:kitchen
 forest
 room:southtownentrance
 	name:Nesterin South entrance
-	image:png\ntownentrance.png
+	image:png\ntownentrance_C64.png
 	desc:You're just outside the walled @entrance to Nesterin.
 		From here you can see the southern @road that brought you here, and a similarly large one heading north-west.
 		All around is a deep @forest, with several small @paths, the most beaten to the east.
@@ -1669,7 +1660,7 @@ room:southtownentrance
 	verb:e
 		goto:path
 room:path
-	image:png\nforestpath1.png
+	image:png\nforestpath1_C64.png
 	name:Forest path
 	desc:This forest of tall @trees and a few small @animals seems to be full of well-trodden @paths, surrounded by rich @vegetation, but after a while, most of them just stop, and the feeling of not knowing where to go grows. You get the impression that if you're not lost yet, you will be soon.
 		{trees: There are several different types of trees, all tall and wide}
@@ -1759,7 +1750,7 @@ room:path
 	attr.shortdesc:on a forest path
 room:darkpath
 	name:Forest path
-	image:png\nforestpath2.png
+	image:png\nforestpath2_C64.png
 	desc:This part of the forest, with also smaller @trees, looks a little different from the one just outside the town, but it is just as difficult to find your way around because of all the absurdly well-trodden @paths. You just keep on walking, feeling like you are going in circles. You will certainly need some hints on how to deal with this.
 		{paths: The paths begin and end without leading anywhere. Probably traces of trails erased by time.}
 		{trees: Some trees around you seem to have long @branches.}
@@ -1803,7 +1794,7 @@ room:darkpath
 			goto:path
 room:betweenpath
 	name:Forest path
-	image:png\nforestpath3.png
+	image:png\nforestpath3_C64.png
 	desc:This part of the forest seems to have more defined @paths, although the sometimes very dense vegetation still hides the direction in which they are going.
 		{paths:You see a few path that you could follow, including a leading one.}
 	attr.shortdesc:on a forest path
@@ -1819,8 +1810,7 @@ room:betweenpath
 		goto:forestpond
 room:mineroad
 	name:Northern road
-	image:png\new_mineroad.png
-	imagedesc:a fantasy straight country road with a large patrolling area. All around a deep forest. Mountain in the distance. 
+	image:png\new_mineroad_C64.png
 	desc:You are just outside the town, on the @road to the mines, to the northwest
 	attr.shortdesc:along the northern road
 	attr.exits:[southeast,northwest]
@@ -1968,9 +1958,9 @@ room:mineroad
 					endif
 room:camp
 	name:Lyrin camp
+	image:png\camp2_C64.png
 	desc:You managed to approach the small camp unnoticed. You can see just a few soldiers and all in the central clearing, from where they should not see you. There are several tents in front of you, but only two can probably be reached without risks, one @green and one @red.
 	attr.exits:[southwest]
-	image:png\camp2.jpg
 	verb:sw
 		goto:mineroad
 	scenery:green
@@ -1985,7 +1975,7 @@ room:camp
 			msg:From the outside it looks empty. But you hear a moan. 
 room:redtent
 	name:Red tent
-	image:png\redtent.png
+	image:png\redtent_C64.png
 	attr.exits:[south]
 	desc:It is a small red tent where a nauseating smell haunts the air. There's a man on the floor
 	onfirst
@@ -2032,11 +2022,11 @@ room:redtent
 					set:carvedeyes
 room:house
 	name:Forest house
+	image:png\foresthouse_C64.png
 	desc:In front of you stands a small, solid stone @house, almost completely hidden by trees. It looks inhabited and @grass grows even between the cracks in the @walls. The front @door only looks as if it has been approached.
 		{door: The door has been left somehow opened as if someone just left the house, to be back in a minute.}
 		{house: The house is certainly ancient, but nature doesn't seem to have taken any serious hold of it.}
 		{walls: Solid stone walls. The grass on it seems to follow patterns, instead of simply covering the most exposed parts.}
-	image:png\foresthouse.jpg
 	attr.shortdesc:in front of a house
 	attr.exits:[south,north]
 	verb:n
@@ -2061,7 +2051,7 @@ room:house
 					put:baryl,$here
 room:houseinterior
 	name:Forest house interior
-	image:png\tforesthouseinterior.jpg
+	image:png\tforesthouseinterior_C64.png
 	desc:The first room you encounter, despite the large @windows, seems lit by a winter sky. There is a @fireplace, in front of a table with a @bottle and a @glass half-filled, a bookcase filled with @books, and above it, a @painting of an elderly woman with no eyes. Everything looks as if it has just been abandoned.
 		{windows: It probably depends on dirty glasses, but what you see from here doesn't look like the landscape outside. It's scary, and you stop looking through it almost immediately.}
 		{fireplace: It's unlit, but there are half-burnt logs and ashes.}
@@ -2118,7 +2108,7 @@ room:houseinterior
 			msg:They're too big to carry 
 room:ruins
 	name:Ruins
-	image:png\ruins.jpg
+	image:png\ruins_C64.png
 	desc:In a clearing among the trees is the remains of a stone building, almost completely collapsed. Inside the walls, there is only vegetation and rubble, except for a small part where a metal @door hides a section that is still covered.
 	attr.exits:[southwest,down]
 	attr.shortdesc:inside a collapsed building
@@ -2158,7 +2148,7 @@ room:ruinsinterior
 	name:Ruins interior
 	desc:Down a narrow staircase, you enter a large hall, dimly lit by cracks in the stone ceiling. Again, the floor is littered with debris, and the only thing that seems intact is what looks like an @altar in the center. All around you can see @openings, dark, leading to no one knows where.
 		{openings: You can hear horrible, deep sounds in the distance, and nothing in the world will convince you to enter them.}
-	image:png\xruinsinterior.jpg
+	image:png\xruinsinterior_C64.png
 	attr.exits:[up,east,south,west,north]
 	attr.shortdesc:in a underground hall
 	verb:u
@@ -2268,7 +2258,7 @@ room:ruinsinterior
 				msg:Why?
 room:forestpond
 	name:Forest pond
-	image:png\tforestpond.png
+	image:png\tforestpond_C64.png
 	desc:It takes a lot of attention to notice that the small @puddles all around are somehow becoming a @watercourse because of the many floating @plants that cover part of it. But once you have noticed this, you can see that this @stream widens further north.
 		{watercourse: The shallow water seems almost motionless, but here and there you can see some @fish.}
 		{puddles: The shallow water seems almost motionless, but here and there you can see some @fish.}
@@ -2305,7 +2295,7 @@ room:forestpond
 mine
 room:mountainpath
 	name:Mountain path
-	image:png\mountainpath.jpg
+	image:png\mountainpath_C64.png
 	desc:The path continues up the @mountain, narrow but well marked, with clear, polished @stones. However, a cold, strong wind is blowing, making the ascent tiring, and sometimes fallen rocks block the passage, forcing you to climb them, with the risk of falling.
 		{mountains:Although the peaks are close and not too high, they are covered by dense, dark clouds.}
 	attr.shortdesc:on a mountain path
@@ -2329,7 +2319,7 @@ room:mountainpath
 				msg:You take one of them
 room:fall
 	name:Nesterin Falls
-	image:png\nesterinfalls.jpg
+	image:png\nesterinfalls_C64.png
 	desc:The sight of these two spectacular @waterfalls coming together is magical. The @lake in front of you has a strangely shimmering bottom and the @path around it seems to go up into the @mountains.
 		{mountains:Although the peaks are close and not too high, they are covered by dense, dark clouds.}
 		{waterfalls:These waterfalls are fascinating, but the noise they make is intense and hypnotic.}
@@ -2366,7 +2356,7 @@ room:fall
 					msg:How?
 room:mineentrance
 	name:Mine entrance
-	image:png\tmineentrance.jpg
+	image:png\tmineentrance_C64.png
 	desc:The entrance to this tunnel is huge, ancient and frightening. You are not able to recognize the symbols on the columns, so you won't be able to understand if they are welcoming or threatening.
 	attr.shortdesc:at the entrance of a tunnel
 	attr.exits:[down,southwest]
@@ -2376,7 +2366,7 @@ room:mineentrance
 		goto:minetunnel
 room:minetunnel
 	name:Mine tunnel
-	image:png\tminetunnel.jpg
+	image:png\tminetunnel_C64.png
 	desc:The @tunnels seem to go on forever, descending gently down the mountain. From time to time you'll see @crossroads with @markings you can't understand, so you're not sure which way to go. 
 		{markings:You cannot understand them, but they have common elements. Maybe they're names, or indications.}
 		{crossroads:There's a crossroad each few hundred steps. This place is a labyrinth.}
@@ -2399,7 +2389,7 @@ room:minetunnel
 	attr.exits:[up,east,south,west,north]
 room:forgeroom
 	name:Forge
-	image:png\laboratory.jpg
+	image:png\laboratory_C64.png
 	desc:This large room seems to be the heart of the entire tunnel system. There are @inscriptions and complex @drawings on the walls, a kind of @forge in the centre and, on one side, atop a stand, a strange elongated @instrument.
 	attr.shortdesc:in a forge
 	attr.exits:[northwest]
