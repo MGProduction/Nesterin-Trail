@@ -51,5 +51,6 @@ Mkfile.old
 dkms.conf
 png_x
 extra_x
+img_x
 temp.h
 storytllr64_data.h
