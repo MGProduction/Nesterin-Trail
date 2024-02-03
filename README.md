@@ -1,5 +1,5 @@
 # Nesterin-Trail
-A storytllr-based C64 fantasy text adventure
+A storytllr-based C64 fantasy text adventure - [official itch.io page](https://marcogiorgini.itch.io/nesterin-trail)
 
 ![alt text](extra/home.png)
 
@@ -98,6 +98,17 @@ when outside town, and in a open field, will take you back to the nearest city e
 
 # Walkthrough
 
-Even though there is only one possible ending (you can't die), there is of course no single sequence of actions to get there. But if you're stuck somewhere and/or would like a little help (I think it's more than possible, maybe just for a too strict command to do something), I've also provided a full walkthrough, suggesting that you search for places or objects inside it, instead of following it directly.
+Even though there is only one possible ending (you can't die), there is of course no single sequence of actions to get there. But if you're stuck somewhere and/or would like a little help (I think it's more than possible, maybe just for a too-strict command to do something), I've also provided a full [walkthrough](https://marcogiorgini.me/wp-content/uploads/2024/01/nesterin_walkthrough.txt), suggesting that you search for places or objects inside it, instead of following it directly.
+
+# How to build the .d64 version
+
+On a **Windows** machine (sorry), you simply have to launch **run.bat** - given you've c1541.exe available in a reachable path. The **script_compiler.exe** app will read game.hjt and create everything, the batch file will simply create a .d64 file with the **storytllr64.prg** player, the generated **advcartridge** (the game itself), and the image files (the one you can find in img subfolder, created from the png ones)
+
+If you want you can modify the game source file (it's in treepad format, but you can switch to the generated txt version - that you can find under tmp folder) - I mean you can modify run.bat in order to ask the compiler to use directly the text version.
+Just be aware that the game is almost as big as it was possible for the current (updated) version of **StoryTllr**. Adding elements may be problematic for the engine.
+
+# MIT license
+
+Just to be clear, it means that you can also port this game to other IF systems if you want - as long as the result complies with the MIT license (that's quite permissive).
 
 
