@@ -104,7 +104,7 @@ Even though there is only one possible ending (you can't die), there is of cours
 
 On a **Windows** machine (sorry), you simply have to launch **run.bat** - given you've c1541.exe available in a reachable path. The **script_compiler.exe** app will read game.hjt and create everything, the batch file will simply create a .d64 file with the **storytllr64.prg** player, the generated **advcartridge** (the game itself), and the image files (the one you can find in img subfolder, created from the png ones)
 
-If you want you can modify the game source file (it's in treepad format, but you can switch to the generated txt version - that you can find under tmp folder) - I mean you can modify run.bat in order to ask the compiler to use directly the text version.
+If you want you can modify the game source file (it's in [treepad format](https://www.portablefreeware.com/index.php?id=1734), but you can switch to the generated txt version - that you can find under tmp folder) - I mean you can modify run.bat in order to ask the compiler to use directly the text version.
 Just be aware that the game is almost as big as it was possible for the current (updated) version of **StoryTllr**. Adding elements may be problematic for the engine.
 
 # MIT license
