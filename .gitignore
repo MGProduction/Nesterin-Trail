@@ -53,6 +53,7 @@ Mkfile.old
 dkms.conf
 png_x
 extra_x
+vga_img
 img_x
 temp.h
 storytllr64_data.h
