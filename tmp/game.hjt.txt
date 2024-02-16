@@ -340,7 +340,7 @@ smallobj:eriknotebook
 	verb:x|read
 		needin:$this,$available
 		if:!fulllayout
-			msg:It's a torn notebook, with several missing pages. And what's left is written in a sort of code that you read
+			msg:It's a torn notebook, with several missing pages. And what's left is written in a sort of code that you can't read
 			msg:On one page there's an incomplete layout
 			ifisroom:bankssquare
 				if:layoutseen
@@ -1036,7 +1036,7 @@ room:school
 				if:cookhelps
 					msg:You start trying to move them, when the cook arrives. 
 					msg:With his help, even trying to do less possible noise, you're able to free the stairs up in less than an hour.
-					msg:Once finished, he left without a word.
+					msg:Once finished, he leaves without a word.
 					set:cabinetsbypassed
 					addscore:score_cabinetsbypassed
 				else
@@ -1053,7 +1053,7 @@ room:schoollibrary
 	name:School Library
 	image:png\schoollibrary2_C64.png
 	desc:This is one of the largest libraries you've ever seen. Some of the @books have been thrown on the @floor and torn up, but most of them are still in their place. And some look @ancient.
-		{floor: It's full of dry blood. Someone must be killed or seriously hurt here}
+		{floor: It's full of dry blood. Someone must have been killed or seriously hurt here}
 		{books: They are too many to check them all. However, in the different library sections there are indications of the subjects covered: @botany, @geography, @history and more}
 		{history:You find a book with the story of this city. It talks about the massacre of the indigenous people by the founding fathers of Nesterin. There are bloody hands behind the riches of this region}
 	attr.shortdesc:inside the School Library
@@ -1297,7 +1297,7 @@ room:innhall
 				if:!erikroom 
 					if:signseen 
 						setvar:tmp,1
-						msg:"I know he was here", you reply staring him in his eyes, "I've seen his sign over there"
+						msg:"I know he was here," you reply, looking into his eyes, "I saw his sign over there."
 					else
 						if:ownersawpendant
 							setvar:tmp,1
@@ -1599,7 +1599,7 @@ room:southtownentrance
 			withobj:erik
 				msg:It seems risky to ask him about Erik
 			withobj:insignia
-				msg:"What those are for?", you ask.
+				msg:"What are those for?", you ask.
 				msg:"They say I am in charge of my squadron," he replies "this if I still had a squadron"
 				if:barreldutyknow
 					ifobjin:insignia,$nowhere
@@ -1659,6 +1659,9 @@ room:southtownentrance
 		goto:mineroad
 	verb:e
 		goto:path
+	verb:x
+		withobj:insignia
+			They're golden and have a symbol inside
 room:path
 	image:png\nforestpath1_C64.png
 	name:Forest path
@@ -2097,7 +2100,7 @@ room:houseinterior
 				msg:One of the biggest books has the title "\yArkylzoth\w the wrath-bearer"
 				ifobjin:eriknotebook,$inventory
 					ifobjin:pencil,$inventory
-						msg:You wrote it in Erik's notebook
+						msg:You write it in Erik's notebook
 						addscore:score_knowdemonname
 						set:knowdemonname
 			else
@@ -2171,7 +2174,7 @@ room:ruinsinterior
 				msg:With a trembling voice, you cast the spell
 				if:tmp=2
 					msg:Suddenly, Erik's eyes catch fire and you feel a cold, malevolent presence near you 
-					msg:"UNWORTHY" screms something all around
+					msg:"UNWORTHY" screams something all around
 					msg:With a strength you didn't know you had, you face it and read the banishing spell aloud
 					msg:A great roar then shakes the room you are in and stones begin to fall from the ceiling 
 					msg:You run up the stairs and get out just before everything goes black behind you. Then silence. You turn around and everything seems to go back to normal 
