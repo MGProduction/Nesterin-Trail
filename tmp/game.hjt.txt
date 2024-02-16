@@ -4,7 +4,7 @@ config
 	subtitle:A C64 fantasy text adventure
 	author:Marco Giorgini
 	licence:MIT
-	version:1.0.0
+	version:1.0.1
 	binary:yes
 	image
 		morecontrast:1
@@ -1661,7 +1661,7 @@ room:southtownentrance
 		goto:path
 	verb:x
 		withobj:insignia
-			They're golden and have a symbol inside
+			msg:They're golden and have a symbol inside
 room:path
 	image:png\nforestpath1_C64.png
 	name:Forest path

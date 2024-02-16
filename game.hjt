@@ -36,7 +36,7 @@ licence:MIT
 <end node> 5P9i0s8y19Z
 dt=Text
 <node>
-version:1.0.0
+version:1.0.1
 2
 <end node> 5P9i0s8y19Z
 dt=Text
@@ -4821,7 +4821,7 @@ dt=Text
 <node>
 withobj:insignia
 5
-They're golden and have a symbol inside
+msg:They're golden and have a symbol inside
 
 <end node> 5P9i0s8y19Z
 dt=Text

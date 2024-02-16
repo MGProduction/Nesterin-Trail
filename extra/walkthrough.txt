@@ -1,29 +1,28 @@
-*** START ***
 [Main Square]
-x fountain
-x benches
-x people
+examine fountain
+examine benches
+examine people
 talk to people
 enter inn
 [Inn dining room]
-x innkeeper
+examine innkeeper
 talk to innkeeper
-x fireplace
-x sign
+examine fireplace
+examine sign
 ask innkeeper about erik
 take key
-x key
+examine key
 u
 [Corridor]
-x rooms
+examine rooms
 e
 [Room]
-x bed
-x mattress
+examine bed
+examine mattress
 take notebook
-x furniture
-x table
-x drawer
+examine furniture
+examine table
+examine drawer
 w
 [Corridor]
 d
@@ -32,30 +31,30 @@ w
 [Main Square]
 w
 [Market]
-x food
-x meat
+examine food
+examine meat
 ask seller about meat
-ask seller about suppliers
+ask seller about supplies
 ask seller about witch
-x clothes
-x uniform
+examine clothes
+examine uniform
 ask saleswoman about uniform
 n
-x school
+examine school
 nw
 [School alley]
-x door
+examine door
 use knife with door
-x door
+examine door
 enter school
 [School room]
-x material
-x stairs
+examine material
+examine stairs
 take pencil
 push cabinets
 open cabinets
 take twine
-e
+w
 [School alley]
 se
 [Market]
@@ -63,40 +62,39 @@ e
 [Main Square]
 n
 [Banks Square]
-x building
-x statue
-x inscriptions
-x layout
-x notebook
-x instrument
+examine building
+examine statue
+examine inscriptions
+examine layout
+examine notebook
+examine instrument
 e
 s
 [Main Square]
 s
 [Nesterin South entrance]
-x entrance
-x sign
-x guard
+examine entrance
+examine sign
+examine guard
 talk to guard
 ask guard about leg
 ask guard about insignia
 e
 [Forest path]
-x animals
-x rabbits
+examine animals
+examine rabbits
 capture rabbits
-x plants
+examine plants
 e
 [Forest path]
-x trees
-x branches
+examine trees
+examine branches
 cut branches
 take bow
 w
 [Forest path]
 hunt rabbits with bow
 take rabbit
-return to nesterin
 go back to nesterin
 [Main Square]
 w
@@ -108,9 +106,9 @@ s
 [Nesterin South entrance]
 nw
 [Northern road]
-x road
-x tarps
-x barrels
+examine road
+examine tarps
+examine barrels
 take barrels
 se
 [Nesterin South entrance]
@@ -129,10 +127,10 @@ show barrel to innkeeper
 enter kitchen
 [Kitchen]
 give barrel to cook
-x cook
-x window
-x bench
-x jars
+examine cook
+examine window
+examine bench
+examine jars
 ask cook about supplies
 ask cook about spices
 ask cook about irillis
@@ -149,7 +147,7 @@ s
 [Nesterin South entrance]
 e
 [Forest path]
-x plants
+examine plants
 take irillis
 w
 [Nesterin South entrance]
@@ -172,25 +170,25 @@ w
 [Market]
 nw
 [School alley]
-w
+e
 [School room]
 push cabinets
 u
 [School Library]
-x books
-x ancient
-x grimoire
+examine books
+examine ancient
+examine grimoire
 read grimoire
-x geography section
+examine geography section
 take map
-x history section
-x botany section
+examine history section
+examine botany section
 seach botany section about irillis
 search botany for irillis
 search botany for rodum
 d
 [School room]
-e
+w
 [School alley]
 se
 [Market]
@@ -200,7 +198,7 @@ s
 [Nesterin South entrance]
 e
 [Forest path]
-x plants
+examine plants
 take rodum
 take irillis
 e
@@ -208,18 +206,18 @@ e
 use map
 se
 [Forest house]
-x house
-x grass
+examine house
+examine grass
 open door
 [Forest house interior]
-x books
+examine books
 read books
-x painting
+examine painting
 drink glass
 [Forest house]
 enter house
 [Forest house interior]
-x books
+examine books
 read books
 n
 [Forest house]
@@ -231,7 +229,7 @@ w
 [Market]
 nw
 [School alley]
-w
+e
 [School room]
 u
 [School Library]
@@ -239,7 +237,7 @@ search botany for berries
 search botany for baryl
 d
 [School room]
-e
+w
 [School alley]
 se
 [Market]
@@ -252,7 +250,7 @@ n
 take barrel
 put irillis into barrel
 put rodum in barrel
-x barrel
+examine barrel
 s
 [Inn dining room]
 w
@@ -266,14 +264,14 @@ se
 [Nesterin South entrance]
 e
 [Forest path]
-x plants
+examine plants
 take irillis
 take rodum
 e
 [Forest path]
 se
 [Forest house]
-x grass
+examine grass
 take baryl
 go back to nesterin
 [Main Square]
@@ -300,8 +298,8 @@ se
 [Nesterin South entrance]
 n
 [Main Square]
-x benches
-x man
+examine benches
+examine man
 talk to man
 ask man about erik
 give bread to man
@@ -341,8 +339,8 @@ n
 [Banks Square]
 e
 [Governor's Square]
-x fountain
-x coins
+examine fountain
+examine coins
 take coins
 fill flask with fountain
 w
@@ -385,16 +383,14 @@ nw
 [Northern road]
 nw
 [Lyrin camp]
-x green
-x red
+examine green
+examine red
 enter red
 [Red tent]
 talk to erik
 s
 [Lyrin camp]
 go back to nesterin
-[Main Square]
-s
 [Nesterin South entrance]
 ask guard about insignia
 take insignia
@@ -405,7 +401,7 @@ n
 [Banks Square]
 e
 [Governor's Square]
-x guards
+examine guards
 e
 [Prison]
 talk to guard
@@ -427,22 +423,22 @@ w
 [Market]
 nw
 [School alley]
-w
+e
 [School room]
 u
 [School Library]
-x geometry section
+examine geometry section
 take documents
 read documents
 search documents about summoning
-x notebook
+examine notebook
 search grimoire about arkylzoth
-x page
+examine page
 take grimoire page
 search documents for sacred place
 d
 [School room]
-e
+w
 [School alley]
 se
 [Market]
@@ -473,6 +469,8 @@ carve erik eyes
 s
 [Lyrin camp]
 go back to nesterin
+[Nesterin South entrance]
+n
 [Main Square]
 n
 [Banks Square]
@@ -482,13 +480,12 @@ n
 [Nesterin North gate]
 n
 [Forest path]
-us map
 use map
 ne
 [Ruins]
-x door
+examine door
 open door
-x slit
+examine slit
 sw
 [Forest path]
 sw
@@ -505,9 +502,9 @@ ne
 put coin in slit
 d
 [Ruins interior]
-x altar
+examine altar
 put eyes on altar
-x altar
+examine altar
 use knife on altar
 cast spell
 [Ruins]
@@ -516,47 +513,46 @@ sw
 [Forest path]
 w
 [Forest pond]
-x puddles
+examine puddles
 hunt fish with bow
 take fish
 n
 [Nesterin Falls]
-x waterfalls
-x lake
-x creature
+examine waterfalls
+examine lake
+examine creature
 hunt creature with bow
 ne
 throw fish into lake
 ne
 [Mountain path]
-x stones
+examine stones
 take stones
-x exits
+examine exits
 ne
 drop jacket
 ne
 [Mine entrance]
 d
 [Mine tunnel]
-x tunnels
-x crossroads
-x markings
-x notebook
+examine tunnels
+examine crossroads
+examine markings
+examine notebook
 se
 [Forge]
-x insciptions
-x inscriptions
-x instrument
+examine inscriptions
+examine instrument
 push instrument triangle
-x forge
-x drawings
-x inscriptions
+examine forge
+examine drawings
+examine inscriptions
 push instrument cross
-x forge
+examine forge
 put stone into forge
 take plate
-x plate
-x exits
+examine plate
+examine exits
 nw
 [Mine tunnel]
 u
