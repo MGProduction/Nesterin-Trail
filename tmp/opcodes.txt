@@ -1,17 +1,17 @@
 onfirst[0]::$start[0] = $00/0
 	clear[130]
 	msg::[241]\cA C64 fantasy text adventure...
-	waitkey[176]
+	waitkey[174]
 	clear[130]
 	msg::[183]You are the youngest member of the Garrot Guild, or what is left...
 	msg::[72]But your master's research did not stop. And it is more importan...
 	msg::[215]You know little about it. But you know how to move and blend in,...
 	msg::[134]So you were not surprised when you were sent to Nesterin, one of...
-	waitkey[176]
-	setvar[171]
-	put[161]
-	put[161]
-	setcount[166]
+	waitkey[174]
+	setvar[169]
+	put[159]
+	put[159]
+	setcount[164]
 	goto::[2]mainsquare
 onfirst[0]::endgame[1] = $01/1
 	clear[130]
@@ -21,9 +21,9 @@ onfirst[0]::endgame[1] = $01/1
 	msg::[73]Do you want to restart? (Y/N)
 	getkey[137]
 	ifkey[146]::89
-		start[173]
+		start[171]
 	else[133]
-		quit[162]
+		quit[160]
 	endif[135]
 onfirst[0]::mainsquare[2] = $02/2
 	clear[130]
@@ -182,7 +182,7 @@ n[8]::southtownentrance[16] = $23/35
 			msg2::[219]"Ah, finally, we were dying of thirst."
 			msg2::[37]"Ah, finally, we were dying of thirst."
 			set::[28]midday
-			waitkey[176]
+			waitkey[174]
 		endif[135]
 	endif[135]
 	goto::[2]mainsquare
@@ -237,7 +237,7 @@ e[10]::bankssquare[3] = $2a/42
 		if::[28]midday
 			ifnot::[29]domidday
 				msg::[210]You esitate, but seeing that there's just a single Lyrin guard, ...
-				waitkey[176]
+				waitkey[174]
 				set::[29]domidday
 			endif[135]
 			goto::[4]governorsquare
@@ -253,7 +253,7 @@ e[10]::governorsquare[4] = $2b/43
 	else[133]
 		ifnot::[31]enteredprison
 			msg::[112]It's risky, but wearing a uniform you might dare to go in and lo...
-			waitkey[176]
+			waitkey[174]
 			set::[31]enteredprison
 			addscore::[32]score_prisonentered
 		endif[135]
@@ -271,7 +271,7 @@ e[10]::upcorridor[13] = $2d/45
 	ifnot::[75]unlockedinnroom
 		msg2::[247]"Ah, finally, we were dying of thirst."
 		set::[75]unlockedinnroom
-		waitkey[176]
+		waitkey[174]
 	endif[135]
 	goto::[14]innroom
 e[10]::southtownentrance[16] = $18/24
@@ -327,7 +327,7 @@ ne[13]::betweenpath[19] = $33/51
 		msg2::[94]"Ah, finally, we were dying of thirst."
 	endif[135]
 ne[13]::mountainpath[28] = $34/52
-	setcount[166]
+	setcount[164]
 	ifvar[150]
 		msg2::[79]"Ah, finally, we were dying of thirst."
 	else[133]
@@ -355,7 +355,7 @@ nw[14]::mineroad[20] = $37/55
 		if::[23]knowaboutcamp
 			msg2::[81]"Ah, finally, we were dying of thirst."
 			msg2::[112]"Ah, finally, we were dying of thirst."
-			waitkey[176]
+			waitkey[174]
 			goto::[21]camp
 		else[133]
 			msg2::[78]"Ah, finally, we were dying of thirst."
@@ -472,7 +472,7 @@ enter[16]::upcorridor[13] = $41/65
 		ifnot::[75]unlockedinnroom
 			msg2::[247]"Ah, finally, we were dying of thirst."
 			set::[75]unlockedinnroom
-			waitkey[176]
+			waitkey[174]
 		endif[135]
 		goto::[14]innroom
 	endwith[136]
@@ -493,7 +493,7 @@ x[17]::mainsquare[2] = $42/66
 		msg::[138]The benches are wooden, and although old, in good condition.
 		if::[25]manunderthebench
 			msg::[217]You notice a pale and thin old \yman\w, resting under one of the...
-			put[161]
+			put[159]
 			set::[26]discoveredman
 		endif[135]
 x[17]::bankssquare[3] = $43/67
@@ -538,7 +538,7 @@ x[17]::school[8] = $49/73
 		msg::[151]They are almost all broken
 		ifnot::[54]pencilfound
 			msg::[246]but at least one \ypencil\w seems still intact
-			put[161]
+			put[159]
 			set::[54]pencilfound
 		endif[135]
 x[17]::schoollibrary[9] = $4a/74
@@ -548,14 +548,14 @@ x[17]::schoollibrary[9] = $4a/74
 		ifnot::[55]mapfound
 			msg::[62]A \ymap\w falls out of a book
 			set::[55]mapfound
-			put[161]
+			put[159]
 			addscore::[56]score_mapfound
 		endif[135]
 x[17]::schoollibrary[9] = $4b/75
 	withobj::[71]schoollibrary.ancient
 		msg::[120]Of all of them, one book stands out above the others, because th...
 		ifnot::[57]grimoireseen
-			put[161]
+			put[159]
 			set::[57]grimoireseen
 			addscore::[58]score_grimoireseen
 		endif[135]
@@ -565,7 +565,7 @@ x[17]::schoollibrary[9] = $4c/76
 x[17]::schoollibrary[9] = $4d/77
 	withobj::[74]schoollibrary.geometry
 		ifisin[144]
-			put[161]
+			put[159]
 			msg::[211]You found some \ydocuments\w hidden behind books.
 			addscore::[63]score_documentstaken
 		else[133]
@@ -603,7 +603,7 @@ x[17]::innroom[14] = $53/83
 			msg::[109]It's empty.
 		else[133]
 			msg2::[111]"Ah, finally, we were dying of thirst."
-			put[161]
+			put[159]
 			addscore::[76]score_flask
 		endif[135]
 x[17]::innroom[14] = $54/84
@@ -612,7 +612,7 @@ x[17]::innroom[14] = $54/84
 			msg2::[213]"Ah, finally, we were dying of thirst."
 		else[133]
 			msg2::[107]"Ah, finally, we were dying of thirst."
-			put[161]
+			put[159]
 			addscore::[77]score_eriknotebook
 		endif[135]
 x[17]::kitchen[15] = $55/85
@@ -663,7 +663,7 @@ x[17]::mineroad[20] = $5b/91
 x[17]::mineroad[20] = $5c/92
 	withobj::[126]mineroad.tarp
 		msg2::[130]"Ah, finally, we were dying of thirst."
-		setattr[165]
+		setattr[163]
 		set::[88]barrelsseen
 x[17]::mineroad[20] = $5d/93
 	withobj::[129]mineroad.road
@@ -691,7 +691,7 @@ x[17]::house[23] = $61/97
 			msg2::[233]"Ah, finally, we were dying of thirst."
 			ifisin[144]
 				addscore::[107]score_barylfound
-				put[161]
+				put[159]
 			endif[135]
 		endif[135]
 x[17]::houseinterior[24] = $62/98
@@ -743,7 +743,7 @@ x[17]::forgeroom[32] = $68/104
 		set::[122]gatesseen
 x[17]::$everywhere[246] = $69/105
 	withobj::[1]beerbarrel
-		needin[160]
+		needin[158]
 		msg::[103]It's a medium sized barrel. +
 		ifis[142]
 			msg::[76]Empty.
@@ -762,7 +762,7 @@ x[17]::$everywhere[246] = $69/105
 		endif[135]
 x[17]::$everywhere[246] = $6a/106
 	withobj::[5]flask
-		needin[160]
+		needin[158]
 		msg::[102]It's a handy leather flask. +
 		ifis[142]
 			msg::[76]Empty.
@@ -771,7 +771,7 @@ x[17]::$everywhere[246] = $6a/106
 		endif[135]
 x[17]::$everywhere[246] = $6b/107
 	withobj::[6]jacket
-		needin[160]
+		needin[158]
 		msg::[65]A second-hand uniform \yjacket\w +
 		if::[4]insigniaonjacket
 			msg::[251]with an \yinsignia\w on its right shoulder
@@ -789,7 +789,7 @@ x[17]::$everywhere[246] = $6c/108
 		endif[135]
 x[17]::$everywhere[246] = $6d/109
 	withobj::[23]plate
-		needin[160]
+		needin[158]
 		msg::[105]It's a slab of silvery material. It's ductible, light and incred...
 		msg::[128]Once your Guild knows about it, they will send people here to st...
 		set::[11]materialwin
@@ -799,13 +799,13 @@ x[17]::$everywhere[246] = $6d/109
 		endif[135]
 x[17]::$everywhere[246] = $6e/110
 	withobj::[24]documents
-		needin[160]
+		needin[158]
 		msg::[153]They seem to be Erik's notebook missing pages
 		msg::[90]He wrote that he wanted to obtain info about the production of t...
 		msg::[71]But that there's a bigger and imminent danger, a \ysummoning\w
 x[17]::$everywhere[246] = $6f/111
 	withobj::[29]eriknotebook
-		needin[160]
+		needin[158]
 		ifnot::[14]fulllayout
 			msg::[106]It's a torn notebook, with several missing pages. And what's lef...
 			msg::[123]On one page there's an incomplete layout
@@ -888,10 +888,10 @@ take[18]::governorsquare[4] = $73/115
 		ifisin[144]
 			msg::[113]It's too risky to get another one this way
 		else[133]
-			setvar[171]
+			setvar[169]
 			if::[2]jacketon
 				ifisin[144]
-					setvar[171]
+					setvar[169]
 				endif[135]
 			endif[135]
 			ifvar[150]
@@ -899,7 +899,7 @@ take[18]::governorsquare[4] = $73/115
 				ifisin[144]
 					msg::[220]You reach into the water, and take a silver coin. When he shouts...
 					msg::[82]He grunts. But then he leaves you alone
-					put[161]
+					put[159]
 					addscore::[30]score_coinstaken
 				else[133]
 					msg::[77]Even in uniform, you don't dare to collect coins with him watchi...
@@ -916,7 +916,7 @@ take[18]::schoollibrary[9] = $74/116
 			if::[20]pagetaken
 				msg::[176]You already have it
 			else[133]
-				put[161]
+				put[159]
 				set::[20]pagetaken
 				msg::[136]Taken
 				addscore::[66]score_spelltaken
@@ -930,7 +930,7 @@ take[18]::schoollibrary[9] = $75/117
 				if::[20]pagetaken
 					msg::[176]You already have it
 				else[133]
-					put[161]
+					put[159]
 					set::[20]pagetaken
 					msg::[136]Taken
 					addscore::[66]score_spelltaken
@@ -941,7 +941,7 @@ take[18]::schoollibrary[9] = $75/117
 			if::[20]pagetaken
 				msg::[176]You already have it
 			else[133]
-				put[161]
+				put[159]
 				set::[20]pagetaken
 				msg::[136]Taken
 				addscore::[66]score_spelltaken
@@ -957,7 +957,7 @@ take[18]::path[17] = $76/118
 		else[133]
 			if::[42]knowirillis
 				msg2::[115]"Ah, finally, we were dying of thirst."
-				put[161]
+				put[159]
 				msg2::[158]"Ah, finally, we were dying of thirst."
 				addscore::[94]score_irillistaken
 			else[133]
@@ -971,7 +971,7 @@ take[18]::path[17] = $77/119
 		else[133]
 			if::[59]knowrodum
 				msg2::[115]"Ah, finally, we were dying of thirst."
-				put[161]
+				put[159]
 				msg2::[158]"Ah, finally, we were dying of thirst."
 				addscore::[95]score_rodumtaken
 			else[133]
@@ -986,7 +986,7 @@ take[18]::path[17] = $78/120
 			else[133]
 				ifisin[144]
 					msg2::[80]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 					addscore::[92]score_rabbittaken
 				else[133]
 					msg2::[200]"Ah, finally, we were dying of thirst."
@@ -1016,8 +1016,8 @@ take[18]::darkpath[18] = $7a/122
 				ifisin[144]
 					ifisin[144]
 						msg2::[199]"Ah, finally, we were dying of thirst."
-						put[161]
-						put[161]
+						put[159]
+						put[159]
 						set::[96]bowmade
 						addscore::[97]score_bowmade
 					else[133]
@@ -1042,7 +1042,7 @@ take[18]::mineroad[20] = $7b/123
 					msg2::[26]"Ah, finally, we were dying of thirst."
 					msg2::[34]"Ah, finally, we were dying of thirst."
 					msg2::[156]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 					set::[99]barreltaken
 					addscore::[100]score_barreltaken
 				endif[135]
@@ -1057,7 +1057,7 @@ take[18]::redtent[22] = $7c/124
 				msg2::[189]"Ah, finally, we were dying of thirst."
 			else[133]
 				msg2::[192]"Ah, finally, we were dying of thirst."
-				put[161]
+				put[159]
 				addscore::[106]score_carvedeyes
 				set::[105]carvedeyes
 			endif[135]
@@ -1079,7 +1079,7 @@ take[18]::forestpond[27] = $80/128
 			else[133]
 				ifisin[144]
 					msg2::[80]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 					addscore::[116]score_fishtaken
 				else[133]
 					msg2::[200]"Ah, finally, we were dying of thirst."
@@ -1088,7 +1088,7 @@ take[18]::forestpond[27] = $80/128
 		endwith[136]
 		withobj::[249]$none
 			ifisin[144]
-				put[161]
+				put[159]
 				msg::[136]Taken
 			else[133]
 				msg2::[88]"Ah, finally, we were dying of thirst."
@@ -1102,19 +1102,19 @@ take[18]::mountainpath[28] = $81/129
 		ifisin[144]
 			msg2::[185]"Ah, finally, we were dying of thirst."
 		else[133]
-			put[161]
+			put[159]
 			msg2::[240]"Ah, finally, we were dying of thirst."
 		endif[135]
 take[18]::$everywhere[246] = $82/130
 	withobj::[245]$every
 		ifobjinattr[148]
 			ifis[142]
-				setcount[166]
+				setcount[164]
 				ifis[142]
 					addvar[129]
 				endif[135]
 				ifvar[150]
-					put[161]
+					put[159]
 					msg::[136]Taken
 				else[133]
 					msg::[175]You already carry too much to add also this size object
@@ -1146,7 +1146,7 @@ take[18]::$everywhere[246] = $71/113
 	endwith[136]
 drop[19]::$everywhere[246] = $83/131
 	withobj::[1]beerbarrel
-		needin[160]
+		needin[158]
 		msg::[111]It's not yours to leave around.
 drop[19]::$everywhere[246] = $84/132
 	withobj::[7]knife
@@ -1178,7 +1178,7 @@ drop[19]::$everywhere[246] = $86/134
 	withobj::[245]$every
 		ifisin[144]
 			ifis[142]
-				put[161]
+				put[159]
 				msg::[75]Dropped
 				ifvar[150]
 					decvar[132]
@@ -1206,16 +1206,16 @@ drop[19]::$everywhere[246] = $71/113
 	endwith[136]
 use[20]::mainsquare[2] = $87/135
 	withobj::[5]flask
-		needin[160]
+		needin[158]
 		withobj::[36]mainsquare.fountain
 			msg::[68]As you start to fill your flask, you realise that the water comi...
 		endwith[136]
 	endwith[136]
 use[20]::governorsquare[4] = $88/136
 	withobj::[5]flask
-		needin[160]
+		needin[158]
 		withobj::[48]governorsquare.fountain
-			unsetattr[175]
+			unsetattr[173]
 			addscore::[33]score_flaskfilled
 			msg::[74]Done
 		endwith[136]
@@ -1249,7 +1249,7 @@ use[20]::path[17] = $8c/140
 			else[133]
 				ifisin[144]
 					msg2::[80]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 				else[133]
 					msg2::[200]"Ah, finally, we were dying of thirst."
 				endif[135]
@@ -1259,7 +1259,7 @@ use[20]::path[17] = $8c/140
 use[20]::ruinsinterior[26] = $8d/141
 	withobj::[7]knife
 		withobj::[146]ruinsinterior.altar
-			needin[160]
+			needin[158]
 			ifnot::[114]bloodonaltar
 				msg2::[183]"Ah, finally, we were dying of thirst."
 				set::[114]bloodonaltar
@@ -1271,7 +1271,7 @@ use[20]::ruinsinterior[26] = $8d/141
 use[20]::ruinsinterior[26] = $8e/142
 	withobj::[146]ruinsinterior.altar
 		withobj::[145]ruinsinterior.blood
-			needin[160]
+			needin[158]
 			ifnot::[114]bloodonaltar
 				msg2::[183]"Ah, finally, we were dying of thirst."
 				set::[114]bloodonaltar
@@ -1280,7 +1280,7 @@ use[20]::ruinsinterior[26] = $8e/142
 			endif[135]
 		endwith[136]
 		withobj::[7]knife
-			needin[160]
+			needin[158]
 			ifnot::[114]bloodonaltar
 				msg2::[183]"Ah, finally, we were dying of thirst."
 				set::[114]bloodonaltar
@@ -1289,9 +1289,9 @@ use[20]::ruinsinterior[26] = $8e/142
 			endif[135]
 		endwith[136]
 		withobj::[20]eyes
-			needin[160]
+			needin[158]
 			msg2::[231]"Ah, finally, we were dying of thirst."
-			put[161]
+			put[159]
 			set::[113]eyesonaltar
 		endwith[136]
 		withobj::[249]$none
@@ -1307,9 +1307,9 @@ use[20]::forgeroom[32] = $8f/143
 		else[133]
 			withobj::[161]forgeroom.forge
 				ifisin[144]
-					put[161]
+					put[159]
 					msg2::[83]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 				else[133]
 					msg::[203]You don't have it
 				endif[135]
@@ -1326,9 +1326,9 @@ use[20]::forgeroom[32] = $90/144
 				msg2::[96]"Ah, finally, we were dying of thirst."
 			else[133]
 				ifisin[144]
-					put[161]
+					put[159]
 					msg2::[83]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 				else[133]
 					msg::[203]You don't have it
 				endif[135]
@@ -1376,7 +1376,7 @@ use[20]::forgeroom[32] = $91/145
 use[20]::$everywhere[246] = $92/146
 	withobj::[7]knife
 		withobj::[245]$every
-			needin[160]
+			needin[158]
 			ifis[142]
 				msg::[223]You should be careful about your actions.
 			else[133]
@@ -1388,7 +1388,7 @@ use[20]::$everywhere[246] = $92/146
 		endwith[136]
 use[20]::$everywhere[246] = $93/147
 	withobj::[18]map
-		needin[160]
+		needin[158]
 		ifisroom::[18]darkpath
 			msg::[126]On the map you see a path leading from here to a mark, +
 			msg::[248]going southeast.
@@ -1578,7 +1578,7 @@ pull[22]::$everywhere[246] = $71/113
 		endif[135]
 	endwith[136]
 open[23]::prison[5] = $99/153
-	setvar[171]
+	setvar[169]
 	if::[2]jacketon
 		addvar[129]
 	endif[135]
@@ -1594,7 +1594,7 @@ open[23]::school[8] = $9a/154
 	withobj::[64]school.cabinets
 		ifnot::[50]twineseen
 			msg::[95]Inside one of them you find some \ytwine\w.
-			put[161]
+			put[159]
 			set::[50]twineseen
 			addscore::[51]score_twineseen
 		else[133]
@@ -1604,7 +1604,7 @@ open[23]::schoolalley[10] = $9b/155
 	withobj::[78]schoolalley.door
 		if::[67]schoolpanelremoved
 			msg2::[196]"Ah, finally, we were dying of thirst."
-			waitkey[176]
+			waitkey[174]
 			goto::[8]school
 		else[133]
 			msg2::[141]"Ah, finally, we were dying of thirst."
@@ -1632,13 +1632,13 @@ open[23]::innroom[14] = $53/83
 			msg::[109]It's empty.
 		else[133]
 			msg2::[111]"Ah, finally, we were dying of thirst."
-			put[161]
+			put[159]
 			addscore::[76]score_flask
 		endif[135]
 open[23]::house[23] = $9d/157
 	withobj::[132]house.door
 		msg2::[228]"Ah, finally, we were dying of thirst."
-		waitkey[176]
+		waitkey[174]
 		goto::[24]houseinterior
 	endwith[136]
 open[23]::ruins[25] = $9e/158
@@ -1658,7 +1658,7 @@ open[23]::$everywhere[246] = $a0/160
 			ifis[142]
 				msg::[108]It's already open
 			else[133]
-				setattr[165]
+				setattr[163]
 				msg::[74]Done
 			endif[135]
 		else[133]
@@ -1683,7 +1683,7 @@ close[24]::$everywhere[246] = $a1/161
 	ifisin[144]
 		ifis[142]
 			ifis[142]
-				unsetattr[175]
+				unsetattr[173]
 				msg::[74]Done
 			else[133]
 				msg::[107]It's already closed
@@ -1771,8 +1771,8 @@ show[27]::market[7] = $a4/164
 				ifisin[144]
 					msg::[9]"For the uniform?", she asks, and when you nod he makes the ring...
 					msg::[0]"But I'm only giving you the \yjacket\w for this little ring. Ma...
-					put[161]
-					put[161]
+					put[159]
+					put[159]
 				else[133]
 					msg::[203]You don't have it
 				endif[135]
@@ -1788,8 +1788,8 @@ show[27]::market[7] = $a4/164
 				msg::[132]She takes your rabbit, and start to clean it.
 				msg::[50]"What about my money?"
 				msg::[23]"I'll pay you when I sell it," she said, "but I can give you a b...
-				put[161]
-				put[161]
+				put[159]
+				put[159]
 				addscore::[44]score_breadtaken
 				set::[43]rabbitgiven
 			endif[135]
@@ -1802,8 +1802,8 @@ show[27]::market[7] = $a5/165
 				ifisin[144]
 					msg::[9]"For the uniform?", she asks, and when you nod he makes the ring...
 					msg::[0]"But I'm only giving you the \yjacket\w for this little ring. Ma...
-					put[161]
-					put[161]
+					put[159]
+					put[159]
 				else[133]
 					msg::[203]You don't have it
 				endif[135]
@@ -1822,8 +1822,8 @@ show[27]::market[7] = $a6/166
 					msg::[132]She takes your rabbit, and start to clean it.
 					msg::[50]"What about my money?"
 					msg::[23]"I'll pay you when I sell it," she said, "but I can give you a b...
-					put[161]
-					put[161]
+					put[159]
+					put[159]
 					addscore::[44]score_breadtaken
 					set::[43]rabbitgiven
 				endif[135]
@@ -1868,9 +1868,9 @@ show[27]::kitchen[15] = $a9/169
 			ifis[142]
 				msg2::[1]"Ah, finally, we were dying of thirst."
 				msg2::[140]"Ah, finally, we were dying of thirst."
-				put[161]
+				put[159]
 				msg2::[14]"Ah, finally, we were dying of thirst."
-				unsetattr[175]
+				unsetattr[173]
 				set::[78]cookfillbarrel
 			else[133]
 				msg2::[28]"Ah, finally, we were dying of thirst."
@@ -1882,7 +1882,7 @@ show[27]::kitchen[15] = $a9/169
 	withobj::[15]irillis
 		ifisin[144]
 			msg2::[42]"Ah, finally, we were dying of thirst."
-			put[161]
+			put[159]
 			set::[79]cookownsone
 		endif[135]
 	endwith[136]
@@ -1898,7 +1898,7 @@ show[27]::mineroad[20] = $aa/170
 			ifis[142]
 				msg2::[2]"Ah, finally, we were dying of thirst."
 			else[133]
-				setvar[171]
+				setvar[169]
 				if::[0]irillisinbarrel
 					addvar[129]
 				endif[135]
@@ -1913,8 +1913,8 @@ show[27]::mineroad[20] = $aa/170
 						msg2::[45]"Ah, finally, we were dying of thirst."
 						msg2::[121]"Ah, finally, we were dying of thirst."
 						msg2::[241]"Ah, finally, we were dying of thirst."
-						put[161]
-						put[161]
+						put[159]
+						put[159]
 						addscore::[102]score_menasleep
 						set::[98]menasleep
 					else[133]
@@ -1924,14 +1924,14 @@ show[27]::mineroad[20] = $aa/170
 						msg2::[69]"Ah, finally, we were dying of thirst."
 						msg2::[27]"Ah, finally, we were dying of thirst."
 						msg2::[157]"Ah, finally, we were dying of thirst."
-						setattr[165]
+						setattr[163]
 						msg2::[155]"Ah, finally, we were dying of thirst."
 						addscore::[103]score_menasleeptried
 					endif[135]
 				else[133]
-					put[161]
+					put[159]
 					msg2::[46]"Ah, finally, we were dying of thirst."
-					setattr[165]
+					setattr[163]
 					msg2::[149]"Ah, finally, we were dying of thirst."
 				endif[135]
 			endif[135]
@@ -1939,7 +1939,7 @@ show[27]::mineroad[20] = $aa/170
 	endif[135]
 show[27]::$everywhere[246] = $ab/171
 	withobj::[12]pendant
-		needin[160]
+		needin[158]
 		msg::[224]You should be careful who you show it to.
 show[27]::$everywhere[246] = $ac/172
 	withobj::[19]insignia
@@ -1960,7 +1960,7 @@ show[27]::$everywhere[246] = $71/113
 	endwith[136]
 give[28]::mainsquare[2] = $ad/173
 	withobj::[5]flask
-		needin[160]
+		needin[158]
 		withobj::[35]aki
 			ifisin[144]
 				ifis[142]
@@ -1969,20 +1969,20 @@ give[28]::mainsquare[2] = $ad/173
 					msg::[213]You give the flask to the old man and he starts to drink it slow...
 					msg::[67]As soon as he has emptied it, he seems to feel a little better.
 					set::[21]oldmandrank
-					put[161]
+					put[159]
 					msg::[45]"Thanks", he says.
 				endif[135]
 			endif[135]
 		endwith[136]
 	endwith[136]
 	withobj::[3]bread
-		needin[160]
+		needin[158]
 		withobj::[35]aki
 			ifisin[144]
 				if::[21]oldmandrank
 					msg::[212]You give him your bread. He starts to cry as he eats it.
 					set::[22]oldmaneat
-					put[161]
+					put[159]
 					msg::[45]"Thanks", he says.
 				else[133]
 					msg::[87]He needs to drink first
@@ -1991,7 +1991,7 @@ give[28]::mainsquare[2] = $ad/173
 		endwith[136]
 	endwith[136]
 	withobj::[1]beerbarrel
-		needin[160]
+		needin[158]
 		withobj::[35]aki
 			ifisin[144]
 				msg::[190]You can't give him Lyrin's beer
@@ -2005,8 +2005,8 @@ give[28]::market[7] = $a4/164
 				ifisin[144]
 					msg::[9]"For the uniform?", she asks, and when you nod he makes the ring...
 					msg::[0]"But I'm only giving you the \yjacket\w for this little ring. Ma...
-					put[161]
-					put[161]
+					put[159]
+					put[159]
 				else[133]
 					msg::[203]You don't have it
 				endif[135]
@@ -2022,8 +2022,8 @@ give[28]::market[7] = $a4/164
 				msg::[132]She takes your rabbit, and start to clean it.
 				msg::[50]"What about my money?"
 				msg::[23]"I'll pay you when I sell it," she said, "but I can give you a b...
-				put[161]
-				put[161]
+				put[159]
+				put[159]
 				addscore::[44]score_breadtaken
 				set::[43]rabbitgiven
 			endif[135]
@@ -2036,8 +2036,8 @@ give[28]::market[7] = $a5/165
 				ifisin[144]
 					msg::[9]"For the uniform?", she asks, and when you nod he makes the ring...
 					msg::[0]"But I'm only giving you the \yjacket\w for this little ring. Ma...
-					put[161]
-					put[161]
+					put[159]
+					put[159]
 				else[133]
 					msg::[203]You don't have it
 				endif[135]
@@ -2056,8 +2056,8 @@ give[28]::market[7] = $a6/166
 					msg::[132]She takes your rabbit, and start to clean it.
 					msg::[50]"What about my money?"
 					msg::[23]"I'll pay you when I sell it," she said, "but I can give you a b...
-					put[161]
-					put[161]
+					put[159]
+					put[159]
 					addscore::[44]score_breadtaken
 					set::[43]rabbitgiven
 				endif[135]
@@ -2102,9 +2102,9 @@ give[28]::kitchen[15] = $a9/169
 			ifis[142]
 				msg2::[1]"Ah, finally, we were dying of thirst."
 				msg2::[140]"Ah, finally, we were dying of thirst."
-				put[161]
+				put[159]
 				msg2::[14]"Ah, finally, we were dying of thirst."
-				unsetattr[175]
+				unsetattr[173]
 				set::[78]cookfillbarrel
 			else[133]
 				msg2::[28]"Ah, finally, we were dying of thirst."
@@ -2116,7 +2116,7 @@ give[28]::kitchen[15] = $a9/169
 	withobj::[15]irillis
 		ifisin[144]
 			msg2::[42]"Ah, finally, we were dying of thirst."
-			put[161]
+			put[159]
 			set::[79]cookownsone
 		endif[135]
 	endwith[136]
@@ -2132,7 +2132,7 @@ give[28]::mineroad[20] = $aa/170
 			ifis[142]
 				msg2::[2]"Ah, finally, we were dying of thirst."
 			else[133]
-				setvar[171]
+				setvar[169]
 				if::[0]irillisinbarrel
 					addvar[129]
 				endif[135]
@@ -2147,8 +2147,8 @@ give[28]::mineroad[20] = $aa/170
 						msg2::[45]"Ah, finally, we were dying of thirst."
 						msg2::[121]"Ah, finally, we were dying of thirst."
 						msg2::[241]"Ah, finally, we were dying of thirst."
-						put[161]
-						put[161]
+						put[159]
+						put[159]
 						addscore::[102]score_menasleep
 						set::[98]menasleep
 					else[133]
@@ -2158,14 +2158,14 @@ give[28]::mineroad[20] = $aa/170
 						msg2::[69]"Ah, finally, we were dying of thirst."
 						msg2::[27]"Ah, finally, we were dying of thirst."
 						msg2::[157]"Ah, finally, we were dying of thirst."
-						setattr[165]
+						setattr[163]
 						msg2::[155]"Ah, finally, we were dying of thirst."
 						addscore::[103]score_menasleeptried
 					endif[135]
 				else[133]
-					put[161]
+					put[159]
 					msg2::[46]"Ah, finally, we were dying of thirst."
-					setattr[165]
+					setattr[163]
 					msg2::[149]"Ah, finally, we were dying of thirst."
 				endif[135]
 			endif[135]
@@ -2176,7 +2176,7 @@ give[28]::fall[29] = $ae/174
 		ifisin[144]
 			msg2::[244]"Ah, finally, we were dying of thirst."
 			set::[117]defeatedfish
-			put[161]
+			put[159]
 			addscore::[118]score_defeatedfish
 		else[133]
 			msg::[203]You don't have it
@@ -2185,24 +2185,24 @@ give[28]::fall[29] = $ae/174
 give[28]::$everywhere[246] = $af/175
 	withobj::[35]aki
 		withobj::[5]flask
-			needin[160]
-			needin[160]
+			needin[158]
+			needin[158]
 			ifis[142]
 				msg::[139]The flask is empty.
 			else[133]
 				msg::[213]You give the flask to the old man and he starts to drink it slow...
 				msg::[67]As soon as he has emptied it, he seems to feel a little better.
 				set::[21]oldmandrank
-				put[161]
+				put[159]
 				msg::[45]"Thanks", he says.
 			endif[135]
 		endwith[136]
 		withobj::[3]bread
-			needin[160]
-			needin[160]
+			needin[158]
+			needin[158]
 			if::[21]oldmandrank
 				msg::[212]You give him your bread. He starts to cry as he eats it.
-				put[161]
+				put[159]
 				set::[22]oldmaneat
 				msg::[45]"Thanks", he says.
 			else[133]
@@ -2241,16 +2241,16 @@ put[29]::ruins[25] = $b0/176
 put[29]::ruinsinterior[26] = $b1/177
 	withobj::[145]ruinsinterior.blood
 		withobj::[146]ruinsinterior.altar
-			needin[160]
+			needin[158]
 			msg2::[183]"Ah, finally, we were dying of thirst."
 			set::[114]bloodonaltar
 		endwith[136]
 	endwith[136]
 	withobj::[20]eyes
 		withobj::[146]ruinsinterior.altar
-			needin[160]
+			needin[158]
 			msg2::[231]"Ah, finally, we were dying of thirst."
-			put[161]
+			put[159]
 			set::[113]eyesonaltar
 		endwith[136]
 	endwith[136]
@@ -2259,7 +2259,7 @@ put[29]::fall[29] = $ae/174
 		ifisin[144]
 			msg2::[244]"Ah, finally, we were dying of thirst."
 			set::[117]defeatedfish
-			put[161]
+			put[159]
 			addscore::[118]score_defeatedfish
 		else[133]
 			msg::[203]You don't have it
@@ -2272,9 +2272,9 @@ put[29]::forgeroom[32] = $8f/143
 		else[133]
 			withobj::[161]forgeroom.forge
 				ifisin[144]
-					put[161]
+					put[159]
 					msg2::[83]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 				else[133]
 					msg::[203]You don't have it
 				endif[135]
@@ -2291,9 +2291,9 @@ put[29]::forgeroom[32] = $90/144
 				msg2::[96]"Ah, finally, we were dying of thirst."
 			else[133]
 				ifisin[144]
-					put[161]
+					put[159]
 					msg2::[83]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 				else[133]
 					msg::[203]You don't have it
 				endif[135]
@@ -2321,7 +2321,7 @@ put[29]::$everywhere[246] = $b2/178
 					ifis[142]
 						msg::[225]You should fill it with beer before that.
 					else[133]
-						put[161]
+						put[159]
 						set::[0]irillisinbarrel
 						msg::[74]Done
 					endif[135]
@@ -2333,7 +2333,7 @@ put[29]::$everywhere[246] = $b2/178
 			endif[135]
 		endwith[136]
 		withobj::[245]$every
-			needin[160]
+			needin[158]
 			msg::[169]Why?
 		endwith[136]
 put[29]::$everywhere[246] = $b3/179
@@ -2344,7 +2344,7 @@ put[29]::$everywhere[246] = $b3/179
 					ifis[142]
 						msg::[225]You should fill it with beer before that.
 					else[133]
-						put[161]
+						put[159]
 						set::[1]roduminbarrel
 						msg::[74]Done
 					endif[135]
@@ -2356,7 +2356,7 @@ put[29]::$everywhere[246] = $b3/179
 			endif[135]
 		endwith[136]
 		withobj::[245]$every
-			needin[160]
+			needin[158]
 			msg::[169]Why?
 		endwith[136]
 put[29]::$everywhere[246] = $94/148
@@ -2402,16 +2402,16 @@ quit[32]::$everywhere[246] = $b7/183
 	msg::[66]Are you sure? (Y/N)
 	getkey[137]
 	ifkey[146]::89
-		quit[162]
+		quit[160]
 	endif[135]
 restart[33]::$everywhere[246] = $b8/184
 	msg::[66]Are you sure? (Y/N)
 	getkey[137]
 	ifkey[146]::89
-		start[173]
+		start[171]
 	endif[135]
 save[34]::$everywhere[246] = $b9/185
-	save[163]
+	save[161]
 	msg::[74]Done
 load[35]::$everywhere[246] = $ba/186
 	msg::[66]Are you sure? (Y/N)
@@ -2446,7 +2446,7 @@ talk[38]::governorsquare[4] = $be/190
 		msg::[207]You don't think it's a wise thing to do
 talk[38]::prison[5] = $bf/191
 	withobj::[51]prison.prisonguard
-		setvar[171]
+		setvar[169]
 		if::[2]jacketon
 			addvar[129]
 		endif[135]
@@ -2469,7 +2469,7 @@ talk[38]::prison[5] = $bf/191
 		else[133]
 			msg::[84]He looks at you and points to your uniform.
 			msg::[41]"Only officers are allowed to approach prisoners, how many times...
-			waitkey[176]
+			waitkey[174]
 			goto::[4]governorsquare
 		endif[135]
 talk[38]::cell[6] = $c0/192
@@ -2499,14 +2499,14 @@ talk[38]::innhall[12] = $c3/195
 		endwith[136]
 		withobj::[32]erik
 			msg2::[40]"Ah, finally, we were dying of thirst."
-			setvar[171]
+			setvar[169]
 			ifnot::[71]erikroom
 				if::[70]signseen
-					setvar[171]
+					setvar[169]
 					msg2::[22]"Ah, finally, we were dying of thirst."
 				else[133]
 					if::[73]ownersawpendant
-						setvar[171]
+						setvar[169]
 						msg2::[3]"Ah, finally, we were dying of thirst."
 					endif[135]
 				endif[135]
@@ -2515,7 +2515,7 @@ talk[38]::innhall[12] = $c3/195
 				msg2::[146]"Ah, finally, we were dying of thirst."
 				set::[71]erikroom
 				addscore::[74]score_roomkey
-				put[161]
+				put[159]
 			endif[135]
 		endwith[136]
 		withobj::[84]innhall.beer
@@ -2548,7 +2548,7 @@ talk[38]::kitchen[15] = $c4/196
 					msg2::[1]"Ah, finally, we were dying of thirst."
 					msg2::[140]"Ah, finally, we were dying of thirst."
 					msg2::[14]"Ah, finally, we were dying of thirst."
-					unsetattr[175]
+					unsetattr[173]
 					set::[78]cookfillbarrel
 				else[133]
 					msg2::[29]"Ah, finally, we were dying of thirst."
@@ -2656,7 +2656,7 @@ talk[38]::mineroad[20] = $c6/198
 						msg2::[26]"Ah, finally, we were dying of thirst."
 						msg2::[34]"Ah, finally, we were dying of thirst."
 						msg2::[156]"Ah, finally, we were dying of thirst."
-						put[161]
+						put[159]
 						set::[99]barreltaken
 						addscore::[100]score_barreltaken
 					endif[135]
@@ -2857,14 +2857,14 @@ ask[39]::innhall[12] = $c3/195
 		endwith[136]
 		withobj::[32]erik
 			msg2::[40]"Ah, finally, we were dying of thirst."
-			setvar[171]
+			setvar[169]
 			ifnot::[71]erikroom
 				if::[70]signseen
-					setvar[171]
+					setvar[169]
 					msg2::[22]"Ah, finally, we were dying of thirst."
 				else[133]
 					if::[73]ownersawpendant
-						setvar[171]
+						setvar[169]
 						msg2::[3]"Ah, finally, we were dying of thirst."
 					endif[135]
 				endif[135]
@@ -2873,7 +2873,7 @@ ask[39]::innhall[12] = $c3/195
 				msg2::[146]"Ah, finally, we were dying of thirst."
 				set::[71]erikroom
 				addscore::[74]score_roomkey
-				put[161]
+				put[159]
 			endif[135]
 		endwith[136]
 		withobj::[84]innhall.beer
@@ -2906,7 +2906,7 @@ ask[39]::kitchen[15] = $c4/196
 					msg2::[1]"Ah, finally, we were dying of thirst."
 					msg2::[140]"Ah, finally, we were dying of thirst."
 					msg2::[14]"Ah, finally, we were dying of thirst."
-					unsetattr[175]
+					unsetattr[173]
 					set::[78]cookfillbarrel
 				else[133]
 					msg2::[29]"Ah, finally, we were dying of thirst."
@@ -3048,7 +3048,7 @@ ask[39]::southtownentrance[16] = $ce/206
 						msg2::[70]"Ah, finally, we were dying of thirst."
 						msg2::[49]"Ah, finally, we were dying of thirst."
 						msg2::[4]"Ah, finally, we were dying of thirst."
-						put[161]
+						put[159]
 						addscore::[91]score_insigniataken
 						msg2::[57]"Ah, finally, we were dying of thirst."
 					endif[135]
@@ -3082,7 +3082,7 @@ ask[39]::mineroad[20] = $c6/198
 						msg2::[26]"Ah, finally, we were dying of thirst."
 						msg2::[34]"Ah, finally, we were dying of thirst."
 						msg2::[156]"Ah, finally, we were dying of thirst."
-						put[161]
+						put[159]
 						set::[99]barreltaken
 						addscore::[100]score_barreltaken
 					endif[135]
@@ -3143,7 +3143,7 @@ ask[39]::$everywhere[246] = $cf/207
 						ifnot::[24]ringgiven
 							msg::[143]Then, after a pause, added: "This is the only thing I found in t...
 							msg::[232]You try to say no, but he insists, so you finally accept
-							put[161]
+							put[159]
 							set::[24]ringgiven
 						endif[135]
 					else[133]
@@ -3203,12 +3203,12 @@ drink[40]::houseinterior[24] = $d0/208
 			msg2::[179]"Ah, finally, we were dying of thirst."
 			set::[108]tasted
 			addscore::[109]score_tasted
-			waitkey[176]
+			waitkey[174]
 			goto::[23]house
 		endif[135]
 drink[40]::$everywhere[246] = $d1/209
 	withobj::[1]beerbarrel
-		needin[160]
+		needin[158]
 		ifis[142]
 			msg::[109]It's empty.
 		else[133]
@@ -3238,12 +3238,12 @@ drink[40]::$everywhere[246] = $71/113
 	endwith[136]
 eat[41]::$everywhere[246] = $d2/210
 	withobj::[3]bread
-		needin[160]
+		needin[158]
 		msg::[208]You don't want to eat now
 eat[41]::$everywhere[246] = $d3/211
 	withobj::[17]baryl
 		ifisin[144]
-			put[161]
+			put[159]
 			msg::[74]Done
 			set::[5]baryleaten
 		endif[135]
@@ -3263,16 +3263,16 @@ eat[41]::$everywhere[246] = $71/113
 	endwith[136]
 fill[42]::mainsquare[2] = $87/135
 	withobj::[5]flask
-		needin[160]
+		needin[158]
 		withobj::[36]mainsquare.fountain
 			msg::[68]As you start to fill your flask, you realise that the water comi...
 		endwith[136]
 	endwith[136]
 fill[42]::governorsquare[4] = $88/136
 	withobj::[5]flask
-		needin[160]
+		needin[158]
 		withobj::[48]governorsquare.fountain
-			unsetattr[175]
+			unsetattr[173]
 			addscore::[33]score_flaskfilled
 			msg::[74]Done
 		endwith[136]
@@ -3301,7 +3301,7 @@ fill[42]::$everywhere[246] = $71/113
 	endwith[136]
 wear[43]::$everywhere[246] = $d5/213
 	withobj::[6]jacket
-		needin[160]
+		needin[158]
 		set::[2]jacketon
 		msg::[74]Done
 		addscore::[3]score_jacketwear
@@ -3321,7 +3321,7 @@ wear[43]::$everywhere[246] = $71/113
 	endwith[136]
 takeoff[44]::$everywhere[246] = $d6/214
 	withobj::[6]jacket
-		needin[160]
+		needin[158]
 		unset::[2]jacketon
 		msg::[74]Done
 read[45]::schoollibrary[9] = $4a/74
@@ -3331,7 +3331,7 @@ read[45]::schoollibrary[9] = $4a/74
 		ifnot::[55]mapfound
 			msg::[62]A \ymap\w falls out of a book
 			set::[55]mapfound
-			put[161]
+			put[159]
 			addscore::[56]score_mapfound
 		endif[135]
 read[45]::schoollibrary[9] = $d7/215
@@ -3400,7 +3400,7 @@ read[45]::houseinterior[24] = $d9/217
 read[45]::ruinsinterior[26] = $da/218
 	withobj::[34]spell
 		ifisin[144]
-			setvar[171]
+			setvar[169]
 			if::[113]eyesonaltar
 				addvar[129]
 			endif[135]
@@ -3420,7 +3420,7 @@ read[45]::ruinsinterior[26] = $da/218
 				if::[11]materialwin
 					msg::[230]You think it might be time to go back home
 				endif[135]
-				waitkey[176]
+				waitkey[174]
 				goto::[25]ruins
 			else[133]
 				msg2::[128]"Ah, finally, we were dying of thirst."
@@ -3448,7 +3448,7 @@ read[45]::forgeroom[32] = $67/103
 		endif[135]
 read[45]::$everywhere[246] = $93/147
 	withobj::[18]map
-		needin[160]
+		needin[158]
 		ifisroom::[18]darkpath
 			msg::[126]On the map you see a path leading from here to a mark, +
 			msg::[248]going southeast.
@@ -3467,34 +3467,34 @@ read[45]::$everywhere[246] = $93/147
 read[45]::$everywhere[246] = $db/219
 	withobj::[24]documents
 		withobj::[25]summoning
-			needin[160]
+			needin[158]
 			msg::[46]"The Lyrins want to destroy us by summoning an Elder God here. I...
 		endwith[136]
 		withobj::[26]lyrin
-			needin[160]
+			needin[158]
 			msg::[29]"Lyrin are not Lyrin. Our enemies are creatures pretending to be...
 		endwith[136]
 		withobj::[27]witch
-			needin[160]
+			needin[158]
 			msg::[20]"I still didn't find out who the Witch is, but she's responsible...
 		endwith[136]
 		withobj::[28]sacred
-			needin[160]
+			needin[158]
 			msg::[16]"I can't use their new site in the mines. But I've found there's...
 		endwith[136]
 		withobj::[249]$none
-			needin[160]
+			needin[158]
 			msg::[153]They seem to be Erik's notebook missing pages
 			msg::[90]He wrote that he wanted to obtain info about the production of t...
 			msg::[71]But that there's a bigger and imminent danger, a \ysummoning\w
 		endwith[136]
 		withobj::[245]$every
-			needin[160]
+			needin[158]
 			msg::[195]You cannot find anything about that
 		endwith[136]
 read[45]::$everywhere[246] = $6f/111
 	withobj::[29]eriknotebook
-		needin[160]
+		needin[158]
 		ifnot::[14]fulllayout
 			msg::[106]It's a torn notebook, with several missing pages. And what's lef...
 			msg::[123]On one page there's an incomplete layout
@@ -3575,7 +3575,7 @@ capture[47]::path[17] = $78/120
 			else[133]
 				ifisin[144]
 					msg2::[80]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 					addscore::[92]score_rabbittaken
 				else[133]
 					msg2::[200]"Ah, finally, we were dying of thirst."
@@ -3597,7 +3597,7 @@ capture[47]::forestpond[27] = $80/128
 			else[133]
 				ifisin[144]
 					msg2::[80]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 					addscore::[116]score_fishtaken
 				else[133]
 					msg2::[200]"Ah, finally, we were dying of thirst."
@@ -3606,7 +3606,7 @@ capture[47]::forestpond[27] = $80/128
 		endwith[136]
 		withobj::[249]$none
 			ifisin[144]
-				put[161]
+				put[159]
 				msg::[136]Taken
 			else[133]
 				msg2::[88]"Ah, finally, we were dying of thirst."
@@ -3648,7 +3648,7 @@ carve[48]::redtent[22] = $7c/124
 				msg2::[189]"Ah, finally, we were dying of thirst."
 			else[133]
 				msg2::[192]"Ah, finally, we were dying of thirst."
-				put[161]
+				put[159]
 				addscore::[106]score_carvedeyes
 				set::[105]carvedeyes
 			endif[135]
@@ -3678,7 +3678,7 @@ carve[48]::$everywhere[246] = $71/113
 cast[49]::ruinsinterior[26] = $da/218
 	withobj::[34]spell
 		ifisin[144]
-			setvar[171]
+			setvar[169]
 			if::[113]eyesonaltar
 				addvar[129]
 			endif[135]
@@ -3698,7 +3698,7 @@ cast[49]::ruinsinterior[26] = $da/218
 				if::[11]materialwin
 					msg::[230]You think it might be time to go back home
 				endif[135]
-				waitkey[176]
+				waitkey[174]
 				goto::[25]ruins
 			else[133]
 				msg2::[128]"Ah, finally, we were dying of thirst."
@@ -3724,8 +3724,8 @@ cast[49]::$everywhere[246] = $71/113
 	endwith[136]
 copy[50]::bankssquare[3] = $df/223
 	withobj::[44]bankssquare.layout
-		needin[160]
-		needin[160]
+		needin[158]
+		needin[158]
 		ifnot::[14]fulllayout
 			msg::[233]You used the pencil to copy what was missing of notebook page, a...
 			set::[14]fulllayout
@@ -3754,8 +3754,8 @@ cut[51]::darkpath[18] = $7a/122
 				ifisin[144]
 					ifisin[144]
 						msg2::[199]"Ah, finally, we were dying of thirst."
-						put[161]
-						put[161]
+						put[159]
+						put[159]
 						set::[96]bowmade
 						addscore::[97]score_bowmade
 					else[133]
@@ -3775,14 +3775,14 @@ cut[51]::redtent[22] = $7c/124
 				msg2::[189]"Ah, finally, we were dying of thirst."
 			else[133]
 				msg2::[192]"Ah, finally, we were dying of thirst."
-				put[161]
+				put[159]
 				addscore::[106]score_carvedeyes
 				set::[105]carvedeyes
 			endif[135]
 		endwith[136]
 cut[51]::ruinsinterior[26] = $e0/224
 	withobj::[11]yourself
-		needin[160]
+		needin[158]
 		ifnot::[114]bloodonaltar
 			msg2::[183]"Ah, finally, we were dying of thirst."
 			set::[114]bloodonaltar
@@ -3868,7 +3868,7 @@ hunt[54]::path[17] = $78/120
 			else[133]
 				ifisin[144]
 					msg2::[80]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 					addscore::[92]score_rabbittaken
 				else[133]
 					msg2::[200]"Ah, finally, we were dying of thirst."
@@ -3890,7 +3890,7 @@ hunt[54]::forestpond[27] = $80/128
 			else[133]
 				ifisin[144]
 					msg2::[80]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 					addscore::[116]score_fishtaken
 				else[133]
 					msg2::[200]"Ah, finally, we were dying of thirst."
@@ -3899,7 +3899,7 @@ hunt[54]::forestpond[27] = $80/128
 		endwith[136]
 		withobj::[249]$none
 			ifisin[144]
-				put[161]
+				put[159]
 				msg::[136]Taken
 			else[133]
 				msg2::[88]"Ah, finally, we were dying of thirst."
@@ -3956,9 +3956,9 @@ insert[55]::forgeroom[32] = $8f/143
 		else[133]
 			withobj::[161]forgeroom.forge
 				ifisin[144]
-					put[161]
+					put[159]
 					msg2::[83]"Ah, finally, we were dying of thirst."
-					put[161]
+					put[159]
 				else[133]
 					msg::[203]You don't have it
 				endif[135]
@@ -4098,7 +4098,7 @@ search[59]::school[8] = $9a/154
 	withobj::[64]school.cabinets
 		ifnot::[50]twineseen
 			msg::[95]Inside one of them you find some \ytwine\w.
-			put[161]
+			put[159]
 			set::[50]twineseen
 			addscore::[51]score_twineseen
 		else[133]
@@ -4111,7 +4111,7 @@ search[59]::schoollibrary[9] = $4a/74
 		ifnot::[55]mapfound
 			msg::[62]A \ymap\w falls out of a book
 			set::[55]mapfound
-			put[161]
+			put[159]
 			addscore::[56]score_mapfound
 		endif[135]
 search[59]::schoollibrary[9] = $d7/215
@@ -4138,7 +4138,7 @@ search[59]::schoollibrary[9] = $d7/215
 search[59]::schoollibrary[9] = $4d/77
 	withobj::[74]schoollibrary.geometry
 		ifisin[144]
-			put[161]
+			put[159]
 			msg::[211]You found some \ydocuments\w hidden behind books.
 			addscore::[63]score_documentstaken
 		else[133]
@@ -4174,35 +4174,35 @@ search[59]::innroom[14] = $54/84
 			msg2::[213]"Ah, finally, we were dying of thirst."
 		else[133]
 			msg2::[107]"Ah, finally, we were dying of thirst."
-			put[161]
+			put[159]
 			addscore::[77]score_eriknotebook
 		endif[135]
 search[59]::$everywhere[246] = $db/219
 	withobj::[24]documents
 		withobj::[25]summoning
-			needin[160]
+			needin[158]
 			msg::[46]"The Lyrins want to destroy us by summoning an Elder God here. I...
 		endwith[136]
 		withobj::[26]lyrin
-			needin[160]
+			needin[158]
 			msg::[29]"Lyrin are not Lyrin. Our enemies are creatures pretending to be...
 		endwith[136]
 		withobj::[27]witch
-			needin[160]
+			needin[158]
 			msg::[20]"I still didn't find out who the Witch is, but she's responsible...
 		endwith[136]
 		withobj::[28]sacred
-			needin[160]
+			needin[158]
 			msg::[16]"I can't use their new site in the mines. But I've found there's...
 		endwith[136]
 		withobj::[249]$none
-			needin[160]
+			needin[158]
 			msg::[153]They seem to be Erik's notebook missing pages
 			msg::[90]He wrote that he wanted to obtain info about the production of t...
 			msg::[71]But that there's a bigger and imminent danger, a \ysummoning\w
 		endwith[136]
 		withobj::[245]$every
-			needin[160]
+			needin[158]
 			msg::[195]You cannot find anything about that
 		endwith[136]
 search[59]::$everywhere[246] = $71/113
@@ -4224,7 +4224,7 @@ throw[60]::fall[29] = $ae/174
 		ifisin[144]
 			msg2::[244]"Ah, finally, we were dying of thirst."
 			set::[117]defeatedfish
-			put[161]
+			put[159]
 			addscore::[118]score_defeatedfish
 		else[133]
 			msg::[203]You don't have it
