@@ -384,6 +384,7 @@ dt=Text
 <node>
 withobj:$none
 3
+loadimg
 msg:$roomdesc
 ifobjinattr:$any,$here,visible+listable
 	msg:You see: +
@@ -605,6 +606,7 @@ dt=Text
 onfirst
 2
 clear
+loadimg
 msg:$roomdesc
 ifobjinattr:$any,$here,visible+listable
 	msg:You see: +
@@ -719,7 +721,7 @@ dt=Text
 <node>
 gfx
 2
-msg:\yn\wormal, \yp\wrogressive or \ys\wtatic?
+msg:\yn\wormal, \yp\wrogressive or \yo\wptimized?
 getkey
 ifkey:N
 	gfxmode:0
@@ -729,8 +731,8 @@ else
 		gfxmode:1
 		msg:Done
 	else
-		ifkey:S
-			gfxmode:2
+		ifkey:O
+			gfxmode:4
 			msg:Done
 
 <end node> 5P9i0s8y19Z

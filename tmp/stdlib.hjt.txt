@@ -87,6 +87,7 @@ genericverb:x
 			msg:.
 		endif
 	withobj:$none
+		loadimg
 		msg:$roomdesc
 		ifobjinattr:$any,$here,visible+listable
 			msg:You see: +
@@ -179,6 +180,7 @@ verb:$unknown
 	msg:What?
 verb:onfirst
 	clear
+	loadimg
 	msg:$roomdesc
 	ifobjinattr:$any,$here,visible+listable
 		msg:You see: +
@@ -236,7 +238,7 @@ verb:load
 verb:mem
 	dbg
 verb:gfx
-	msg:\yn\wormal, \yp\wrogressive or \ys\wtatic?
+	msg:\yn\wormal, \yp\wrogressive or \yo\wptimized?
 	getkey
 	ifkey:N
 		gfxmode:0
@@ -246,8 +248,8 @@ verb:gfx
 			gfxmode:1
 			msg:Done
 		else
-			ifkey:S
-				gfxmode:2
+			ifkey:O
+				gfxmode:4
 				msg:Done
 talkverb:talk
 	ifobjinattr:$this,$here,visible

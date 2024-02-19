@@ -528,6 +528,7 @@ room:$start
 	image:png\idleimage_C64.png
 	onfirst
 		clear
+		loadimg
 		msg:\c##SUBTITLE##
 			\c
 			\cCode+Story: \y##AUTHOR##
@@ -549,9 +550,11 @@ room:endgame
 	image:png\endgame_C64.png
 	onfirst
 		clear
+		loadimg
 		msg:With the summoning prevented, and the secret about Lyrin's material discovered, your people finally have a chance to change the fate of the war. It won't be easy, or short, but it will be possible.
 		msg:A hint of a smile cuts the sharp line of your face. It is time to return.
 		msg:\yYou won!\w
+		waitkey
 		msg:Do you want to restart? (Y/N)
 		getkey
 		ifkey:Y
